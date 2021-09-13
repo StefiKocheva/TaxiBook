@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiBook", "TaxiBook\TaxiBook.csproj", "{86214CF0-F041-40C3-9F76-292D8C9C57FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86214CF0-F041-40C3-9F76-292D8C9C57FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86214CF0-F041-40C3-9F76-292D8C9C57FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86214CF0-F041-40C3-9F76-292D8C9C57FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86214CF0-F041-40C3-9F76-292D8C9C57FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F212C3BA-1D07-47FA-A454-D0429853E6BE}
+	EndGlobalSection
+EndGlobal
