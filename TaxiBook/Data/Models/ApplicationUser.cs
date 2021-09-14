@@ -1,56 +1,41 @@
-﻿namespace TaxiBook.Data.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace TaxiBook.Data.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
             this.Feedbacks = new HashSet<Feedback>();
             this.Bookings = new HashSet<Booking>();
-            this.TaxiDrivers = new HashSet<Taxi>();
+            this.Taxies = new HashSet<Taxi>();
         }
 
         public string Id { get; set; }
 
         [Required]
-        [MinLength(2)]
         [MaxLength(50)]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(2)]
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [Phone]
-        public string PhoneNumber { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
-        public string? CardNumber { get; set; }
-
-        public string TaxiId { get; set; }
-
-        public Taxi Taxi { get; set; }
+        public string CardNumber { get; set; }
 
         public string CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
-        public IEnumerable<Feedback> Feedbacks { get; set; }
+        public virtual IEnumerable<Feedback> Feedbacks { get; set; }
 
-        public IEnumerable<Booking> Bookings { get; set; }
+        public virtual IEnumerable<Booking> Bookings { get; set; }
 
-        public IEnumerable<Taxi> TaxiDrivers { get; set; }
+        public virtual IEnumerable<Taxi> Taxies { get; set; }
     }
 }
