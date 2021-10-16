@@ -1,49 +1,75 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TaxiBook</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TaxiBook</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Vendor CSS -->
+    <link href="~/vendors/landing-page-vendors/aos/aos.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/vendors/landing-page-vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <!-- Header -->
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1><a href="index.html"><span>TaxiBook</span></a></h1>
+            </div>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" asp-area="" asp-controller="" asp-action="">Get started</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header> <!-- End Header -->
+
+    @this.RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-top">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TaxiBook</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+                <div class="row">
+                    <div class="social-links mt-3">
+                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - TaxiBook - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    </footer> <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS -->
+    <script src="~/vendors/landing-page-vendors/aos/aos.js"></script>
+    <script src="~/vendors/landing-page-vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendors/landing-page-vendors/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendors/landing-page-vendors/purecounter/purecounter.js"></script>
+    <script src="~/vendors/landing-page-vendors/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/js/mainLandingPage.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
