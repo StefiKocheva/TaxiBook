@@ -9,7 +9,7 @@
         public Company()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Users = new HashSet<ApplicationUser>();
+            this.Employees = new HashSet<ApplicationUser>();
             this.Taxies = new HashSet<Taxi>();
         }
 
@@ -17,7 +17,6 @@
 
 
         [Required]
-        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
 
@@ -27,10 +26,10 @@
 
         public string AddressId { get; set; }
 
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public virtual IEnumerable<ApplicationUser> Employees { get; set; }
 
-        public IEnumerable<Taxi> Taxies { get; set; }
+        public virtual IEnumerable<Taxi> Taxies { get; set; }
     }
 }

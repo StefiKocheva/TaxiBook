@@ -9,25 +9,26 @@
         public Taxi()
         {
             this.Id = Guid.NewGuid().ToString();
+
             this.Users = new HashSet<ApplicationUser>();
+            this.Bookings = new HashSet<Booking>();
         }
 
         public string Id { get; set; }
-
-        [Required]
+        
         public bool IsBusy { get; set; }
 
         public string CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
-        public string TaxiDriverId { get; set; }
+        public string DriverId { get; set; }
 
-        public ApplicationUser TaxiDriver { get; set; }
+        public virtual ApplicationUser Driver { get; set; }
 
         public string LocationId { get; set; }
 
-        public Address Location { get; set; }
+        public virtual Address Location { get; set; }
 
         [Required]
         public string WorkTime { get; set; }
@@ -35,6 +36,8 @@
         [Required]
         public decimal PricePerKilometer { get; set; }
 
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public virtual IEnumerable<ApplicationUser> Users { get; set; }
+
+        public virtual IEnumerable<Booking> Bookings { get; set; }
     }
 }

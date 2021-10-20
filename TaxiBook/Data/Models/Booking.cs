@@ -12,14 +12,18 @@
 
         public string CurrentLocationId { get; set; }
 
-        public Address CurrentLocation { get; set; }
+        public virtual Address CurrentLocation { get; set; }
 
         public string EndLocationId { get; set; }
 
-        public Address EndLocation { get; set; }
+        public virtual Address EndLocation { get; set; }
 
         public string ClientId { get; set; }
 
-        public ApplicationUser Client { get; set; }
+        public virtual ApplicationUser Client { get; set; }
+
+        public string TaxiId { get; set; }
+
+        public virtual Taxi Taxi { get; set; }
     }
 }
