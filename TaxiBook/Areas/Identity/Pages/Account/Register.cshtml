@@ -1,64 +1,98 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    this.Layout = "_AuthenticationLayout";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+<div id="auth">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-12 mx-auto">
+                <div class="card pt-4">
+                    <div class="card-body">
+                        <div class="text-center mb-5">
+                            <img src="assets/images/favicon.svg" height="48" class='mb-4'>
+                            <h3>Sign Up</h3>
+                            <p>Please fill the form to register.</p>
                         </div>
-                    </form>
-                }
-            }
-        </section>
+                        <form action="index.html">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">First Name</label>
+                                        <input type="text" id="first-name-column" class="form-control" name="fname-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">Last Name</label>
+                                        <input type="text" id="last-name-column" class="form-control" name="lname-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Email</label>
+                                        <input type="email" id="email-id-column" class="form-control" name="email-id-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone-number-column">Phone number</label>
+                                        <input type="text" id="phone-number-column" class="form-control" name="phone-number-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="password-column">Password</label>
+                                        <input type="password" id="password-column" class="form-control" name="password-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="confirm-password-column">Confirm password</label>
+                                        <input type="password" id="confirm-password-column" class="form-control" name="confirm-password-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">Card number</label>
+                                        <input type="text" id="company-column" class="form-control" name="company-column">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <label for="select-role">Role</label>
+                                    <fieldset class="form-group">
+                                        <select class="form-select" id="select-role" name="select-role">
+                                            <option>User</option>
+                                            <option>Manager</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <label for="profile-picture">Profile picture</label>
+                                    <div class="form-file">
+                                        <input type="file" class="form-file-input" id="profile-picture">
+                                        <label class="form-file-label" for="profile-picture">
+                                            <span class="form-file-text">Choose file...</span>
+                                            <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='form-check clearfix my-4'>
+                                <div class="float-right">
+                                    <a href="auth-login.html">Have an account? Login</a>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <button class="btn btn-primary float-right">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br />
     </div>
 </div>
 

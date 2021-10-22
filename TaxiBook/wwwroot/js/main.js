@@ -152,3 +152,31 @@ module.exports = __webpack_require__(/*! D:\Programmer\Code\HTML_CSS\Voler\src\a
 /***/ })
 
 /******/ });
+
+var divOne = document.getElementById('manager-number');
+
+document.getElementById('button-one').addEventListener('click', showhide);
+
+function showhide() {
+  divOne.classList.toggle('visible');
+}
+
+// Credit: Mateusz Rybczonec
+
+const FULL_DASH_ARRAY = 283;
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
+
+const COLOR_CODES = {
+  info: {
+    color: "green"
+  },
+  warning: {
+    color: "orange",
+    threshold: WARNING_THRESHOLD
+  },
+  alert: {
+    color: "red",
+    threshold: ALERT_THRESHOLD
+  }
+};
