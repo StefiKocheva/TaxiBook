@@ -47,6 +47,16 @@ namespace TaxiBook.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [MinLength(2)]
+            [MaxLength(30)]
+            public string FirstName { get; set; }
+
+            [Required]
+            [MinLength(2)]
+            [MaxLength(30)]
+            public string LastName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -73,6 +83,7 @@ namespace TaxiBook.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
@@ -102,6 +113,7 @@ namespace TaxiBook.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);

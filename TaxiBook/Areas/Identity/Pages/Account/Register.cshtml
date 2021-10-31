@@ -19,20 +19,23 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="first-name-column">First Name</label>
-                                        <input type="text" id="first-name-column" class="form-control" name="fname-column">
+                                        <label asp-for="Input.FirstName">First name</label>
+                                        <input asp-for="Input.FirstName" class="form-control">
+                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="last-name-column">Last Name</label>
-                                        <input type="text" id="last-name-column" class="form-control" name="lname-column">
+                                        <label asp-for="Input.LastName">Last name</label>
+                                        <input asp-for="Input.LastName" class="form-control">
+                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="email-id-column">Email</label>
-                                        <input type="email" id="email-id-column" class="form-control" name="email-id-column">
+                                        <label asp-for="Input.Email">Email</label>
+                                        <input asp-for="Input.Email" class="form-control">
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -43,14 +46,16 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="password-column">Password</label>
-                                        <input type="password" id="password-column" class="form-control" name="password-column">
+                                        <label asp-for="Input.Password">Password</label>
+                                        <input asp-for="Input.Password" class="form-control">
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="confirm-password-column">Confirm password</label>
-                                        <input type="password" id="confirm-password-column" class="form-control" name="confirm-password-column">
+                                        <label asp-for="Input.ConfirmPassword">Confirm password</label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control">
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -81,7 +86,7 @@
                             </div>
                             <div class='form-check clearfix my-4'>
                                 <div class="float-right">
-                                    <a href="auth-login.html">Have an account? Login</a>
+                                    <a asp-controller="Account" asp-action="Login">Have an account? Login</a>
                                 </div>
                             </div>
                             <div class="clearfix">

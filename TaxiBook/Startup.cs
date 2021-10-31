@@ -62,6 +62,7 @@ namespace TaxiBook
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("Guest", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
