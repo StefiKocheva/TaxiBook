@@ -8,15 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bf3c66b-6c20-443b-82a6-abeaae305d04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TaxiBook/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TaxiBook/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TaxiBook/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TaxiBook/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxiBook/Areas/Identity/Pages/Account/Register.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxiBook/Areas/Identity/Pages/Account/Register.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxiBook/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxiBook/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxiBook/Data/Models/ApplicationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxiBook/Data/Models/ApplicationUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxiBook/TaxiBook.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TaxiBook/TaxiBook.csproj" afterDir="false" />
+    <list default="true" id="4bf3c66b-6c20-443b-82a6-abeaae305d04" name="Changes" comment="changes">
+      <change afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/nikis/Desktop/TaxiBook/TaxiBook/Data/Models/ApplicationUser.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20HYzgbvRIQ5dJjpnyKB7KfxKnI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -86,8 +82,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635703250713</updated>
-      <workItem from="1635703306743" duration="1457000" />
+      <workItem from="1635703306743" duration="1868000" />
     </task>
+    <task id="LOCAL-00001" summary="Add signup logic">
+      <created>1635705034486</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635705034486</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changes">
+      <created>1635705113484</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635705113484</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,5 +121,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Add signup logic" />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
 </project>
