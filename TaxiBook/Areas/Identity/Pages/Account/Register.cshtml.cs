@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -37,8 +41,7 @@ namespace TaxiBook.Areas.Identity.Pages.Account
             _emailSender = emailSender;
         }
 
-        [BindProperty]
-        public InputModel Input { get; set; }
+        [BindProperty] public InputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -62,7 +65,8 @@ namespace TaxiBook.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.",
+                MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -71,6 +75,10 @@ namespace TaxiBook.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public IFormFile ProfilePicture { get; set; }
+
+            public bool IsManager { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -86,32 +94,54 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var imageUrl = string.Empty;
+
+                if (this.Input.ProfilePicture != null && this.Input.ProfilePicture.Length > 0)
+                {
+                    var fileName = Path.GetFileName(this.Input.ProfilePicture.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", fileName);
+
+                    using var fileStream = new FileStream(filePath, FileMode.Create);
+
+                    await this.Input.ProfilePicture.CopyToAsync(fileStream);
+
+                    var account = new CloudinaryDotNet.Account
+                        {ApiKey = "597981955165718", ApiSecret = "YrIRgn7E7ffUnN1kXSJhyGQJS54", Cloud = "hotelcollab"};
+
+                    fileStream.Close();
+
+                    var cloudinary = new Cloudinary(account);
+
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(filePath),
+                    };
+
+                    var uploadResult = cloudinary.Upload(uploadParams);
+
+                    System.IO.File.Delete(filePath);
+
+                    imageUrl = uploadResult.Url.ToString();
+                }
+
+                var user = new ApplicationUser
+                {
+                    FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, Email = Input.Email,
+                    ImageUrl = imageUrl
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (this.Input.IsManager)
+                {
+                    await _userManager.AddToRoleAsync(user, "Manager");
+                }
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
                 }
 
                 foreach (var error in result.Errors)

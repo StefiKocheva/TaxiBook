@@ -20,7 +20,12 @@ namespace TaxiBook.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return this.View("Dashboard");
+            }
+
+            return this.View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

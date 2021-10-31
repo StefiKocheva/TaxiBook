@@ -11,6 +11,7 @@ namespace TaxiBook.Data.Models
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
+            
             this.Feedbacks = new HashSet<Feedback>();
             this.Bookings = new HashSet<Booking>();
             this.Taxies = new HashSet<Taxi>();
@@ -26,7 +27,7 @@ namespace TaxiBook.Data.Models
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        public string CardNumber { get; set; }
+        public string ImageUrl { get; set; }
 
         public string CompanyId { get; set; }
 
