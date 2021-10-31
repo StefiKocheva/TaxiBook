@@ -76,6 +76,7 @@ namespace TaxiBook.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
+            [Required]
             public IFormFile ProfilePicture { get; set; }
 
             public bool IsManager { get; set; }

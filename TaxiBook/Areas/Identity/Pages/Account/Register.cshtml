@@ -15,7 +15,7 @@
                             <h3>Sign Up</h3>
                             <p>Please fill the form to register.</p>
                         </div>
-                        <form action="index.html">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
@@ -40,12 +40,6 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="phone-number-column">Phone number</label>
-                                        <input type="text" id="phone-number-column" class="form-control" name="phone-number-column">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
                                         <label asp-for="Input.Password">Password</label>
                                         <input asp-for="Input.Password" class="form-control">
                                         <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -58,29 +52,21 @@
                                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="company-column">Card number</label>
-                                        <input type="text" id="company-column" class="form-control" name="company-column">
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="profile-picture">Profile picture</label>
+                                    <div class="form-file">
+                                        <input asp-for="Input.ProfilePicture" type="file">
+                                        <label class="form-file-label" asp-for="Input.ProfilePicture">
+                                            <span class="form-file-text">Choose file...</span>
+                                            <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
+                                        </label>
+                                        <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <label for="select-role">Role</label>
-                                    <fieldset class="form-group">
-                                        <select class="form-select" id="select-role" name="select-role">
-                                            <option>User</option>
-                                            <option>Manager</option>
-                                        </select>
-                                    </fieldset>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <label for="profile-picture">Profile picture</label>
-                                    <div class="form-file">
-                                        <input type="file" class="form-file-input" id="profile-picture">
-                                        <label class="form-file-label" for="profile-picture">
-                                            <span class="form-file-text">Choose file...</span>
-                                            <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
-                                        </label>
+                                    <div class="form-group">
+                                        <input type="checkbox" asp-for="Input.IsManager" class="form-check-input" />
+                                        <label asp-for="Input.IsManager">I am a manager.</label>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <button class="btn btn-primary float-right">Submit</button>
+                                <button type="submit" class="btn btn-primary float-right">Submit</button>
                             </div>
                         </form>
                     </div>
