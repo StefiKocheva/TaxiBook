@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
@@ -84,16 +81,16 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ReturnUrl = returnUrl;
+            this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var imageUrl = string.Empty;
 
@@ -127,32 +124,36 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
                 var user = new ApplicationUser
                 {
-                    FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, Email = Input.Email,
+                    FirstName = Input.FirstName, 
+                    LastName = Input.LastName, 
+                    UserName = Input.Email, 
+                    Email = Input.Email,
                     ImageUrl = imageUrl
                 };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (this.Input.IsManager)
                 {
-                    await _userManager.AddToRoleAsync(user, "Manager");
+                    await this._userManager.AddToRoleAsync(user, "Manager");
                 }
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    this._logger.LogInformation("User created a new account with password.");
+                    await this._signInManager.SignInAsync(user, isPersistent: false);
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    return this.LocalRedirect(returnUrl);
                 }
 
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return Page();
+            return this.Page();
         }
     }
 }
