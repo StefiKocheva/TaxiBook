@@ -33,9 +33,17 @@
             </div>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a asp-area="Identity" asp-controller="Account" asp-action="Login" class="nav-link scrollto">Get started</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Начало</a></li>
+                    <li><a class="nav-link scrollto" href="#about">За проекта</a></li>
+                    @if (!this.User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Login" class="nav-link scrollto">Влез</a></li>
+                    }
+                    else if (this.User.IsInRole("Manager"))
+                    {
+                        <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+                    }
+                    
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

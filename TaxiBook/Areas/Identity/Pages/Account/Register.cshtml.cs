@@ -126,15 +126,13 @@ namespace TaxiBook.Areas.Identity.Pages.Account
                     LastName = Input.LastName, 
                     UserName = Input.Email, 
                     Email = Input.Email,
+                    EmailConfirmed = true,
                     ImageUrl = imageUrl
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if (this.Input.IsManager)
-                {
-                    await this._userManager.AddToRoleAsync(user, "Manager");
-                }
+                await this._userManager.AddToRoleAsync(user, "Manager");
 
                 if (result.Succeeded)
                 {
