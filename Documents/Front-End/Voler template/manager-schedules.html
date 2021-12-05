@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatable - Voler Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <img src="assets/images/logo.svg" alt="" srcset="">
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-item">
+                            <a href="manager-home.html" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i> 
+                                <span>Home</span>
+                            </a> 
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="manager-taxies.html" class='sidebar-link'>
+                                <i data-feather="star" width="20"></i> 
+                                <span>Taxies</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="manager-taxi-drivers.html" class='sidebar-link'>
+                                <i data-feather="users" width="20"></i> 
+                                <span>Taxi drivers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="manage-dispatchers.html" class='sidebar-link'>
+                                <i data-feather="headphones" width="20"></i> 
+                                <span>Dispatchers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item active">
+                            <a href="manager-schedules.html" class='sidebar-link'>
+                                <i data-feather="clock" width="20"></i> 
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown nav-icon mr-2">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+                                    <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="my-account.html"><i data-feather="user"></i> Account</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Your work time schedule and gained progress</h3>
+                            <p class="text-subtitle text-muted">Here you can see your progress in work, when you gain 100 %, it means that your shift is ended, below are your shifts and free days for the current week.</p>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="row">
+                        <div class="card collapse-icon accordion-icon-rotate"><br />
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="accordion" id="cardAccordion">
+                                        <div class="card open">
+                                            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
+                                                aria-expanded="true" aria-controls="collapseThree" >
+                                                <span class="collapsed collapse-title"><h4 style="text-align: center;">Progress</h4></span><br />
+                                                <div class="progress progress-success  mb-3">
+                                                    <div class="progress-bar" role="progressbar" style="width: 35%"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" style="text-align: center;">
+                                                <h4>Week work time schedule<hr></h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <table class='table table-striped' id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Monday</th>
+                                                            <th>Tuesday</th>
+                                                            <th>Wednesday</th>
+                                                            <th>Thirsday</th>
+                                                            <th>Friday</th>
+                                                            <th>Saturday</th>
+                                                            <th>Sunday</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-bold-500">Day shift</td>
+                                                            <td>Day shift</td>
+                                                            <td class="text-bold-500">Day off</td>
+                                                            <td>Day shift</td>
+                                                            <td>Night shift</td>
+                                                            <td>Night shift</td>
+                                                            <td>Day off</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-left">
+                        <p>2020 &copy; Voler</p>
+                    </div>
+                    <div class="float-right">
+                        <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/vendors.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

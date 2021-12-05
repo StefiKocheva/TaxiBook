@@ -1,0 +1,8 @@
+.table-element {
+    color:#0d6efd;
+
+}
+
+.table-element:hover {
+    color: #024dbc;
+}

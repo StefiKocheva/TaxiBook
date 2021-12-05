@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Voler Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="assets/css/google-maps.css">
+    
+<script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+        <img src="assets/images/logo.svg" alt="" srcset="">
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu">
+            <li class="sidebar-item active ">
+                <a href="index.html" class='sidebar-link'>
+                    <i data-feather="home" width="20"></i> 
+                    <span>Начало</span>
+                </a> 
+            </li>
+            <li class="sidebar-item ">
+                <a href="track.html" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Моето такси</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="bookmarked-taxies.html" class='sidebar-link'>
+                    <i data-feather="bookmark" width="20"></i> 
+                    <span>Любими</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown nav-icon mr-2">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+                                    <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Здравей, Стефани!</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="my-account.html"><i data-feather="user"></i> Профил</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Излез</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Най-близки таксита</h3>
+                    <p class="text-subtitle text-muted">Here you can easy and fast book your transport. Select start and end point and enjoy.</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Начало</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Таксита около мен</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="mapouter"><div class="gmap_canvas"><iframe class="card-img-top img-fluid"
+                        alt="singleminded" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br></div>
+                    </div>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class='table table-striped' id="table1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Номер на такси</th>
+                                        <th class="text-center">Шофьор</th>
+                                        <th class="text-center">Адрес</th>
+                                        <th class="text-center">Пресметни пътуване</th>
+                                        <th class="text-center">Моят избор</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td>1</td>
+                                        <td>Стефани Кочева</td>
+                                        <td>бул. "България" 20 </td>
+                                        <td>
+                                            <a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="order.html"><i class="fas fa-heart fa-sm"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>2</td>
+                                        <td>Стефани Кочева</td>
+                                        <td>бул. "България" 20 </td>
+                                        <td>
+                                            <a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="order.html"><i class="fas fa-heart fa-sm"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>3</td>
+                                        <td>Стефани Кочева</td>
+                                        <td>бул. "България" 20 </td>
+                                        <td>
+                                            <a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="order.html"><i class="fas fa-heart fa-sm"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>4</td>
+                                        <td>Стефани Кочева</td>
+                                        <td>бул. "България" 20 </td>
+                                        <td>
+                                            <a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="order.html"><i class="fas fa-heart fa-sm"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td>5</td>
+                                        <td>Стефани Кочева</td>
+                                        <td>бул. "България" 20 </td>
+                                        <td>
+                                            <a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="order.html"><i class="fas fa-heart fa-sm"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                        role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Пресметни пътуване</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            Попълнете празните полета и продължете напред, за да видите приблизителната цена и време за изпълнение на моментния Ви избор.
+                            </p>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="email-id-icon">Къде се намирате в момента?</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Местоположение" id="email-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-street-view"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="password-id-icon">До къде искате да пътувате?</label>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" placeholder="Крайна дестинация" id="password-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Затвори</span>
+                            </button>
+                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Напред</span>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <div class="accordion" id="cardAccordion">
+                    <!--<div class="card open">
+                        <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="true" aria-controls="collapseThree" role="button">
+                            <h4 class="collapsed collapse-title">Повече за компанията</h4>
+                        </div>
+                        <div id="collapseThree" class="collapse show pt-1" aria-labelledby="headingThree"
+                            data-parent="#cardAccordion">
+                            <div class="card-body">
+                                Фирма Велина такси ЕООД с ЕИК/ПИК 205425854 е основана на 5 Декември 2018 година с правна форма "Еднолично дружество с ограничена отговорност" или на кратко "ЕООД". Седалището на компанията се намира в гр. Пазарджик. Клиентите са наш приоритет и гарантираме спокойно и качествено пътуване!
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="card">
+                        <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="false" aria-controls="collapseFour" role="button">
+                            <h4 class="collapsed collapse-title">Повече за компанията</h4>
+                        </div>
+                        <div id="collapseFour" class="collapse pt-1" aria-labelledby="headingFour"
+                            data-parent="#cardAccordion">
+                            <div class="card-body">
+                                Фирма Велина такси ЕООД с ЕИК/ПИК 205425854 е основана на 5 Декември 2018 година с правна форма "Еднолично дружество с ограничена отговорност" или на кратко "ЕООД". Седалището на компанията се намира в гр. Пазарджик. Клиентите са наш приоритет и гарантираме спокойно и качествено пътуване!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-left">
+                    <p>2020 &copy; Voler</p>
+                </div>
+                <div class="float-right">
+                    <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/save-as-fav.js"></script>
+    <script src="assets/js/google-maps.js"></script>
+
+</body>
+
+</html>

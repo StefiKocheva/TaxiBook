@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Voler Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+        <img src="assets/images/logo.svg" alt="" srcset="">
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu">
+            <li class="sidebar-item">
+                <a href="index.html" class='sidebar-link'>
+                    <i data-feather="home" width="20"></i> 
+                    <span>Начало</span>
+                </a> 
+            </li>
+            <li class="sidebar-item active">
+                <a href="track.html" class='sidebar-link'>
+                    <i data-feather="map-pin" width="20"></i> 
+                    <span>Моето такси</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="bookmarked-taxies.html" class='sidebar-link'>
+                    <i data-feather="bookmark" width="20"></i> 
+                    <span>Любими</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown nav-icon mr-2">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+                                    <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="my-account.html"><i data-feather="user"></i> Account</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <h3>Проследи своето такси</h3>
+                    <p class="text-subtitle text-muted">Описание...</p>
+                </div>
+                <div class="mapouter"><div class="gmap_canvas"><iframe class="card-img-top img-fluid"
+                    alt="singleminded" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br></div>
+                </div>
+                <section class="section">
+                    <div class="accordion" id="cardAccordion">
+                        <div class="card open">
+                            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="true" aria-controls="collapseThree" role="button">
+                                <h4 class="collapsed collapse-title">Моята поръчка</h4>
+                            </div>
+                            <div id="collapseThree" class="collapse show pt-1" aria-labelledby="headingThree" data-parent="#cardAccordion">
+                                <div class="card-body">
+                                    <p>  
+                                        Фирма Велина такси ЕООД с ЕИК/ПИК 205425854 е основана на 5 Декември 2018 година с правна форма "Еднолично дружество с ограничена отговорност" или на кратко "ЕООД". Седалището на компанията се намира в гр. Пазарджик. Клиентите са наш приоритет и гарантираме спокойно и качествено пътуване!
+                                    </p>
+                                    <button type="submit" data-toggle="modal"
+                            data-target="#exampleModalCenter" class="btn btn-primary btn-block">Откажи поръчка</button>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                        role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Сигурни ли сте, че искате да откажете вашата поръчка?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Не</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="location.href='index.html';">Да</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                        role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Експресна поръчка</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            Попълнете полето и продължете напред, за да видите какво избрахме за вас.
+                            </p>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="email-id-icon">Къде се намирате в момента?</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Местоположение" id="email-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-street-view"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Затвори</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="location.href='expressBook.html';">Напред</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                <footer>
+                            <div class="footer clearfix mb-0 text-muted">
+                                <div class="float-left">
+                                    <p>2020 &copy; Voler</p>
+                                </div>
+                                <div class="float-right">
+                                    <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+                <script src="assets/js/feather-icons/feather.min.js"></script>
+                <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+                <script src="assets/js/app.js"></script>
+                
+                <script src="assets/vendors/chartjs/Chart.min.js"></script>
+                <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
+                <script src="assets/js/pages/dashboard.js"></script>
+            
+                <script src="assets/js/main.js"></script>
+            </body>
+</html>
