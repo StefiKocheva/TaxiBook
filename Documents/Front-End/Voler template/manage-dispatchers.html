@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datatable - Voler Admin Dashboard</title>
     
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/editable-table.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -89,108 +89,164 @@
                 </div>
                 <section class="section">
                     <div class="card">
-                        <div class="card-header" style="text-align: center;">
-                            <h4>Dispatchers<hr></h4>
-                        </div>
                         <div class="card-body">
+                            <div id="table" class="table-editable">
+                                <script>
+                                    function DeleteRowFunction(o) {
+                                     var p=o.parentNode.parentNode;
+                                         p.parentNode.removeChild(p);
+                                    }
+
+                                    function EditRow() {
+
+                                    }
+                                </script>
+                                
                             <table class='table table-striped' id="table1">
                                 <thead>
-                                    <tr>
-                                        <th>Full name</th>
-                                        <th>Phone number</th>
-                                        <th>City</th>
+                                    <tr align="center">
+                                        <th>Пълно име</th>
+                                        <th>Телефонен номер</th>
+                                        <th>Информация за такси</th>
+                                        <th>Дневен отчет</th>
+                                        <th>Населено място</th>
+                                        <th>Функции</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Stefani Kocheva</td>
+                                    <tr align="center">
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td contenteditable="true">089 678 7890</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-element"><i class="far fa-file-alt"></i></a></td>
+                                        <td contenteditable="true">Пазаржик</td>
+                                        <td><span role="button" onclick="EditRow" class="editbtn"><i data-feather="edit"></i></span><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td>Стефани Кочева</td>
                                         <td>089 678 7890</td>
-                                        <td>Pazardzik</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
+                                        <td>Пазарджик</td>
+                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
                                     </tr>
-                                    <tr>
-                                        <td>Dispatcher1 User1</td>
-                                        <td>088 500 5293</td>
-                                        <td>Sofia</td>
+                                    <tr align="center">
+                                        <td>Стефани Кочева</td>
+                                        <td>089 678 7890</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
+                                        <td>Пазарджик</td>
+                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
                                     </tr>
-                                    <tr>
-                                        <td>Dispatcher2 User2</td>
-                                        <td>089 744 6278</td>
-                                        <td>Plovdiv</td>
+                                    <tr align="center">
+                                        <td>Стефани Кочева</td>
+                                        <td>089 678 7890</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
+                                        <td>Пазарджик</td>
+                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
                                     </tr>
-                                    <tr>
-                                        <td>Dispatcher3 User3</td>
-                                        <td>089 690 7871</td>
-                                        <td>Varna</td>
+                                    <tr align="center">
+                                        <td>Стефани Кочева</td>
+                                        <td>089 678 7890</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
+                                        <td>Пазарджик</td>
+                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
                                     </tr>
-                                    <tr>
-                                        <td>Dispatcher4 User4</td>
-                                        <td>087 441 9046</td>
-                                        <td>Kustendil</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dispatcher5 User5</td>
-                                        <td>089 123 27844</td>
-                                        <td>Plovdiv</td>
+                                    <tr align="center">
+                                        <td>Стефани Кочева</td>
+                                        <td>089 678 7890</td>
+                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
+                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
+                                        <td>Пазарджик</td>
+                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#primary">Add new employe</button>
-                            <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+                            <button type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#large">Добави нов служител</button>
+                            <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header bg-primary">
-                                                    <h5 class="modal-title white" id="myModalLabel160">Form</h5>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Добави нов таксмитеров шофьор</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <i data-feather="x"></i>
+                                                    </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="card-content">
-                                                        <div class="card-body">
-                                                            <form class="form form-vertical">
-                                                                <div class="form-body">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-12">
-                                                                            <div class="form-group">
-                                                                                <label for="first-name-icon">First name</label>
-                                                                                <div class="position-relative">
-                                                                                    <input type="text" class="form-control" placeholder="First Name" id="first-name-icon">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12">
-                                                                            <div class="form-group">
-                                                                                <label for="last-name-icon">Last name</label>
-                                                                                <div class="position-relative">
-                                                                                    <input type="text" class="form-control" placeholder="First Name" id="first-name-icon">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12">
-                                                                            <div class="form-group">
-                                                                                <label for="last-name-icon">Phone number</label>
-                                                                                <div class="position-relative">
-                                                                                    <input type="text" class="form-control" placeholder="Phone number" id="first-name-icon">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12">
-                                                                            <div class="form-group">
-                                                                                <label for="last-name-icon">City</label>
-                                                                                <div class="position-relative">
-                                                                                    <input type="text" class="form-control" placeholder="Phone number" id="first-name-icon">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
+                                                    <p>
+                                                    Попълнете празните полета и продължете напред, за да добавите своят нов служител.
+                                                    </p>
+                                                    <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Първо име</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Първо име">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Второ име</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Второ име">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Фамилия</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Фамилия">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Email</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Телефонен номер</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Телефонен номер">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Населено място</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Населено място">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Марка на такси</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Марка">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Регистрационен номер на такси</label>
+                                                            <input type="text" class="form-control" id="basicInput" placeholder="Регистрационен номер">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Парола</label>
+                                                            <input type="password" class="form-control" id="basicInput" placeholder="Парола">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="basicInput">Потвърждаване на парола</label>
+                                                            <input type="password" class="form-control" id="basicInput" placeholder="Парола">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </div>
                                                 <div class="modal-footer">
-                                                    <a href="manage-dispatchers.html" class="btn btn-primary ml-1" role="button" aria-pressed="true">
-                                                        <span class="d-none d-sm-block">Add</span>
+                                                    <a class="btn btn-primary ml-1" role="button" aria-pressed="true">
+                                                        <span class="d-none d-sm-block">Напред</span>
                                                     </a>
                                                     <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                                                        <i class="bx bx-x d-block d-sm-none"></i><span class="d-none d-sm-block">Cancel</span>
+                                                        <i class="bx bx-x d-block d-sm-none"></i><span class="d-none d-sm-block">Откажи</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -217,7 +273,6 @@
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="assets/js/vendors.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/map.js"></script>
