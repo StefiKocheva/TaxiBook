@@ -73,8 +73,6 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
             [Required]
             public IFormFile ProfilePicture { get; set; }
-
-            public bool IsManager { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -131,8 +129,6 @@ namespace TaxiBook.Areas.Identity.Pages.Account
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
-
-                await this._userManager.AddToRoleAsync(user, "Manager");
 
                 if (result.Succeeded)
                 {

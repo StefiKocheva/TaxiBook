@@ -20,11 +20,6 @@ namespace TaxiBook.Controllers
 
         public IActionResult Index()
         {
-            if (this.User.Identity.IsAuthenticated)
-            {
-                return this.View("Dashboard");
-            }
-
             return this.View();
         }
 

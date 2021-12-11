@@ -40,9 +40,11 @@
                     {
                         <li><a asp-area="Identity" asp-controller="Account" asp-action="Login" class="nav-link scrollto">Влез</a></li>
                     }
-                    else if (this.User.IsInRole("Manager"))
+                    else
                     {
                         <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout" class="nav-link scrollto">Изход</a></li>
                     }
                     
                 </ul>
