@@ -79,6 +79,14 @@
 
 /* Set the size of the div element that contains the map */
 
+.table-element {
+  color:#0d6efd;
+}
+
+.table-element:hover {
+  color: #024dbc;
+}
+
 .phone-number {
   color: #0d6efd;
 }
