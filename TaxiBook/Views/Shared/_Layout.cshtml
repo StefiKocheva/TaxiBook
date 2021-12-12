@@ -51,6 +51,7 @@
                     {
                         <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
 
+                        
                         <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout" class="nav-link scrollto">Изход</a></li>
                     }
                     
@@ -89,7 +90,7 @@
     <script src="~/vendors/landing-page-vendors/swiper/swiper-bundle.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="~/js/mainLandingPage.js"></script>
+<script src="~/js/mainLandingPage.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

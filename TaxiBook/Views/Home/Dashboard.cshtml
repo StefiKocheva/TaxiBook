@@ -1,12 +1,247 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-             <title>Document</title>
-</head>
-<body>
-  <h1>Hello, @this.User.Identity?.Name</h1>
-</body>
-</html>
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-12 order-md-1 order-last">
+            <h3>Избери и поръчай своя превоз</h3>
+            <p class="text-subtitle text-muted">Може да се възползваш от предоставените данни и сам да избереш перфектния според своите предпочитания транспорт или пък всичко това оставиш на нас, като ни запознаеш със своите желания, а наша стане работата да ги реализираме.</p>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        // Enable popovers everywhere
+        $('[data-bs-toggle="popover"]').popover();
+    });
+</script>
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <table class='table table-striped' id="table1">
+                <thead>
+                    <tr>
+                        <th class="text-center">Компания</th>
+                        <th class="text-center">Цена за километър</th>
+                        <th class="text-center">Област</th>
+                        <th class="text-center">Обади се сега</th>
+                        <th class="text-center">Поръчай онлайн</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
+                        <td>Пазарджик</td>
+                        <td>
+                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" data-toggle="modal"
+                    data-target="#exampleModalCenter" class="btn btn-primary btn-block">
+                
+                
+                Най-близки таксита
+            </button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                     role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Експресна поръчка</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                        Попълнете полето и продължете напред, за да видите какво избрахме за вас.
+                            </p>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="email-id-icon">Къде се намирате в момента?</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Местоположение" id="email-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-street-view"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Затвори</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="location.href='expressBook.html';">Напред</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

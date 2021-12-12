@@ -18,7 +18,12 @@ namespace TaxiBook.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            return this.View();
+        }
+
+        public async Task<IActionResult> Dashboard()
         {
             return this.View();
         }
