@@ -11,53 +11,53 @@
                 <div class="card pt-4">
                     <div class="card-body">
                         <div class="text-center mb-5">
-                            <img src="assets/images/favicon.svg" height="48" class='mb-4'>
-                            <h3>Sign Up</h3>
-                            <p>Please fill the form to register.</p>
+                            <img src="~/images/logo-second-type.png" height="48" class='mb-4'>
+                            <h3>Регистрация</h3>
+                            <p>Моля попълнете формата, за да се регистрирате в платформата.</p>
                         </div>
                         <form method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label asp-for="Input.FirstName">First name</label>
-                                        <input asp-for="Input.FirstName" class="form-control">
+                                        <label asp-for="Input.FirstName">Първо име</label>
+                                        <input asp-for="Input.FirstName" class="form-control" placeholder="Първо име">
                                         <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label asp-for="Input.LastName">Last name</label>
-                                        <input asp-for="Input.LastName" class="form-control">
+                                        <label asp-for="Input.LastName">Фамилия</label>
+                                        <input asp-for="Input.LastName" class="form-control" placeholder="Фамилия">
                                         <span asp-validation-for="Input.LastName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label asp-for="Input.Email">Email</label>
-                                        <input asp-for="Input.Email" class="form-control">
+                                        <input asp-for="Input.Email" class="form-control" placeholder="Email">
                                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label asp-for="Input.Password">Password</label>
-                                        <input asp-for="Input.Password" class="form-control">
+                                        <label asp-for="Input.Password">Парола</label>
+                                        <input asp-for="Input.Password" class="form-control" placeholder="Парола">
                                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label asp-for="Input.ConfirmPassword">Confirm password</label>
-                                        <input asp-for="Input.ConfirmPassword" class="form-control">
+                                        <label asp-for="Input.ConfirmPassword">Потвърждаване на парола</label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Потвърждаване на парола">
                                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="profile-picture">Profile picture</label>
+                                    <label for="profile-picture">Профилна снимка</label>
                                     <div class="form-file">
                                         <input asp-for="Input.ProfilePicture" type="file">
                                         <label class="form-file-label" asp-for="Input.ProfilePicture">
-                                            <span class="form-file-text">Choose file...</span>
+                                            <span class="form-file-text">Изберете файл...</span>
                                             <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
                                         </label>
                                         <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
@@ -66,11 +66,11 @@
                             </div>
                             <div class='form-check clearfix my-4'>
                                 <div class="float-right">
-                                    <a asp-controller="Account" asp-action="Login">Have an account? Login</a>
+                                    <a asp-controller="Account" asp-action="Login">Вече имате акаунт? Влезте.</a>
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                <button type="submit" class="btn btn-primary float-right">Регистрирай</button>
                             </div>
                         </form>
                     </div>

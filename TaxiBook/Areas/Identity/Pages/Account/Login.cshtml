@@ -13,16 +13,16 @@
                     <div class="card-body">
                         <br />
                         <div class="text-center mb-5">
-                            <img src="assets/images/favicon.svg" height="48" class='mb-4'>
-                            <h3>Sign In</h3>
-                            <p>Please sign in to continue to TaxiBook.</p>
+                            <img src="~/images/logo-second-type.png" height="48" class='mb-4'>
+                            <h3>Вход</h3>
+                            <p>Моля попълнете формата, за да продължите напред.</p>
                         </div>
                         <form method="post">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group position-relative has-icon-left">
                                 <label asp-for="Input.Email" for="email">Email</label>
                                 <div class="position-relative">
-                                    <input asp-for="Input.Email" class="form-control" id="username">
+                                    <input asp-for="Input.Email" class="form-control" id="username" placeholder="Email">
                                     <div class="form-control-icon">
                                         <i data-feather="user"></i>
                                     </div>
@@ -31,13 +31,13 @@
                             </div>
                             <div class="form-group position-relative has-icon-left">
                                 <div class="clearfix">
-                                    <label asp-for="Input.Password" for="password">Password</label>
+                                    <label asp-for="Input.Password" for="password">Парола</label>
                                     <a asp-controller="Account" asp-action="ForgotPassword" class='float-right'>
-                                        <small>Forgot password?</small>
+                                        <small>Забравена парола?</small>
                                     </a>
                                 </div>
                                 <div class="position-relative">
-                                    <input asp-for="Input.Password" class="form-control" id="password"> 
+                                    <input asp-for="Input.Password" class="form-control" id="password" placeholder="Парола"> 
                                     <div class="form-control-icon">
                                         <i data-feather="lock"></i>
                                     </div>
@@ -47,14 +47,14 @@
                             <div class='form-check clearfix my-4'>
                                 <div class="checkbox float-left">
                                     <input asp-for="Input.RememberMe" type="checkbox" id="checkbox1" class='form-check-input'>
-                                    <label asp-for="Input.RememberMe" for="checkbox1">Remember me</label>
+                                    <label asp-for="Input.RememberMe" for="checkbox1">Запомни ме</label>
                                 </div>
                                 <div class="float-right">
-                                    <a asp-controller="Account" asp-action="Register">Don't have an account?</a>
+                                    <a asp-controller="Account" asp-action="Register">Нямате все още акаунт?</a>
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                <button type="submit" class="btn btn-primary float-right">Влез</button>
                             </div>
                         </form>
                     </div>
