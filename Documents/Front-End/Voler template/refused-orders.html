@@ -19,33 +19,33 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
-        <img src="assets/images/default-monochrome.svg" alt="Logo" srcset="">
+        <img src="assets/images/default-monochrome.svg" alt="" srcset="">
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
             <li class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
+                <a href="taxi-driver-home.html" class='sidebar-link'>
                     <i class="fas fa-home"></i>
                     <span>Начало</span>
                 </a> 
             </li>
             <li class="sidebar-item">
-                <a href="track.html" class='sidebar-link'>
-                    <i class="fas fa-search-location"></i>
-                    <span>Моята поръчка</span>
-                </a>
+                <a href="accepted-orders.html" class='sidebar-link'>
+                    <i class="far fa-check-circle"></i>
+                    <span>Приети поръчки</span>
+                </a> 
             </li>
             <li class="sidebar-item active">
-                <a href="bookmarked-taxies.html" class='sidebar-link'>
-                    <i class="fas fa-bookmark"></i>
-                    <span>Любими</span>
-                </a>
+                <a href="refused-orders.html" class='sidebar-link'>
+                    <i class="far fa-times-circle"></i>
+                    <span>Отказани поръчки</span>
+                </a> 
             </li>
             <li class="sidebar-item">
-                <a href="add-company.html" class='sidebar-link'>
-                    <i class="fas fa-plus"></i>
-                    <span>Добави компания</span>
-                </a> 
+                <a href="taxi-driver-schedule.html" class='sidebar-link'>
+                    <i class="fas fa-user-clock"></i>
+                    <span>График</span>
+                </a>
             </li>
         </ul>
     </div>
@@ -83,17 +83,11 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12">
-                            <h3>Твоите любими компании</h3>
-                            <p class="text-subtitle text-muted">След като вече сте използвали услугите на някоя конкретна компания и сте останали наистина доволни, то може да я добавите точно тук. Така още по-бързо вашата направена поръчка ще бъде факт!</p>
+                            <h3>Отказани поръчки | 12.12.2021</h3>
+                            <p class="text-subtitle text-muted">Можете да управлявате отказаните Ви поръчки за деня, като така направата на отчет става далеч по-приятна работа.</p>
                         </div>
                     </div>
                 </div>
-                <script>
-                    $(document).ready(function(){
-	                    // Enable popovers everywhere
-                        $('[data-bs-toggle="popover"]').popover();  
-                    });
-                </script>
                 <script>
                     function DeleteRowFunction(o) {
                      var p=o.parentNode.parentNode;
@@ -110,60 +104,26 @@
                             <table class='table table-striped' id="table1">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Компания</th>
-                                        <th class="text-center">Цена за километър</th>
-                                        <th class="text-center">Област</th>
-                                        <th class="text-center">Обади се сега</th>
-                                        <th class="text-center">Поръчай онлайн</th>
-                                        <th class="text-center">Премахни от любими</th>
+                                        <th class="text-center">Направена</th>
+                                        <th class="text-center">Премахни</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Велина</td>
-                                        <td>0.70 лева</td>
-                                        <td>Пазарджик</td>
-                                        <td>
-                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
-                                        </td>
-                                        <td>
-                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
-                                        </td>
-                                        <td>
-                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span>
-                                        </td>
+                                        <td>7:34</td>
+                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr>
-                                        <td>Ивелина</td>
-                                        <td>0.75 лева</td>
-                                        <td>Пазарджик</td>
-                                        <td>
-                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
-                                        </td>
-                                        <td>
-                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
-                                        </td>
-                                        <td>
-                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span>
-                                        </td>
+                                        <td>7:34</td>
+                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr>
-                                        <td>Ивелина</td>
-                                        <td>0.75 лева</td>
-                                        <td>Пазарджик</td>
-                                        <td>
-                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
-                                        </td>
-                                        <td>
-                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
-                                        </td>
-                                        <td>
-                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span>
-                                        </td>
+                                        <td>7:34</td>
+                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави любима компания</button>
+                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави поръчка</button>
                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"

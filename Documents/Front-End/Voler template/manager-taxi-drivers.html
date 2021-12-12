@@ -79,9 +79,9 @@
             <div class="main-content container-fluid">
                 <div class="page-title">
                     <div class="row">
-                        <div class="col-12">
-                            <h3>Таксиметрови шофьори</h3>
-                            <p class="text-subtitle text-muted">Тук на Ваше разположение е информацията за таксиметровите шофьори, работещи в компанията Ви. Може да редактирате, изтривате или да проследните дневният отчет на поръчките на конкретен служител</p>
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Вашите таксиметрови шофьори</h3>
+                            <p class="text-subtitle text-muted">Тук можете да управлявате данните на служителите си.</p>
                         </div>
                     </div>
                 </div>
@@ -94,75 +94,57 @@
                                      var p=o.parentNode.parentNode;
                                          p.parentNode.removeChild(p);
                                     }
-
-                                    function EditRow() {
-
-                                    }
                                 </script>
                                 
                             <table class='table table-striped' id="table1">
                                 <thead>
                                     <tr align="center">
                                         <th>Пълно име</th>
-                                        <th>Телефонен номер</th>
-                                        <th>Информация за такси</th>
+                                        <th>Повече детайли</th>
                                         <th>Дневен отчет</th>
-                                        <th>Населено място</th>
                                         <th>Функции</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr align="center">
                                         <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-element"><i class="far fa-file-alt"></i></a></td>
-                                        <td contenteditable="true">Пазаржик</td>
-                                        <td><span role="button" onclick="EditRow" class="editbtn"><i data-feather="edit"></i></span><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr align="center">
-                                        <td>Стефани Кочева</td>
-                                        <td>089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
-                                        <td>Пазарджик</td>
-                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr align="center">
-                                        <td>Стефани Кочева</td>
-                                        <td>089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
-                                        <td>Пазарджик</td>
-                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr align="center">
-                                        <td>Стефани Кочева</td>
-                                        <td>089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
-                                        <td>Пазарджик</td>
-                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr align="center">
-                                        <td>Стефани Кочева</td>
-                                        <td>089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
-                                        <td>Пазарджик</td>
-                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr align="center">
-                                        <td>Стефани Кочева</td>
-                                        <td>089 678 7890</td>
-                                        <td><a href="taxi.html"><i class="fas fa-taxi"></i></a></td>
-                                        <td><a class="table-remove"><i class="far fa-file-alt"></i></a></td>
-                                        <td>Пазарджик</td>
-                                        <td><a class="table-remove"><span class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="edit"></span></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i data-feather="trash-2"></i></span></td>
+                                        <td contenteditable="true">Стефани Кочева</td>
+                                        <td><a href="manager-t-details.html"><i class="fas fa-plus"></i></a></td>
+                                        <td><a href=""><i class="far fa-file-alt"></i></td>
+                                        <td><a href="manager-t-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#large">Добави нов служител</button>
+                            <button type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#large">Добави служител</button>
                             <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                             <div class="modal-content">

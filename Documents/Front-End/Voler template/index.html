@@ -18,7 +18,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
-        <img src="assets/images/logo.svg" alt="" srcset="">
+        <img src="assets/images/default-monochrome.svg" alt="Logo" srcset="">
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
@@ -28,10 +28,10 @@
                     <span>Начало</span>
                 </a> 
             </li>
-            <li class="sidebar-item ">
+            <li class="sidebar-item">
                 <a href="track.html" class='sidebar-link'>
-                    <i class="fas fa-taxi"></i>
-                    <span>Моето такси</span>
+                    <i class="fas fa-search-location"></i>
+                    <span>Моята поръчка</span>
                 </a>
             </li>
             <li class="sidebar-item">
@@ -39,6 +39,12 @@
                     <i class="fas fa-bookmark"></i>
                     <span>Любими</span>
                 </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="add-company.html" class='sidebar-link'>
+                    <i class="fas fa-plus"></i>
+                    <span>Добави компания</span>
+                </a> 
             </li>
         </ul>
     </div>
@@ -279,7 +285,7 @@
                         </div>
                         <div class="modal-body">
                             <p>
-                            Попълнете полето и продължете напред, за да видите какво избрахме за вас.
+                            Моля попълнете и изберете от падащото меню своята опция, за да продължите напред.
                             </p>
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
@@ -292,13 +298,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <fieldset class="form-group">
+                                    <label for="email-id-icon">Имате ли предпочитания относно фирма?</label>
+                                    <select class="form-select" id="basicSelect">
+                                        <option>Нямам</option>
+                                        <option>Панда Такси</option>
+                                        <option>Велина</option>
+                                        <option>Евролийз Такси</option>
+                                        <option>Рефлекс Плюс</option>
+                                    </select>
+                                </fieldset>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Затвори</span>
                             </button>
-                            <button class="btn btn-primary" onclick="location.href='expressBook.html';">Напред</button>
+                            <a type="button" class="btn btn-primary" href="order.html">Напред</a>
                         </div>
                         </div>
                     </div>
