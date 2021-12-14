@@ -15,7 +15,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
-                    <img src="assets/images/logo.svg" alt="" srcset="">
+                    <img src="assets/images/default-monochrome.svg" alt="" srcset="">
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
@@ -77,66 +77,117 @@
             
             <div class="main-content container-fluid">
                 <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Your work time schedule and gained progress</h3>
-                            <p class="text-subtitle text-muted">Here you can see your progress in work, when you gain 100 %, it means that your shift is ended, below are your shifts and free days for the current week.</p>
-                        </div>
-                    </div>
+                    <h3>Седмичен график</h3>
+                    <p class="text-subtitle text-muted">Описание...</p>
                 </div>
-                <section class="section">
-                    <div class="row">
-                        <div class="card collapse-icon accordion-icon-rotate"><br />
-                            <div class="card-content">
-                                <div class="card-body">
-                                    <div class="accordion" id="cardAccordion">
-                                        <div class="card open">
-                                            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
-                                                aria-expanded="true" aria-controls="collapseThree" >
-                                                <span class="collapsed collapse-title"><h4 style="text-align: center;">Progress</h4></span><br />
-                                                <div class="progress progress-success  mb-3">
-                                                    <div class="progress-bar" role="progressbar" style="width: 35%"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
+                <div class="card collapse-icon accordion-icon-rotate"><br />
+                    <div class="card-content">
+                        <div class="card-body">
+                            <table class='table table-striped' id="table1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">№</th>
+                                        <th class="text-center">Пон</th>
+                                        <th class="text-center">Вт</th>
+                                        <th class="text-center">Ср</th>
+                                        <th class="text-center">Четв</th>
+                                        <th class="text-center">Петък</th>
+                                        <th class="text-center">Събота</th>
+                                        <th class="text-center" style="color:#0d6efd;">Неделя</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center"><i class="far fa-sun"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-smile"></i></td>
+                                        <td class="text-center"><i class="far fa-sun"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-smile"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center"><i class="far fa-sun"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-smile"></i></td>
+                                        <td class="text-center"><i class="far fa-sun"></i></td>
+                                        <td class="text-center"><i class="far fa-moon"></i></td>
+                                        <td class="text-center"><i class="far fa-smile"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                        role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Предстоящо отсъствие</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            Моля попълнете празните полета.
+                            </p>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="email-id-icon">От кога ще остъствате?</label>
+                                    <div class="position-relative">
+                                        <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-user-alt-slash"></i>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-header" style="text-align: center;">
-                                                <h4>Week work time schedule<hr></h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class='table table-striped' id="table1">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Monday</th>
-                                                            <th>Tuesday</th>
-                                                            <th>Wednesday</th>
-                                                            <th>Thirsday</th>
-                                                            <th>Friday</th>
-                                                            <th>Saturday</th>
-                                                            <th>Sunday</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="text-bold-500">Day shift</td>
-                                                            <td>Day shift</td>
-                                                            <td class="text-bold-500">Day off</td>
-                                                            <td>Day shift</td>
-                                                            <td>Night shift</td>
-                                                            <td>Night shift</td>
-                                                            <td>Day off</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="email-id-icon">До кога няма да сте на работа?</label>
+                                    <div class="position-relative">
+                                        <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
+                                        <div class="form-control-icon">
+                                            <i class="fas fa-user-alt-slash"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Назад</span>
+                            </button>
+                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Изпрати</span>
+                            </button>
+                        </div>
+                        </div>
                     </div>
-                </section>
-            </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card open">
+                    <div class="card-header" id="details1" data-toggle="collapse" data-target="#details"
+                        aria-expanded="false" aria-controls="details" role="button">
+                        <h4 class="collapsed collapse-title">Легенда</h4>
+                    </div>
+                    <div id="details" class="collapse pt-1" aria-labelledby="details1"
+                        data-parent="#details">
+                        <div class="card-body">
+                            <i class="far fa-smile"></i>    Почивен ден<br/>
+                            <i class="far fa-moon"></i>     Нощна смяна<br/>
+                            <i class="far fa-sun"></i>      Дневна смяна<br/>
+                        </div>
+                    </div>
+                </div>
             
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
