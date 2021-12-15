@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatable - Voler Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+        <img src="assets/images/default-monochrome.svg" alt="Logo" srcset="">
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu">
+            <li class="sidebar-item">
+                <a href="index.html" class='sidebar-link'>
+                    <i class="fas fa-home"></i>
+                    <span>Начало</span>
+                </a> 
+            </li>
+            <li class="sidebar-item active">
+                <a href="feedback-form.html" class='sidebar-link'>
+                    <i class="far fa-comments"></i>
+                    <span>Обратна връзка</span>
+                </a> 
+            </li>
+        </ul>
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown nav-icon mr-2">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+                                    <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Здравей, Стефани!</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="my-account.html"><i data-feather="user"></i> Профил</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Излез</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="main-content container-fluid">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <h4 class="card-title">Обратна връзка</h4>
+                            <p class="card-text">
+                                Моля попълнете формата, като споделите своето мнение относно конкретната компания.
+                            </p>
+                            <form class="form" method="post">
+                                <div class="form-body">
+                                    <div class="form-group position-relative has-icon-left">
+                                        <label for="username">Име</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" id="username" placeholder="Име">
+                                            <div class="form-control-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group position-relative has-icon-left">
+                                        <label for="username">Email</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" id="username" placeholder="Email">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-envelope"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-label-group">
+                                        <label for="label-textarea">Мнение</label>
+                                        <textarea class="form-control" id="label-textarea" rows="3" placeholder="Вашето мнение"></textarea>
+                                    </div>
+                                    <div class="container">
+                                        <h3>Popover Example</h3>
+                                        <a  data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
+                                      </div>
+                                      <a  data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
+
+                                </div>
+                                <div class="form-actions d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1">Изпрати</button>
+                                    <button type="reset" class="btn btn-light-primary">Откажи</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-left">
+                        <p>2020 &copy; Voler</p>
+                    </div>
+                    <div class="float-right">
+                        <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+        </script>
+    <script src="assets/js/popovers.js"></script>
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/js/vendors.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/map.js"></script>
+</body>
+</html>
