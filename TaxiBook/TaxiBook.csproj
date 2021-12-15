@@ -21,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Areas\Manager\Models\" />
-    <Folder Include="Areas\Manager\Views\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

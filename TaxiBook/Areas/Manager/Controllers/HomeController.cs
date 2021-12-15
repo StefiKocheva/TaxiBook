@@ -11,7 +11,7 @@ namespace TaxiBook.Areas.Manager.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return Ok("Works");
+            return this.View();
         }
 
         public async Task<IActionResult> Schedule()
