@@ -1,0 +1,105 @@
+﻿<div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Поръчка</h3>
+                    <p class="text-subtitle text-muted">Моля попълнете формата, за да поръчате своето такси.</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a asp-controller="Order" asp-action="Details">Таксита около мен</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Моят избор</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mapouter"><div class="gmap_canvas"><iframe class="card-img-top img-fluid"
+                        alt="singleminded" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br></div>
+                    </div>
+                    <section id="multiple-column-form">
+                        <div class="row match-height">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <form class="form">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">Къде се намирате в момента?</label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" placeholder="Местоположение" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-street-view"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">До къде искате да пътувате?</label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" placeholder="Крайна дестинация" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-map-marked-alt"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">Допълнително описание</label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" placeholder="Повече за вашето местоположение" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-pen"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">Допълнително описание</label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" placeholder="Повече за крайната Ви дестинация" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-pen"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">Колко хора ще пътуват?</label>
+                                                            <div class="position-relative">
+                                                                <input type="number" class="form-control" placeholder="Бройка на пътуващи" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-users"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">Имате ли допълнителни изисквания?</label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" placeholder="Като например помощ с багаж" id="first-name-icon">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-user"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><br/><br/><br/><br/>
+                                                    <div class="col-12 d-flex justify-content-end">
+                                                        <button onclick="return confirm('Сигурни ли сте, че искате да направите тази поръчка?')" type="submit" class="btn btn-primary mr-1 mb-1">Поръчай</button>
+                                                        <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>

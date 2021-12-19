@@ -1,0 +1,118 @@
+﻿<div class="page-title">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Твоите любими компании</h3>
+                            <p class="text-subtitle text-muted">След като вече сте използвали услугите на някоя конкретна компания и сте останали наистина доволни, то може да я добавите точно тук. Така още по-бързо вашата направена поръчка ще бъде факт!</p>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function(){
+	                    // Enable popovers everywhere
+                        $('[data-bs-toggle="popover"]').popover();  
+                    });
+                </script>
+                <script>
+                    function DeleteRowFunction(o) {
+                     var p=o.parentNode.parentNode;
+                         p.parentNode.removeChild(p);
+                    }
+                </script>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class='table table-striped' id="table1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Компания</th>
+                                        <th class="text-center">Цена за километър</th>
+                                        <th class="text-center">Област</th>
+                                        <th class="text-center">Обади се сега</th>
+                                        <th class="text-center">Поръчай онлайн</th>
+                                        <th class="text-center">Премахни от любими</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Велина</td>
+                                        <td>0.70 лева</td>
+                                        <td>Пазарджик</td>
+                                        <td>
+                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                                        </td>
+                                        <td>
+                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Иванина</td>
+                                        <td>0.75 лева</td>
+                                        <td>Пазарджик</td>
+                                        <td>
+                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                                        </td>
+                                        <td>
+                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Панда Такси</td>
+                                        <td>0.75 лева</td>
+                                        <td>Пазарджик</td>
+                                        <td>
+                                            <a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="taxi-info.html"><i class="fas fa-plus"></i>
+                                        </td>
+                                        <td>
+                                            <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави любима компания</button>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                        role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Добави към любими</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            Моля изберете своята любима компания от падащото меню.
+                            </p>
+                            <div class="col-12">
+                                <fieldset class="form-group">
+                                    <select class="form-select" id="basicSelect">
+                                        <option>Избери компания</option>
+                                        <option>Евролийз Такси</option>
+                                        <option>Рефлекс Плюс</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Затвори</span>
+                            </button>
+                            <a class="btn btn-primary" type="button" asp-action="Home" asp-controller="Favorites">Добави</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                        </div>
+                    </div>
+                </section>
