@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-
-namespace TaxiBook.Controllers
+﻿namespace TaxiBook.Controllers
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class CreateController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
