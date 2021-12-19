@@ -19,8 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Dispatcher\Data\" />
+    <Folder Include="Areas\Dispatcher\Models\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Areas\Manager\Models\" />
+    <Folder Include="Areas\TaxiDriver\Data\" />
+    <Folder Include="Areas\TaxiDriver\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
