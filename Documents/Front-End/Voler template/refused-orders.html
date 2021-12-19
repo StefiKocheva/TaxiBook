@@ -30,6 +30,12 @@
                 </a> 
             </li>
             <li class="sidebar-item">
+                <a href="td-make-order.html" class='sidebar-link'>
+                    <i class="far fa-plus-square"></i>
+                    <span>Направи поръчка</span>
+                </a> 
+            </li>
+            <li class="sidebar-item">
                 <a href="accepted-orders.html" class='sidebar-link'>
                     <i class="far fa-check-circle"></i>
                     <span>Приети поръчки</span>
@@ -45,12 +51,6 @@
                 <a href="taxi-driver-schedule.html" class='sidebar-link'>
                     <i class="fas fa-user-clock"></i>
                     <span>График</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="fas fa-user-plus"></i>
-                    <span>Влез като клиент</span>
                 </a>
             </li>
         </ul>
@@ -94,78 +94,27 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    function DeleteRowFunction(o) {
-                     var p=o.parentNode.parentNode;
-                         p.parentNode.removeChild(p);
-                    }
-
-                    function EditRow() {
-
-                    }
-                </script>
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class='table table-striped' id="table1">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Направена</th>
-                                        <th class="text-center">Премахни</th>
+                                        <th class="text-center">Отказана</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>7:34</td>
-                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                        <td>7:36</td>
                                     </tr>
                                     <tr>
-                                        <td>7:34</td>
-                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7:34</td>
-                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                        <td>13:05</td>
+                                        <td>13:06</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави поръчка</button>
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                        role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Добави към любими</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                            Моля изберете своята любима компания от падащото меню.
-                            </p>
-                            <div class="col-12">
-                                <fieldset class="form-group">
-                                    <select class="form-select" id="basicSelect">
-                                        <option>Панда Такси</option>
-                                        <option>Велина</option>
-                                        <option>Евролийз Такси</option>
-                                        <option>Рефлекс Плюс</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Затвори</span>
-                            </button>
-                            <a class="btn btn-primary" type="button" href="bookmarked-taxies.html">Добави</a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
                         </div>
                     </div>
                 </section>

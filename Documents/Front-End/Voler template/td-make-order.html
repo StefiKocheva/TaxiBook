@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datatable - Voler Admin Dashboard</title>
-    
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    
-<link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
-<script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
@@ -23,32 +20,32 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-item active">
-                            <a href="dispatcher-home.html" class='sidebar-link'>
+                        <li class="sidebar-item">
+                            <a href="taxi-driver-home.html" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a> 
                         </li>
-                        <li class="sidebar-item">
-                            <a href="track-taxi-drivers.html" class='sidebar-link'>
-                                <i class="fas fa-search-location"></i>
-                                <span>Проследи такси</span>
+                        <li class="sidebar-item active">
+                            <a href="td-make-order.html" class='sidebar-link'>
+                                <i class="far fa-plus-square"></i>
+                                <span>Направи поръчка</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="dispatcher-accepted-orders.html" class='sidebar-link'>
+                            <a href="accepted-orders.html" class='sidebar-link'>
                                 <i class="far fa-check-circle"></i>
                                 <span>Приети поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="d-refused-orders.html" class='sidebar-link'>
+                            <a href="refused-orders.html" class='sidebar-link'>
                                 <i class="far fa-times-circle"></i>
                                 <span>Отказани поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="dispatcher-schedule.html" class='sidebar-link'>
+                            <a href="taxi-driver-schedule.html" class='sidebar-link'>
                                 <i class="fas fa-user-clock"></i>
                                 <span>График</span>
                             </a>
@@ -90,7 +87,7 @@
                     <div class="row">
                         <div class="col-12">
                             <h3>Направи поръчка</h3>
-                            <p class="text-subtitle text-muted">Лесно въвеждайки данните, които клиентът предоставя, с един клик Вие автоматично изпращате цялата информация до избран таксиметров шофьор.</p>
+                            <p class="text-subtitle text-muted">Тук лесно може да въведете данните на клиента, който е решил да използва услугите на Вашата компания.</p>
                         </div>
                     </div>
                 </div>
@@ -101,9 +98,6 @@
                     <div class="row match-height">
                         <div class="col-12">
                             <div class="card">
-                                <!--<div class="card-header">
-                                    <h4 class="card-title"></h4>
-                                </div>-->
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form">
@@ -197,21 +191,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                <div class="col-12">
-                                                    <div class="form-group has-icon-left">
-                                                        <label for="first-name-icon">Шофьор</label>
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" placeholder="Имейл" id="first-name-icon">
-                                                            <div class="form-control-icon">
-                                                                <i class="fas fa-at"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 d-flex justify-content-end">
-                                                    <button onclick="return confirm('Сигурни ли сте, че искате да направите тази поръчка?')" type="submit" class="btn btn-primary mr-1 mb-1">Поръчай</button>
-                                                    <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
-                                                </div>
+                                            <div class="col-12 d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1">Стартирай</button>
+                                                <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
                                             </div>
                                         </form>
                                     </div>
@@ -220,51 +202,6 @@
                         </div>
                     </div>
                 </section>
-                <div class="card collapse-icon accordion-icon-rotate"><br />
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h4 class="text-center">
-                                Свободни шофьори
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <table class='table table-hover'>
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Пълно име</th>
-                                        <th class="text-center">Имейл</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">
-                                            Стефани Кочева
-                                        </td>
-                                        <td class="text-center">
-                                            stefikocheva2005@gmail.com
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            Стефани Кочева
-                                        </td>
-                                        <td class="text-center">
-                                            stefikocheva2005@gmail.com
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            Стефани Кочева
-                                        </td>
-                                        <td class="text-center">
-                                            stefikocheva2005@gmail.com
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <footer>

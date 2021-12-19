@@ -43,12 +43,6 @@
                                 <span>График</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
-                                <i class="fas fa-user-plus"></i>
-                                <span>Влез като клиент</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -83,69 +77,77 @@
             
             <div class="main-content container-fluid">
                 <div class="page-title">
-                    <h3>Седмичен график</h3>
-                    <p class="text-subtitle text-muted">Описание...</p>
+                    <h3>Месечен график</h3>
+                    <p class="text-subtitle text-muted">Освен, че имате на разположение своя месечен график със съответните за всеки ден работни смени, то при необходимост можете и да уведомите работодателя си за предстоящото отсъствие.</p>
                 </div>
                 <div class="card collapse-icon accordion-icon-rotate"><br />
                     <div class="card-content">
+                        <div class="card-header">
+                            <i><h4 class="card-title, text-center" style="color:#0275d8;">Декември</h4></i>
+                        </div>
                         <div class="card-body">
-                            <table class='table table-striped' id="table1">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">№</th>
-                                        <th class="text-center">Пон</th>
-                                        <th class="text-center">Вт</th>
-                                        <th class="text-center">Ср</th>
-                                        <th class="text-center">Четв</th>
+                                        <th class="text-center">Понеделник</th>
+                                        <th class="text-center">Вторник</th>
+                                        <th class="text-center">Сряда</th>
+                                        <th class="text-center">Четвътък</th>
                                         <th class="text-center">Петък</th>
                                         <th class="text-center">Събота</th>
-                                        <th class="text-center" style="color:#0d6efd;">Неделя</th>
+                                        <th class="text-center" style="color:#0275d8;"><i>Неделя</i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="text-center"><i class="far fa-sun"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-moon"></i></td>
-                                        <td class="text-center"><i class="far fa-smile"></i></td>
                                         <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                    </tr>
+                                    <tr  class="table-active">
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center" style="color:#0275d8;"><i>Почивен ден</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                        <td class="text-center">Почивен ден</td>
                                         <td class="text-center"></td>
                                         <td class="text-center"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
+                            <button type="submit" data-toggle="modal"
+                            data-target="#exampleModalCenter" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
@@ -162,24 +164,18 @@
                             Моля попълнете празните полета.
                             </p>
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                                <div class="form-group">
                                     <label for="email-id-icon">От кога ще остъствате?</label>
                                     <div class="position-relative">
                                         <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user-alt-slash"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                                <div class="form-group">
                                     <label for="email-id-icon">До кога няма да сте на работа?</label>
                                     <div class="position-relative">
                                         <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user-alt-slash"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -200,21 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card open">
-                    <div class="card-header" id="details1" data-toggle="collapse" data-target="#details"
-                        aria-expanded="false" aria-controls="details" role="button">
-                        <h4 class="collapsed collapse-title">Легенда</h4>
-                    </div>
-                    <div id="details" class="collapse pt-1" aria-labelledby="details1"
-                        data-parent="#details">
-                        <div class="card-body">
-                            <i class="far fa-smile"></i>    Почивен ден<br/>
-                            <i class="far fa-moon"></i>     Нощна смяна<br/>
-                            <i class="far fa-sun"></i>      Дневна смяна<br/>
-                        </div>
-                    </div>
-                </div>
-            
+            </div>
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
@@ -225,8 +207,6 @@
                     </div>
                 </div>
             </footer>
-        </div>
-    </div>
     
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

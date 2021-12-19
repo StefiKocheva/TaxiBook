@@ -52,12 +52,6 @@
                                 <span>График</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
-                                <i class="fas fa-user-plus"></i>
-                                <span>Влез като клиент</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -99,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                <section class="section">
                 <div class="card">
                     <div class="card-header">
                         <h3 class='card-heading p-1 pl-3'>Статистика, базирана на оценката на клиентите</h3>
@@ -124,18 +119,18 @@
                             </div>
                         </div>
                     </div>
-                </div><section class="section">
+                </div>
                     <div class="card">
                         <div class="card-body">
                             <div id="table" class="table-editable">
                                 <script>
-                                    function DeleteRowFunction(o) {
-                                     var p=o.parentNode.parentNode;
-                                         p.parentNode.removeChild(p);
+                                    function DeleteRowFunction(cell) {
+                                        var tableRow = cell.parentNode.parentNode;
+                                        tableRow.parentNode.removeChild(tableRow);
                                     }
                                 </script>
                                 
-                            <table class='table table-striped' id="table1">
+                            <table class='table table-hover'>
                                 <thead>
                                     <tr align="center">
                                         <th>Клиент</th>
@@ -144,46 +139,47 @@
                                         <th>Премахни</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">Обслужване на високо ниво!</td>
+                                <tbody align="center">
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Обслужване на високо ниво!</td>
                                         <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
                                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                                     </tr>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">Обслужване на високо ниво!</td>
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Хареса ми</td>
                                         <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
                                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                                     </tr>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">Прекалено силна музика...</td>
-                                        <td><span class="table-element"><i class="far fa-thumbs-down"></i></span></a></td>
-                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                                    </tr>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">-</td>
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Обслужване на високо ниво!</td>
                                         <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
                                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                                     </tr>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">Обслужване на високо ниво!</td>
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Обслужване на високо ниво!</td>
                                         <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
                                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                                     </tr>
-                                    <tr align="center">
-                                        <td contenteditable="true">Стефани Кочева</td>
-                                        <td contenteditable="true">Обслужване на високо ниво!</td>
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Обслужване на високо ниво!</td>
+                                        <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
+                                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Стефани Кочева</td>
+                                        <td>Обслужване на високо ниво!</td>
                                         <td><span class="table-element"><i class="far fa-thumbs-up"></i></span></a></td>
                                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
                     </div>
                 </section>
             
@@ -197,8 +193,6 @@
                     </div>
                 </div>
             </footer>
-        </div>
-    </div>
 
 <script src="assets/js/feather-icons/feather.min.js"></script>
 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

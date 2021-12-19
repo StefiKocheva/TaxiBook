@@ -50,12 +50,6 @@
                     <span>График</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="fas fa-user-plus"></i>
-                    <span>Влез като клиент</span>
-                </a>
-            </li>
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -90,13 +84,16 @@
 
             <div class="main-content container-fluid">
                 <div class="page-title">
-                    <h3>Седмичен график</h3>
-                    <p class="text-subtitle text-muted">Описание...</p>
+                    <h3>Месечен график</h3>
+                    <p class="text-subtitle text-muted">Освен, че имате на разположение своя месечен график със съответните за всеки ден работни смени, то при необходимост можете и да уведомите работодателя си за предстоящото отсъствие.</p>
                 </div>
                 <div class="card collapse-icon accordion-icon-rotate"><br />
                     <div class="card-content">
+                        <div class="card-header">
+                            <i><h4 class="card-title, text-center" style="color:#0275d8;">Декември</h4></i>
+                        </div>
                         <div class="card-body">
-                            <table class='table table-striped' id="table1">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Понеделник</th>
@@ -105,10 +102,19 @@
                                         <th class="text-center">Четвътък</th>
                                         <th class="text-center">Петък</th>
                                         <th class="text-center">Събота</th>
-                                        <th class="text-center" style="color:#0d6efd;">Неделя</th>
+                                        <th class="text-center" style="color:#0275d8;"><i>Неделя</i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                    </tr>
                                     <tr>
                                         <td class="text-center">Дневна смяна</td>
                                         <td class="text-center">Нощна смяна</td>
@@ -117,6 +123,33 @@
                                         <td class="text-center"> Почивен ден</td>
                                         <td class="text-center">Нощна смяна</td>
                                         <td class="text-center">Почивен ден</td>
+                                    </tr>
+                                    <tr  class="table-active">
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center" style="color:#0275d8;"><i>Почивен ден</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен Дневен</td>
+                                        <td class="text-center"> Почивен ден</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Дневна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Нощна смяна</td>
+                                        <td class="text-center">Почивен ден</td>
+                                        <td class="text-center">Почивен ден</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -138,24 +171,18 @@
                             Моля попълнете празните полета.
                             </p>
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                                <div class="form-group">
                                     <label for="email-id-icon">От кога ще остъствате?</label>
                                     <div class="position-relative">
                                         <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user-alt-slash"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                                <div class="form-group">
                                     <label for="email-id-icon">До кога няма да сте на работа?</label>
                                     <div class="position-relative">
                                         <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user-alt-slash"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -176,6 +203,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
                 <footer>
                             <div class="footer clearfix mb-0 text-muted">
                                 <div class="float-left">
@@ -186,8 +214,7 @@
                                 </div>
                             </div>
                         </footer>
-                    </div>
-                </div>
+                   
                 <script src="assets/js/feather-icons/feather.min.js"></script>
                 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                 <script src="assets/js/app.js"></script>

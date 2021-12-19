@@ -35,6 +35,12 @@
                     <span>Начало</span>
                 </a> 
             </li>
+            <li class="sidebar-item">
+                <a href="td-make-order.html" class='sidebar-link'>
+                    <i class="far fa-plus-square"></i>
+                    <span>Направи поръчка</span>
+                </a> 
+            </li>
             <li class="sidebar-item active">
                 <a href="accepted-orders.html" class='sidebar-link'>
                     <i class="far fa-check-circle"></i>
@@ -42,7 +48,7 @@
                 </a> 
             </li>
             <li class="sidebar-item">
-                <a href="" class='sidebar-link'>
+                <a href="refused-orders.html" class='sidebar-link'>
                     <i class="far fa-times-circle"></i>
                     <span>Отказани поръчки</span>
                 </a> 
@@ -51,12 +57,6 @@
                 <a href="taxi-driver-schedule.html" class='sidebar-link'>
                     <i class="fas fa-user-clock"></i>
                     <span>График</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="fas fa-user-plus"></i>
-                    <span>Влез като клиент</span>
                 </a>
             </li>
         </ul>
@@ -94,8 +94,8 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Редактирай избраната поръчка</h3>
-                    <p class="text-subtitle text-muted">Може да редактирате приета поръчка безпроблемно точно тук.</p>
+                            <h3>Редактирай крайната цена за избраната поръчка</h3>
+                    <p class="text-subtitle text-muted">Може да редактирате конкретното поле при нужда тук.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -117,90 +117,13 @@
                                         <div class="card-body">
                                             <form class="form">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-12">
+                                                    <div class="col-12">
                                                         <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Име на клиент</label>
+                                                            <label for="first-name-icon">Крайна цена</label>
                                                             <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value="Стефани" id="first-name-icon">
+                                                                <input readonly="readonly" type="text" class="form-control" value="5.60 лв." id="first-name-icon">
                                                                 <div class="form-control-icon">
-                                                                    <i class="fas fa-user"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Брой пътуващи</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="number" class="form-control" value="2" id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-users"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Начална точка</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value='бул. "Мария Луиза" 10' id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-street-view"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Крайна дестинация</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value='Парк "Писковец"' id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-map-marked-alt"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Уточнение</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value='-' id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-pen"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Уточнение</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value='-' id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-pen"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Време на изпълнение</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value="5 минути" id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-clock"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Допълнителни изисквания</label>
-                                                            <div class="position-relative">
-                                                                <input readonly="readonly" type="text" class="form-control" value="-" id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fas fa-user"></i>
+                                                                    <i class="fas fa-hand-holding-usd"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
