@@ -24,22 +24,28 @@
                     <ul class="menu">
                         <h1>Client</h1>
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a>
                         </li>
                         <li class="sidebar-item ">
-                            <a href="track.html" class='sidebar-link'>
+                            <a asp-controller="Order" asp-action="Overview" class='sidebar-link'>
                                 <i class="fas fa-taxi"></i>
                                 <span>Моето такси</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="bookmarked-taxies.html" class='sidebar-link'>
+                            <a asp-controller="Home" asp-action="Favorites" class='sidebar-link'>
                                 <i class="fas fa-bookmark"></i>
                                 <span>Любими</span>
                             </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-controller="Home" asp-action="AddCompany" class='sidebar-link'>
+                                <i class="fas fa-plus"></i>
+                                <span>Добави компания</span>
+                            </a> 
                         </li>
                         <h1>Manager</h1>
                         <li class="sidebar-item active">
@@ -68,56 +74,62 @@
                         </li>
                         <h1>Taxi driver</h1>
                         <li class="sidebar-item active">
-                            <a href="taxi-driver-home.html" class='sidebar-link'>
+                            <a asp-area="TaxiDriver" asp-controller="Home" asp-action="Index" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a> 
                         </li>
+                        <li class="sidebar-item active">
+                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
+                                <i class="fas fa-home"></i>
+                                <span>Направи поръчка</span>
+                            </a> 
+                        </li>
                         <li class="sidebar-item">
-                            <a href="accepted-orders.html" class='sidebar-link'>
+                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="AcceptedOrders" class='sidebar-link'>
                                 <i class="far fa-check-circle"></i>
                                 <span>Приети поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="refused-orders.html" class='sidebar-link'>
+                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="RefusedOrders" class='sidebar-link'>
                                 <i class="far fa-times-circle"></i>
                                 <span>Отказани поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="taxi-driver-schedule.html" class='sidebar-link'>
+                            <a asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
                                 <i class="fas fa-user-clock"></i>
                                 <span>График</span>
                             </a>
                         </li>
                         <h1>Dispatcher</h1>
                         <li class="sidebar-item active">
-                            <a href="dispatcher-home.html" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Index" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="track-taxi-drivers.html" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Track"  class='sidebar-link'>
                                 <i class="fas fa-search-location"></i>
                                 <span>Проследи такси</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="dispatcher-accepted-orders.html" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="AcceptedOrders" class='sidebar-link'>
                                 <i class="far fa-check-circle"></i>
                                 <span>Приети поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="d-refused-orders.html" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="RefusedOrders" class='sidebar-link'>
                                 <i class="far fa-times-circle"></i>
                                 <span>Отказани поръчки</span>
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a href="dispatcher-schedule.html" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
                                 <i class="fas fa-user-clock"></i>
                                 <span>График</span>
                             </a>
