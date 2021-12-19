@@ -28,17 +28,17 @@
                                 <tbody align="center">
                                     <tr>
                                         <td>Стефани Кочева</td>
-                                        <td><a href=""><i class="far fa-file-alt"></i></td>
-                                        <td><a href="manager-d-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                        <td><a class="table-element"><i class="far fa-file-alt"></i></a></td>
+                                        <td><a asp-area="Manager" asp-controller="Dispatchers" asp-action="Edit" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                     <tr>
                                         <td>Стефани Кочева</td>
-                                        <td><a href=""><i class="far fa-file-alt"></i></td>
-                                        <td><a href="manager-d-edit.html" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                        <td><a class="table-element"><i class="far fa-file-alt"></i></a></td>
+                                        <td><a asp-area="Manager" asp-controller="Dispatchers" asp-action="Edit" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <a role="button" href="add-employee-d.html" class="btn btn-primary btn-block">Добави служител</a>                            <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+                            <a role="button" asp-area="Manager" asp-controller="Dispatchers" asp-action="Add" class="btn btn-primary btn-block">Добави служител</a>                            <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
                         </div>
                         </div>
                     </div>

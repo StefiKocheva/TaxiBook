@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace TaxiBook.Areas.Manager.Controllers
+﻿namespace TaxiBook.Areas.Manager.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
+
     [Authorize]
     [Area("Manager")]
     public class HomeController : Controller
@@ -14,9 +14,10 @@ namespace TaxiBook.Areas.Manager.Controllers
             return this.View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Schedule()
         {
-            return Ok("Works");
+            return this.View();
         }
     }
 }
