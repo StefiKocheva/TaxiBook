@@ -1,5 +1,4 @@
 ﻿<section id="hero">
-
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
@@ -16,7 +15,6 @@
             </div>
         </div>
     </div>
-
     <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
         <defs>
             <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
@@ -31,9 +29,7 @@
             <use xlink:href="#wave-path" x="50" y="9" fill="#fff"></use>
         </g>
     </svg>
-
 </section>
-
 <section id="book" class="details">
     <style>
          table {
@@ -87,60 +83,57 @@
                 <p class="text-center">Освен предоставен актуален телефон за връзка директно с диспечера на конкретната компания, ние Ви предоставяне и възможност за онлайн направа на поръчка.</p><br/>
                 <table class="table table-striped" style="width:100%">
                     <thead>
-                      <tr>
-                        <th style="background-color:#17B57D; color:white;" class="text-center">Компания</th>
-                        <th style="background-color:#17B57D; color:white;" class="text-center">Цена за километър</th>
-                        <th style="background-color:#17B57D; color:white;" class="text-center">Област</th>
-                        <th style="background-color:#17B57D; color:white;" class="text-center">Обади се сега</th>
-                        <th style="background-color:#17B57D; color:white;" class="text-center">Поръчай онлайн</th>
-                      </tr>
+                        <tr>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Компания</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Цена за километър</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Област</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Обади се сега</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Поръчай онлайн</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">Велина</td>
-                            <td class="text-center">0.70 лева</td>
-                            <td class="text-center">Пазарджик</td>
-                            <td style="color: #17B57D" class="text-center"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                            <td class="text-center"><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        <tr class="text-center">
+                            <td>Велина</td>
+                            <td>0.70 лева</td>
+                            <td>Пазарджик</td>
+                            <td style="color: #17B57D;"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        <tr>
-                            <td class="text-center">Рефлекс Плюс</td>
-                            <td class="text-center">0.70 лева</td>
-                            <td class="text-center">Пазарджик</td>
-                            <td style="color: #17B57D" class="text-center"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                            <td class="text-center"><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        <tr class="text-center">
+                            <td>Рефлекс Плюс</td>
+                            <td>0.70 лева</td>
+                            <td>Пазарджик</td>
+                            <td style="color: #17B57D;"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        <tr>
-                            <td class="text-center">Панда Такси</td>
-                            <td class="text-center">0.70 лева</td>
-                            <td class="text-center">Пазарджик</td>
-                            <td style="color: #17B57D" class="text-center"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                            <td class="text-center"><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        <tr class="text-center">
+                            <td >Панда Такси</td>
+                            <td>0.70 лева</td>
+                            <td>Пазарджик</td>
+                            <td style="color: #17B57D;"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        <tr>
-                            <td class="text-center">Ивелина</td>
-                            <td class="text-center">0.70 лева</td>
-                            <td class="text-center">Пазарджик</td>
-                            <td style="color: #17B57D" class="text-center"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                            <td class="text-center"><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        <tr class="text-center">
+                            <td>Ивелина</td>
+                            <td>0.70 лева</td>
+                            <td>Пазарджик</td>
+                            <td style="color: #17B57D;"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        <tr>
-                            <td class="text-center">Евролийз Такси</td>
-                            <td class="text-center">0.70 лева</td>
-                            <td class="text-center">Пазарджик</td>
-                            <td style="color: #17B57D" class="text-center"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                            <td class="text-center"><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        <tr class="text-center">
+                            <td>Евролийз Такси</td>
+                            <td>0.70 лева</td>
+                            <td>Пазарджик</td>
+                            <td style="color: #17B57D;"><a data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </section>
-
 <section id="about" class="about">
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
@@ -168,5 +161,4 @@
             </div>
         </div>
     </div>
-
 </section>
