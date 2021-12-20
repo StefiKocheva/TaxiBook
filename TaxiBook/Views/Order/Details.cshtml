@@ -1,4 +1,8 @@
-﻿<div class="page-title">
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Най-близки таксита</h3>
@@ -7,7 +11,7 @@
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard">Начало</a></li>
+                    <li class="breadcrumb-item"><a asp-area="default" asp-controller="Home" asp-action="Dashboard">Начало</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Таксита около мен</li>
                 </ol>
             </nav>
@@ -53,7 +57,7 @@
                         <td>Стефани Кочева</td>
                         <td>бул. "България" 20 </td>
                         <td><a role="button" data-toggle="modal" data-target="#exampleModalCenter" class="phone-number"><i class="fas fa-calculator fa-sm"></i></a></td>
-                        <td> <a asp-controller="Order" asp-action="Create"><i class="fas fa-heart fa-sm"></i></a></td>
+                        <td><a asp-controller="Order" asp-action="Create"><i class="fas fa-heart fa-sm"></i></a></td>
                     </tr>
                     <tr class="text-center">
                         <td>1</td>

@@ -1,4 +1,8 @@
-﻿<div class="page-title">
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+
+<div class="page-title">
     <h3>Проследи своето такси</h3>
     <p class="text-subtitle text-muted">Описание...</p>
 </div>
@@ -107,7 +111,7 @@
                                         <i class="bx bx-x d-block d-sm-none"></i>
                                         <span class="d-none d-sm-block">Не</span>
                                     </button>
-                                    <button class="btn btn-primary" onclick="location.href='index.html';">Да</button>
+                                    <a asp-area="default" asp-controller="Home" asp-action="Dashboard" class="btn btn-primary">Да</a>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +148,7 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Затвори</span>
                     </button>
-                    <button class="btn btn-primary" onclick="location.href='expressBook.html';">Напред</button>
+                    <a asp-area="default" asp-controller="Order" asp-action="Create">Напред</a>
                 </div>
             </div>
         </div>
