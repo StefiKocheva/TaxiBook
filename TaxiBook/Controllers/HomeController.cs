@@ -25,6 +25,12 @@
         }
 
         [HttpGet]
+        public async Task<IActionResult> AllCompanies()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Dashboard()
         {
             return this.View();
