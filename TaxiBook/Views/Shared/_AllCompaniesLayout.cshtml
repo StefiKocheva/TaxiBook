@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>TaxiBook</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+
+    <!-- Vendor CSS -->
+    <link href="~/vendors/landing-page-vendors/aos/aos.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="~/vendors/landing-page-vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/vendors/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Other CSS -->
+    <link href="~/css/table.css" rel="stylesheet" />
+    <link href="~/css~/css/button.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/app-bootslander.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!-- Logo -->
+    <link href="~/images/logo-second-type.png" type="image/x-icon" rel="shortcut icon" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1><a asp-controller="Home" asp-action="Index"><span>TaxiBook</span></a></h1>
+            </div>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a asp-controller="Home" asp-action="AllCompanies" class="nav-link scrollto active">Всички компании</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" class="nav-link scrollto">Начало</a></li>
+                    @if (!this.User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Login" class="nav-link scrollto">Влез</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+
+                        
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout" class="nav-link scrollto">Изход</a></li>
+                    }
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header> <!-- End Header -->
+
+    @this.RenderBody()
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Bootslander</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer> <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS -->
+    <script src="~/vendors/landing-page-vendors/aos/aos.js"></script>
+    <script src="~/vendors/landing-page-vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendors/landing-page-vendors/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendors/landing-page-vendors/purecounter/purecounter.js"></script>
+    <script src="~/vendors/landing-page-vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="~/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
+
+    <!-- Other JS -->
+    <script src="~/js/app.js"></script>
+    <script src="~/js/vendors.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/js/mainLandingPage.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
