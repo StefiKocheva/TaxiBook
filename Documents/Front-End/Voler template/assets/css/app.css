@@ -827,7 +827,7 @@ footer {
 .dataTable-input:focus {
   color: #555252;
   background-color: white;
-  border-color: #5A8DEE;
+  border-color: chocolate;
   outline: 0;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
 }
@@ -1177,9 +1177,9 @@ footer {
 
 /** 2.15 Pagination **/
 .pagination.pagination-primary .page-item.active .page-link {
-  background-color: #5A8DEE;
-  border-color: #5A8DEE;
-  box-shadow: 0 2px 5px rgba(90, 141, 238, 0.3);
+  background-color: chocolate;
+  border-color: chocolate;
+  box-shadow: 0 2px 5px chocolate;
 }
 .pagination.pagination-secondary .page-item.active .page-link {
   background-color: #475F7B;
