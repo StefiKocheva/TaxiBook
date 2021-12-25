@@ -1,0 +1,68 @@
+.dataTable-input {
+    min-height: calc(1.5em + 0.934rem + 2px);
+    padding: 0.467rem 0.6rem;
+    font-size: 0.9025rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #555252;
+    background-color: white;
+    background-clip: padding-box;
+    border: 1px solid #DFE3E7;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dataTable-input:focus {
+    color: #555252;
+    background-color: white;
+    border-color: #5A8DEE;
+    outline: 0;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.table td, .dataTable-table td, .table thead th, .dataTable-table thead th {
+    vertical-align: middle;
+}
+
+.table thead th, .dataTable-table thead th {
+    border-bottom: 2px solid #475F7B;
+}
+
+.dataTable-container {
+    overflow-x: auto;
+}
+
+.pagination.pagination-primary .page-item.active .page-link {
+    background-color: #17B57D;
+    border-color: #17B57D;
+    box-shadow: 0 2px 5px rgba(90, 141, 238, 0.3);
+}
+
+.page-item:not(.active) .page-link:hover {
+    color: #000;
+}
+
+.page-item i, .page-item svg {
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+}
+
+.page-item .page-link {
+    font-size: 0.875rem;
+}
+
+.page-item .page-link:focus {
+    box-shadow: none;
+}
+
+.page-item:first-child {
+    margin-right: 0.4rem;
+}
+
+.page-item:last-child {
+    margin-left: 0.4rem;
+}
