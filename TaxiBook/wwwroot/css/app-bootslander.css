@@ -31,9 +31,6 @@
     border-bottom: 2px solid #475F7B;
 }
 
-.dataTable-container {
-    overflow-x: auto;
-}
 
 .pagination.pagination-primary .page-item.active .page-link {
     background-color: #17B57D;
