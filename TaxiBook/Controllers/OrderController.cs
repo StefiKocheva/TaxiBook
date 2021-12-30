@@ -2,11 +2,12 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using TaxiBook.ViewModels.Orders;
 
     public class OrderController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(CreateOrderViewModel model)
         {
             return View();
         }
