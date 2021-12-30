@@ -21,13 +21,13 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <h1>Client</h1>
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item">
                             <a asp-area="default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a>
                         </li>
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item">
                             <a asp-area="default" asp-controller="Order" asp-action="Overview" class='sidebar-link'>
                                 <i class="fas fa-taxi"></i>
                                 <span>Моето такси</span>
@@ -46,7 +46,7 @@
                             </a> 
                         </li>
                         <h1>Manager</h1>
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a asp-area="Manager" asp-controller="Home" asp-action="Index" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
@@ -71,13 +71,13 @@
                             </a>
                         </li>
                         <h1>Taxi driver</h1>
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a asp-area="TaxiDriver" asp-controller="Home" asp-action="Index" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a> 
                         </li>
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Направи поръчка</span>
@@ -102,7 +102,7 @@
                             </a>
                         </li>
                         <h1>Dispatcher</h1>
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a asp-area="Dispatcher" asp-controller="Home" asp-action="Index" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
@@ -165,13 +165,13 @@
             </nav>
 
             <div class="main-content container-fluid">
-                @this.RenderBody();
+                @this.RenderBody()
             </div>
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-left">
-                        <p>2020 &copy; Voler</p>
+                        <p>2020 &copy Voler</p>
                     </div>
                     <div class="float-right">
                         <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a href="http://ahmadsaugi.com">Ahmad Saugi</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></p>
