@@ -53,14 +53,16 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="profile-picture">Профилна снимка</label>
-                                    <div class="form-file">
-                                        <input asp-for="Input.ProfilePicture" type="file">
-                                        <label class="form-file-label" asp-for="Input.ProfilePicture">
-                                            <span class="form-file-text">Изберете файл...</span>
-                                            <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
-                                        </label>
-                                        <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <label>Профилна снимка</label>
+                                        <div class="form-file">
+                                            <input type="file" class="form-file-input" id="customFile">
+                                            <label class="form-file-label" for="customFile">
+                                                <span class="form-file-text">Изберете файл...</span>
+                                                <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                            </label>
+                                            <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

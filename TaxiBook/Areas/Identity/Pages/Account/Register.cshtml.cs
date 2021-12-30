@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
-using TaxiBook.Data.Models;
-
-namespace TaxiBook.Areas.Identity.Pages.Account
+﻿namespace TaxiBook.Areas.Identity.Pages.Account
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+    using TaxiBook.Data.Models;
+
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -44,34 +42,34 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Полето е задължително.")]
             [MinLength(2)]
             [MaxLength(30)]
             public string FirstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Полето е задължително.")]
             [MinLength(2)]
             [MaxLength(30)]
             public string LastName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Полето е задължително.")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.",
+            [Required(ErrorMessage = "Полето е задължително.")]
+            [StringLength(100, ErrorMessage = "{0} трябва да бъде поне {2} и максимално {1} символа дълга.",
                 MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Паролата")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Потвърждаване на парола")]
+            [Compare("Password", ErrorMessage = "Паролите не съвпадат.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Полето е задължително.")]
             public IFormFile ProfilePicture { get; set; }
         }
 
