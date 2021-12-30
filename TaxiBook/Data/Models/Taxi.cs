@@ -33,9 +33,6 @@
         [Required]
         public string WorkTime { get; set; }
 
-        [Required]
-        public decimal PricePerKilometer { get; set; }
-
         public virtual IEnumerable<ApplicationUser> Users { get; set; }
 
         public virtual IEnumerable<Booking> Bookings { get; set; }
