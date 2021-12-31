@@ -1,21 +1,46 @@
 ﻿@page
 @model LogoutModel
 @{
-    ViewData["Title"] = "Log out";
+    this.Layout = "_AuthenticationLayout";
 }
-
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity.IsAuthenticated)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
-        }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+<div id="auth">
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 mx-auto">
+            <div class="card py-4">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+                        <img src="~/images/logo-second-type.png" height="48" class='mb-4'>
+                        <h3>Изход</h3>
+                        <p>Сигурни ли сте, че искате да излезете от своя профил?</p>
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="col-12 d-flex justify-content-center">
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Да</button>
+                            </form>
+                            <form class="form-inline" asp-area="default" asp-page="default/Home/Index" method="post">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Не</button>
+                            </form>
+                            <!--
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1"><i class="fas fa-check"></i></button>
+                            </form>
+                            <form class="form-inline" asp-area="default" asp-page="default/Home/Index" method="post">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1"><i class="fas fa-times"></i></button>
+                            </form> -->
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-12 d-flex justify-content-center">
+                            <p>Вие вече успешно излязохте от своя акаунт.</p>
+                        </div>
+                    }       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
