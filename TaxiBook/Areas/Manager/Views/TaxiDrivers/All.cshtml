@@ -10,12 +10,6 @@
     <div class="card">
         <div class="card-body">
             <div id="table" class="table-editable">
-                <script>
-                    function DeleteRowFunction(cell) {
-                        var tableRow = cell.parentNode.parentNode;
-                        tableRow.parentNode.removeChild(tableRow);
-                    };
-                </script>  
                 <table class='table table-hover'>
                     <thead>
                         <tr align="center">
@@ -33,7 +27,7 @@
                         <tr>
                             <td>Стефани Кочева</td>
                             <td><a class="table-element"><i class="far fa-file-alt"></i></a></td>
-                            <td><a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="Edit" role="button"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                            <td><a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="Edit"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
                         </tr>
                         <tr>
                             <td>Стефани Кочева</td>
