@@ -11,12 +11,6 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-        // Enable popovers everywhere
-        $('[data-bs-toggle="popover"]').popover();  
-    });
-</script>
-<script>
     function DeleteRowFunction(cell) {
         var tableRow = cell.parentNode.parentNode;
         tableRow.parentNode.removeChild(tableRow);
@@ -25,7 +19,7 @@
 <section class="section">
     <div class="card">
         <div class="card-body">
-            <table class='table table-striped' id="table1">
+            <table class='table table-hover'>
                 <thead>
                     <tr class="text-center">
                         <th>Компания</th>
@@ -33,7 +27,7 @@
                         <th>Област</th>
                         <th>Обади се сега</th>
                         <th>Поръчай онлайн</th>
-                        <th>Премахни от любими</th>
+                        <th>Изтрий</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,24 +35,16 @@
                         <td>Велина</td>
                         <td>0.70 лева</td>
                         <td>Пазарджик</td>
-                        <td><a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                        <td><a href="taxi-info.html"><i class="fas fa-plus"></i></a></td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>Иванина</td>
-                        <td>0.75 лева</td>
-                        <td>Пазарджик</td>
-                        <td><a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                        <td><a href="taxi-info.html"><i class="fas fa-plus"></i></a></td>
+                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                     <tr class="text-center">
                         <td>Панда Такси</td>
                         <td>0.75 лева</td>
                         <td>Пазарджик</td>
-                        <td><a class="phone-number" data-bs-placement="bottom" role="button" data-bs-toggle="popover" data-bs-content="089 706 5688"><i class="fas fa-phone-alt"></i></a></td>
-                        <td><a href="taxi-info.html"><i class="fas fa-plus"></i></a></td>
+                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                 </tbody>
