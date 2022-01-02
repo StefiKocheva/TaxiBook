@@ -63,11 +63,6 @@ namespace TaxiBook.Data
                 .WithMany(t => t.Bookings)
                 .HasForeignKey(b => b.TaxiId);
 
-            builder.Entity<Company>()
-                .HasOne(c => c.Address)
-                .WithMany(a => a.Companies)
-                .HasForeignKey(c => c.AddressId);
-
             builder.Entity<Feedback>()
                 .HasOne(f => f.User)
                 .WithMany(u => u.Feedbacks)
