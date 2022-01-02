@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TaxiBook.ViewModels.Orders
+@model CreateOrderViewModel
+@{
     this.Layout = "_LoggedLayout";
 }
 
@@ -36,7 +38,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Къде се намирате в момента?</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control" placeholder="Местоположение" id="first-name-icon">
+                                            <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Местоположение" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-street-view"></i>
                                             </div>
@@ -47,7 +49,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">До къде искате да пътувате?</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control" placeholder="Крайна дестинация" id="first-name-icon">
+                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
@@ -58,7 +60,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Допълнително описание</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control" placeholder="Повече за вашето местоположение" id="first-name-icon">
+                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за вашето местоположение" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-pen"></i>
                                             </div>
@@ -69,7 +71,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Допълнително описание</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control" placeholder="Повече за крайната Ви дестинация" id="first-name-icon">
+                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder="Повече за крайната Ви дестинация" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-pen"></i>
                                             </div>
@@ -80,7 +82,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Колко хора ще пътуват?</label>
                                         <div class="position-relative">
-                                            <input type="number" class="form-control" placeholder="Бройка на пътуващи" id="first-name-icon">
+                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Бройка на пътуващи" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
@@ -91,7 +93,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Имате ли допълнителни изисквания?</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control" placeholder="Като например помощ с багаж" id="first-name-icon">
+                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например помощ с багаж" id="first-name-icon">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user"></i>
                                             </div>

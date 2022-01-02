@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TaxiBook.ViewModels.Companies
+@model CreateCompanyViewModel
+@{
     this.Layout = "_AuthenticationLayout";
 }
 
@@ -13,35 +15,53 @@
                             <h3>Добавяне на компания</h3>
                             <p>Моля попълнете формата, за да продължите напред.</p>
                         </div>
-                        <form>
+                        <form method="post" asp-area="default" asp-controller="Company" asp-action="Create" enctype="multipart/form-data">
                             <div class="form-group position-relative has-icon-left">
                                 <label for="username">Име</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control" id="username" placeholder="Име на компанията">
+                                    <input asp-for="Name" type="text" class="form-control" id="username" placeholder="Име на компанията">
                                     <div class="form-control-icon">
                                         <i class="fas fa-pen"></i>
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group position-relative has-icon-left">
+                                <label>Телефон</label>
+                                <div class="position-relative">
+                                    <input asp-for="PhoneNumber" type="text" class="form-control" id="username" placeholder="Име на компанията">
+                                    <div class="form-control-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group form-label-group">
                                 <label for="label-textarea">Описание</label>
-                                <textarea class="form-control" id="label-textarea" rows="3" placeholder="Описание на компанията"></textarea>
+                                <textarea asp-for="Description" class="form-control" id="label-textarea" rows="3" placeholder="Описание на компанията"></textarea>
+                            </div>
+                            <div class="form-group position-relative has-icon-left">
+                                <label for="username">Адрес</label>
+                                <div class="position-relative">
+                                    <input asp-for="Address" type="text" class="form-control" id="username" placeholder="Име на компанията">
+                                    <div class="form-control-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Лиценз на компанията</label>
                                     <div class="form-file">
-                                        <input type="file" class="form-file-input" id="customFile">
+                                        <input asp-for="License" type="file" class="form-file-input" id="customFile">
                                         <label class="form-file-label" for="customFile">
                                             <span class="form-file-text">Изберете файл...</span>
-                                            <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                            <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
                                         </label>
                                     </div>
                                 </div>
                             </div><br/>
                             <div class="col-sm-12 d-flex justify-content-end">
-                                <button asp-controller="Home" asp-action="Index" class="btn btn-light-secondary mr-1 mb-1">Откажи</button>
-                                <button asp-area="Manager" asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary mr-1 mb-1">Добави</button>
+                                <a asp-controller="Home" asp-action="Index" class="btn btn-light-secondary mr-1 mb-1">Откажи</a>
+                                <a asp-area="Manager" asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary mr-1 mb-1">Добави</a>
                             </div>
                         </form>
                     </div>
