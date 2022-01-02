@@ -7,7 +7,7 @@
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
-    using TaxiBook.ViewModels;
+    using Models;
 
     public class HomeController : Controller
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace TaxiBook.ViewModels
+namespace TaxiBook.Controllers.Models
 {
     public class ErrorViewModel
     {

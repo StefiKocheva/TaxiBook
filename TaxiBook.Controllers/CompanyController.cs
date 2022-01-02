@@ -11,9 +11,9 @@
 
     public class CompanyController : Controller
     {
-        private readonly ApplicationDbContext db;
+        private readonly TaxiBookDbContext db;
 
-        public CompanyController(ApplicationDbContext db)
+        public CompanyController(TaxiBookDbContext db)
         {
             this.db = db;
         }

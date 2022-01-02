@@ -9,16 +9,16 @@ using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211031185520_initial")]
-    partial class initial
+    [DbContext(typeof(TaxiBookDbContext))]
+    [Migration("20210914182125_Create_models_of_the_business_logic")]
+    partial class Create_models_of_the_business_logic
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -179,6 +179,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyId")
                         .HasColumnType("nvarchar(450)");
 
@@ -197,9 +200,6 @@ namespace TaxiBook.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()

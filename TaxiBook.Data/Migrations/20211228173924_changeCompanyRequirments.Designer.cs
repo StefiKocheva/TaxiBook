@@ -9,16 +9,16 @@ using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210914182125_Create_models_of_the_business_logic")]
-    partial class Create_models_of_the_business_logic
+    [DbContext(typeof(TaxiBookDbContext))]
+    [Migration("20211228173924_changeCompanyRequirments")]
+    partial class changeCompanyRequirments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -179,9 +179,6 @@ namespace TaxiBook.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("CardNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CompanyId")
                         .HasColumnType("nvarchar(450)");
 
@@ -200,6 +197,9 @@ namespace TaxiBook.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -294,8 +294,16 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AddressId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -305,6 +313,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PricePerKilometer")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -349,9 +360,6 @@ namespace TaxiBook.Data.Migrations
 
                     b.Property<string>("LocationId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal>("PricePerKilometer")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("WorkTime")
                         .IsRequired()
@@ -461,11 +469,9 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Company", b =>
                 {
-                    b.HasOne("TaxiBook.Data.Models.Address", "Address")
+                    b.HasOne("TaxiBook.Data.Models.Address", null)
                         .WithMany("Companies")
                         .HasForeignKey("AddressId");
-
-                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("TaxiBook.Data.Models.Feedback", b =>

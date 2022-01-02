@@ -9,9 +9,9 @@ using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211211085341_CheckForUpdates")]
-    partial class CheckForUpdates
+    [DbContext(typeof(TaxiBookDbContext))]
+    [Migration("20211031185520_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

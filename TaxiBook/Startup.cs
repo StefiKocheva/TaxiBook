@@ -15,6 +15,7 @@ namespace TaxiBook
     using System.Threading.Tasks;
     using TaxiBook.Data;
     using TaxiBook.Data.Models;
+    using TaxiBook.Infrastructure;
 
     public class Startup
     {
@@ -28,35 +29,22 @@ namespace TaxiBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    this.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TaxiBookDbContext>(options =>
+                options.UseSqlServer(this.Configuration.GetDefaultConnectionString()));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<TaxiBookDbContext>();
 
             services.AddControllersWithViews();
 
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseExceptionHandling(env);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -66,13 +54,9 @@ namespace TaxiBook
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                
-                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
+            app.UseEndpoints();
+
+            app.SeedData();
         }
     }
 }

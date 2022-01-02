@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TaxiBookDbContext))]
+    [Migration("20211211093342_TKeyOnApplicationUser")]
+    partial class TKeyOnApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,16 +294,8 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("AddressId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -311,9 +305,6 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PricePerKilometer")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -358,6 +349,9 @@ namespace TaxiBook.Data.Migrations
 
                     b.Property<string>("LocationId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("PricePerKilometer")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("WorkTime")
                         .IsRequired()
@@ -467,9 +461,11 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Company", b =>
                 {
-                    b.HasOne("TaxiBook.Data.Models.Address", null)
+                    b.HasOne("TaxiBook.Data.Models.Address", "Address")
                         .WithMany("Companies")
                         .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("TaxiBook.Data.Models.Feedback", b =>

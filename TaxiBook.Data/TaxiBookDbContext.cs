@@ -9,9 +9,9 @@ using TaxiBook.Data.Models;
 
 namespace TaxiBook.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
+    public class TaxiBookDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public TaxiBookDbContext(DbContextOptions<TaxiBookDbContext> options)
             : base(options)
         {
         }
