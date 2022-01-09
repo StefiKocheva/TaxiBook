@@ -1,0 +1,29 @@
+﻿header, main {
+  padding-left: 2em;
+}
+
+.alert {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: red;
+  color: white;
+}
+
+.d-none {
+  display: none;
+}
+
+.mt-1 {
+  margin-top: 1em;
+}
+
+nav {
+  background-color: black;
+  padding: 0.5em;
+}
+
+  nav a {
+    color: white;
+    padding: 0.5em;
+  }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Bethany's Pie Shop!</title>
+  <link rel="stylesheet" type="text/css" href="styles/site.css">
+</head>
+
+<body>
+  <header id="mainheader">
+    <nav>
+      <ul>
+        <li><img src="images/cake.svg" height="55" /></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">All pies</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" data-map target="_blank">Map</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <aside id="leftmenu">
+      <a href="#"><img src="images/bethanylogo.png" /></a>
+
+      <header>
+        <h4 style="text-align: center;">Browse our pies</h4>
+      </header>
+      <ul>
+        <li><a href="#">All pies</a></li>
+        <li><a href="#">Cheese cakes</a></li>
+        <li><a href="#">Fruit pies</a></li>
+        <li><a href="#">Seasonal pies</a></li>
+        <li><a href="#promos">Promotions</a></li>
+        <li><a href="#" data-map target="_blank">Map</a></li>
+      </ul>
+
+      <input type="search" class="searchbox" placeholder="Search our store" />
+    </aside>
+    <main id="main">
+      <article>
+        <header>
+          <h1 style="font-size:35px;color:#a593c2">Welcome to Bethany's Pie Shop</h1>
+        </header>
+        <figure>
+          <img src="images/bethany-fullsize.jpg" width="600" alt="Bethany in her pie shop" />
+          <figcaption>Bethany in her pie shop</figcaption>
+        </figure>
+        <h2>Our history</h2>
+        <p>For many years, <b>Bethany</b> has been baking the most delicious pies at her home. In 2013, we
+          opened
+          our first store
+          in Brussels (Belgium) in a cosy little street near the Grand Market. People from all over the world
+          fell
+          in love
+          with the soft cakes, heavenly cheese cakes, spicy apple pies...<i><br>The store became a success in
+            no time.</i>
+        </p>
+        <p>
+
+          In 2015, no less than 100 pies were sold every day and Bethany's Pie Shop moved into a larger
+          building.
+          After receiving many requests, it became clear that our next step was making it possible to order
+          pies from the comfort of your own home and from anywhere in the world. You are now looking at the
+          result of this:
+          our very own webstore, making it possible to order Bethany's delicious pies whenever you feel like
+          it!
+        </p>
+        <p>Download our full <a href="downloads/PriceList.zip">price list</a></p>
+      </article>
+
+      <section id="promos">
+        <h3 style="font-family:verdana;">Our weekly promotions</h3>
+        <h4>Cheese cake</h4>
+        $12.95 - serves 4<br>
+        <img src="images/cheesecakesmall.jpg" alt="Cheese cake with strawberry" />
+      </section>
+    </main>
+
+    <footer>
+      <p>Our address is <address>Bethany's Pie Shop - <a href="#" data-map target="_blank">117 Franklin Rd, Brentwood,
+            TN 37027</a></address>
+      </p>
+      <p><small>&copy; 2020 Bethany's Pie Shop - All rights reserved</small></p>
+      <p>Contact us via <a href="mailto:info@bethanyspieshop.com">email</a></p>
+    </footer>
+  </div>
+
+  <script>
+    let bethanyMapUrl = "https://google.com/maps?q=36.036020,-86.787600";
+
+    window.onload = function () {
+      let elements = document.querySelectorAll("[data-map]")
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("click", function () {
+          elements[i].href = bethanyMapUrl
+        });
+      }
+    };
+  </script>
+</body>
+
+</html>
