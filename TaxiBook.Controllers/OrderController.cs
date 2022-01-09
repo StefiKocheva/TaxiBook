@@ -9,7 +9,7 @@
         [HttpGet]
         public async Task<IActionResult> Create(CreateOrderViewModel model)
         {
-            return View();
+            return this.Ok();
         }
 
         [HttpGet]

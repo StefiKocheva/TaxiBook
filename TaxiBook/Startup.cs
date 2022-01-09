@@ -1,5 +1,7 @@
 namespace TaxiBook
 {
+    using Data;
+    using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,9 +15,9 @@ namespace TaxiBook
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using TaxiBook.Data;
     using TaxiBook.Data.Models;
-    using TaxiBook.Infrastructure;
+    //using Services;
+    //using Services.Implementations;
 
     public class Startup
     {
@@ -37,9 +39,9 @@ namespace TaxiBook
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TaxiBookDbContext>();
 
-            services.AddControllersWithViews();
+            //services.AddTransient<>();
 
-            services.AddRazorPages();
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
