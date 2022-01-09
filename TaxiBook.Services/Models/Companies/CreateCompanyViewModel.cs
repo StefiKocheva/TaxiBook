@@ -1,7 +1,7 @@
-﻿namespace TaxiBook.ViewModels.Companies
-{
-    using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
+namespace TaxiBook.Services.Models.Companies
+{
     public class CreateCompanyViewModel
     {
         public string Name { get; set; }

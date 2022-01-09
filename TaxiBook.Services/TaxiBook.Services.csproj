@@ -5,9 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implementations\" />
-    <Folder Include="Models\" />
-    <Folder Include="Users\" />
+    <Compile Remove="Implementations\**" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Implementations\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Implementations\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.15.2" />
   </ItemGroup>
 
   <ItemGroup>

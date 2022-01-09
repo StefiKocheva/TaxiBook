@@ -1,4 +1,6 @@
-﻿namespace TaxiBook.Controllers
+﻿using TaxiBook.Services.Interfaces;
+
+namespace TaxiBook.Controllers
 {
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
@@ -7,63 +9,25 @@
     using System.Threading.Tasks;
     using TaxiBook.Data;
     using TaxiBook.Data.Models;
-    using TaxiBook.ViewModels.Companies;
+    using TaxiBook.Services.Models.Companies;
 
     public class CompanyController : Controller
     {
-        private readonly TaxiBookDbContext db;
+        private readonly ICompanyService companyService;
 
-        public CompanyController(TaxiBookDbContext db)
+        public CompanyController(ICompanyService companyService)
         {
-            this.db = db;
+            this.companyService = companyService;
         }
 
         public async Task<IActionResult> Create(CreateCompanyViewModel model)
         {
-            var licenseUrl = string.Empty;
-
-            if (this.ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                if (model.License != null && model.License.Length > 0)
-                {
-                    var fileName = Path.GetFileName(model.License.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", fileName);
-
-                    using var fileStream = new FileStream(filePath, FileMode.Create);
-
-                    await model.License.CopyToAsync(fileStream);
-
-                    var account = new Account("taxibook", "413572826222444", "NHKg_TnitQUKUm_1XTGqTHd9zeg");
-
-                    fileStream.Close();
-
-                    var cloudinary = new Cloudinary(account);
-
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(filePath),
-                    };
-
-                    var uploadResult = cloudinary.Upload(uploadParams);
-
-                    System.IO.File.Delete(filePath);
-
-                    licenseUrl = uploadResult.Url.ToString();
-                }
+                return BadRequest();
             }
 
-            var company = new Company()
-            {
-                Name = model.Name,
-                Description = model.Description,
-                PhoneNumber = model.PhoneNumber,
-                Address = model.Address,
-                LicenseUrl = licenseUrl,
-            };
-
-            await db.Companies.AddAsync(company);
-
-            await db.SaveChangesAsync();
+            await this.companyService.CreateAsync(model);
 
             return this.RedirectPermanent("/");
         }

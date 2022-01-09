@@ -5,7 +5,7 @@
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddMvs(this IServiceCollection services)
+        public static IServiceCollection AddMvc(this IServiceCollection services)
         {
             services.AddControllersWithViews(options => options
                 .Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
