@@ -96,14 +96,8 @@
                         <div class="card-header">
                             <h4 class="card-title, text-center";>Декември</h4>
                         </div>
-                        <script>
-                            $(function () {
-                                $('[data-toggle="tooltip"]').tooltip()
-                            });
-                        </script>
                         <div class="card-body">
                             <table class="table">
-                                
                                 <thead>
                                     <tr>
                                         <th class="text-center">Понеделник</th>
@@ -119,12 +113,11 @@
                                     <tr>
                                         <td class="text-center"></td>
                                         <td class="text-center"></td>
-                                        <td class="text-center"><a class="table-element" type="button" data-toggle="modal"
-                                            data-target="#secondModalCenter">1</a></td>
-                                        <td class="text-center"><a href="manager-schedule-employees.html">2</a></td>
-                                        <td class="text-center"><a href="manager-schedule-employees.html">3</a></td>
-                                        <td class="text-center"><a href="manager-schedule-employees.html">4</a></td>
-                                        <td class="text-center"><a href="manager-schedule-employees.html">5</a></td>
+                                        <td class="text-center"><a class="table-element" data-toggle="modal" data-target="#workTime">1</a></td>
+                                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">2</a></td>
+                                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">3</a></td>
+                                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">4</a></td>
+                                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">5</a></td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><a href="manager-schedule-employees.html">6</a></td>
@@ -164,82 +157,101 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" data-toggle="modal"
-                            data-target="#exampleModalCenter" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                        role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Предстоящо отсъствие</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                            Моля попълнете празните полета.
-                            </p>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="email-id-icon">От кога ще остъствате?</label>
-                                    <div class="position-relative">
-                                        <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
+                            <button type="submit" data-toggle="modal" data-target="#forthcomingAbsence" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
+                            <div class="modal fade" id="forthcomingAbsence" tabindex="-1" role="dialog" aria-labelledby="forthcomingAbsenceTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="forthcomingAbsenceTitle">Предстоящо отсъствие</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i data-feather="x"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p> Моля попълнете празните полета.</p>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="email-id-icon">От кога ще остъствате?</label>
+                                                    <div class="position-relative">
+                                                        <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="email-id-icon">До кога няма да сте на работа?</label>
+                                                    <div class="position-relative">
+                                                        <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                                <i class="bx bx-x d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Назад</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Изпрати</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="email-id-icon">До кога няма да сте на работа?</label>
-                                    <div class="position-relative">
-                                        <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
+                            <div class="modal fade" id="workTime" tabindex="-1" role="dialog" aria-labelledby="workTimeTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Дневно работно време</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i data-feather="x"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group position-relative has-icon-left">
+                                                    <label for="disabledInput">От</label>
+                                                    <div class="position-relative">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="8:00">                                   
+                                                        </div>
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-hourglass-start"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="form-group position-relative has-icon-left">
+                                                    <label for="disabledInput">До</label>
+                                                    <div class="position-relative">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="16:30">                                   
+                                                        </div>
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-hourglass-end"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                                                <i class="bx bx-check d-block d-sm-none"></i>
+                                                <span class="d-none d-sm-block">Затвори</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Назад</span>
-                            </button>
-                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
-                                <i class="bx bx-check d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Изпрати</span>
-                            </button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="modal fade" id="secondModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="secondModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                        role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Дневно работно време</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                От 8:00 до 16:30<br />
-                                Почивка от 13:00 до 13:30
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
-                                <i class="bx bx-check d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Затвори</span>
-                            </button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
                 <footer>
                     <div class="footer clearfix mb-0 text-muted">

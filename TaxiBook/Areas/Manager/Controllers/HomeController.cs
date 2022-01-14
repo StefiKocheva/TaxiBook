@@ -13,11 +13,5 @@
         {
             return this.View();
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Schedule()
-        {
-            return this.View();
-        }
     }
 }
