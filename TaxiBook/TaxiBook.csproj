@@ -24,7 +24,6 @@
     <Folder Include="Areas\Dispatcher\ViewModels\Home\" />
     <Folder Include="Areas\Dispatcher\ViewModels\Order\" />
     <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Areas\Manager\ViewModels\" />
     <Folder Include="Areas\TaxiDriver\Data\" />
   </ItemGroup>
 

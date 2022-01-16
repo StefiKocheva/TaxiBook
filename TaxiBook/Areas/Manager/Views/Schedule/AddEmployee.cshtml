@@ -1,4 +1,6 @@
-﻿<div class="page-title">
+﻿@model TaxiBook.Areas.Manager.ViewModels.Schedule.AddEmployeeViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Добави служител</h3>
@@ -20,30 +22,34 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form">
+                        <form class="form" method="post" asp-area="Manager" asp-controller="Schedule" asp-action="AddEmployee" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Име</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Име">
+                                        <label for="name">Име</label>
+                                        <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Име">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Длъжност</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Длъжност">
+                                        <label for="position">Длъжност</label>
+                                        <input type="text" asp-for="Position" class="form-control" id="position" placeholder="Длъжност">
+                                        <span asp-validation-for="Position" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">От</label>
-                                        <input type="time" class="form-control" id="basicInput">
+                                        <label for="from">От</label>
+                                        <input type="time" asp-for="From" class="form-control" id="from">
+                                        <span asp-validation-for="From" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">До</label>
-                                        <input type="time" class="form-control" id="basicInput">
+                                        <label for="till">До</label>
+                                        <input type="time" asp-for="Till" class="form-control" id="till">
+                                        <span asp-validation-for="Till" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
