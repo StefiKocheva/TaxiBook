@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Dispatcher\Data\**" />
+    <Content Remove="Areas\Dispatcher\Data\**" />
+    <EmbeddedResource Remove="Areas\Dispatcher\Data\**" />
+    <None Remove="Areas\Dispatcher\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.0" />
     <PackageReference Include="Azure.Identity" Version="1.4.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.15.2" />
@@ -20,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Dispatcher\Data\" />
     <Folder Include="Areas\Dispatcher\ViewModels\Home\" />
     <Folder Include="Areas\Dispatcher\ViewModels\Order\" />
     <Folder Include="Areas\Manager\Data\" />

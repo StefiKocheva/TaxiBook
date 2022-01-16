@@ -1,51 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using TaxiBook.Data.Models;
-using TaxiBook.Services.Interfaces;
-using TaxiBook.Services.Models.Companies;
-
-namespace TaxiBook.Services
+﻿namespace TaxiBook.Services
 {
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
+    using Data;
+    using Interfaces;
+    using Microsoft.AspNetCore.Http;
+    using Models.Companies;
+    using System.IO;
+    using System.Threading.Tasks;
+    using TaxiBook.Data.Models;
+
     public class CompanyService : ICompanyService
     {
+        private readonly TaxiBookDbContext db;
+
+        public CompanyService(TaxiBookDbContext db)
+        {
+            this.db = db;
+        }
+
         public async Task<string> CreateAsync(CreateCompanyViewModel model)
         {
-            var licenseUrl = string.Empty;
-
-            
-                if (model.License != null && model.License.Length > 0)
-                {
-                    var fileName = Path.GetFileName(model.License.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", fileName);
-
-                    using var fileStream = new FileStream(filePath, FileMode.Create);
-
-                    await model.License.CopyToAsync(fileStream);
-
-                    var account = new Account("taxibook", "413572826222444", "NHKg_TnitQUKUm_1XTGqTHd9zeg");
-
-                    fileStream.Close();
-
-                    var cloudinary = new Cloudinary(account);
-
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(filePath),
-                    };
-
-                    var uploadResult = cloudinary.Upload(uploadParams);
-
-                    System.IO.File.Delete(filePath);
-
-                    licenseUrl = uploadResult.Url.ToString();
-                }
-            }
+            var licenseUrl = await this.UploadImageAsync(model.License);
 
             var company = new Company()
             {
@@ -59,6 +35,45 @@ namespace TaxiBook.Services
             await db.Companies.AddAsync(company);
 
             await db.SaveChangesAsync();
+
+            return company.Id;
+        }
+
+        private async Task<string> UploadImageAsync(IFormFile license)
+        {
+            var licenseUrl = string.Empty;
+
+            if (license is { Length: > 0 })
+            {
+                var fileName = Path.GetFileName(license.FileName);
+                var filePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    @"wwwroot",
+                    fileName ?? string.Empty);
+
+                await using var fileStream = new FileStream(filePath, FileMode.Create);
+
+                await license.CopyToAsync(fileStream);
+
+                var account = new Account("taxibook", "413572826222444", "NHKg_TnitQUKUm_1XTGqTHd9zeg");
+
+                fileStream.Close();
+
+                var cloudinary = new Cloudinary(account);
+
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(filePath),
+                };
+
+                var uploadResult = cloudinary.Upload(uploadParams);
+
+                File.Delete(filePath);
+
+                licenseUrl = uploadResult.Url.ToString();
+            }
+
+            return licenseUrl;
         }
     }
 }

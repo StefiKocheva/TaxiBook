@@ -20,6 +20,18 @@ namespace TaxiBook.Controllers
             this.companyService = companyService;
         }
 
+        [HttpGet]
+        public IActionResult All()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return this.View();
+        }
+
         public async Task<IActionResult> Create(CreateCompanyViewModel model)
         {
             if (!this.ModelState.IsValid)
