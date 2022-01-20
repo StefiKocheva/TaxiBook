@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Dispatcher\Data\**" />
+    <Compile Remove="Areas\Manager\Data\**" />
     <Content Remove="Areas\Dispatcher\Data\**" />
+    <Content Remove="Areas\Manager\Data\**" />
     <EmbeddedResource Remove="Areas\Dispatcher\Data\**" />
+    <EmbeddedResource Remove="Areas\Manager\Data\**" />
     <None Remove="Areas\Dispatcher\Data\**" />
+    <None Remove="Areas\Manager\Data\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,9 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Dispatcher\ViewModels\Home\" />
-    <Folder Include="Areas\Dispatcher\ViewModels\Order\" />
-    <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Areas\TaxiDriver\Data\" />
   </ItemGroup>
 

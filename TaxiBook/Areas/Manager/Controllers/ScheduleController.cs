@@ -1,8 +1,11 @@
 ﻿namespace TaxiBook.Areas.Manager.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using TaxiBook.Areas.Manager.ViewModels.Schedule;
 
+    [Authorize]
+    [Area("Manager")]
     public class ScheduleController : Controller
     {
         [HttpGet]

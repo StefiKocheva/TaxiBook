@@ -1,4 +1,6 @@
-﻿<div class="page-title">
+﻿@model TaxiBook.Areas.TaxiDriver.ViewModels.Home.ForthcomingАbsenceViewModel
+
+<div class="page-title">
     <h3>Месечен график</h3>
     <p class="text-subtitle text-muted">Освен, че имате на разположение своя месечен график със съответните за всеки ден работни смени, то при необходимост можете и да уведомите работодателя си за предстоящото отсъствие.</p>
 </div>
@@ -75,27 +77,31 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalCenterTitle">Предстоящо отсъствие</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
+                                <i data-feather="x"></i>
                             </button>
                         </div>
                         <div class="modal-body">
                             <p> Моля попълнете празните полета.</p>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="email-id-icon">От кога ще остъствате?</label>
-                                    <div class="position-relative">
-                                        <input type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
+                            <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" enctype="multipart/form-data">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-icon">От кога ще остъствате?</label>
+                                        <div class="position-relative">
+                                            <input asp-for="From" type="date" class="form-control" placeholder="Начало на период на неприсъствие" id="email-id-icon">
+                                            <span asp-validation-for="From" class="text-danger"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="email-id-icon">До кога няма да сте на работа?</label>
-                                    <div class="position-relative">
-                                        <input type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-icon">До кога няма да сте на работа?</label>
+                                        <div class="position-relative">
+                                            <input asp-for="Till" type="date" class="form-control" placeholder="Край на период на неприсъствие" id="email-id-icon">
+                                            <span asp-validation-for="Till" class="text-danger"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
@@ -129,7 +135,7 @@
                                                 <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="8:00">                                   
                                             </div>
                                             <div class="form-control-icon">
-                                                <i class="fas fa-hourglass-start"></i>
+                                                <i class="fas fa-clock"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +148,7 @@
                                                 <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="16:30">                                   
                                             </div>
                                             <div class="form-control-icon">
-                                                <i class="fas fa-hourglass-end"></i>
+                                                <i class="far fa-clock"></i>
                                             </div>
                                         </div>
                                     </div>

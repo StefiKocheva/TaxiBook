@@ -2,14 +2,13 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Authorize]
     [Area("Manager")]
     public class HomeController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return this.View();
         }

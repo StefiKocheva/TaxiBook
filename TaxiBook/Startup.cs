@@ -1,6 +1,3 @@
-using TaxiBook.Services;
-using TaxiBook.Services.Interfaces;
-
 namespace TaxiBook
 {
     using Data;
@@ -12,6 +9,8 @@ namespace TaxiBook
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using TaxiBook.Data.Models;
+    using TaxiBook.Services;
+    using TaxiBook.Services.Interfaces;
 
     public class Startup
     {

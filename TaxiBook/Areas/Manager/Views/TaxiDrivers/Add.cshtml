@@ -1,4 +1,6 @@
-﻿<div class="page-title">
+﻿@model TaxiBook.Areas.Manager.ViewModels.TaxiDrivers.AddViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Добави служител</h3>
@@ -7,7 +9,7 @@
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="Edit">Таксиметрови шофьори</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="All">Таксиметрови шофьори</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Добави служител</li>
                 </ol>
             </nav>
@@ -24,68 +26,59 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Име</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Първо име">
+                                        <label for="firstName">Име</label>
+                                        <input type="text" class="form-control" asp-for="FirstName" id="firstName" placeholder="Първо име">
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Презиме</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Второ име">
+                                        <label for="lastName">Фамилия</label>
+                                        <input type="text" class="form-control" asp-for="LastName" id="lastName" placeholder="Фамилия">
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Фамилия</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Фамилия">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" asp-for="Email" id="email" placeholder="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Населено място</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Населено място">
+                                        <label for="phoneNumber">Телефонен номер</label>
+                                        <input type="text" class="form-control" asp-for="PhoneNumber" id="phoneNumber" placeholder="Телефонен номер">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Email</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Email">
+                                        <label for="password">Парола</label>
+                                        <input type="password" class="form-control" asp-for="Password" id="password" placeholder="Парола">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Телефонен номер</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Телефонен номер">
+                                        <label for="passwordConfirmation">Потвърждаване на парола</label>
+                                        <input type="password" class="form-control" asp-for="PasswordConfirmation" id="passwordConfirmation" placeholder="Парола">
+                                        <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+                                    </div>
+                                </div><br /><br /><br /><br />
+                                <h4 class="card-title">За автомобила</h4>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="brandAndModel">Марка и модел</label>
+                                        <input type="text" class="form-control" asp-for="BrandAndModel" id="brandAndModel" placeholder="Марка">
+                                        <span asp-validation-for="BrandAndModel" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Марка</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Марка">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="basicInput">Модел</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Модел">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="basicInput">Регистрационен номер на такси</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Регистрационен номер">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="basicInput">Парола</label>
-                                        <input type="password" class="form-control" id="basicInput" placeholder="Парола">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="basicInput">Потвърждаване на парола</label>
-                                        <input type="password" class="form-control" id="basicInput" placeholder="Парола">
+                                        <label for="passwordConfirmation">Регистрационен номер</label>
+                                        <input type="text" class="form-control" asp-for="PasswordConfirmation" id="passwordConfirmation" placeholder="Регистрационен номер">
+                                        <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>

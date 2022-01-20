@@ -9,7 +9,7 @@
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="manager-schedule-employees.html">24.12.2021</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">Служители за деня</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Добави служител</li>
                 </ol>
             </nav>
@@ -27,8 +27,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="name">Име</label>
-                                        <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Име">
-                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                        <input type="text" asp-for="FullName" class="form-control" id="name" placeholder="Име">
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary mr-1 mb-1">Добави</button>
+                                <a type="submit" asp-area="Manager" asp-controller="Schedule" asp-action="Employees" class="btn btn-primary mr-1 mb-1">Добави</a>
                                 <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
                             </div>
                         </form>
