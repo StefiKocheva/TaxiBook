@@ -9,25 +9,25 @@
     public class DispatchersController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> All()
+        public IActionResult All()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit()
+        public IActionResult Edit()
         {
             return View();
         }

@@ -1,15 +1,9 @@
-﻿using TaxiBook.Services.Interfaces;
-
-namespace TaxiBook.Controllers
+﻿namespace TaxiBook.Controllers
 {
-    using CloudinaryDotNet;
-    using CloudinaryDotNet.Actions;
     using Microsoft.AspNetCore.Mvc;
-    using System.IO;
     using System.Threading.Tasks;
-    using TaxiBook.Data;
-    using TaxiBook.Data.Models;
-    using TaxiBook.Services.Models.Companies;
+    using TaxiBook.Services.Interfaces;
+    using TaxiBook.ViewModels.Companies;
 
     public class CompanyController : Controller
     {
@@ -39,7 +33,7 @@ namespace TaxiBook.Controllers
                 return BadRequest();
             }
 
-            await this.companyService.CreateAsync(model);
+            // await this.companyService.CreateAsync(model);
 
             return this.RedirectPermanent("/");
         }

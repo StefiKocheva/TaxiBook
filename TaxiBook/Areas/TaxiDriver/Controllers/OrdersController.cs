@@ -2,38 +2,37 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Authorize]
     [Area("TaxiDriver")]
     public class OrdersController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> AcceptedOrders()
+        public IActionResult AcceptedOrders()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> RefusedOrders()
+        public IActionResult RefusedOrders()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit()
+        public IActionResult Edit()
         {
             return View();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(string id)
+        public IActionResult Update(string id)
         {
             return this.Ok();
         }

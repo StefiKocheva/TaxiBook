@@ -2,26 +2,25 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Authorize]
     [Area("Dispatcher")]
     public class HomeController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Schedule()
+        public IActionResult Schedule()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Track()
+        public IActionResult Track()
         {
             return View();
         }

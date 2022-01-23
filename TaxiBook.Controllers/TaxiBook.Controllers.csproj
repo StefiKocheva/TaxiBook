@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaxiBook.Data\TaxiBook.Data.csproj" />
-    <ProjectReference Include="..\TaxiBook\TaxiBook.csproj" />
+    <ProjectReference Include="..\TaxiBook.Services\TaxiBook.Services.csproj" />
   </ItemGroup>
 
 </Project>
