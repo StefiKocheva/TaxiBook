@@ -26,6 +26,7 @@
             return this.View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create(CreateCompanyViewModel model)
         {
             if (!this.ModelState.IsValid)
