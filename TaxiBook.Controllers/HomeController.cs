@@ -17,6 +17,12 @@
         }
 
         [HttpGet]
+        public IActionResult MyProfile()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
         public IActionResult Favorites()
         {
             return this.View();

@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Home" asp-action="AddCompany" class='sidebar-link'>
+                            <a asp-area="default" asp-controller="Company" asp-action="Add" class='sidebar-link'>
                                 <i class="fas fa-plus"></i>
                                 <span>Добави компания</span>
                             </a> 
@@ -158,9 +158,9 @@
                                 <div class="d-none d-md-block d-lg-inline-block">Здравей, Стефани!</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="my-account.html"><i data-feather="user"></i> Профил</a>
+                                <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Излез</a>
+                                <a class="dropdown-item" asp-area="Identity" asp-controller="Account" asp-action="Logout"><i data-feather="log-out"></i> Излез</a>
                             </div>
                         </li>
                     </ul>

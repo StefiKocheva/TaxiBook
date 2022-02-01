@@ -29,7 +29,7 @@ namespace TaxiBook.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Полето е задължително.")]
             [EmailAddress]
             public string Email { get; set; }
         }

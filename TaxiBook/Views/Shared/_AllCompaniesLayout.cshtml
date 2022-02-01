@@ -42,7 +42,7 @@
             </div>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a asp-controller="Home" asp-action="AllCompanies" class="nav-link scrollto active">Всички компании</a></li>
+                    <li><a asp-controller="Company" asp-action="All" class="nav-link scrollto active">Всички компании</a></li>
                     <li><a asp-controller="Home" asp-action="Index" class="nav-link scrollto">Начало</a></li>
                     @if (!this.User.Identity.IsAuthenticated)
                     {

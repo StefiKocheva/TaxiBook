@@ -26,7 +26,6 @@
             var company = new Company()
             {
                 Name = model.Name,
-                Description = model.Description,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 LicenseUrl = licenseUrl,

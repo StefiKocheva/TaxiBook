@@ -1,0 +1,56 @@
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+
+<div class="page-title">
+    <h3>Моят профил</h3>
+    <p class="text-subtitle text-muted">Можете да редактирате своите данни.</p>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form form-vertical">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="avatar avatar-xl me-3">
+                                        <img src="~/images/avatar/avatar-s-8.png" alt="" srcset="">
+                                    </div><br /><br /><br /><br />
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="firstName">Първо име</label>
+                                        <input type="text" class="form-control" id="firstName" readonly="readonly" value="Стефани">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="lastName">Фамилия</label>
+                                        <input type="text" class="form-control" id="lastName" readonly="readonly" value="Кочева">
+                                    </div>
+                                </div><br /><br /><br /><br /><br />
+                                <div class="col-12 d-flex justify-content-end">
+                                    <a class="btn btn-primary mr-1 mb-1">Редактирай</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Забравена парола?</h4>
+                    <p class="text-subtitle text-muted">Искате да промените своята текущата парола?<a asp-area="Identity" asp-page="/Account/ForgotPassword" method="post"> Последвайте тази връзка.</a></p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
