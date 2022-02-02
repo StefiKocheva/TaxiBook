@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" asp-area="Manager" asp-controller="Dispatchers" asp-action="Add" enctype="multipart/form-data">
+                        <form class="form" method="post" asp-area="Manager" asp-controller="Dispatchers" asp-action="Create">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -52,23 +52,9 @@
                                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="password">Парола</label>
-                                        <input type="password" class="form-control" asp-for="Password" id="password" placeholder="Парола">
-                                        <span asp-validation-for="Password" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="passwordConfirmation">Потвърждаване на парола</label>
-                                        <input type="password" class="form-control" asp-for="PasswordConfirmation" id="passwordConfirmation" placeholder="Парола">
-                                        <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="Manager" asp-controller="Dispatchers" asp-action="All" class="btn btn-primary mr-1 mb-1">Добави</a>
+                                <button class="btn btn-primary mr-1 mb-1" type="submit">Добави</button>
                                 <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
                             </div>
                         </form>

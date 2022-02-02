@@ -68,8 +68,7 @@
             [Display(Name = "Потвърждаване на парола")]
             [Compare("Password", ErrorMessage = "Паролите не съвпадат.")]
             public string ConfirmPassword { get; set; }
-
-            [Required(ErrorMessage = "Полето е задължително.")]
+            
             public IFormFile ProfilePicture { get; set; }
         }
 

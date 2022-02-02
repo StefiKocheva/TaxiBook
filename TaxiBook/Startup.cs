@@ -1,3 +1,5 @@
+using TaxiBook.Areas.Manager.Services;
+
 namespace TaxiBook
 {
     using Data;
@@ -31,7 +33,9 @@ namespace TaxiBook
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TaxiBookDbContext>();
 
-            services.AddTransient<ICompanyService, CompanyService>();
+            services
+                .AddTransient<ICompanyService, CompanyService>()
+                .AddTransient<IEmployeeService, EmployeeService>();
 
             
         }
