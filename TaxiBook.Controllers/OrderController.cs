@@ -1,7 +1,7 @@
 ﻿namespace TaxiBook.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using TaxiBook.ViewModels.Orders;
+    using Services.Models.Orders;
 
     public class OrderController : Controller
     {

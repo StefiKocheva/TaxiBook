@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace TaxiBook.Infrastructure
+﻿namespace TaxiBook.Infrastructure
 {
+    using Microsoft.Extensions.Configuration;
+
     public static class ConfigurationExtensions
     {
         public static string GetDefaultConnectionString(this IConfiguration configuration)

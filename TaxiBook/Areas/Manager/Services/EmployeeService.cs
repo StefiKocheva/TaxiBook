@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using TaxiBook.Data.Models;
-
-namespace TaxiBook.Areas.Manager.Services
+﻿namespace TaxiBook.Areas.Manager.Services
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Identity;
+    using Data.Models;
+
     public class EmployeeService : IEmployeeService
     {
         private readonly UserManager<ApplicationUser> _userManager;

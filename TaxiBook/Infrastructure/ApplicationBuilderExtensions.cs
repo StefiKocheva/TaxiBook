@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using TaxiBook.Data;
-
-namespace TaxiBook.Infrastructure
+﻿namespace TaxiBook.Infrastructure
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using TaxiBook.Data;
+
     public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseExceptionHandling(
@@ -32,7 +32,6 @@ namespace TaxiBook.Infrastructure
         public static IApplicationBuilder UseEndpoints(this IApplicationBuilder app)
             => app.UseEndpoints(endpoints =>
             {
-
                 endpoints.MapControllerRoute(
                     "areas", 
                     "{area:exists}/{controller=Home}/{action=Index}/{id?}");

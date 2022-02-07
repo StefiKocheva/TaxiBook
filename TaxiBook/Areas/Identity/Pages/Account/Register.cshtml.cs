@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
+    using Data.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
@@ -14,7 +15,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
-    using TaxiBook.Data.Models;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel

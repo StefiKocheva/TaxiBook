@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\TaxiDriver\Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TaxiBook.Controllers\TaxiBook.Controllers.csproj" />
     <ProjectReference Include="..\TaxiBook.Data\TaxiBook.Data.csproj" />
     <ProjectReference Include="..\TaxiBook.Services\TaxiBook.Services.csproj" />

@@ -1,35 +1,55 @@
 ﻿namespace TaxiBook.Areas.Manager.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using TaxiBook.Areas.Manager.ViewModels.Schedule;
+    using Services;
+    using ViewModels.Schedule;
 
     [Authorize]
     [Area("Manager")]
     public class ScheduleController : Controller
     {
+        private readonly IScheduleService _scheduleService;
+
+        public ScheduleController(IScheduleService scheduleService)
+        {
+            this._scheduleService = scheduleService;
+        }
+
         [HttpGet]
         public IActionResult CurrentMonth()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
         public IActionResult Employees()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
         public IActionResult AddEmployee()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
-        public IActionResult AddEmployee(AddEmployeeViewModel model)
+        public async Task<IActionResult> AddEmployee(AddEmployeeViewModel model)
         {
-            return View();
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            //var userId = await this._scheduleService.AddEmployeeAsync(
+            //    //model.Email,
+            //    model.Role,
+            //    model.From,
+            //    model.Till);
+
+            return this.RedirectPermanent("Employees");
         }
     }
 }

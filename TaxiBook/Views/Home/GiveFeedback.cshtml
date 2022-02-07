@@ -1,0 +1,84 @@
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+<div class="page-title">
+    <div class="row">
+        <div class="col-12">
+            <h3>Твоята оценка</h3>
+            <p class="text-subtitle text-muted">Моля попълнете формата, като споделите своето мнение относно конкретната компания.</p>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-content">
+        <div class="card-body">
+            <form class="form" method="post">
+                <div>
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group form-label-group">
+                            <label>Услугите на чия компания използва?</label>
+                            <fieldset class="form-group">
+                                <select class="form-select">
+                                    <option selected="true" disabled="disabled">Избери...</option>    
+                                    <option>Иванина</option>
+                                    <option>Велина</option>
+                                    <option>Yellow Taxi</option>
+                                    <option>Green Taxi</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="form-group form-label-group">
+                        <label for="label-textarea">Как би оценил своето пътуване?</label>
+                    </div>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-inline-block me-2 mb-1" >
+                            <div class='form-check'>
+                                <div class="checkbox">
+                                    <input type="checkbox" class="form-check-input" value="1" name="fooby[1][]">
+                                    <label><i data-feather="thumbs-up"></i></label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-inline-block me-2 mb-1" style="margin-left: 9em;">
+                            <div class='form-check'>
+                                <div class="checkbox">
+                                    <input type="checkbox" class="form-check-input" value="1" name="fooby[1][]">
+                                    <label><i data-feather="thumbs-down"></i></label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div><br />
+                <div class="form-body">
+                    <div class="form-group form-label-group">
+                        <label for="label-textarea">Имаш нещо друго, което искаш да споделиш?</label>
+                        <textarea class="form-control" id="label-textarea" rows="4" placeholder="Напиши го тук"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-1">Изпрати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // the selector will match all input controls of type :checkbox
+// and attach a click event handler 
+$("input:checkbox").on('click', function() {
+  // in the handler, 'this' refers to the box clicked on
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    // the name of the box is retrieved using the .attr() method
+    // as it is assumed and expected to be immutable
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    // the checked state of the group/box on the other hand will change
+    // and the current value is retrieved using .prop() method
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+</script>

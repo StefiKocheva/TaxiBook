@@ -27,5 +27,11 @@
         {
             return this.View();
         }
+
+        [HttpGet]
+        public IActionResult GiveFeedback()
+        {
+            return this.View();
+        }
     }
 }

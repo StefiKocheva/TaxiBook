@@ -1,4 +1,4 @@
-
+﻿
 var chartColors = {
   red: 'rgb(255, 99, 132)',
   orange: 'rgb(255, 159, 64)',
@@ -397,18 +397,18 @@ var ctxBar = document.getElementById("bar").getContext("2d");
 var myBar = new Chart(ctxBar, {
   type: 'bar',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    labels: ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли"],
     datasets: [{
-      label: 'Students',
+      label: 'Положителни оценки',
       backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],
       data: [
-        5, 
-        10, 
-        30, 
-        40, 
-        35, 
-        55, 
-        15, 
+        5,
+        10,
+        30,
+        40,
+        35,
+        55,
+        15,
       ]
     }]
   },

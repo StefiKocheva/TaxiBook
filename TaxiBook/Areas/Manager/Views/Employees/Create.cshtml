@@ -1,16 +1,17 @@
-﻿@model TaxiBook.Areas.Manager.ViewModels.TaxiDrivers.AddViewModel
+﻿ @using TaxiBook.Areas.Manager.ViewModels.Employees
+ @model CreateViewModel
 
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Добави служител</h3>
-            <p class="text-subtitle text-muted">Можете да добавите своя нов таксиметров шофьор тук.</p>
+            <h3>Добави нов служител</h3>
+            <p class="text-subtitle text-muted">Можете да добавите своя служител тук.</p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="All">Таксиметрови шофьори</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Добави служител</li>
+                    <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="Employees" asp-action="All">Всички служители</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Добави</li>
                 </ol>
             </nav>
         </div>
@@ -26,7 +27,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="firstName">Име</label>
+                                        <label for="firstName">Първо име</label>
                                         <input type="text" class="form-control" asp-for="FirstName" id="firstName" placeholder="Първо име">
                                         <span asp-validation-for="FirstName" class="text-danger"></span>
                                     </div>
@@ -40,9 +41,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" asp-for="Email" id="email" placeholder="Email">
-                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                        <label for="populatedPlace">Населено място</label>
+                                        <input type="text" class="form-control" id="populatedPlace" placeholder="Телефонен номер">
+                                        <span class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -53,17 +54,20 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="password">Парола</label>
-                                        <input type="password" class="form-control" asp-for="Password" id="password" placeholder="Парола">
-                                        <span asp-validation-for="Password" class="text-danger"></span>
-                                    </div>
+                                    <fieldset class="form-group">
+                                        <label>Роля</label>
+                                        <select class="form-select">
+                                            <option>Изберете...</option>
+                                            <option>Диспечер</option>
+                                            <option>Таксиметров шофьор</option>
+                                        </select>
+                                    </fieldset>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="passwordConfirmation">Потвърждаване на парола</label>
-                                        <input type="password" class="form-control" asp-for="PasswordConfirmation" id="passwordConfirmation" placeholder="Парола">
-                                        <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" asp-for="Email" id="email" placeholder="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div><br /><br /><br /><br />
                                 <h4 class="card-title">За автомобила</h4>
@@ -77,14 +81,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="passwordConfirmation">Регистрационен номер</label>
-                                        <input type="text" class="form-control" asp-for="PasswordConfirmation" id="passwordConfirmation" placeholder="Регистрационен номер">
-                                        <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+                                        <input type="text" class="form-control" asp-for="NumberPlate" id="passwordConfirmation" placeholder="Регистрационен номер">
+                                        <span asp-validation-for="NumberPlate" class="text-danger"></span>
                                     </div>
+                                </div><br /><br /><br /><br />
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button class="btn btn-primary mr-1 mb-1">Добави</button>
                                 </div>
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="All" class="btn btn-primary mr-1 mb-1">Добави</a>
-                                <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
                             </div>
                         </form>
                     </div>
@@ -93,3 +96,4 @@
         </div>
     </div>
 </section>
+

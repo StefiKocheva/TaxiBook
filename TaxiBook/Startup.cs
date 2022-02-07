@@ -1,8 +1,8 @@
-using TaxiBook.Areas.Manager.Services;
-
 namespace TaxiBook
 {
+    using Areas.Manager.Services;
     using Data;
+    using Data.Models;
     using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -10,9 +10,8 @@ namespace TaxiBook
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using TaxiBook.Data.Models;
-    using TaxiBook.Services;
-    using TaxiBook.Services.Interfaces;
+    using Services;
+    using Services.Interfaces;
 
     public class Startup
     {
@@ -35,9 +34,10 @@ namespace TaxiBook
 
             services
                 .AddTransient<ICompanyService, CompanyService>()
-                .AddTransient<IEmployeeService, EmployeeService>();
-
-            
+                .AddTransient<IEmployeeService, EmployeeService>()
+                .AddTransient<IScheduleService, ScheduleService>()
+                .AddTransient<IOrderService, OrderService>()
+                .AddTransient<IHomeService, HomeService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxiBook.Services.Models.Companies;
-
-namespace TaxiBook.Services.Interfaces
+﻿namespace TaxiBook.Services.Interfaces
 {
+    using System.Threading.Tasks;
+    using Models.Companies;
+
     public interface ICompanyService
     {
-        public Task<string> CreateAsync(CreateCompanyViewModel model);
+        Task<string> CreateAsync(CreateCompanyViewModel model);
     }
 }

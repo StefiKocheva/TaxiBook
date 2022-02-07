@@ -1,4 +1,5 @@
-﻿@model TaxiBook.Areas.Dispatcher.ViewModels.Orders.CreateOrderViewModel
+﻿@using TaxiBook.Areas.Dispatcher.ViewModels.Orders
+@model CreateOrderViewModel
 
 <div class="page-title">
     <div class="row">
@@ -121,8 +122,8 @@
                                     <div class="form-group has-icon-left">
                                         <label for="taxiDriverName">Шофьор</label>
                                         <div class="position-relative">
-                                            <input asp-for="TaxiDriverName" type="text" class="form-control" placeholder="Имейл" id="taxiDriverName">
-                                            <span asp-validation-for="TaxiDriverName" class="text-danger"></span>
+                                            <input asp-for="TaxiDriver" type="text" class="form-control" placeholder="Имейл" id="taxiDriverName">
+                                            <span asp-validation-for="TaxiDriver" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-at"></i>
                                             </div>

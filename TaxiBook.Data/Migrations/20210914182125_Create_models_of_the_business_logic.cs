@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace TaxiBook.Data.Migrations
+﻿namespace TaxiBook.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class Create_models_of_the_business_logic : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

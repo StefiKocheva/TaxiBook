@@ -1,22 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
-using TaxiBook.Areas.Manager.Services;
-using TaxiBook.Areas.Manager.ViewModels.Dispatchers;
-using TaxiBook.Data;
-using TaxiBook.Data.Models;
-
-namespace TaxiBook.Areas.Manager.Controllers
+﻿namespace TaxiBook.Areas.Manager.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using ViewModels.Employees;
+    using Services;
 
     [Authorize]
     [Area("Manager")]
-    public class DispatchersController : Controller
+    public class EmployeesController : Controller
     {
         private readonly IEmployeeService _employeeService;
 
-        public DispatchersController(IEmployeeService employeeService)
+        public EmployeesController(IEmployeeService employeeService)
         {
             this._employeeService = employeeService;
         }
@@ -24,21 +20,21 @@ namespace TaxiBook.Areas.Manager.Controllers
         [HttpGet]
         public IActionResult All()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public IActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AddViewModel model)
+        public async Task<IActionResult> Create(CreateViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
-                return BadRequest();
+                return this.BadRequest();
             }
 
             var userId = await this._employeeService.CreateAsync(
@@ -47,13 +43,13 @@ namespace TaxiBook.Areas.Manager.Controllers
                 model.Email,
                 model.PhoneNumber);
 
-            return this.RedirectPermanent("Manager/Dispatchers/All");
+            return this.RedirectPermanent("All");
         }
 
         [HttpGet]
         public IActionResult Edit()
         {
-            return View();
+            return this.View();
         }
     }
 }

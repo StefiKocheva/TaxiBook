@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace TaxiBook.Data.Migrations
+﻿namespace TaxiBook.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class changeCompanyRequirments : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

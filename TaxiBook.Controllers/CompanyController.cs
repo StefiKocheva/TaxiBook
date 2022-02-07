@@ -1,9 +1,9 @@
 ﻿namespace TaxiBook.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
-    using TaxiBook.Services.Interfaces;
-    using TaxiBook.ViewModels.Companies;
+    using Services.Interfaces;
+    using Services.Models.Companies;
+    using Microsoft.AspNetCore.Mvc;
 
     public class CompanyController : Controller
     {
@@ -21,7 +21,7 @@
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Create()
         {
             return this.View();
         }

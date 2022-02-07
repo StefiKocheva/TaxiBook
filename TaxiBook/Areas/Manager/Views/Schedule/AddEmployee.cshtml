@@ -1,4 +1,5 @@
-﻿@model TaxiBook.Areas.Manager.ViewModels.Schedule.AddEmployeeViewModel
+﻿@using TaxiBook.Areas.Manager.ViewModels.Schedule
+@model AddEmployeeViewModel
 
 <div class="page-title">
     <div class="row">
@@ -26,16 +27,16 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="name">Име</label>
-                                        <input type="text" asp-for="FullName" class="form-control" id="name" placeholder="Име">
-                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                        <label for="name">Email</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Име">
+                                        <span class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="position">Длъжност</label>
-                                        <input type="text" asp-for="Position" class="form-control" id="position" placeholder="Длъжност">
-                                        <span asp-validation-for="Position" class="text-danger"></span>
+                                        <label for="role">Роля</label>
+                                        <input type="text" asp-for="Role" class="form-control" id="role" placeholder="Роля">
+                                        <span asp-validation-for="Role" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

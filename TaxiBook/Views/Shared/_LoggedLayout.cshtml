@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="~/css/bootstrap.css" />
     <link rel="stylesheet" href="~/vendors/simple-datatables/style.css" />
     <link rel="stylesheet" href="~/vendors/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/vendors/dragula/dragula.min.css" />
+    <link rel="stylesheet" href="~/vendors/chartjs/Chart.min.css" />
     <link rel="stylesheet" href="~/css/app.css" />
     <link rel="shortcut icon" href="~/images/logo-second-type.png" type="image/x-icon" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    
 </head>
 <body>
     <div id="app">
@@ -32,8 +30,14 @@
                         </li>
                         <li class="sidebar-item">
                             <a asp-area="default" asp-controller="Order" asp-action="Overview" class='sidebar-link'>
-                                <i class="fas fa-taxi"></i>
+                                <i class="fas fa-search-location"></i>
                                 <span>Моето такси</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-area="default" asp-controller="Home" asp-action="GiveFeedback" class='sidebar-link'>
+                                <i class="fas fa-comment-dots"></i>
+                                <span>Оцени пътуване</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -43,7 +47,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Company" asp-action="Add" class='sidebar-link'>
+                            <a asp-area="default" asp-controller="Company" asp-action="Create" class='sidebar-link'>
                                 <i class="fas fa-plus"></i>
                                 <span>Добави компания</span>
                             </a> 
@@ -56,15 +60,9 @@
                             </a> 
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="Manager" asp-controller="Dispatchers" asp-action="All" class='sidebar-link'>
-                                <i class="fas fa-headset"></i>
-                                <span>Диспечери</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Manager" asp-controller="TaxiDrivers" asp-action="All" class='sidebar-link'>
-                                <i class="fas fa-taxi"></i>
-                                <span>Таксиметрови шофьори</span>
+                            <a asp-area="Manager" asp-controller="Employees" asp-action="All" class='sidebar-link'>
+                                <i class="fas fa-users"></i>
+                                <span>Служители</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -106,7 +104,7 @@
                         </li>
                         <h1>Dispatcher</h1>
                         <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Index" class='sidebar-link'>
+                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a> 
@@ -187,15 +185,22 @@
     <script src="~/js/feather-icons/feather.min.js"></script>
     <script src="~/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="~/js/app.js"></script>
+    <script src="~/vendors/chartjs/Chart.min.js"></script>
+    <script src="~/vendors/dragula/dragula.min.js"></script>
     <script src="~/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="~/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="~/js/vendors.js"></script>
+    <script src="~/js/pages/dashboard.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/map.js"></script>
     <script src="~/js/delete-row-function.js"></script>
-    
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

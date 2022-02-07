@@ -43,7 +43,7 @@
                                     <div class="form-group position-relative has-icon-left">
                                         <label>Дневна тарифа</label>
                                         <div class="position-relative">
-                                            <input asp-for="DailyТariff" type="text" class="form-control" placeholder="0.00">
+                                            <input asp-for="DailyТariff" type="number" step="0.01" class="form-control" placeholder="0.00">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-sun"></i>
                                             </div>
@@ -54,7 +54,7 @@
                                     <div class="form-group position-relative has-icon-left">
                                         <label>Нощна тарифа</label>
                                         <div class="position-relative">
-                                            <input asp-for="NightТariff" type="number" class="form-control" placeholder="0.00">
+                                            <input asp-for="NightТariff" type="number" step="0.01" class="form-control" placeholder="0.00">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-moon"></i>
                                             </div>

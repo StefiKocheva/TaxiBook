@@ -1,13 +1,13 @@
 ﻿namespace TaxiBook.Services
 {
+    using System.IO;
+    using System.Threading.Tasks;
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
     using Data;
     using Interfaces;
     using Microsoft.AspNetCore.Http;
     using Models.Companies;
-    using System.IO;
-    using System.Threading.Tasks;
     using TaxiBook.Data.Models;
 
     public class CompanyService : ICompanyService

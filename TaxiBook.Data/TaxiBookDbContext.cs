@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
-using TaxiBook.Data.Models;
-
-namespace TaxiBook.Data
+﻿namespace TaxiBook.Data
 {
+    using System.Linq;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Identity;
+    using Models;
+
     public class TaxiBookDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
         public TaxiBookDbContext(DbContextOptions<TaxiBookDbContext> options)
-            : base(options)
+            : base(options) 
         {
         }
 

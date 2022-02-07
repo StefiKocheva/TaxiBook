@@ -5,6 +5,8 @@
     using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Identity;
 
+    using static Vallidation.ApplicationUser;
+
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser()
@@ -19,11 +21,11 @@
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(MaxNameLength)]
         public string FirstName { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(MaxNameLength)]
         public string LastName { get; set; }
 
         public string ImageUrl { get; set; }
