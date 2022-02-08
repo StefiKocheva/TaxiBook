@@ -27,7 +27,7 @@
             {
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
-                Address = model.Address,
+                // Address = model.Address,
                 LicenseUrl = licenseUrl,
             };
 

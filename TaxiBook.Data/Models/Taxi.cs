@@ -18,6 +18,12 @@
         
         public bool IsBusy { get; set; }
 
+        [Required]
+        public string NumberPlate { get; set; }
+
+        [Required]
+        public string BrandAndModel { get; set; }
+
         public string CompanyId { get; set; }
 
         public virtual Company Company { get; set; }
@@ -29,9 +35,6 @@
         public string LocationId { get; set; }
 
         public virtual Address Location { get; set; }
-
-        [Required]
-        public string WorkTime { get; set; }
 
         public virtual IEnumerable<ApplicationUser> Users { get; set; }
 

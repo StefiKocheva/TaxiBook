@@ -9,6 +9,7 @@
         public Company()
         {
             this.Id = Guid.NewGuid().ToString();
+
             this.Employees = new HashSet<ApplicationUser>();
             this.Taxies = new HashSet<Taxi>();
         }
@@ -29,12 +30,15 @@
         [Phone]
         public string PhoneNumber { get; set; }
 
-        public string Address { get; set; }
-
-        public string LicenseUrl { get; set; }
+        public Address Address { get; set; }
 
         [Required]
-        public decimal PricePerKilometer { get; set; }
+        public decimal DailyTariff { get; set; }
+
+        [Required]
+        public decimal NightTariff { get; set; }
+
+        public string LicenseUrl { get; set; }
 
         public virtual IEnumerable<ApplicationUser> Employees { get; set; }
 

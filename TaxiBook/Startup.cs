@@ -25,7 +25,8 @@ namespace TaxiBook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TaxiBookDbContext>(options =>
-                options.UseSqlServer(this.Configuration.GetDefaultConnectionString()));
+                options.UseSqlServer(this.Configuration.GetDefaultConnectionString(), 
+                x => x.MigrationsAssembly("TaxiBook.Data")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()

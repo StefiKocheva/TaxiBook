@@ -13,6 +13,8 @@
         {
         }
 
+        public DbSet<Absence> Absences { get; set; }
+
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Booking> Bookings { get; set; }
@@ -20,6 +22,8 @@
         public DbSet<Company> Companies { get; set; }
 
         public DbSet<Feedback> Feedbacks { get; set; }
+
+        public DbSet<Schedule> Schedules { get; set; }
 
         public DbSet<Taxi> Taxies { get; set; }
 
@@ -29,16 +33,35 @@
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 
-
             builder.Entity<ApplicationUser>()
                 .HasOne(u => u.Company)
                 .WithMany(c => c.Employees)
                 .HasForeignKey(u => u.CompanyId);
 
+            builder.Entity<ApplicationUser>()
+                .HasOne(u => u.Schedule)
+                .WithOne(s => s.Employee)
+                .HasForeignKey<Schedule>(u => u.EmployeeId);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(u => u.Address)
+                .WithOne(a => a.User)
+                .HasForeignKey<Address>(u => u.UserId);
+
             builder.Entity<Taxi>()
                 .HasOne(t => t.Driver)
                 .WithMany(d => d.Taxies)
                 .HasForeignKey(d => d.DriverId);
+
+            builder.Entity<Taxi>()
+                .HasOne(t => t.Location)
+                .WithMany(l => l.Taxies)
+                .HasForeignKey(t => t.LocationId);
+
+            builder.Entity<Taxi>()
+                .HasOne(t => t.Company)
+                .WithMany(c => c.Taxies)
+                .HasForeignKey(t => t.CompanyId);
 
             builder.Entity<Booking>()
                 .HasOne(b => b.CurrentLocation)
@@ -51,9 +74,9 @@
                 .HasForeignKey(b => b.EndLocationId);
 
             builder.Entity<Booking>()
-                .HasOne(b => b.Client)
-                .WithMany(c => c.Bookings)
-                .HasForeignKey(b => b.ClientId);
+                .HasOne(b => b.User)
+                .WithMany(u => u.Bookings)
+                .HasForeignKey(b => b.UserId);
 
             builder.Entity<Booking>()
                 .HasOne(b => b.Taxi)
@@ -61,24 +84,19 @@
                 .HasForeignKey(b => b.TaxiId);
 
             builder.Entity<Feedback>()
-                .HasOne(f => f.User)
-                .WithMany(u => u.Feedbacks)
-                .HasForeignKey(f => f.UserId);
+                .HasOne(f => f.Client)
+                .WithMany(c => c.Feedbacks)
+                .HasForeignKey(f => f.ClientId);
 
-            builder.Entity<Taxi>()
-                .HasOne(t => t.Company)
-                .WithMany(c => c.Taxies)
-                .HasForeignKey(t => t.CompanyId);
+            builder.Entity<Absence>()
+                .HasOne(a => a.Employee)
+                .WithMany(e => e.Absences)
+                .HasForeignKey(a => a.EmployeeId);
 
-            builder.Entity<Taxi>()
-                .HasOne(t => t.Driver)
-                .WithMany(d => d.Taxies)
-                .HasForeignKey(t => t.DriverId);
-
-            builder.Entity<Taxi>()
-                .HasOne(t => t.Location)
-                .WithMany(l => l.Taxies)
-                .HasForeignKey(t => t.LocationId);
+            builder.Entity<Company>()
+                .HasOne(c => c.Address)
+                .WithOne(a => a.Company)
+                .HasForeignKey<Address>(c => c.CompanyId);
         }
     }
 }

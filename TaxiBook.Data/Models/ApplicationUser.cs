@@ -16,6 +16,7 @@
             this.Feedbacks = new HashSet<Feedback>();
             this.Bookings = new HashSet<Booking>();
             this.Taxies = new HashSet<Taxi>();
+            this.Absences = new HashSet<Absence>();
         }
 
         public string Id { get; set; }
@@ -30,6 +31,10 @@
 
         public string ImageUrl { get; set; }
 
+        public Address Address { get; set; }
+
+        public Schedule Schedule { get; set; }
+
         public string CompanyId { get; set; }
 
         public virtual Company Company { get; set; }
@@ -39,5 +44,7 @@
         public virtual IEnumerable<Booking> Bookings { get; set; }
 
         public virtual IEnumerable<Taxi> Taxies { get; set; }
+
+        public virtual IEnumerable<Absence> Absences { get; set; }
     }
 }
