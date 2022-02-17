@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Services;
+    using Services.Interfaces;
     using ViewModels.Schedule;
 
     [Authorize]
@@ -36,18 +36,19 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEmployee(AddEmployeeViewModel model)
+        public async Task<IActionResult> CreateEmployee(AddEmployeeViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            //var userId = await this._scheduleService.AddEmployeeAsync(
-            //    //model.Email,
-            //    model.Role,
-            //    model.From,
-            //    model.Till);
+            var userId = await this._scheduleService.AddEmployeeAsync(
+                model.FirstName,
+                model.LastName,
+                model.Role,
+                model.From,
+                model.Till);
 
             return this.RedirectPermanent("Employees");
         }

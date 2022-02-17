@@ -4,7 +4,7 @@
             <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                 <div data-aos="zoom-out">
                     <h1>Бъди в крак с <span>бъдещето</span></h1>
-                    <h2>Управлявай, работи или просто повикай своето такси</h2>
+                    <h2>Управлявай, работи или поръчай своето такси</h2>
                     <div class="text-center text-lg-start">
                         <a asp-area="Identity" asp-controller="Account" asp-action="Login" class="btn-get-started scrollto">Започни сега</a>
                     </div>
@@ -30,12 +30,15 @@
         </g>
     </svg>
 </section>
-<section id="book" class="details">
+<section id="book" class="about">
     <div class="row content">
         <div class="row justify-content-center">
-            <div class="col-md-8 pt-4" data-aos="fade-up">
-                <h3 class="text-center">Нашите ТОП 5</h3>
-                <p class="text-center">Представяме Ви най-поръчваните и добре оценени компании в приложението. Смятате, че вашата компания също би могло да застане на челните позиции? Е, тогава станете част от екипа на TaxiBook и оставете решението в ръцете на своите клиенти. Всички регистрирани компании може лесно да достъпите, като изберете бутона.</p><br/>
+            <div class="col-xl-10 col-lg-4 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Поръчай сега</h2>
+                </div>
+                <h3>ТОП 5 най-предпочитани компании</h3>
+                <p>Смятате, че вашата компания също би могло да застане на челните позиции? Е, тогава станете част от екипа на TaxiBook и оставете решението в ръцете на своите клиенти. <a asp-area="Identity" asp-controller="Account" asp-action="Register">Присъедини се сега</a></p><br/>
                 <table class='table table-striped' id="table1">
                     <thead>
                         <tr>
@@ -90,7 +93,7 @@
                         </tr>
                     </tbody>
                 </table>
-                 <a asp-controller="Company" asp-action="All" type="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-lg btn-block">Виж всички</a>
+                <a asp-controller="Company" asp-action="All" type="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-lg btn-block">Виж всички</a>
             </div>
         </div>
     </div>
@@ -99,22 +102,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-                <h3>Цели</h3>
-                <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+                <div class="section-title" data-aos="fade-up">
+                    <h2>За проекта</h2>
+                </div>
+                <h3>Целите на приложението</h3>
+                <p></p>
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                    <h4 class="title"><a href="">Повече на едно място</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                    <div class="icon"><i class="bi bi-emoji-smile"></i></div>
+                    <h4 class="title"><a>Щастливи клиенти</a></h4>
+                    <p class="description">Повече възможности на едно място, осигуряващи удобството на клиента и провокирайки неговия интерес.</p>
                 </div>
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="icon"><i class="bi bi-headset"></i></div>
-                    <h4 class="title"><a href="">Комуникация на по-високо ниво</a></h4>
-                    <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                    <div class="icon"><i class="bi bi-graph-up"></i></div>
+                    <h4 class="title"><a>Комуникация на по-високо ниво</a></h4>
+                    <p class="description">Пряк достъп до телефон за връзка на избрана компания за осъществяване на обаждане и опция за онлайн извършване на поръчка, включваща пряко следене на вашия превоз.</p>
                 </div>
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon"><i class="bi bi-emoji-smile"></i></div>
-                    <h4 class="title"><a href="">Щастливи клиенти</a></h4>
-                    <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                    <div class="icon"><i class="bi bi-stars"></i></div>
+                    <h4 class="title"><a>Шанс за всяка компания да блесне</a></h4>
+                    <p class="description">Тепърва навлизате в бранша или сте доказали се вече в него? Това няма значение, добре дошли сте тук, ключът за достъп е лицензът на компанията ви.</p>
                 </div>
             </div>
             <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">

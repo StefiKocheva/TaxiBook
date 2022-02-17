@@ -3,27 +3,22 @@
     using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Mvc;
 
+    using static Vallidation.AddEmployeeViewModel;
+
     public class AddEmployeeViewModel : Controller
     {
-        [Required]
-        [MinLength(2)]
-        [MaxLength(50)]
-        public string FirstName { get; set; }
+        [Required(ErrorMessage = RequiredErrorMessage)]
+        public string Email { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(50)]
-        public string LastName { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         // Enum
         public string Role { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         // DateTime?
         public string From { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         // DateTime?
         public string Till { get; set; }
     }

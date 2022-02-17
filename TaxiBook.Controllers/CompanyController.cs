@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Services.Interfaces;
-    using Services.Models.Companies;
+    using Services.ViewModels.Companies;
     using Microsoft.AspNetCore.Mvc;
 
     public class CompanyController : Controller
@@ -31,10 +31,10 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return BadRequest();
+                return this.BadRequest();
             }
 
-            // await this.companyService.CreateAsync(model);
+            await this.companyService.CreateAsync(model);
 
             return this.RedirectPermanent("/");
         }

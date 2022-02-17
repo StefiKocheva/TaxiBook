@@ -5,13 +5,13 @@
     public class ProfileController : Controller
     {
         [HttpGet]
-        public IActionResult Overview()
+        public IActionResult Overview(string userId)
         {
             return this.View();
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(string userId)
         {
             return this.View();
         }

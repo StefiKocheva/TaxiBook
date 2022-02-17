@@ -2,34 +2,36 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static Vallidation.CreateOrderViewModel;
+
     public class CreateOrderViewModel
     {
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public string CurrentLocation { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public string EndLocation { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(MaxLocationDetailsLength)]
         public string CurrentLocationDetails { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(MaxLocationDetailsLength)]
         public string EndLocationDetails { get; set; }
 
-        [Required]
-        [Range(1, 6)]
+        [Required(ErrorMessage = RequiredErrorMessage)]
+        [Range(MinCountOfPassengers, MaxCountOfPassengers)]
         public int CountOfPassengers { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(MaxAdditionalRequirementsLength)]
         public string AdditionalRequirements { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public string TaxiDriver { get; set; }
     }
 }

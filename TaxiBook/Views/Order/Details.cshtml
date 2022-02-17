@@ -35,26 +35,28 @@
                 </div>
                 <div class="modal-body">
                     <p>Моля, попълнете полето и продължете напред, за да видите приблизителната цена и време за изпълнение на текущия Ви избор.</p>      
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="password-id-icon">До къде искате да пътувате?</label>
-                            <div class="position-relative">
-                                <input type="password" class="form-control" placeholder="Крайна дестинация" id="password-id-icon">
-                                <div class="form-control-icon">
-                                    <i class="fas fa-map-marked-alt"></i>
+                    <form method="post" asp-area="default" asp-controller="Order" asp-action="Details">
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="endLocationend">До къде искате да пътувате?</label>
+                                <div class="position-relative">
+                                    <input type="password" class="form-control" placeholder="Крайна дестинация" id="password-id-icon">
+                                    <div class="form-control-icon">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div><br />
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Затвори</span>
                     </button>
-                    <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                    <button type="submit" class="btn btn-primary ml-1" data-dismiss="modal">
                         <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Напред</span>
+                        <span class="d-none d-sm-block">Пресметни</span>
                     </button>
                 </div>
             </div>

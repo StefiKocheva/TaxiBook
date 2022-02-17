@@ -1,6 +1,12 @@
 namespace TaxiBook
 {
+    using Areas.Dispatcher.Services;
+    using Areas.Dispatcher.Services.Interfaces;
     using Areas.Manager.Services;
+    using Areas.Manager.Services.Inerfaces;
+    using Areas.Manager.Services.Interfaces;
+    using Areas.TaxiDriver.Services;
+    using Areas.TaxiDriver.Services.Inerfaces;
     using Data;
     using Data.Models;
     using Infrastructure;
@@ -25,8 +31,9 @@ namespace TaxiBook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TaxiBookDbContext>(options =>
-                options.UseSqlServer(this.Configuration.GetDefaultConnectionString(), 
-                x => x.MigrationsAssembly("TaxiBook.Data")));
+                options.UseSqlServer(this.Configuration.GetDefaultConnectionString(),
+                x => x.MigrationsAssembly("TaxiBook.Data"))
+                /*.UseLazyLoadingProxies()*/);
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()
@@ -38,7 +45,12 @@ namespace TaxiBook
                 .AddTransient<IEmployeeService, EmployeeService>()
                 .AddTransient<IScheduleService, ScheduleService>()
                 .AddTransient<IOrderService, OrderService>()
-                .AddTransient<IHomeService, HomeService>();
+                .AddTransient<IDispatcherOrderService, DispatcherOrderService>()
+                .AddTransient<IDispatcherScheduleService, DispatcherScheduleService>()
+                .AddTransient<ITaxiDriverOrderService, TaxiDriverOrderService>()
+                .AddTransient<ITaxiDriverScheduleService, TaxiDriverScheduleService>()
+                .AddTransient<IFeedbackService, FeedbackService>()
+                .AddTransient<IFavoriteService, FavoriteService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

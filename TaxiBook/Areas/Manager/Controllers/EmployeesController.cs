@@ -3,8 +3,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using Services.Inerfaces;
     using ViewModels.Employees;
-    using Services;
 
     [Authorize]
     [Area("Manager")]
@@ -40,6 +40,7 @@
             var userId = await this._employeeService.CreateAsync(
                 model.FirstName,
                 model.LastName,
+                model.PlaceOfResidence,
                 model.Email,
                 model.PhoneNumber);
 
@@ -47,7 +48,7 @@
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(string userId)
         {
             return this.View();
         }

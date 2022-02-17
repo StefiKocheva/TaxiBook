@@ -19,7 +19,8 @@
 
             foreach (var role in roles)
             {
-                await this._roleManager.CreateAsync(new IdentityRole(role));
+                await this._roleManager
+                    .CreateAsync(new IdentityRole(role));
             }
 
             return this.RedirectPermanent("/");

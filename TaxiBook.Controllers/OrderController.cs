@@ -1,14 +1,17 @@
 ﻿namespace TaxiBook.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Services.Models.Orders;
+    using Services.Interfaces;
+    using Services.ViewModels.Orders;
 
     public class OrderController : Controller
     {
-        [HttpPost]
-        public IActionResult Create(CreateOrderViewModel model)
+        private readonly IOrderService _service;
+
+        public OrderController(IOrderService service)
         {
-            return this.Ok();
+            this._service = service;
         }
 
         [HttpGet]
@@ -17,16 +20,35 @@
             return this.View();
         }
 
-        [HttpGet]
-        public IActionResult Overview()
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateOrderViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var orderId = await this._service.CreateAsync(
+                 model.CurrentLocation,
+                 model.CurrentLocationDetails,
+                 model.EndLocation,
+                 model.EndLocationDetails,
+                 model.CountOfPassengers,
+                 model.AdditionalRequirements);
+
+            return this.RedirectPermanent("Create");
         }
 
         [HttpGet]
-        public IActionResult Details()
+        public IActionResult Overview(string orderId)
         {
-            return View();
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Details(string orderId)
+        {
+            return this.View();
         }
     }
 }

@@ -11,6 +11,8 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+
+    using static Vallidation.LoginModel;
     
 
     [AllowAnonymous]
@@ -41,15 +43,15 @@
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Полето е задължително.")]
+            [Required(ErrorMessage = RequiredErrorMessage)]
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Полето е задължително.")]
+            [Required(ErrorMessage = RequiredErrorMessage)]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Запомни ме?")]
+            [Display(Name = DisplayRememberMeName)]
             public bool RememberMe { get; set; }
         }
 

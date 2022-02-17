@@ -19,7 +19,7 @@
                         </div>
                         <form method="post">
                             <div class="form-group position-relative has-icon-left">
-                                <label asp-for="Input.Email" for="email">Email</label>
+                                <label asp-for="Input.Email" for="username">Email</label>
                                 <div class="position-relative">
                                     <input asp-for="Input.Email" class="form-control" id="username" placeholder="Email">
                                     <div class="form-control-icon">
@@ -31,7 +31,7 @@
                             <div class="form-group position-relative has-icon-left">
                                 <div class="clearfix">
                                     <label asp-for="Input.Password" for="password">Парола</label>
-                                    <a asp-controller="Account" asp-action="ForgotPassword" class='float-right'>
+                                    <a asp-controller="Account" asp-action="ForgotPassword" class="float-right">
                                         <small>Забравена парола?</small>
                                     </a>
                                 </div>
@@ -45,8 +45,8 @@
                             </div>
                             <div class='form-check clearfix my-4'>
                                 <div class="checkbox float-left">
-                                    <input asp-for="Input.RememberMe" type="checkbox" id="checkbox1" class='form-check-input'>
-                                    <label asp-for="Input.RememberMe" for="checkbox1">Запомни ме?</label>
+                                    <input asp-for="Input.RememberMe" type="checkbox" id="rememberMe" class='form-check-input'>
+                                    <label asp-for="Input.RememberMe" for="rememberMe">Запомни ме?</label>
                                 </div>
                                 <div class="float-right">
                                     <a asp-controller="Account" asp-action="Register">Нямате все още акаунт?</a>

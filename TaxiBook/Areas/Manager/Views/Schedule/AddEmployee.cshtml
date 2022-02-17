@@ -23,13 +23,13 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" asp-area="Manager" asp-controller="Schedule" asp-action="AddEmployee" enctype="multipart/form-data">
+                        <form class="form" method="post" asp-area="Manager" asp-controller="Schedule" asp-action="CreateEmployee" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="name">Email</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Име">
-                                        <span class="text-danger"></span>
+                                        <label for="email">Email</label>
+                                        <input asp-for="Email" type="text" class="form-control" id="email" placeholder="Име">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -61,7 +61,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>3
         </div>
     </div>
 </section>

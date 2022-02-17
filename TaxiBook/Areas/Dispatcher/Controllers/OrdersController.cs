@@ -1,16 +1,18 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Services;
+    using Services.Interfaces;
+    using ViewModels.Orders;
 
     [Authorize]
     [Area("Dispatcher")]
     public class OrdersController : Controller
     {
-        private readonly IOrderService _orderService;
+        private readonly IDispatcherOrderService _orderService;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IDispatcherOrderService orderService)
         {
             this._orderService = orderService;
         }
@@ -21,19 +23,27 @@
             return this.View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Create(CreateOrderViewModel model)
-        //{
-        //    if (!this.ModelState.IsValid)
-        //    {
-        //        return this.BadRequest();
-        //    }
-        //
-        //    //var orderId = await this._orderService.CreateAsync(
-        //    //    );
-        //
-        //    return this.RedirectPermanent("Create");
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateOrderViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+        
+            var orderId = await this._orderService.CreateAsync(
+                model.Name,
+                model.PhoneNumber,
+                model.CurrentLocation,
+                model.CurrentLocationDetails,
+                model.EndLocation,
+                model.EndLocationDetails,
+                model.CountOfPassengers,
+                model.AdditionalRequirements,
+                model.TaxiDriver); // TaxiDriver.FullName -> FirstName + LastName
+        
+            return this.RedirectPermanent("Create");
+        }
 
         [HttpGet]
         public IActionResult AcceptedOrders()
@@ -48,7 +58,7 @@
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(string userId)
         {
             return this.View();
         }

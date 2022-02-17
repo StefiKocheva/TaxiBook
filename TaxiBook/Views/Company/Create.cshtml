@@ -1,4 +1,4 @@
-﻿@using TaxiBook.Services.Models.Companies
+﻿@using TaxiBook.Services.ViewModels.Companies
 @model CreateCompanyViewModel
 @{
     this.Layout = "_AuthenticationLayout";
@@ -22,6 +22,7 @@
                                         <label for="companyName">Име</label>
                                         <div class="position-relative">
                                             <input asp-for="Name" type="text" class="form-control" id="companyName" placeholder="Име на компанията">
+                                            <span asp-validation-for="Name" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-pen"></i>
                                             </div>
@@ -33,6 +34,7 @@
                                         <label for="address">Адрес</label>
                                         <div class="position-relative">
                                             <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Адрес">
+                                            <span asp-validation-for="Address" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </div>
@@ -41,9 +43,10 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative has-icon-left">
-                                        <label>Дневна тарифа</label>
+                                        <label for="dailyTariff">Дневна тарифа</label>
                                         <div class="position-relative">
-                                            <input asp-for="DailyТariff" type="number" step="0.01" class="form-control" placeholder="0.00">
+                                            <input asp-for="DailyТariff" type="number" step="0.01" class="form-control" placeholder="0.00" id="dailyTariff">
+                                            <span asp-validation-for="DailyТariff" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-sun"></i>
                                             </div>
@@ -52,26 +55,22 @@
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative has-icon-left">
-                                        <label>Нощна тарифа</label>
+                                        <label for="nightTariff">Нощна тарифа</label>
                                         <div class="position-relative">
-                                            <input asp-for="NightТariff" type="number" step="0.01" class="form-control" placeholder="0.00">
+                                            <input asp-for="NightТariff" type="number" step="0.01" class="form-control" placeholder="0.00" id="nightTariff">
+                                            <span asp-validation-for="NightТariff" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-moon"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div> 
-                                <!-- <div class="col-md-6 col-12">
-                                    <div class="form-group form-label-group">
-                                        <label for="label-textarea">Описание</label>
-                                        <textarea asp-for="Description" class="form-control" id="label-textarea" rows="3" placeholder="Описание на компанията"></textarea>
-                                    </div>
-                                </div> -->
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative has-icon-left">
-                                        <label>Телефонен номер</label>
+                                        <label for="phoneNumber">Телефонен номер</label>
                                         <div class="position-relative">
-                                            <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Телефонен номер">
+                                            <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-phone-alt"></i>
                                             </div>
@@ -81,18 +80,19 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Лиценз на компанията</label>
-                                        <div class="form-file">с
-                                            <input asp-for="License" type="file" class="form-file-input" id="customFile">
-                                            <label class="form-file-label" for="customFile">
+                                        <div class="form-file">
+                                            <input asp-for="License" type="file" class="form-file-input" id="license">
+                                            <label class="form-file-label" for="license">
                                                 <span class="form-file-text">Изберете файл...</span>
                                                 <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
                                             </label>
+                                            <span asp-validation-for="License" class="text-danger"></span>
                                         </div>
                                     </div>
-                                </div><br/>
+                                </div>
                             </div>
                             <div class="col-sm-12 d-flex justify-content-end">
-                                <a asp-controller="Home" asp-action="Index" class="btn btn-light-secondary mr-1 mb-1">Откажи</a>
+                                <a href="javascript:window.history.back()" class="btn btn-light-secondary mr-1 mb-1">Назад</a>
                                 <a asp-area="Manager" asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary mr-1 mb-1">Добави</a>
                             </div>
                         </form>

@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
     using Data.Models;
+    using Services.Inerfaces;
 
     public class EmployeeService : IEmployeeService
     {
@@ -13,11 +14,12 @@
             this._userManager = userManager;
         }
 
-        public async Task<string> CreateAsync(string firstName, string lastName, string email, string phoneNumber)
+        public async Task<string> CreateAsync(string firstName, string lastName, string placeOfResidence, string email, string phoneNumber)
         {
             var user = new ApplicationUser
             {
                 FirstName = firstName,
+                // Address.PlaceOfResidence = placeOfResidence,
                 LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber

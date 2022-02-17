@@ -5,10 +5,10 @@
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
     using Data;
+    using Data.Models;
     using Interfaces;
     using Microsoft.AspNetCore.Http;
-    using Models.Companies;
-    using TaxiBook.Data.Models;
+    using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
     {
@@ -27,8 +27,8 @@
             {
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
-                // Address = model.Address,
                 LicenseUrl = licenseUrl,
+                //Address = model.Address,
             };
 
             await db.Companies.AddAsync(company);

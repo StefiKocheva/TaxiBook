@@ -17,6 +17,7 @@
             this.Bookings = new HashSet<Booking>();
             this.Taxies = new HashSet<Taxi>();
             this.Absences = new HashSet<Absence>();
+            this.Favorites = new HashSet<Favorite>();
         }
 
         public string Id { get; set; }
@@ -46,5 +47,7 @@
         public virtual IEnumerable<Taxi> Taxies { get; set; }
 
         public virtual IEnumerable<Absence> Absences { get; set; }
+
+        public virtual IEnumerable<Favorite> Favorites { get; set; }
     }
 }

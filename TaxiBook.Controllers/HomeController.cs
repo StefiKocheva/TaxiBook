@@ -1,9 +1,19 @@
 ﻿namespace TaxiBook.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+    using Services.ViewModels.Home;
 
     public class HomeController : Controller
     {
+        private readonly IFeedbackService _service;
+
+        public HomeController(IFeedbackService service)
+        {
+            this._service = service;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -17,21 +27,25 @@
         }
 
         [HttpGet]
-        public IActionResult MyProfile()
+        public ActionResult GiveFeedback(string userId)
         {
             return this.View();
         }
 
-        [HttpGet]
-        public IActionResult Favorites()
+        [HttpPost]
+        public async Task<IActionResult> GiveFeedback(GiveFeedbackViewModel model)
         {
-            return this.View();
-        }
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
 
-        [HttpGet]
-        public IActionResult GiveFeedback()
-        {
-            return this.View();
+            var feedbackId = await this._service.GiveFeedbackAsync(
+                model.Company,
+                model.IsLiked,
+                model.Description);
+
+            return this.RedirectPermanent("GiveFeedback");
         }
     }
 }

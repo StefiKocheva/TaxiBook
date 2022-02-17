@@ -1,16 +1,18 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Services;
+    using Services.Interfaces;
+    using ViewModels.Home;
 
     [Authorize]
     [Area("Dispatcher")]
     public class HomeController : Controller
     {
-        private readonly IHomeService _homeService;
+        private readonly IDispatcherScheduleService _homeService;
 
-        public HomeController(IHomeService homeService)
+        public HomeController(IDispatcherScheduleService homeService)
         {
             this._homeService = homeService;
         }
@@ -21,22 +23,23 @@
             return this.View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Schedule(ForthcomingАbsenceViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return this.BadRequest();
-        //    }
-        //
-        //    //var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
-        //    //    );
-        //
-        //    return this.RedirectPermanent("Schedule");
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Schedule(ForthcomingАbsenceViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+        
+            var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
+                model.From,
+                model.Till);
+        
+            return this.RedirectPermanent("Schedule");
+        }
 
         [HttpGet]
-        public IActionResult Track()
+        public IActionResult Track(string orderId)
         {
             return this.View();
         }

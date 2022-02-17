@@ -15,7 +15,7 @@
                         <th class="text-center">Вторник</th>
                         <th class="text-center">Сряда</th>
                         <th class="text-center">Четвътък</th>
-                        <th class="text-center" style="color:#0275d8;">Петък</th>
+                        <th class="text-center">Петък</th>
                         <th class="text-center">Събота</th>
                         <th class="text-center">Неделя</th>
                     </tr>
@@ -24,7 +24,7 @@
                     <tr>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
-                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">1</a></td>
+                        <td class="text-center"><a style="color:#6F8298;" asp-area="Manager" asp-controller="Schedule" asp-action="Employees">1</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">2</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">3</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">4</a></td>
@@ -48,7 +48,7 @@
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">18</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">19</a></td>
                     </tr>
-                    <tr class="table-active">
+                    <tr>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">20</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">21</a></td>
                         <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">22</a></td>
@@ -71,123 +71,73 @@
         </div>
     </div>
 </div>
-<div class="row" id="basic-table">
-    <div class="col-12 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Календар</h4>
-      </div>
-      <div class="card-content">
+<!-- Calendar creation by my imagination -->
+@{
+    int currentYear = DateTime.UtcNow.Year;
+    int currentMonth = DateTime.UtcNow.Month;
+    int daysInMonth = DateTime.DaysInMonth(currentYear, currentMonth);
 
-        <!-- Table with no outer spacing -->
-        <div class="table-responsive">
-          <table class="table mb-0">
-            <thead>
-              <tr>
-                <th>П</th>
-                <th>В</th>
-                <th>С</th>
-                <th>Ч</th>
-                <th>П</th>
-                <th>С</th>
-                <th>Н</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td class="table-element">2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                
-              </tr>
-              <tr>
-                <td>15</td>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                
-              </tr>
-              <tr>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                
-              </tr>
-              <tr>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-              </tr>
-            </tbody>
-          </table>
+    const int border = 29;
+    const int lessThanBorderWeeks = 4;
+    const int moreThanBorderWeeks = 5;
+}
+<div class="card collapse-icon accordion-icon-rotate"><br />
+    <div class="card-content">
+        <div class="card-header">
+            <h4 class="card-title, text-center">Декември</h4>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-md-6">
-    <div class="card">
-    <div class="card-body">
-        <div id="table" class="table-editable">
-            <table class='table table-hover'>
+        <div class="card-body">
+            <table class="table">
                 <thead>
-                    <tr align="center">
-                        <th>Име</th>
-                        <th>Роля</th>
-                        <th>Работно време</th>
-                        <th>Изтрий</th>
+                    <tr>
+                        <th class="text-center">Понеделник</th>
+                        <th class="text-center">Вторник</th>
+                        <th class="text-center">Сряда</th>
+                        <th class="text-center">Четвътък</th>
+                        <th class="text-center">Петък</th>
+                        <th class="text-center">Събота</th>
+                        <th class="text-center">Неделя</th>
                     </tr>
                 </thead>
-                <tbody align="center">
-                    <tr>
-                        <td>Стефани Кочева</td>
-                        <td>Д</td>
-                        <td>8:00 - 16:30</td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td>Стефани Кочева</td>
-                        <td>Т</td>
-                        <td>16:30 - 1:00</td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td>Стефи Кочева</td>
-                        <td>Д</td>
-                        <td>1:00 - 8:00</td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                    </tr>
+                <tbody>
+                    @if (daysInMonth < border)
+                    {
+                        for (var i = 1; i <= lessThanBorderWeeks; i++)
+                        {
+                            <tr>
+                                @if (i == 1)
+                                {
+                                    @for (var j = 1; j <= 7; j++)
+                                    {
+                                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@j</a></td>
+                                    }
+                                }
+                                else if (i == 2)
+                                {
+                                    @for (var j = 8; j <= 14; j++)
+                                    {
+                                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@j</a></td>
+                                    }
+                                }
+                                else if (i == 3)
+                                {
+                                    @for (var j = 15; j <= 21; j++)
+                                    {
+                                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@j</a></td>
+                                    }
+                                }
+                                else if (i == 4)
+                                {
+                                    @for (var j = 22; j <= 28; j++)
+                                    {
+                                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@j</a></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
-            <a role="button" asp-area="Manager" asp-controller="Schedule" asp-action="AddEmployee" class="btn btn-primary btn-block">Добави служител</a>                            <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
         </div>
     </div>
-</div>
-</div>
-  </div>
-  
 </div>

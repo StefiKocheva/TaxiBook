@@ -2,15 +2,17 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Services;
+    using Services.Inerfaces;
+    using System.Threading.Tasks;
+    using ViewModels.Home;
 
     [Authorize]
     [Area("TaxiDriver")]
     public class HomeController : Controller
     {
-        private readonly IHomeService _homeService;
+        private readonly ITaxiDriverScheduleService _homeService;
 
-        public HomeController(IHomeService homeService)
+        public HomeController(ITaxiDriverScheduleService homeService)
         {
             this._homeService = homeService;
         }
@@ -27,18 +29,19 @@
             return this.View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Schedule(ForthcomingАbsenceViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return this.BadRequest();
-        //    }
-        //
-        //    //var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
-        //    //    );
-        //
-        //    return this.RedirectPermanent("Schedule");
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Schedule(ForthcomingАbsenceViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+        
+            var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
+                model.From,
+                model.Till);
+        
+            return this.RedirectPermanent("Schedule");
+        }
     }
 }

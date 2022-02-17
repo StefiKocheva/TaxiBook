@@ -86,33 +86,33 @@
                             <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" enctype="multipart/form-data">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="email-id-icon">От кога ще остъствате?</label>
+                                        <label for="absenceStartDay">От кога ще остъствате?</label>
                                         <div class="position-relative">
-                                            <input asp-for="From" type="date" class="form-control" id="email-id-icon">
+                                            <input asp-for="From" type="date" class="form-control" id="absenceStartDay">
                                             <span asp-validation-for="From" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="email-id-icon">До кога няма да сте на работа?</label>
+                                        <label for="absenceEndDay">До кога няма да сте на работа?</label>
                                         <div class="position-relative">
-                                            <input asp-for="Till" type="date" class="form-control" id="email-id-icon">
+                                            <input asp-for="Till" type="date" class="form-control" id="absenceEndDay">
                                             <span asp-validation-for="Till" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Назад</span>
+                                    </button>
+                                    <button type="submit" class="btn btn-primary ml-1" data-dismiss="modal">
+                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Изпрати</span>
+                                    </button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                                <i class="bx bx-x d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Назад</span>
-                            </button>
-                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
-                                <i class="bx bx-check d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Изпрати</span>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -130,10 +130,10 @@
                             <div class="row"> 
                                 <div class="col-md-6">
                                     <div class="form-group position-relative has-icon-left">
-                                        <label for="disabledInput">От</label>
+                                        <label for="workDayStart">От</label>
                                         <div class="position-relative">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="8:00">                                   
+                                                <input type="text" class="form-control" id="workDayStart" readonly="readonly" value="8:00">                                   
                                             </div>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-clock"></i>
@@ -143,10 +143,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group position-relative has-icon-left">
-                                        <label for="disabledInput">До</label>
+                                        <label for="workDayEnd">До</label>
                                         <div class="position-relative">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="16:30">                                   
+                                                <input type="text" class="form-control" id="workDayEnd" readonly="readonly" value="16:30">                                   
                                             </div>
                                             <div class="form-control-icon">
                                                 <i class="far fa-clock"></i>

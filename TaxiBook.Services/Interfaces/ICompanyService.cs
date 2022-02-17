@@ -1,7 +1,7 @@
 ﻿namespace TaxiBook.Services.Interfaces
 {
     using System.Threading.Tasks;
-    using Models.Companies;
+    using ViewModels.Companies;
 
     public interface ICompanyService
     {

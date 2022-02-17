@@ -16,6 +16,8 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
 
+    using static Vallidation.RegisterModel;
+
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -42,31 +44,39 @@
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Полето е задължително.")]
-            [MinLength(2)]
-            [MaxLength(30)]
+            [Required(ErrorMessage = RequiredErrorMessage)]
+            [StringLength(
+                MaxNameLength, 
+                ErrorMessage = FirstNameLengthErrorMessage, 
+                MinimumLength = MinNameLength)]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Полето е задължително.")]
-            [MinLength(2)]
-            [MaxLength(30)]
+            [Required(ErrorMessage = RequiredErrorMessage)]
+            [StringLength(
+                MaxNameLength, 
+                ErrorMessage = LastNameLengthErrorMessage, 
+                MinimumLength = MinNameLength)]
             public string LastName { get; set; }
 
-            [Required(ErrorMessage = "Полето е задължително.")]
+            [Required(ErrorMessage = RequiredErrorMessage)]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = DisplayEmailName)]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Полето е задължително.")]
-            [StringLength(100, ErrorMessage = "{0} трябва да бъде поне {2} и максимално {1} символа дълга.",
-                MinimumLength = 6)]
+            [Required(ErrorMessage = RequiredErrorMessage)]
+            [StringLength(
+                MaxPasswordLength, 
+                ErrorMessage = PasswordLengthErrorMessage, 
+                MinimumLength = MinPasswordLength)]
             [DataType(DataType.Password)]
-            [Display(Name = "Паролата")]
+            [Display(Name = DisplayPasswordName)]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Потвърждаване на парола")]
-            [Compare("Password", ErrorMessage = "Паролите не съвпадат.")]
+            [Display(Name = DisplayConfirmPasswordName)]
+            [Compare(
+                PasswordPropertyName, 
+                ErrorMessage = ComparePasswordErrorMessage)]
             public string ConfirmPassword { get; set; }
             
             public IFormFile ProfilePicture { get; set; }

@@ -21,6 +21,8 @@
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Favorite> Favorites { get; set; }
+
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public DbSet<Schedule> Schedules { get; set; }
@@ -31,7 +33,9 @@
         {
             base.OnModelCreating(builder);
 
-            var entityTypes = builder.Model.GetEntityTypes().ToList();
+            var entityTypes = builder.Model
+                .GetEntityTypes()
+                .ToList();
 
             builder.Entity<ApplicationUser>()
                 .HasOne(u => u.Company)
@@ -97,6 +101,11 @@
                 .HasOne(c => c.Address)
                 .WithOne(a => a.Company)
                 .HasForeignKey<Address>(c => c.CompanyId);
+
+            builder.Entity<Favorite>()
+                .HasOne(f => f.Client)
+                .WithMany(c => c.Favorites)
+                .HasForeignKey(f => f.ClientId);
         }
     }
 }

@@ -25,9 +25,9 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Начална точка</label>
+                                        <label for="currentLocation">Начална точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Начална точка" id="first-name-icon">
+                                            <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Начална точка" id="currentLocation">
                                             <span asp-validation-for="CurrentLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-street-view"></i>
@@ -37,9 +37,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Крайна дестинация</label>
+                                        <label for="endLocation">Крайна дестинация</label>
                                         <div class="position-relative">
-                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="first-name-icon">
+                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
                                             <span asp-validation-for="EndLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
@@ -49,9 +49,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Уточнение</label>
+                                        <label for="currentLocationDetails">Уточнение</label>
                                         <div class="position-relative">
-                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за местоположението на Вашия клиент" id="first-name-icon">
+                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за местоположението на Вашия клиент" id="currentLocationDetails">
                                             <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-pen"></i>
@@ -61,9 +61,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Уточнение</label>
+                                        <label for="endLocationDetails">Уточнение</label>
                                         <div class="position-relative">
-                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder='Повече за крайната дестинация на Вашия клиент' id="first-name-icon">
+                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder='Повече за крайната дестинация на Вашия клиент' id="endLocationDetails">
                                             <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-pen"></i>
@@ -73,9 +73,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Брой пътуващи</label>
+                                        <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Бройка на пътуващи" id="first-name-icon">
+                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
                                             <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
@@ -85,9 +85,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Допълнителни изисквания</label>
+                                        <label for="additionalRequirements">Допълнителни изисквания</label>
                                         <div class="position-relative">
-                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например помощ с багаж" id="first-name-icon">
+                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например помощ с багаж" id="additionalRequirements">
                                             <span asp-validation-for="AdditionalRequirements" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="far fa-handshake"></i>

@@ -4,7 +4,7 @@
     {
         public class ApplicationUser
         {
-            public const int MaxNameLength = 50;
+            public const int MaxNameLength = 30;
         }
 
         public class Bookings

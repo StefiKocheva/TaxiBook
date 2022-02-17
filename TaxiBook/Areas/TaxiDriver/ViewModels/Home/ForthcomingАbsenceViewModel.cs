@@ -3,12 +3,14 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using static Vallidation.ForthcomingАbsenceViewModel;
+
     public class ForthcomingАbsenceViewModel
     {
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public DateTime From { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         public DateTime Till { get; set; }
     }
 }

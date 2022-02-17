@@ -12,6 +12,8 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
 
+    using static Vallidation.ForgotPasswordModel;
+
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {
@@ -29,7 +31,7 @@
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Полето е задължително.")]
+            [Required(ErrorMessage = RequiredErrorMessage)]
             [EmailAddress]
             public string Email { get; set; }
         }
