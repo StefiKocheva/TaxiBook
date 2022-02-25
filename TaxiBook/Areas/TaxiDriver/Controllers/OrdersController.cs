@@ -10,9 +10,9 @@
     [Area("TaxiDriver")]
     public class OrdersController : Controller
     {
-        private readonly ITaxiDriverOrderService _orderService;
+        private readonly IOrderService _orderService;
 
-        public OrdersController(ITaxiDriverOrderService orderService)
+        public OrdersController(IOrderService orderService)
         {
             this._orderService = orderService;
         }

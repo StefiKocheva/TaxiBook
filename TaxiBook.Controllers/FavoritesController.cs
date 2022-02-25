@@ -21,16 +21,16 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateFavoriteViewModel model)
+        public async Task<IActionResult> AddCompany(CreateFavoriteViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            var favoriteId = await this._service.CreateAsync(model.CompanyName);
+            var favoriteId = await this._service.AddAsync(model.CompanyName);
 
-            return this.RedirectPermanent("All");
+            return this.RedirectPermanent("Companies");
         }
 
         [HttpPut]

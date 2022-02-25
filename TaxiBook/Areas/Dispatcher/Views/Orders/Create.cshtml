@@ -98,7 +98,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
+                                            <input asp-for="CountOfPassengers"min="1" max="6" type="number" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
                                             <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>

@@ -10,9 +10,9 @@
     [Area("TaxiDriver")]
     public class HomeController : Controller
     {
-        private readonly ITaxiDriverScheduleService _homeService;
+        private readonly IScheduleService _homeService;
 
-        public HomeController(ITaxiDriverScheduleService homeService)
+        public HomeController(IScheduleService homeService)
         {
             this._homeService = homeService;
         }

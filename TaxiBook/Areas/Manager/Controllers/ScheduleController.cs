@@ -44,8 +44,7 @@
             }
 
             var userId = await this._scheduleService.AddEmployeeAsync(
-                model.FirstName,
-                model.LastName,
+                model.Email,
                 model.Role,
                 model.From,
                 model.Till);

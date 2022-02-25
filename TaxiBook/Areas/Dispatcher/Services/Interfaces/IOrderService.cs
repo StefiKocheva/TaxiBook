@@ -1,19 +1,18 @@
-﻿namespace TaxiBook.Services.Interfaces
+﻿namespace TaxiBook.Areas.Dispatcher.Services.Interfaces
 {
     using System.Threading.Tasks;
 
     public interface IOrderService
     {
         Task<string> CreateAsync(
+            string name, 
+            string phoneNumber, 
             string currentLocation, 
-            string currentLocationDetails, 
+            string currentLocationDetails,
             string endLocation, 
             string endLocationDetails, 
             int countOfPassengers, 
-            string additionalRequirements);
-
-        void DeleteAsync(
-            string id, 
-            string clientId);
+            string additionalRequirements, 
+            string taxiDriverName);
     }
 }

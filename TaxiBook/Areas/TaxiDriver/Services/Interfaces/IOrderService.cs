@@ -1,4 +1,4 @@
-﻿namespace TaxiBook.Services.Interfaces
+﻿namespace TaxiBook.Areas.TaxiDriver.Services.Inerfaces
 {
     using System.Threading.Tasks;
 
@@ -7,13 +7,9 @@
         Task<string> CreateAsync(
             string currentLocation, 
             string currentLocationDetails, 
-            string endLocation, 
-            string endLocationDetails, 
+            string endLocation, string 
+            endLocationDetails, 
             int countOfPassengers, 
             string additionalRequirements);
-
-        void DeleteAsync(
-            string id, 
-            string clientId);
     }
 }

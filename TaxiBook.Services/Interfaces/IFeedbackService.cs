@@ -4,6 +4,9 @@
 
     public interface IFeedbackService
     {
-        Task<string> GiveFeedbackAsync(string company, bool isLiked, string description);
+        Task<string> CreateAsync(
+            string company, 
+            bool isLiked, 
+            string description);
     }
 }

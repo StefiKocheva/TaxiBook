@@ -6,9 +6,17 @@
 
 <div class="page-title">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Твоите любими компании</h3>
             <p class="text-subtitle text-muted">След като вече сте използвали услугите на някоя конкретна компания и сте останали наистина доволни, то може да я добавите точно тук. Така още по-бързо вашата направена поръчка ще бъде факт!</p>
+        </div>
+        <div class="col-12 col-md-6 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="default" asp-controller="Favorites" asp-action="All">Любими</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Компании</li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
@@ -22,8 +30,7 @@
                         <th>Цена за километър</th>
                         <th>Област</th>
                         <th>Обади се сега</th>
-                        <th>Поръчай онлайн</th>
-                        <th>Изтрий</th>
+                        <th>Функции</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,20 +39,18 @@
                         <td>0.70 лева</td>
                         <td>Пазарджик</td>
                         <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
+                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                     <tr class="text-center">
-                        <td>Панда Такси</td>
-                        <td>0.75 лева</td>
+                        <td>Велина</td>
+                        <td>0.70 лева</td>
                         <td>Пазарджик</td>
                         <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
+                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                 </tbody>
             </table>
-            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави любима компания</button>
+            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -75,7 +80,7 @@
                                 <i class="bx bx-x d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Затвори</span>
                             </button>
-                            <a class="btn btn-primary" type="button" asp-action="Home" asp-controller="Favorites">Добави</a>
+                            <a class="btn btn-primary" type="button" asp-area="Default" asp-controller="Favorites" asp-action="All">Добави</a>
                         </div>
                     </div>
                 </div>

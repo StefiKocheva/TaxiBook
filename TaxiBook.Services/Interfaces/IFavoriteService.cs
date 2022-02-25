@@ -4,6 +4,10 @@
 
     public interface IFavoriteService
     {
-        Task<string> CreateAsync(string companyName);
+        Task<string> AddAsync(string companyName);
+
+        void DeleteAsync(
+            string id, 
+            string userId);
     }
 }

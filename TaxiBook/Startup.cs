@@ -42,15 +42,15 @@ namespace TaxiBook
 
             services
                 .AddTransient<ICompanyService, CompanyService>()
-                .AddTransient<IEmployeeService, EmployeeService>()
-                .AddTransient<IScheduleService, ScheduleService>()
-                .AddTransient<IOrderService, OrderService>()
-                .AddTransient<IDispatcherOrderService, DispatcherOrderService>()
-                .AddTransient<IDispatcherScheduleService, DispatcherScheduleService>()
-                .AddTransient<ITaxiDriverOrderService, TaxiDriverOrderService>()
-                .AddTransient<ITaxiDriverScheduleService, TaxiDriverScheduleService>()
+                .AddTransient<Services.Interfaces.IOrderService, Services.OrderService>()
                 .AddTransient<IFeedbackService, FeedbackService>()
-                .AddTransient<IFavoriteService, FavoriteService>();
+                .AddTransient<IFavoriteService, FavoriteService>()
+                .AddTransient<Areas.Dispatcher.Services.Interfaces.IScheduleService, Areas.Dispatcher.Services.ScheduleService>()
+                .AddTransient<Areas.Dispatcher.Services.Interfaces.IOrderService, Areas.Dispatcher.Services.OrderService>()
+                .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IOrderService, Areas.TaxiDriver.Services.OrderService>()
+                .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IScheduleService, Areas.TaxiDriver.Services.ScheduleService>()
+                .AddTransient<IEmployeeService, EmployeeService>()
+                .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, Areas.Manager.Services.ScheduleService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

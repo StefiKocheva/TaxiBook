@@ -18,6 +18,11 @@
             public const string RequiredErrorMessage = "Полето е задължително.";
         }
 
+        public class EditFavoriteViewModel
+        {
+            public const string RequiredErrorMessage = "Полето е задължително.";
+        }
+
         public class GiveFeedbackViewModel
         {
             public const string RequiredErrorMessage = "Полето е задължително";

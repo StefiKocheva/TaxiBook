@@ -6,11 +6,11 @@
     using Data.Models;
     using Services.Interfaces;
 
-    public class DispatcherScheduleService : IDispatcherScheduleService
+    public class ScheduleService : IScheduleService
     {
         private readonly TaxiBookDbContext db;
 
-        public DispatcherScheduleService(TaxiBookDbContext db)
+        public ScheduleService(TaxiBookDbContext db)
         {
             this.db = db;
         }
@@ -29,7 +29,7 @@
             return user.Id;
         }
 
-        public async Task<string> ForthcomingАbsenceAsync(DateTime from, DateTime till)
+        public async Task<string> CreateАbsenceAsync(DateTime from, DateTime till)
         {
             var forthcomingАbsence = new Absence
             {

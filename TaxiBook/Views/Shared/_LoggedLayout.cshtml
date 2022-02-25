@@ -24,31 +24,37 @@
                     <ul class="menu">
                         <h1>Клиент</h1>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
+                            <a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
                                 <i class="fas fa-home"></i>
                                 <span>Начало</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Order" asp-action="Overview" class='sidebar-link'>
+                            <a asp-area="Default" asp-controller="Order" asp-action="Overview" class='sidebar-link'>
                                 <i class="fas fa-search-location"></i>
-                                <span>Моето такси</span>
+                                <span>Текуща поръчка</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Home" asp-action="GiveFeedback" class='sidebar-link'>
+                            <a asp-area="Default" asp-controller="Home" asp-action="CompletedОrders" class='sidebar-link'>
+                                <i class="fas fa-clone"></i>
+                                <span>Завършени поръчки</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-area="Default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
+                                <i class="fas fa-bookmark"></i>
+                                <span>Любими</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-area="Default" asp-controller="Home" asp-action="GiveFeedback" class='sidebar-link'>
                                 <i class="fas fa-comment-dots"></i>
                                 <span>Оцени пътуване</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
-                                <i class="fas fa-bookmark"></i><script src="https://kit.fontawesome.com/0368fc1ed1.js" crossorigin="anonymous"></script>
-                                <span>Любими</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="default" asp-controller="Company" asp-action="Create" class='sidebar-link'>
+                            <a asp-area="Default" asp-controller="Company" asp-action="Create" class='sidebar-link'>
                                 <i class="fas fa-plus"></i>
                                 <span>Добави компания</span>
                             </a> 

@@ -14,7 +14,7 @@
             this.db = db;
         }
 
-        public async Task<string> GiveFeedbackAsync(string company, bool isLiked, string description)
+        public async Task<string> CreateAsync(string company, bool isLiked, string description)
         {
             var feedback = new Feedback
             {

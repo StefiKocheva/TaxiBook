@@ -32,6 +32,12 @@
             return this.View();
         }
 
+        [HttpGet]
+        public ActionResult CompletedОrders()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> GiveFeedback(GiveFeedbackViewModel model)
         {
@@ -40,7 +46,7 @@
                 return this.BadRequest();
             }
 
-            var feedbackId = await this._service.GiveFeedbackAsync(
+            var feedbackId = await this._service.CreateAsync(
                 model.Company,
                 model.IsLiked,
                 model.Description);

@@ -28,7 +28,7 @@
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
                 LicenseUrl = licenseUrl,
-                //Address = model.Address,
+                Description = model.Description,
             };
 
             await db.Companies.AddAsync(company);

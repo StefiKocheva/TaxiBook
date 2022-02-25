@@ -15,5 +15,11 @@
         {
             return this.View();
         }
+
+        [HttpPut]
+        public IActionResult Update(string userId)
+        {
+            return this.Ok();
+        }
     }
 }

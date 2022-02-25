@@ -32,5 +32,10 @@
 
             return order.Id;
         }
+
+        public void DeleteAsync(string id, string clientId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

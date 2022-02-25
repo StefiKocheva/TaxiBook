@@ -20,7 +20,9 @@
         [Required(ErrorMessage = RequiredErrorMessage)]
         public decimal NightТariff { get; set; }
 
-        public string Address { get; set; } // ? Description
+        public string Address { get; set; } 
+
+        public string Description { get; set; } 
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string PhoneNumber { get; set; }

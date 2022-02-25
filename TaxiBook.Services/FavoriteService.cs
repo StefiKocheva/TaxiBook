@@ -14,7 +14,7 @@
             this.db = db;
         }
 
-        public async Task<string> CreateAsync(string companyName)
+        public async Task<string> AddAsync(string companyName)
         {
             var favorite = new Favorite()
             {
@@ -26,6 +26,11 @@
             await db.SaveChangesAsync();
 
             return favorite.Id;
+        }
+
+        public void DeleteAsync(string id, string userId)
+        {
+            // this.db.Favorites.Remove();
         }
     }
 }

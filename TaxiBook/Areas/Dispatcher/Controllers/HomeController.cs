@@ -10,9 +10,9 @@
     [Area("Dispatcher")]
     public class HomeController : Controller
     {
-        private readonly IDispatcherScheduleService _homeService;
+        private readonly IScheduleService _homeService;
 
-        public HomeController(IDispatcherScheduleService homeService)
+        public HomeController(IScheduleService homeService)
         {
             this._homeService = homeService;
         }
@@ -31,7 +31,7 @@
                 return this.BadRequest();
             }
         
-            var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
+            var forthcomingAbsenceId = await this._homeService.CreateАbsenceAsync(
                 model.From,
                 model.Till);
         

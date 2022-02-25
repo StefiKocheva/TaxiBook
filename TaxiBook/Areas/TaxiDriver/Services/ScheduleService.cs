@@ -6,11 +6,11 @@
     using Data.Models;
     using Services.Inerfaces;
 
-    public class TaxiDriverScheduleService : ITaxiDriverScheduleService
+    public class ScheduleService : IScheduleService
     {
         private readonly TaxiBookDbContext db;
 
-        public TaxiDriverScheduleService(TaxiBookDbContext db)
+        public ScheduleService(TaxiBookDbContext db)
         {
             this.db = db;
         }

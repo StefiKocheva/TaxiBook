@@ -5,11 +5,11 @@
     using Data.Models;
     using Services.Interfaces;
 
-    public class DispatcherOrderService : IDispatcherOrderService
+    public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
 
-        public DispatcherOrderService(TaxiBookDbContext db)
+        public OrderService(TaxiBookDbContext db)
         {
             this.db = db;
         }

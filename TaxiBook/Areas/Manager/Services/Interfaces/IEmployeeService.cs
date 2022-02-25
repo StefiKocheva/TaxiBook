@@ -4,6 +4,21 @@
 
     public interface IEmployeeService
     {
-        Task<string> CreateAsync(string firstName, string lastName, string placeOfResidence, string email, string phoneNumber);
+        Task<string> CreateAsync(
+            string firstName, 
+            string lastName, 
+            string placeOfResidence, 
+            string email, 
+            string phoneNumber);
+
+        Task<string> UpdateAsync(
+            string id, 
+            string firstName, 
+            string lastName, 
+            string placeOfResidence, 
+            string email, 
+            string phoneNumber);
+
+        void DeleteAsync(string id);
     }
 }

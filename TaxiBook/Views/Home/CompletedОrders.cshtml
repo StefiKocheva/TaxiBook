@@ -1,0 +1,423 @@
+﻿@{
+    this.Layout = "_LoggedLayout";
+}
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-12 order-md-1 order-last">
+            <h3>Всички направени поръчки</h3>
+            <p class="text-subtitle text-muted">От тук може да отвирте любимите си компании или локации.</p>
+        </div>
+    </div>
+</div>
+<div class="card collapse-icon accordion-icon-rotate">
+    <div class="card-header">
+        <h1 class="card-title pl-1">Отминали поръчки</h1>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="accordion" id="cardAccordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                        <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022 г.</span>
+                    </div>
+                    <div id="collapseOne" class="collapse pt-1" aria-labelledby="headingOne" data-parent="#cardAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Къде се намирате в момента?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='ул. "Батак" 23' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>До къде искате да пътувате?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Лидъл" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='Намирам се на входа на училище "Васил Друмев"' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Пред входа на магазина" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Колко хора ще пътуват?</label>
+                                        <div class="position-relative">
+                                            <input type="number" class="form-control" value="1" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Имате ли допълнителни изисквания?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="-" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-handshake"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a asp-area="Default" asp-controller="Order" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card collapse-header">
+                    <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                        <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022 г.</span>
+                    </div>
+                    <div id="collapseTwo" class="collapse pt-1" aria-labelledby="headingTwo" data-parent="#cardAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Къде се намирате в момента?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='ул. "Батак" 23' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>До къде искате да пътувате?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Лидъл" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='Намирам се на входа на училище "Васил Друмев"' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Пред входа на магазина" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Колко хора ще пътуват?</label>
+                                        <div class="position-relative">
+                                            <input type="number" class="form-control" value="1" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Имате ли допълнителни изисквания?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="-" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-handshake"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a asp-area="Default" asp-controller="Order" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                        <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022 г.</span>
+                    </div>
+                    <div id="collapseThree"  class="collapse pt-1" aria-labelledby="headingThree" data-parent="#cardAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Къде се намирате в момента?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='ул. "Батак" 23' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>До къде искате да пътувате?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Лидъл" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='Намирам се на входа на училище "Васил Друмев"' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Пред входа на магазина" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Колко хора ще пътуват?</label>
+                                        <div class="position-relative">
+                                            <input type="number" class="form-control" value="1" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Имате ли допълнителни изисквания?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="-" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-handshake"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a asp-area="Default" asp-controller="Order" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" role="button">
+                        <span class="collapsed  collapse-title">12:20 - 12:40, 19.02.2022 г.</span>
+                    </div>
+                    <div id="collapseFour" class="collapse pt-1" aria-labelledby="headingFour" data-parent="#cardAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Къде се намирате в момента?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='ул. "Батак" 23' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>До къде искате да пътувате?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Лидъл" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='Намирам се на входа на училище "Васил Друмев"' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Пред входа на магазина" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Колко хора ще пътуват?</label>
+                                        <div class="position-relative">
+                                            <input type="number" class="form-control" value="1" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Имате ли допълнителни изисквания?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="-" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-handshake"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a asp-area="Default" asp-controller="Order" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour" role="button">
+                        <span class="collapsed  collapse-title">12:20 - 12:40, 19.02.2022 г.</span>
+                    </div>
+                    <div id="collapseFive" class="collapse pt-1" aria-labelledby="headingFive" data-parent="#cardAccordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Къде се намирате в момента?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='ул. "Батак" 23' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>До къде искате да пътувате?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Лидъл" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value='Намирам се на входа на училище "Васил Друмев"' readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Уточнение</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="Пред входа на магазина" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Колко хора ще пътуват?</label>
+                                        <div class="position-relative">
+                                            <input type="number" class="form-control" value="1" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label>Имате ли допълнителни изисквания?</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" value="-" readonly="readonly">
+                                            <div class="form-control-icon">
+                                                <i class="far fa-handshake"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a asp-area="Default" asp-controller="Order" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

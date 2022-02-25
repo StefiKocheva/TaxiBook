@@ -46,5 +46,10 @@
 
             return user.Id;
         }
+
+        public void DeleteEmployeeAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

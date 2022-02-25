@@ -10,9 +10,9 @@
     [Area("Dispatcher")]
     public class OrdersController : Controller
     {
-        private readonly IDispatcherOrderService _orderService;
+        private readonly IOrderService _orderService;
 
-        public OrdersController(IDispatcherOrderService orderService)
+        public OrdersController(IOrderService orderService)
         {
             this._orderService = orderService;
         }

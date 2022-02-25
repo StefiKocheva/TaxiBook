@@ -29,5 +29,15 @@
 
             return user.Id;
         }
+
+        public void DeleteAsync(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> UpdateAsync(string id, string firstName, string lastName, string placeOfResidence, string email, string phoneNumber)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
