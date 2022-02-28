@@ -1,6 +1,8 @@
 ﻿namespace TaxiBook.Services
 {
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
@@ -8,27 +10,48 @@
     using Data.Models;
     using Interfaces;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
     {
         private readonly TaxiBookDbContext db;
 
-        public CompanyService(TaxiBookDbContext db)
-        {
-            this.db = db;
-        }
+        public CompanyService(TaxiBookDbContext db) => this.db = db;
 
-        public async Task<string> CreateAsync(CreateCompanyViewModel model)
+        public IEnumerable<CompanyDetailsViewModel> All() 
+            => this.db
+                .Companies
+                .OrderBy(c => c.Name)
+                .Select(c => new CompanyDetailsViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    DailyTariff = c.DailyTariff,
+                    NightTariff = c.NightTariff,
+                    PhoneNumber = c.PhoneNumber,
+                    // Address = c.Address - address of company
+                    // Region = c.Region - area for orders
+                })
+                .ToHashSet();
+
+        public async Task<string> CreateAsync(
+            string name, 
+            decimal dailyTariff, 
+            decimal nightTariff, 
+            string phoneNumber, 
+            string description 
+            /*IFormFile license*/)
         {
-            var licenseUrl = await this.UploadImageAsync(model.License);
+            //var licenseUrl = await this.UploadImageAsync(license);
 
             var company = new Company()
             {
-                Name = model.Name,
-                PhoneNumber = model.PhoneNumber,
-                LicenseUrl = licenseUrl,
-                Description = model.Description,
+                Name = name,
+                DailyTariff = dailyTariff,
+                NightTariff = nightTariff,
+                PhoneNumber = phoneNumber,
+                Description = description,
             };
 
             await db.Companies.AddAsync(company);

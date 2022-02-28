@@ -1,12 +1,9 @@
 namespace TaxiBook
 {
-    using Areas.Dispatcher.Services;
-    using Areas.Dispatcher.Services.Interfaces;
+    using System;
+    using System.Threading.Tasks;
     using Areas.Manager.Services;
     using Areas.Manager.Services.Inerfaces;
-    using Areas.Manager.Services.Interfaces;
-    using Areas.TaxiDriver.Services;
-    using Areas.TaxiDriver.Services.Inerfaces;
     using Data;
     using Data.Models;
     using Infrastructure;
@@ -40,6 +37,9 @@ namespace TaxiBook
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TaxiBookDbContext>();
 
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<DbContext>();
+
             services
                 .AddTransient<ICompanyService, CompanyService>()
                 .AddTransient<Services.Interfaces.IOrderService, Services.OrderService>()
@@ -53,7 +53,7 @@ namespace TaxiBook
                 .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, Areas.Manager.Services.ScheduleService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env /*IServiceProvider serviceProvider*/)
         {
             app.UseExceptionHandling(env);
 
@@ -68,6 +68,27 @@ namespace TaxiBook
             app.UseEndpoints();
 
             app.SeedData();
+
+            //CreateRoles(serviceProvider).Wait();
         }
+
+        //private async Task CreateRoles(IServiceProvider serviceProvider)
+        //{
+        //    //adding customs roles : Question 1
+        //    var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        //    var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+        //    string[] roleNames = new [] { "TaxiDriver", "Dispatcher", "Manager" };
+        //    IdentityResult roleResult;
+        //
+        //    foreach (var roleName in roleNames)
+        //    {
+        //        var roleExist = await RoleManager.RoleExistsAsync(roleName);
+        //        if (!roleExist)
+        //        {
+        //            //create the roles and seed them to the database: Question 2
+        //            roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+        //        }
+        //    }
+        //}
     }
 }

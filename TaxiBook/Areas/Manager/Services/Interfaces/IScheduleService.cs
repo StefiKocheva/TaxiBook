@@ -1,6 +1,8 @@
 ﻿namespace TaxiBook.Areas.Manager.Services.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using ViewModels.Schedule;
 
     public interface IScheduleService
     {
@@ -10,6 +12,8 @@
             string from, 
             string till);
 
-        void DeleteEmployeeAsync(string id);
+        void DeleteEmployeeAsync(string id, string userId);
+
+        Task<IEnumerable<EmployeeListingViewModel>> All();
     }
 }

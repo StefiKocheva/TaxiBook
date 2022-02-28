@@ -11,6 +11,12 @@
             public const int MaxNameLength = 30;
 
             public const int MinNameLength = 2;
+
+            public const int MaxDescriptionLength = 300;
+
+            public const int MinDescriptionLength = 10;
+
+            public const string DescriptionLengthErrorMessage = "Описанието трябва да бъде между {2} и {1} символа дълго.";
         }
 
         public class CreateFavoriteViewModel

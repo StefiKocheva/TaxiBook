@@ -14,7 +14,7 @@
             this.Id = Guid.NewGuid().ToString();
             
             this.Feedbacks = new HashSet<Feedback>();
-            this.Bookings = new HashSet<Booking>();
+            this.Bookings = new HashSet<Order>();
             this.Taxies = new HashSet<Taxi>();
             this.Absences = new HashSet<Absence>();
             this.Favorites = new HashSet<Favorite>();
@@ -42,7 +42,7 @@
 
         public virtual IEnumerable<Feedback> Feedbacks { get; set; }
 
-        public virtual IEnumerable<Booking> Bookings { get; set; }
+        public virtual IEnumerable<Order> Bookings { get; set; }
 
         public virtual IEnumerable<Taxi> Taxies { get; set; }
 

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TaxiBook.Services.ViewModels.Companies
+@model CompanyListingViewModel
+@{
     this.Layout = "_AllCompaniesLayout";
 }
 
@@ -22,55 +24,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center">
-                            <td>Велина</td>
-                            <td>0.70 лв.</td>
-                            <td>Пазарджик</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        @foreach (var company in this.Model.Companies)
+                        {
+                            <tr class="text-center">
+                            <td>@company.Name</td>
+                            <td>@company.DailyTariff</td>
+                            <td>@*@company.Location*@</td>
+                            <td><a href="tel:089 706 5688">@company.PhoneNumber</a></td>
                             <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        <tr class="text-center">
-                            <td>Рефлекс Плюс</td>
-                            <td>0.75 лв.</td>
-                            <td>Варна</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td >Панда Такси</td>
-                            <td>0.65 лв.</td>
-                            <td>Пловдив</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Ивелина</td>
-                            <td>0.90 лв.</td>
-                            <td>София</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Евролийз Такси</td>
-                            <td>0.70 лв.</td>
-                            <td>Пазарджик</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Евролийз Такси</td>
-                            <td>0.70 лв.</td>
-                            <td>Пазарджик</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Евролийз Такси</td>
-                            <td>0.70 лв.</td>
-                            <td>Пазарджик</td>
-                            <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>

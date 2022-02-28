@@ -127,15 +127,15 @@
 
                 var user = new ApplicationUser
                 {
-                    FirstName = Input.FirstName, 
-                    LastName = Input.LastName, 
-                    UserName = Input.Email, 
-                    Email = Input.Email,
+                    FirstName = this.Input.FirstName, 
+                    LastName = this.Input.LastName, 
+                    UserName = this.Input.Email, 
+                    Email = this.Input.Email,
                     EmailConfirmed = true,
                     ImageUrl = imageUrl
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var result = await this._userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {

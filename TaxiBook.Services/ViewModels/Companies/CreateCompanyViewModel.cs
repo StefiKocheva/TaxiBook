@@ -20,14 +20,17 @@
         [Required(ErrorMessage = RequiredErrorMessage)]
         public decimal NightТariff { get; set; }
 
-        public string Address { get; set; } 
-
+        [Required(ErrorMessage = RequiredErrorMessage)]
+        [StringLength(
+            MaxDescriptionLength, 
+            ErrorMessage = DescriptionLengthErrorMessage, 
+            MinimumLength = MinDescriptionLength)]
         public string Description { get; set; } 
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        public IFormFile License { get; set; }
+        //[Required(ErrorMessage = RequiredErrorMessage)]
+        //public IFormFile License { get; set; }
     }
 }

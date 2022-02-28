@@ -12,10 +12,7 @@
     {
         private readonly IScheduleService _scheduleService;
 
-        public ScheduleController(IScheduleService scheduleService)
-        {
-            this._scheduleService = scheduleService;
-        }
+        public ScheduleController(IScheduleService scheduleService) => this._scheduleService = scheduleService;
 
         [HttpGet]
         public IActionResult CurrentMonth()

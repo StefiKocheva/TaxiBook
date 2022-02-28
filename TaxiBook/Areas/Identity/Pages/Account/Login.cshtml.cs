@@ -82,7 +82,12 @@
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this._signInManager.PasswordSignInAsync(this.Input.Email, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: false);
+                var result = await this._signInManager
+                    .PasswordSignInAsync(
+                        this.Input.Email, 
+                        this.Input.Password, 
+                        this.Input.RememberMe, 
+                        lockoutOnFailure: false);
                 
                 if (result.Succeeded)
                 {

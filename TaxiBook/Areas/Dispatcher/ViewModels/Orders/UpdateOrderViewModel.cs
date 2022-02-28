@@ -4,8 +4,10 @@
 
     using static Vallidation.CreateOrderViewModel;
 
-    public class CreateOrderViewModel
+    public class UpdateOrderViewModel
     {
+        public string Id { get; set; }
+
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string ClientName { get; set; }
 
@@ -30,8 +32,5 @@
 
         [MaxLength(MaxAdditionalRequirementsLength)]
         public string AdditionalRequirements { get; set; }
-
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        public string TaxiDriver { get; set; }
     }
 }

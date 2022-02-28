@@ -9,15 +9,16 @@
     {
         private readonly ICompanyService companyService;
 
-        public CompanyController(ICompanyService companyService)
-        {
-            this.companyService = companyService;
-        }
+        public CompanyController(ICompanyService companyService) => this.companyService = companyService;
 
         [HttpGet]
         public IActionResult All()
         {
-            return this.View();
+            var model = new CompanyListingViewModel();
+
+            model.Companies = this.companyService.All();
+
+            return View(model);
         }
 
         [HttpGet]
@@ -34,9 +35,14 @@
                 return this.BadRequest();
             }
 
-            await this.companyService.CreateAsync(model);
+            await this.companyService.CreateAsync(
+                model.Name,
+                model.DailyТariff,
+                model.NightТariff,
+                model.PhoneNumber,
+                model.Description);
 
-            return this.RedirectPermanent("/");
+            return this.RedirectToAction("All");
         }
     }
 }

@@ -4,7 +4,7 @@
 
     using static Vallidation.GiveFeedbackViewModel;
 
-    public class GiveFeedbackViewModel
+    public class CreateFeedbackViewModel
     {
         // Enum?
         [Required(ErrorMessage = RequiredErrorMessage)]

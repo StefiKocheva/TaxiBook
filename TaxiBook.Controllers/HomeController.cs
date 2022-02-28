@@ -9,10 +9,7 @@
     {
         private readonly IFeedbackService _service;
 
-        public HomeController(IFeedbackService service)
-        {
-            this._service = service;
-        }
+        public HomeController(IFeedbackService service) => this._service = service;
 
         [HttpGet]
         public IActionResult Index()
@@ -39,7 +36,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GiveFeedback(GiveFeedbackViewModel model)
+        public async Task<IActionResult> GiveFeedback(CreateFeedbackViewModel model)
         {
             if (!ModelState.IsValid)
             {

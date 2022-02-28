@@ -5,9 +5,9 @@
 
     using static Vallidation.Bookings;
 
-    public class Booking
+    public class Order
     {
-        public Booking()
+        public Order()
         {
             this.Id = Guid.NewGuid().ToString();
         }

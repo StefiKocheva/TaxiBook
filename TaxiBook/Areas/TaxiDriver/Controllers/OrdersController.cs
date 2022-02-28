@@ -12,10 +12,7 @@
     {
         private readonly IOrderService _orderService;
 
-        public OrdersController(IOrderService orderService)
-        {
-            this._orderService = orderService;
-        }
+        public OrdersController(IOrderService orderService) => this._orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()

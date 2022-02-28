@@ -12,10 +12,7 @@
     {
         private readonly IOrderService _orderService;
 
-        public OrdersController(IOrderService orderService)
-        {
-            this._orderService = orderService;
-        }
+        public OrdersController(IOrderService orderService) => this._orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -32,7 +29,7 @@
             }
         
             var orderId = await this._orderService.CreateAsync(
-                model.Name,
+                model.ClientName,
                 model.PhoneNumber,
                 model.CurrentLocation,
                 model.CurrentLocationDetails,

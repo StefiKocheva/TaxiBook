@@ -11,7 +11,7 @@
             this.Id = Guid.NewGuid().ToString();
 
             this.Users = new HashSet<ApplicationUser>();
-            this.Bookings = new HashSet<Booking>();
+            this.Bookings = new HashSet<Order>();
         }
 
         public string Id { get; set; }
@@ -38,6 +38,6 @@
 
         public virtual IEnumerable<ApplicationUser> Users { get; set; }
 
-        public virtual IEnumerable<Booking> Bookings { get; set; }
+        public virtual IEnumerable<Order> Bookings { get; set; }
     }
 }

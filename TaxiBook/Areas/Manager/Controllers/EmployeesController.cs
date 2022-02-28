@@ -1,8 +1,8 @@
 ﻿namespace TaxiBook.Areas.Manager.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
     using Services.Inerfaces;
     using ViewModels.Employees;
 
@@ -12,10 +12,7 @@
     {
         private readonly IEmployeeService _employeeService;
 
-        public EmployeesController(IEmployeeService employeeService)
-        {
-            this._employeeService = employeeService;
-        }
+        public EmployeesController(IEmployeeService employeeService) => this._employeeService = employeeService;
 
         [HttpGet]
         public IActionResult All()

@@ -9,10 +9,7 @@
     {
         private readonly IOrderService _service;
 
-        public OrderController(IOrderService service)
-        {
-            this._service = service;
-        }
+        public OrderController(IOrderService service) => this._service = service;
 
         [HttpGet]
         public IActionResult Create()

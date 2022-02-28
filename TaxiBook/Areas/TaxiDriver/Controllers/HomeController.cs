@@ -1,9 +1,9 @@
 ﻿namespace TaxiBook.Areas.TaxiDriver.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Inerfaces;
-    using System.Threading.Tasks;
     using ViewModels.Home;
 
     [Authorize]
@@ -12,10 +12,7 @@
     {
         private readonly IScheduleService _homeService;
 
-        public HomeController(IScheduleService homeService)
-        {
-            this._homeService = homeService;
-        }
+        public HomeController(IScheduleService homeService) => this._homeService = homeService;
 
         [HttpGet]
         public IActionResult Index()
@@ -37,9 +34,9 @@
                 return this.BadRequest();
             }
         
-            var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
-                model.From,
-                model.Till);
+           // var forthcomingAbsenceId = await this._homeService.ForthcomingАbsenceAsync(
+                //model.From,
+                //model.Till);
         
             return this.RedirectPermanent("Schedule");
         }

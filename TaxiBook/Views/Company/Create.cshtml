@@ -71,23 +71,10 @@
                                         <textarea asp-for="Description" class="form-control" rows="2" placeholder="Повече за вашата компания" id="description"></textarea>             
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label>Лиценз на компанията</label>
-                                        <div class="form-file">
-                                            <input asp-for="License" type="file" class="form-file-input" id="license">
-                                            <label class="form-file-label" for="license">
-                                                <span class="form-file-text">Изберете файл...</span>
-                                                <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
-                                            </label>
-                                            <span asp-validation-for="License" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <a href="javascript:window.history.back()" class="btn btn-light-secondary mr-1 mb-1">Назад</a>
-                                <a asp-area="Manager" asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary mr-1 mb-1">Добави</a>
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Добави</button>
                             </div>
                         </form>
                     </div>

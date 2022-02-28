@@ -1,19 +1,14 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Services.Interfaces
 {
-    using System;
     using System.Threading.Tasks;
+    using ViewModels.Home;
 
     public interface IScheduleService
     {
         Task<string> CreateАbsenceAsync(
-            DateTime from, 
-            DateTime till);
-
-        Task<string> AddEmployeeAsync(
-            string firstName, 
-            string lastName, 
-            string role, 
             string from, 
             string till);
+
+        Task<WorkTimeDetailsViewModel> Details(string id);
     }
 }

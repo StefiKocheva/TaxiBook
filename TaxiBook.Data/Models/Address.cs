@@ -11,8 +11,8 @@
             this.Id = Guid.NewGuid().ToString();
 
             this.Taxies = new HashSet<Taxi>();
-            this.CurrentLocations = new HashSet<Booking>();
-            this.EndLocations = new HashSet<Booking>();
+            this.CurrentLocations = new HashSet<Order>();
+            this.EndLocations = new HashSet<Order>();
         }
 
         public string Id { get; set; }
@@ -33,8 +33,8 @@
 
         public virtual IEnumerable<Taxi> Taxies { get; set; }
 
-        public virtual IEnumerable<Booking> CurrentLocations { get; set; }
+        public virtual IEnumerable<Order> CurrentLocations { get; set; }
 
-        public virtual IEnumerable<Booking> EndLocations { get; set; }
+        public virtual IEnumerable<Order> EndLocations { get; set; }
     }
 }

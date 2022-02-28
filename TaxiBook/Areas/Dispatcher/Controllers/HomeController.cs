@@ -12,10 +12,7 @@
     {
         private readonly IScheduleService _homeService;
 
-        public HomeController(IScheduleService homeService)
-        {
-            this._homeService = homeService;
-        }
+        public HomeController(IScheduleService homeService) => this._homeService = homeService;
 
         [HttpGet]
         public IActionResult Schedule()
@@ -31,9 +28,9 @@
                 return this.BadRequest();
             }
         
-            var forthcomingAbsenceId = await this._homeService.CreateАbsenceAsync(
-                model.From,
-                model.Till);
+            //var forthcomingAbsenceId = await this._homeService.CreateАbsenceAsync(
+            //    model.From,
+            //    model.Till);
         
             return this.RedirectPermanent("Schedule");
         }

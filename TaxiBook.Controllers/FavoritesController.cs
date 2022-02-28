@@ -9,10 +9,7 @@
     {
         private readonly IFavoriteService _service;
 
-        public FavoritesController(IFavoriteService service)
-        {
-            this._service = service;
-        }
+        public FavoritesController(IFavoriteService service) => this._service = service;
 
         [HttpGet]
         public IActionResult All()

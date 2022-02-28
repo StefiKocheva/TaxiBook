@@ -1,6 +1,8 @@
 ﻿namespace TaxiBook.Services.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using ViewModels.Home;
 
     public interface IFeedbackService
     {
@@ -8,5 +10,9 @@
             string company, 
             bool isLiked, 
             string description);
+
+        void Delete(string id, string userId);
+
+        Task<IEnumerable<FeedbackListingViewModel>> All();
     }
 }

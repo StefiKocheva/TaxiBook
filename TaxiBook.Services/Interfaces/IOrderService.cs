@@ -1,6 +1,7 @@
 ﻿namespace TaxiBook.Services.Interfaces
 {
     using System.Threading.Tasks;
+    using ViewModels.Orders;
 
     public interface IOrderService
     {
@@ -15,5 +16,7 @@
         void DeleteAsync(
             string id, 
             string clientId);
+
+        Task<OrderDetailsViewModel> DetailsAsync(string id);
     }
 }

@@ -26,7 +26,7 @@
 
             public const int MaxNameLength = 30;
 
-            public const int MinNameLength = 30;
+            public const int MinNameLength = 2;
 
             public const int MaxPasswordLength = 100;
 
