@@ -14,7 +14,6 @@
         [StringLength(MaxNameLength, ErrorMessage = StringLengthErrorMessage, MinimumLength = MinNameLength)]
         public string LastName { get; set; }
 
-        public string PlaceOfResidence { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string Email { get; set; }
@@ -24,8 +23,12 @@
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        [MaxLength(MaxBrandAndModelLength)]
-        public string BrandAndModel { get; set; }
+        [StringLength(MaxNameLength, ErrorMessage = StringLengthErrorMessage, MinimumLength = MinNameLength)]
+        public string Brand { get; set; }
+
+        [Required(ErrorMessage = RequiredErrorMessage)]
+        [StringLength(MaxNameLength, ErrorMessage = StringLengthErrorMessage, MinimumLength = MinNameLength)]
+        public string Model { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         [Range(MinNumberPlateLength, MaxNumberPlateLength)]

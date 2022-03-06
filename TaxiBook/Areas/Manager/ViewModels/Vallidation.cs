@@ -17,8 +17,6 @@
             public const int MinNumberPlateLength = 6;
 
             public const int MaxNumberPlateLength = 8;
-
-            public const int MaxBrandAndModelLength = 80;
         }
 
         public class AddEmployeeViewModel

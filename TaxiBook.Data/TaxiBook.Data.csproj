@@ -21,8 +21,4 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Enums\" />
-  </ItemGroup>
-
 </Project>

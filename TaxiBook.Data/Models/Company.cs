@@ -16,7 +16,6 @@
 
         public string Id { get; set; }
 
-
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
@@ -30,13 +29,36 @@
         [Phone]
         public string PhoneNumber { get; set; }
 
-        public Address Address { get; set; }
+        //public string ProvinceId { get; set; }
+
+        //[Required]
+        //public virtual Address Province { get; set; }
+
+        public Address Location { get; set; }
 
         [Required]
-        public decimal DailyTariff { get; set; }
+        public decimal OneКilometerМileageDailyPrice { get; set; }
 
         [Required]
-        public decimal NightTariff { get; set; }
+        public decimal OneКilometerМileageNightPrice { get; set; }
+
+        [Required]
+        public decimal DailyPricePerCall { get; set; }
+
+        [Required]
+        public decimal NightPricePerCall { get; set; }
+
+        [Required]
+        public decimal InitialDailyFee { get; set; }
+
+        [Required]
+        public decimal InitialNightFee { get; set; }
+
+        [Required]
+        public decimal DailyPricePerMinuteStay { get; set; }
+
+        [Required]
+        public decimal NightPricePerMinuteStay { get; set; }
 
         public string LicenseUrl { get; set; }
 

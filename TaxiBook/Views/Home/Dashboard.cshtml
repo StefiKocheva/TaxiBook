@@ -1,12 +1,14 @@
-﻿@{
+﻿@using TaxiBook.Services.ViewModels.Companies
+@model CompanyListingViewModel
+@{
     this.Layout = "_LoggedLayout";
 }
 
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-12 order-md-1 order-last">
-            <h3>Избери и поръчай своя превоз</h3>
-            <p class="text-subtitle text-muted">Може да се възползваш от предоставените данни и сам да избереш перфектния според своите предпочитания транспорт или пък всичко това оставиш на нас, като ни запознаеш със своите желания, а наша стане работата да ги реализираме.</p>
+            <h3>Всички компании</h3>
+            <p class="text-subtitle text-muted">Тук са всички регистрирани компании. След като изберете услугите на чия от тях да използвате, трябва да решите, дали ще направите своята поръчка посредством предоставения телефон за връзка, или онлайн.</p>
         </div>
     </div>
 </div>
@@ -24,81 +26,39 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a>О'Кей Супертранс</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>Иванина Такси</a></td>
+                        <td>1.18 лв.</td>
+                        <td><a href="tel:+359 2 091 3254">+359 2 091 3254</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                     <tr>
-                        <td><a>Омега Транс Такси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>Елит Такси</a></td>
+                        <td>1.20 лв.</td>
+                        <td><a href="tel:089 706 5688">+359 2 285 6380</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                     <tr>
-                        <td><a>Радио СВ такси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>Тико Такси</a></td>
+                        <td>1.15 лв.</td>
+                        <td><a href="tel:089 706 5688">+359 2 255 4173</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                     <tr>
-                        <td><a>Такси С Експрес</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>ВИП Такси</a></td>
+                        <td>1.20 лв.</td>
+                        <td><a href="tel:089 706 5688">+359 2 962 2214</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                     <tr>
-                        <td><a>Таксита Ден Нощ</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>Шанс</a></td>
+                        <td>1.01 лв.</td>
+                        <td><a href="tel:089 706 5688">+359 2 268 8060</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                     <tr>
-                        <td><a>М Такси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Велина</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Таксита Ден Нощ</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Green Taxi</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Yellow Taxi</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Триумф Тaкси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Кепитъл Тaкси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Евролийз Такси</a></td>
-                        <td>0.70 лева</td>
-                        <td><a href="tel:089 706 5688">089 706 5688</a></td>
+                        <td><a>България такси</a></td>
+                        <td>1.16 лв.</td>
+                        <td><a href="tel:089 706 5688">+359 2 693 9721</a></td>
                         <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                     </tr>
                 </tbody>

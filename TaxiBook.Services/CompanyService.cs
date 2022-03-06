@@ -10,7 +10,6 @@
     using Data.Models;
     using Interfaces;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.EntityFrameworkCore;
     using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
@@ -27,8 +26,8 @@
                 {
                     Id = c.Id,
                     Name = c.Name,
-                    DailyTariff = c.DailyTariff,
-                    NightTariff = c.NightTariff,
+                    //DailyTariff = c.DailyTariff,
+                    //NightTariff = c.NightTariff,
                     PhoneNumber = c.PhoneNumber,
                     // Address = c.Address - address of company
                     // Region = c.Region - area for orders
@@ -39,7 +38,8 @@
             string name, 
             decimal dailyTariff, 
             decimal nightTariff, 
-            string phoneNumber, 
+            string phoneNumber,
+            //string province,
             string description 
             /*IFormFile license*/)
         {
@@ -48,8 +48,8 @@
             var company = new Company()
             {
                 Name = name,
-                DailyTariff = dailyTariff,
-                NightTariff = nightTariff,
+                //DailyTariff = dailyTariff,
+                //NightTariff = nightTariff,
                 PhoneNumber = phoneNumber,
                 Description = description,
             };

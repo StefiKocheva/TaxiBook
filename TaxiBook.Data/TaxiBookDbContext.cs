@@ -98,9 +98,14 @@
                 .HasForeignKey(a => a.EmployeeId);
 
             builder.Entity<Company>()
-                .HasOne(c => c.Address)
+                .HasOne(c => c.Location)
                 .WithOne(a => a.Company)
                 .HasForeignKey<Address>(c => c.CompanyId);
+
+            //builder.Entity<Company>()
+            //    .HasOne(o => o.Province)
+            //    .WithMany(p => p.Provinces)
+            //    .HasForeignKey(o => o.ProvinceId);
 
             builder.Entity<Favorite>()
                 .HasOne(f => f.Client)

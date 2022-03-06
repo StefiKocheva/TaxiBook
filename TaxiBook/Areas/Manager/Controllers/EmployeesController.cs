@@ -10,14 +10,18 @@
     [Area("Manager")]
     public class EmployeesController : Controller
     {
-        private readonly IEmployeeService _employeeService;
+        private readonly IEmployeeService employeeService;
 
-        public EmployeesController(IEmployeeService employeeService) => this._employeeService = employeeService;
+        public EmployeesController(IEmployeeService employeeService) => this.employeeService = employeeService;
 
         [HttpGet]
         public IActionResult All()
         {
-            return this.View();
+            var model = new EmployeeListingViewModel();
+
+            model.Employees = this.employeeService.All();
+
+            return this.View(model);
         }
 
         [HttpGet]
@@ -34,14 +38,16 @@
                 return this.BadRequest();
             }
 
-            var userId = await this._employeeService.CreateAsync(
+            var userId = await this.employeeService.CreateAsync(
                 model.FirstName,
                 model.LastName,
-                model.PlaceOfResidence,
                 model.Email,
-                model.PhoneNumber);
+                model.PhoneNumber,
+                model.NumberPlate,
+                model.Brand,
+                model.Model);
 
-            return this.RedirectPermanent("All");
+            return this.RedirectToAction("All");
         }
 
         [HttpGet]

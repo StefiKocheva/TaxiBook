@@ -18,7 +18,7 @@
 
             model.Companies = this.companyService.All();
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpGet]

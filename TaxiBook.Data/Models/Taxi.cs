@@ -22,7 +22,10 @@
         public string NumberPlate { get; set; }
 
         [Required]
-        public string BrandAndModel { get; set; }
+        public string Brand { get; set; }
+
+        [Required]
+        public string Model { get; set; }
 
         public string CompanyId { get; set; }
 

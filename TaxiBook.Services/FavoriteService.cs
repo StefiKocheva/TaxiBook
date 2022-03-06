@@ -37,8 +37,8 @@
                 {
                     Id = f.Id,
                     CompanyName = f.CompanyName,
-                    DailyTariff = f.Client.Company.DailyTariff,
-                    NightTariff = f.Client.Company.NightTariff,
+                    //DailyTariff = f.Client.Company.DailyTariff,
+                    //NightTariff = f.Client.Company.NightTariff,
                     PhoneNumber = f.Client.Company.PhoneNumber,
                     // Region = f.Client.Company.Address.Region,
                 })

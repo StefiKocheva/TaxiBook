@@ -43,13 +43,19 @@
         }
 
         [HttpGet]
-        public IActionResult AcceptedOrders()
+        public IActionResult Processed()
         {
             return this.View();
         }
 
         [HttpGet]
-        public IActionResult RefusedOrders()
+        public IActionResult Refused()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Unprocessed()
         {
             return this.View();
         }

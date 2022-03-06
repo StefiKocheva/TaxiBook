@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Areas.Manager.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
@@ -7,6 +8,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Services.Inerfaces;
+    using TaxiBook.Areas.Manager.ViewModels.Employees;
 
     public class EmployeeService : IEmployeeService
     {
@@ -19,23 +21,49 @@
             this.db = db;
         }
 
+        public IEnumerable<EmployeeDetailsViewModel> All()
+            => this.db
+                .Users
+                .OrderBy(u => u.CreatedOn)
+                .Select(u => new EmployeeDetailsViewModel()
+                {
+                    Id = u.Id,
+                    FullName = u.FirstName + " " + u.LastName,
+                    //Role = u.Role
+                })
+                .ToHashSet();
+
         public async Task<string> CreateAsync(
             string firstName, 
             string lastName, 
-            string placeOfResidence, 
             string email, 
-            string phoneNumber)
+            string phoneNumber,
+            string numberPlate,
+            string brand,
+            string model)
         {
+            var taxi = new Taxi()
+            {
+                NumberPlate = numberPlate,
+                Model = model,
+                Brand = brand,
+            };
+
+            await this.db.AddAsync(taxi);
+
+            await this.db.SaveChangesAsync();
+
             var user = new ApplicationUser
             {
                 FirstName = firstName,
-                // Address.PlaceOfResidence = placeOfResidence,
                 LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
 
             await this._userManager.CreateAsync(user, "Employee_123");
+
+            await this.db.SaveChangesAsync();
 
             return user.Id;
         }
@@ -70,7 +98,7 @@
 
             user.FirstName = firstName;
             user.LastName = lastName;
-            user.Address.PlaceOfResidence = placeOfResidence;
+            //user.Address.PlaceOfResidence = placeOfResidence;
             user.Email = email;
             user.PhoneNumber = phoneNumber;
 

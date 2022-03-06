@@ -12,6 +12,8 @@
 
         public string PhoneNumber { get; set; }
 
+        public string Description { get; set; }
+
         // Region
 
         // Address

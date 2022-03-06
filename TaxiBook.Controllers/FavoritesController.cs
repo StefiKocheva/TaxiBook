@@ -7,9 +7,9 @@
 
     public class FavoritesController : Controller
     {
-        private readonly IFavoriteService _service;
+        private readonly IFavoriteService favoriteService;
 
-        public FavoritesController(IFavoriteService service) => this._service = service;
+        public FavoritesController(IFavoriteService favoriteService) => this.favoriteService = favoriteService;
 
         [HttpGet]
         public IActionResult All()
@@ -25,9 +25,9 @@
                 return this.BadRequest();
             }
 
-            var favoriteId = await this._service.AddAsync(model.CompanyName);
+            var favoriteId = await this.favoriteService.AddAsync(model.CompanyName);
 
-            return this.RedirectPermanent("Companies");
+            return this.RedirectToAction("All");
         }
 
         [HttpPut]

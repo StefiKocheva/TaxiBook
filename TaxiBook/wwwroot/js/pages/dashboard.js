@@ -397,7 +397,7 @@ var ctxBar = document.getElementById("bar").getContext("2d");
 var myBar = new Chart(ctxBar, {
   type: 'bar',
   data: {
-    labels: ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли"],
+      labels: ["Септември", "Октомври", "Ноември", "Декември", "Януари", "Февруари", "Март"],
     datasets: [{
       label: 'Положителни оценки',
       backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],

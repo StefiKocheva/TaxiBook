@@ -1,13 +1,9 @@
 ﻿namespace TaxiBook.Services.ViewModels.Home
 {
+    using System.Collections.Generic;
+
     public class FeedbackListingViewModel
     {
-        public string Id { get; set; }
-
-        public string ClientName { get; set; }
-
-        public bool IsLiked { get; set; }
-
-        public string Description { get; set; }
+        public IEnumerable<FeedbackDetailsViewModel> Feedbacks { get; set; }
     }
 }

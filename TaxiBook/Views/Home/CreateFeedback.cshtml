@@ -7,22 +7,22 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12">
-            <h3>Твоята оценка</h3>
-            <p class="text-subtitle text-muted">Моля попълнете формата, като споделите своето мнение относно конкретната компания.</p>
+            <h3>Оцени пътуване</h3>
+            <p class="text-subtitle text-muted">Моля попълнете формата, за да дадете своята оценка.</p>
         </div>
     </div>
 </div>
 <div class="card">
     <div class="card-content">
         <div class="card-body">
-            <form method="post" asp-area="default" asp-controller="Home" asp-action="GiveFeedback">
+            <form method="post" asp-area="default" asp-controller="Home" asp-action="CreateFeedback">
                 <div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-4">
                         <div class="form-group form-label-group">
-                            <label for="companyName">Услугите на чия компания използва?</label>
+                            <label for="companyName">Услугите на чия компания използвахте?</label>
                             <fieldset class="form-group">
                                 <select class="form-select" id="companyName">
-                                    <option selected="true" disabled="disabled">Избери...</option>    
+                                    <option selected="true" disabled="disabled">Изберете...</option>    
                                     <option>Иванина</option>
                                     <option>Велина</option>
                                     <option>Yellow Taxi</option>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group form-label-group">
-                        <label for="label-textarea">Как би оценил своето пътуване?</label>
+                        <label for="label-textarea">Как бихте оценили своето пътуване?</label>
                     </div>
                     <ul class="list-unstyled mb-0">
                         <li class="d-inline-block me-2 mb-1" >
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="d-inline-block me-2 mb-1" style="margin-left: 9em;">
+                        <li class="d-inline-block me-2 mb-1" style="margin-left: 17em;">
                             <div class='form-check'>
                                 <div class="checkbox">
                                     <input asp-for="IsLiked" type="checkbox" class="form-check-input" name="check" onclick="onlyOne(this)">
@@ -58,8 +58,8 @@
                 </div><br />
                 <div class="form-body">
                     <div class="form-group form-label-group">
-                        <label for="description">Имаш нещо друго, което искаш да споделиш?</label>
-                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Напиши го тук" id="description"></textarea>
+                        <label for="description">Има ли нещо друго, което искате да споделите?</label>
+                        <textarea asp-for="Opinion" class="form-control" rows="4" placeholder="Напишете тук" id="description"></textarea>
                     </div>
                 </div>
                 <div class="form-actions d-flex justify-content-end">

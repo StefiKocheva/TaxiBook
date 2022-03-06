@@ -5,15 +5,11 @@
     <div class="row">
         <div class="col-12">
             <h3>Направи поръчка</h3>
-            <p class="text-subtitle text-muted">Лесно въвеждайки данните, които клиентът предоставя, с един клик Вие автоматично изпращате цялата информация до избран таксиметров шофьор.</p>
+            <p class="text-subtitle text-muted">Тук може да създавате нови поръчки.</p>
         </div>
     </div>
 </div>
-<div class="mapouter">
-    <div class="gmap_canvas">
-    <iframe class="card-img-top img-fluid" alt="singleminded" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
-    </div>
-</div>
+<div class="mapouter"><div class="gmap_canvas"><iframe width="1400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=Pazardzik&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;height:350px;width:1120px;}</style><a href="https://www.embedgooglemap.net">custom google map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:350px;width:1120px;}</style></div></div><br />
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
@@ -24,12 +20,12 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="name">Име на клиент</label>
+                                        <label for="name">Име</label>
                                         <div class="position-relative">
-                                            <input asp-for="ClientName" type="text" class="form-control" placeholder="Име" id="name">
-                                            <span asp-validation-for="ClientName" class="text-danger"></span>
+                                            <input type="text" class="form-control" placeholder="Име" id="name">
+                                            <span class="text-danger"></span>
                                             <div class="form-control-icon">
-                                                <i class="fas fa-user-circle"></i>
+                                                <i class="fas fa-user"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -38,10 +34,10 @@
                                     <div class="form-group has-icon-left">
                                         <label for="phoneNumber">Телефонен номер</label>
                                         <div class="position-relative">
-                                            <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Име" id="phoneNumber">
-                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                            <input  type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
+                                            <span  class="text-danger"></span>
                                             <div class="form-control-icon">
-                                                <i class="fas fa-phone-alt"></i>
+                                                <i class="fas fa-phone"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -50,8 +46,8 @@
                                     <div class="form-group has-icon-left">
                                         <label for="currentLocation">Начална точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Начална точка" id="currentLocation">
-                                            <span asp-validation-for="CurrentLocation" class="text-danger"></span>
+                                            <input  type="text" class="form-control" placeholder="Текущо местоположение" id="currentLocation">
+                                            <span  class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-street-view"></i>
                                             </div>
@@ -60,10 +56,10 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
+                                        <label for="endLocation">Крайна точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
-                                            <span asp-validation-for="EndLocation" class="text-danger"></span>
+                                            <input  type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
+                                            <span  class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
@@ -71,35 +67,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="currentLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за местоположението на Вашия клиент" id="currentLocationDetails">
-                                            <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder='Повече за крайната дестинация на Вашия клиент' id="endLocationDetails">
-                                            <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
+                                    <div class="form-group position-relative">
+                                        <label for="description">Уточнение</label>
+                                        <textarea class="form-control" rows="2" placeholder="Уточнение"></textarea>             
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CountOfPassengers"min="1" max="6" type="number" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
-                                            <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
+                                            <input type="number" min="1" max="6" class="form-control" placeholder="Брой пътуващи" id="countOfPassengers">
+                                            <span class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
@@ -108,33 +86,39 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="additionalRequirements">Допълнителни изисквания</label>
+                                        <label for="endLocationDetails">Метод на плащане</label>
                                         <div class="position-relative">
-                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например помощ с багаж" id="additionalRequirements">
-                                            <span asp-validation-for="AdditionalRequirements" class="text-danger"></span>
+                                            <input  type="text" class="form-control" placeholder="Метод на плащане" id="endLocationDetails">
+                                            <span  class="text-danger"></span>
                                             <div class="form-control-icon">
-                                                <i class="far fa-handshake"></i>
+                                                <i class="fas fa-wallet"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="description">Допълнителни изисквания</label>
+                                        <textarea class="form-control" rows="2" placeholder="Допълнителни изисквания"></textarea>             
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="taxiDriverName">Шофьор</label>
+                                        <label for="taxiDriver">Таксиметров шофьор</label>
                                         <div class="position-relative">
-                                            <input asp-for="TaxiDriver" type="text" class="form-control" placeholder="Имейл" id="taxiDriverName">
-                                            <span asp-validation-for="TaxiDriver" class="text-danger"></span>
+                                            <input type="text" class="form-control" placeholder="Таксиметров шофьор (ctrl + v)" id="taxiDriver">
+                                            <span class="text-danger"></span>
                                             <div class="form-control-icon">
-                                                <i class="fas fa-at"></i>
+                                                <i class="fas fa-user-tie"></i>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Поръчай</button>
-                                    <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Върни по подразбиране</button>
                                 </div>
                             </div>
+                            
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Изпрати</button>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -153,22 +137,18 @@
             <table class='table table-hover'>
                 <thead>
                     <tr>
-                        <th class="text-center">Пълно име</th>
-                        <th class="text-center">Имейл</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Функция</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center">Стефани Кочева</td>
-                        <td class="text-center">stefikocheva2005@gmail.com</td>
+                        <td class="text-center">stefanikocheva@example.com</td>
+                        <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('stefanikocheva@example.com')"><i class="fas fa-copy"></i></a></td>
                     </tr>
                     <tr>
-                        <td class="text-center">Стефани Кочева</td>
-                        <td class="text-center">stefikocheva2005@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">Стефани Кочева</td>
-                        <td class="text-center">stefikocheva2005@gmail.com</td>
+                        <td class="text-center">testtestov@example.com</td>
+                        <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('testtestov@example.com')"><i class="fas fa-copy"></i></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -176,3 +156,8 @@
     </div>
 </div>
 
+<script>
+    window.onbeforeunload = function() {
+        return "Are you sure you want to close the window?";
+    };
+</script>

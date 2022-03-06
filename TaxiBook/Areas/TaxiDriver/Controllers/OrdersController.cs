@@ -40,13 +40,25 @@
         }
 
         [HttpGet]
-        public IActionResult AcceptedOrders()
+        public IActionResult Unaccepted()
         {
             return this.View();
         }
 
         [HttpGet]
-        public IActionResult RefusedOrders()
+        public IActionResult Overview()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Accepted()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Refused()
         {
             return this.View();
         }

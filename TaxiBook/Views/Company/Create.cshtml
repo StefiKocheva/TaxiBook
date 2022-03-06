@@ -18,59 +18,96 @@
                         <form method="post" asp-area="default" asp-controller="Company" asp-action="Create" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative has-icon-left">
+                                    <div class="form-group">
                                         <label for="companyName">Име</label>
-                                        <div class="position-relative">
-                                            <input asp-for="Name" type="text" class="form-control" id="companyName" placeholder="Име на компанията">
-                                            <span asp-validation-for="Name" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
+                                        <input asp-for="Name" type="text" class="form-control" id="companyName" placeholder="Име на компанията">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative has-icon-left">
+                                    <div class="form-group">
                                         <label for="phoneNumber">Телефонен номер</label>
-                                        <div class="position-relative">
-                                            <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
-                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-phone-alt"></i>
-                                            </div>
-                                        </div>
+                                        <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative has-icon-left">
-                                        <label for="dailyTariff">Дневна тарифа</label>
-                                        <div class="position-relative">
-                                            <input asp-for="DailyТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.01" id="dailyTariff">
-                                            <span asp-validation-for="DailyТariff" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-sun"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative has-icon-left">
-                                        <label for="nightTariff">Нощна тарифа</label>
-                                        <div class="position-relative">
-                                            <input asp-for="NightТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.01" id="nightTariff">
-                                            <span asp-validation-for="NightТariff" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-moon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
                                         <label for="description">Описание</label>
                                         <textarea asp-for="Description" class="form-control" rows="2" placeholder="Повече за вашата компания" id="description"></textarea>             
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Лиценз</label>
+                                        <div class="form-file">
+                                            <input type="file" class="form-file-input" id="profilePicture">
+                                            <label class="form-file-label" for="profilePicture">
+                                                <span class="form-file-text">Изберете файл...</span>
+                                                <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                            </label>
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="card-title">Дневна тарифа</h4>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="dailyTariff">Цена за 1 километър пробег</label>
+                                        <input asp-for="DailyТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="dailyTariff">
+                                        <span asp-validation-for="DailyТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="dailyTariff">Цена за повикване</label>
+                                        <input asp-for="DailyТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="dailyTariff">
+                                        <span asp-validation-for="DailyТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="dailyTariff">Първоначална такса</label>
+                                        <input asp-for="DailyТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="dailyTariff">
+                                        <span asp-validation-for="DailyТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="dailyTariff">Цена за 1 минута престой</label>
+                                        <input asp-for="DailyТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="dailyTariff">
+                                         <span asp-validation-for="DailyТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <h4 class="card-title">Нощна тарифа</h4>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nightTariff">Цена за 1 километър пробег</label>
+                                        <input asp-for="NightТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="nightTariff">
+                                        <span asp-validation-for="NightТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nightTariff">Цена за повикване</label>
+                                        <input asp-for="NightТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="nightTariff">
+                                        <span asp-validation-for="NightТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nightTariff">Първоначална такса</label>
+                                        <input asp-for="NightТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="nightTariff">
+                                        <span asp-validation-for="NightТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nightTariff">Цена за 1 минута престой</label>
+                                        <input asp-for="NightТariff" type="number" min="0.01" step="0.01" class="form-control" placeholder="0.00" id="nightTariff">
+                                        <span asp-validation-for="NightТariff" class="text-danger"></span>
+                                    </div>
+                                </div> 
                             </div>
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <a href="javascript:window.history.back()" class="btn btn-light-secondary mr-1 mb-1">Назад</a>
@@ -83,3 +120,8 @@
         </div>
     </div>
 </div>
+<script>
+    window.onbeforeunload = function() {
+        return "Are you sure you want to close the window?";
+    };
+</script>

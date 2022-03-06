@@ -15,18 +15,18 @@
 
         public FeedbackService(TaxiBookDbContext db) => this.db = db;
 
-        public async Task<IEnumerable<FeedbackListingViewModel>> All()
-            => await this.db
+        public IEnumerable<FeedbackDetailsViewModel> All()
+            => this.db
                 .Feedbacks
                 .OrderByDescending(f => f.CreatedOn)
-                .Select(f => new FeedbackListingViewModel()
+                .Select(f => new FeedbackDetailsViewModel()
                 {
                     Id = f.Id,
                     ClientName = f.Client.FirstName + " " + f.Client.LastName,
                     IsLiked = f.IsLiked,
-                    Description = f.Description,
+                    Opinion = f.Description,
                 })
-                .ToListAsync();
+                .ToHashSet();
 
         public async Task<string> CreateAsync(
             string company, 

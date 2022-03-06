@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form">
+                        <form method="post" asp-area="Manager" asp-controller="Employees" asp-action="Create">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -38,14 +38,14 @@
                                         <input type="text" class="form-control" asp-for="LastName" id="lastName" placeholder="Фамилия">
                                         <span asp-validation-for="LastName" class="text-danger"></span>
                                     </div>
-                                </div>
+                                </div>@*
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="placeOfResidence">Населено място</label>
-                                        <input type="text" class="form-control" asp-for="PlaceOfResidence" id="placeOfResidence" placeholder="Телефонен номер">
-                                        <span asp-validation-for="PlaceOfResidence" class="text-danger"></span>
+                                        <input type="text" class="form-control"  id="placeOfResidence" placeholder="Телефонен номер">
+                                        <span  class="text-danger"></span>
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="phoneNumber">Телефонен номер</label>
@@ -53,7 +53,7 @@
                                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                @*<div class="col-sm-6">
                                     <fieldset class="form-group">
                                         <label>Роля</label>
                                         <select class="form-select">
@@ -62,7 +62,7 @@
                                             <option>Таксиметров шофьор</option>
                                         </select>
                                     </fieldset>
-                                </div>
+                                </div>*@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
@@ -73,9 +73,16 @@
                                 <h4 class="card-title">За автомобила</h4>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="brandAndModel">Марка и модел</label>
-                                        <input type="text" class="form-control" asp-for="BrandAndModel" id="brandAndModel" placeholder="Марка">
-                                        <span asp-validation-for="BrandAndModel" class="text-danger"></span>
+                                        <label for="passwordConfirmation">Марка</label>
+                                        <input type="text" class="form-control" asp-for="Brand" id="passwordConfirmation" placeholder="Регистрационен номер">
+                                        <span asp-validation-for="Brand" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="passwordConfirmation">Модел</label>
+                                        <input type="text" class="form-control" asp-for="Model" id="passwordConfirmation" placeholder="Регистрационен номер">
+                                        <span asp-validation-for="Model" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -84,9 +91,9 @@
                                         <input type="text" class="form-control" asp-for="NumberPlate" id="passwordConfirmation" placeholder="Регистрационен номер">
                                         <span asp-validation-for="NumberPlate" class="text-danger"></span>
                                     </div>
-                                </div><br /><br /><br /><br />
+                                </div>
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button class="btn btn-primary mr-1 mb-1">Добави</button>
+                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Добави</button>
                                 </div>
                             </div>
                         </form>

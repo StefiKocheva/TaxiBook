@@ -2,7 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using TaxiBook.Data.Models.Enums;
     using static Vallidation.Bookings;
 
     public class Order
@@ -38,6 +38,10 @@
         public DateTime CreatedOn { get; set; }
 
         public DateTime CompletedOn { get; set; }
+
+        public OrderState OrderState { get; set; }
+
+        public int MyProperty { get; set; }
 
         public string UserId { get; set; }
 

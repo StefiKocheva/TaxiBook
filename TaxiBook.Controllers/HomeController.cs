@@ -7,9 +7,9 @@
 
     public class HomeController : Controller
     {
-        private readonly IFeedbackService _service;
+        private readonly IFeedbackService feedbackService;
 
-        public HomeController(IFeedbackService service) => this._service = service;
+        public HomeController(IFeedbackService feedbackService) => this.feedbackService = feedbackService;
 
         [HttpGet]
         public IActionResult Index()
@@ -24,31 +24,31 @@
         }
 
         [HttpGet]
-        public ActionResult GiveFeedback(string userId)
-        {
-            return this.View();
-        }
-
-        [HttpGet]
         public ActionResult CompletedОrders()
         {
             return this.View();
         }
 
+        [HttpGet]
+        public ActionResult CreateFeedback(string userId)
+        {
+            return this.View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> GiveFeedback(CreateFeedbackViewModel model)
+        public async Task<IActionResult> CreateFeedback(CreateFeedbackViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            var feedbackId = await this._service.CreateAsync(
+            var feedbackId = await this.feedbackService.CreateAsync(
                 model.Company,
                 model.IsLiked,
-                model.Description);
+                model.Opinion);
 
-            return this.RedirectPermanent("GiveFeedback");
+            return this.RedirectToAction("CreateFeedback");
         }
     }
 }

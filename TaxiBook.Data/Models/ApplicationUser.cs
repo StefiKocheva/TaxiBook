@@ -7,20 +7,18 @@
 
     using static Vallidation.ApplicationUser;
 
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<string>
     {
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
-            
+
             this.Feedbacks = new HashSet<Feedback>();
             this.Bookings = new HashSet<Order>();
             this.Taxies = new HashSet<Taxi>();
             this.Absences = new HashSet<Absence>();
             this.Favorites = new HashSet<Favorite>();
         }
-
-        public string Id { get; set; }
 
         [Required]
         [MaxLength(MaxNameLength)]
@@ -29,6 +27,8 @@
         [Required]
         [MaxLength(MaxNameLength)]
         public string LastName { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public string ImageUrl { get; set; }
 

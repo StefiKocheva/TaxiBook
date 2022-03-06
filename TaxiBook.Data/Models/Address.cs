@@ -13,11 +13,10 @@
             this.Taxies = new HashSet<Taxi>();
             this.CurrentLocations = new HashSet<Order>();
             this.EndLocations = new HashSet<Order>();
+            //this.Provinces = new HashSet<Company>();
         }
 
         public string Id { get; set; }
-
-        public string PlaceOfResidence { get; set; }
 
         [Required]
         [MaxLength(500)]
@@ -36,5 +35,7 @@
         public virtual IEnumerable<Order> CurrentLocations { get; set; }
 
         public virtual IEnumerable<Order> EndLocations { get; set; }
+
+        //public virtual IEnumerable<Company> Provinces { get; set; }
     }
 }

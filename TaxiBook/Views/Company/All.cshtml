@@ -11,8 +11,8 @@
                 <div class="section-title" data-aos="fade-up">
                     <h2>Всички компании</h2>
                 </div>
-                <h3>Изборът е само ваш</h3>
-                <p></p><br/>
+                <h3>Изборът е изцяло ваш</h3>
+                <p>Тук са регистрираните компании в приложението.</p><br/>
                 <table class='table table-striped' id="table1">
                     <thead>
                         <tr>
@@ -24,16 +24,50 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var company in this.Model.Companies)
-                        {
-                            <tr class="text-center">
-                            <td>@company.Name</td>
-                            <td>@company.DailyTariff</td>
-                            <td>@*@company.Location*@</td>
-                            <td><a href="tel:089 706 5688">@company.PhoneNumber</a></td>
+                        <tr>
+                            <td>Шанс</td>
+                            <td>1.01 лв.</td>
+                            <td>Пазарджик</td>
+                            <td><a href="tel:089 706 5688">+359 2 268 8060</a></td>
                             <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
-                        }
+                        <tr>
+                            <td>Президент Такси</td>
+                            <td>1.30 лв.</td>
+                            <td>Добрич</td>
+                            <td><a href="tel:089 706 5688">+359 2 972 7449</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr><tr>
+                            <td>Такси Акация</td>
+                            <td>1.33 лв.</td>
+                            <td>Велико Търново</td>
+                            <td><a href="tel:089 706 5688">+359 2 296 1563</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr><tr>
+                            <td><a>Фаворит Такси</a></td>
+                            <td>1.25 лв.</td>
+                            <td>Добрич</td>
+                            <td><a href="tel:089 706 5688">+359 2 961 5363</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr><tr>
+                            <td>Витес</td>
+                            <td>1.29 лв.</td>
+                            <td>Габрово</td>
+                            <td><a href="tel:089 706 5688">+359 2 756 7951</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr><tr>
+                            <td><a>Шанс</a></td>
+                            <td>1.01 лв.</td>
+                            <td>Пазарджик</td>
+                            <td><a href="tel:089 706 5688">+359 2 268 8060</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr><tr>
+                            <td><a>Шанс</a></td>
+                            <td>1.01 лв.</td>
+                            <td>Пазарджик</td>
+                            <td><a href="tel:089 706 5688">+359 2 268 8060</a></td>
+                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

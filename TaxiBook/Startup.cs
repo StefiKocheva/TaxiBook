@@ -1,9 +1,5 @@
 namespace TaxiBook
 {
-    using System;
-    using System.Threading.Tasks;
-    using Areas.Manager.Services;
-    using Areas.Manager.Services.Inerfaces;
     using Data;
     using Data.Models;
     using Infrastructure;
@@ -15,6 +11,8 @@ namespace TaxiBook
     using Microsoft.Extensions.DependencyInjection;
     using Services;
     using Services.Interfaces;
+    using TaxiBook.Areas.Manager.Services;
+    using TaxiBook.Areas.Manager.Services.Inerfaces;
 
     public class Startup
     {
@@ -42,7 +40,7 @@ namespace TaxiBook
 
             services
                 .AddTransient<ICompanyService, CompanyService>()
-                .AddTransient<Services.Interfaces.IOrderService, Services.OrderService>()
+                .AddTransient<IOrderService, OrderService>()
                 .AddTransient<IFeedbackService, FeedbackService>()
                 .AddTransient<IFavoriteService, FavoriteService>()
                 .AddTransient<Areas.Dispatcher.Services.Interfaces.IScheduleService, Areas.Dispatcher.Services.ScheduleService>()
@@ -50,7 +48,7 @@ namespace TaxiBook
                 .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IOrderService, Areas.TaxiDriver.Services.OrderService>()
                 .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IScheduleService, Areas.TaxiDriver.Services.ScheduleService>()
                 .AddTransient<IEmployeeService, EmployeeService>()
-                .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, Areas.Manager.Services.ScheduleService>();
+                .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, ScheduleService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env /*IServiceProvider serviceProvider*/)

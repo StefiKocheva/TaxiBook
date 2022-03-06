@@ -10,15 +10,10 @@
     [Area("TaxiDriver")]
     public class HomeController : Controller
     {
-        private readonly IScheduleService _homeService;
+        private readonly IScheduleService _scheduleService;
 
-        public HomeController(IScheduleService homeService) => this._homeService = homeService;
+        public HomeController(IScheduleService scheduleService) => this._scheduleService = scheduleService;
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return this.View();
-        }
 
         [HttpGet]
         public IActionResult Schedule()

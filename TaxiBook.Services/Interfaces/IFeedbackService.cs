@@ -13,6 +13,6 @@
 
         void Delete(string id, string userId);
 
-        Task<IEnumerable<FeedbackListingViewModel>> All();
+        IEnumerable<FeedbackDetailsViewModel> All();
     }
 }

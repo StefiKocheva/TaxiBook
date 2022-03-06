@@ -7,9 +7,9 @@
 
     public class OrderController : Controller
     {
-        private readonly IOrderService _service;
+        private readonly IOrderService orderService;
 
-        public OrderController(IOrderService service) => this._service = service;
+        public OrderController(IOrderService orderService) => this.orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -25,7 +25,7 @@
                 return this.BadRequest();
             }
 
-            var orderId = await this._service.CreateAsync(
+            var orderId = await this.orderService.CreateAsync(
                  model.CurrentLocation,
                  model.CurrentLocationDetails,
                  model.EndLocation,

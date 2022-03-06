@@ -1,4 +1,7 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.Manager.ViewModels.Employees
+@model EmployeeListingViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-12 order-md-1 order-last">
             <h3>Вашите служители</h3>
@@ -19,16 +22,14 @@
                         </tr>
                     </thead>
                     <tbody align="center">
-                        <tr>
-                            <td>Стефани Кочева</td>
-                            <td>Диспечер</td>
-                            <td><a asp-area="Manager" asp-controller="Employees" asp-action="Edit" role="button" class="table-element"><i class="fas fa-user-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                        </tr>
-                        <tr>
-                            <td>Стефи Кочева</td>
-                            <td>Таксиметров шофьор</td>
-                            <td><a asp-area="Manager" asp-controller="Employees" asp-action="Edit" role="button" class="table-element"><i class="fas fa-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                        </tr>
+                        @foreach (var employee in this.Model.Employees)
+                        {
+                            <tr>
+                                <td>@employee.FullName</td>
+                                <td>Диспечер</td>
+                                <td><a asp-area="Manager" asp-controller="Employees" asp-action="Edit" role="button" class="table-element"><i class="fas fa-user-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 <a asp-area="Manager" asp-controller="Employees" asp-action="Create" class="btn btn-primary btn-block">Добави</a>

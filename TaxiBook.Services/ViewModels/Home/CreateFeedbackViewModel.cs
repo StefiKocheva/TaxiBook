@@ -14,6 +14,6 @@
         public bool IsLiked { get; set; }
 
         [MaxLength(MaxDescriptionLength)]
-        public string Description { get; set; }
+        public string Opinion { get; set; }
     }
 }
