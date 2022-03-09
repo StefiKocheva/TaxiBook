@@ -29,20 +29,20 @@
             return favorite.Id;
         }
 
-        public async Task<IEnumerable<FavoriteListingViewModel>> AllAsync()
-            => await this.db
-                .Favorites
-                .OrderBy(f => f.CompanyName)
-                .Select(f => new FavoriteListingViewModel()
-                {
-                    Id = f.Id,
-                    CompanyName = f.CompanyName,
-                    //DailyTariff = f.Client.Company.DailyTariff,
-                    //NightTariff = f.Client.Company.NightTariff,
-                    PhoneNumber = f.Client.Company.PhoneNumber,
-                    // Region = f.Client.Company.Address.Region,
-                })
-                .ToListAsync();
+        //public async Task<IEnumerable<FavoriteListingViewModel>> AllAsync()
+            //=> await this.db
+                //.Favorites
+                //.OrderBy(f => f.CompanyName)
+                //.Select(f => new FavoriteListingViewModel()
+                //{
+                    //Id = f.Id,
+                    //CompanyName = f.CompanyName,
+                    ////DailyTariff = f.Client.Company.DailyTariff,
+                    ////NightTariff = f.Client.Company.NightTariff,
+                    //PhoneNumber = f.Client.Company.PhoneNumber,
+                    //// Region = f.Client.Company.Address.Region,
+                //})
+                //.ToListAsync();
 
         public async void DeleteAsync(
             string id,
@@ -59,7 +59,7 @@
             await this.db.SaveChangesAsync();
         }
 
-        private async Task<Favorite?> ByIdAndByUserId(
+        private async Task<Favorite> ByIdAndByUserId(
             string id, 
             string userId)
             => await this.db

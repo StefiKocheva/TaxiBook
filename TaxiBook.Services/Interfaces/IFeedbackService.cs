@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using ViewModels.Home;
+    using TaxiBook.Services.ViewModels.Feedbacks;
 
     public interface IFeedbackService
     {

@@ -1,17 +1,10 @@
-﻿namespace TaxiBook.Services.ViewModels.Favorites
+﻿using System.Collections.Generic;
+using TaxiBook.Services.ViewModels.Companies;
+
+namespace TaxiBook.Services.ViewModels.Favorites
 {
     public class FavoriteListingViewModel
     {
-        public string Id { get; set; }
-
-        public string CompanyName { get; set; }
-
-        public string PhoneNumber { get; set; }
-
-        public decimal DailyTariff { get; set; }
-
-        public decimal NightTariff { get; set; }
-
-        public string Region { get; set; }
+        public IEnumerable<FavoriteDetailsModel> FavoriteCompanies { get; set; } = new HashSet<FavoriteDetailsModel>();
     }
 }

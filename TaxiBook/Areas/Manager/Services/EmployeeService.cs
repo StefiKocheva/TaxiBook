@@ -5,19 +5,22 @@
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Data.Models.Enums;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Services.Inerfaces;
-    using TaxiBook.Areas.Manager.ViewModels.Employees;
+    using ViewModels.Employees;
 
     public class EmployeeService : IEmployeeService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly TaxiBookDbContext db;
 
-        public EmployeeService(UserManager<ApplicationUser> userManager, TaxiBookDbContext db)
+        public EmployeeService(
+            UserManager<ApplicationUser> userManager, 
+            TaxiBookDbContext db)
         {
-            this._userManager = userManager;
+            this.userManager = userManager;
             this.db = db;
         }
 
@@ -29,7 +32,7 @@
                 {
                     Id = u.Id,
                     FullName = u.FirstName + " " + u.LastName,
-                    //Role = u.Role
+                    EmployeeType = u.EmployeeType,
                 })
                 .ToHashSet();
 
@@ -38,34 +41,55 @@
             string lastName, 
             string email, 
             string phoneNumber,
+            EmployeeType employeeType,
             string numberPlate,
             string brand,
             string model)
         {
-            var taxi = new Taxi()
-            {
-                NumberPlate = numberPlate,
-                Model = model,
-                Brand = brand,
-            };
-
-            await this.db.AddAsync(taxi);
-
-            await this.db.SaveChangesAsync();
 
             var user = new ApplicationUser
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                EmployeeType = employeeType,
             };
 
-            await this._userManager.CreateAsync(user, "Employee_123");
+            await this.userManager.CreateAsync(user, "Employee_123");
+
+            await this.db.AddAsync(user);
 
             await this.db.SaveChangesAsync();
 
+            if (numberPlate != null && brand != null && model != null)
+            {
+                var taxi = new Taxi()
+                {
+                    NumberPlate = numberPlate,
+                    Model = model,
+                    Brand = brand,
+                };
+
+                await this.db.AddAsync(taxi);
+
+                await this.db.SaveChangesAsync();
+            }
+
+            await this.AddToRoleAsync(user);
+
             return user.Id;
+        }
+
+        private async Task AddToRoleAsync(ApplicationUser user)
+        {
+            var employeeType = user.EmployeeType.ToString();
+
+            _ = employeeType == "TaxiDriver" ? 
+                await this.userManager.AddToRoleAsync(user, "TaxiDriver") 
+                : await this.userManager.AddToRoleAsync(user, "Dispatcher");
+
+            await this.db.SaveChangesAsync();
         }
 
         public async void DeleteAsync(string id)
@@ -85,9 +109,11 @@
             string id, 
             string firstName, 
             string lastName, 
-            string placeOfResidence, 
             string email, 
-            string phoneNumber)
+            string phoneNumber//,
+            //string brand,
+            //string model,
+            /*string numberPlate*/)
         {
             var user = await this.ByIdAndByUserId(id);
 
@@ -98,7 +124,6 @@
 
             user.FirstName = firstName;
             user.LastName = lastName;
-            //user.Address.PlaceOfResidence = placeOfResidence;
             user.Email = email;
             user.PhoneNumber = phoneNumber;
 

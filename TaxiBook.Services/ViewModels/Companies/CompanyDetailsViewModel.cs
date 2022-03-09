@@ -6,16 +6,28 @@
 
         public string Name { get; set; }
 
-        public decimal DailyTariff { get; set; }
-
-        public decimal NightTariff { get; set; }
-
         public string PhoneNumber { get; set; }
 
         public string Description { get; set; }
 
-        // Region
+        // License
 
-        // Address
+        public string Province { get; set; }
+
+        public decimal OneКilometerМileageDailyPrice { get; set; }
+
+        public decimal OneКilometerМileageNightPrice { get; set; }
+
+        public decimal DailyPricePerCall { get; set; }
+
+        public decimal NightPricePerCall { get; set; }
+
+        public decimal InitialDailyFee { get; set; }
+
+        public decimal InitialNightFee { get; set; }
+
+        public decimal DailyPricePerMinuteStay { get; set; }
+
+        public decimal NightPricePerMinuteStay { get; set; }
     }
 }

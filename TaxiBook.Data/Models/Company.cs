@@ -29,6 +29,8 @@
         [Phone]
         public string PhoneNumber { get; set; }
 
+        public string Province { get; set; }
+
         //public string ProvinceId { get; set; }
 
         //[Required]

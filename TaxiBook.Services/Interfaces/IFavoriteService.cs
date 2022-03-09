@@ -6,7 +6,7 @@
 
     public interface IFavoriteService
     {
-        Task<IEnumerable<FavoriteListingViewModel>> AllAsync();
+        //Task<IEnumerable<FavoriteListingViewModel>> AllAsync();
 
         Task<string> AddAsync(string companyName);
 

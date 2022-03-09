@@ -12,23 +12,35 @@
 <section class="section">
     <div class="card">
         <div class="card-body">
-            <div id="table" class="table-editable">
-                <table class='table table-hover'>
+            <div  class="table-editable">
+                <table class='table table-hover' id="table1">
                     <thead>
-                        <tr align="center">
-                            <th>Пълно име</th>
-                            <th>Роля</th>
-                            <th>Функции</th>
+                        <tr>
+                            <th class="text-center">Пълно име</th>
+                            <th class="text-center">Роля</th>
+                            <th class="text-center">Функции</th>
                         </tr>
                     </thead>
-                    <tbody align="center">
+                    <tbody class="text-center">
                         @foreach (var employee in this.Model.Employees)
                         {
-                            <tr>
-                                <td>@employee.FullName</td>
-                                <td>Диспечер</td>
-                                <td><a asp-area="Manager" asp-controller="Employees" asp-action="Edit" role="button" class="table-element"><i class="fas fa-user-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
-                            </tr>
+                            var employeeType = @employee.EmployeeType.ToString();
+                            
+                            if (@employeeType != "None")
+                            {
+                                <tr>
+                                    <td>@employee.FullName</td>
+                                    @if (employeeType == "TaxiDriver")
+                                    {
+                                        <td>Таксиметров шофьор</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Диспечер</td>
+                                    }
+                                    <td><a asp-area="Manager" asp-controller="Employees" asp-action="Overview" role="button" class="table-element"><i class="fas fa-user-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>

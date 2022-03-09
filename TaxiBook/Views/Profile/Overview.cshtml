@@ -17,39 +17,97 @@
                                 <div class="col-12 d-flex justify-content-center">
                                     <div class="avatar avatar-xl me-3">
                                         <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
-                                    </div><br /><br /><br /><br />
+                                    </div><br />
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#changeProfilePicture">Промени снимка</button><br /><br />
+                                    </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="firstName">Първо име</label>
-                                        <input type="text" class="form-control" id="firstName" readonly="readonly" value="Стефани">
+                                        <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="Стефани">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="lastName">Фамилия</label>
-                                        <input type="text" class="form-control" id="lastName" readonly="readonly" value="Кочева">
+                                        <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="Кочева">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="lastName">Email</label>
-                                        <input type="text" class="form-control" id="lastName" readonly="readonly" value="stefanikocheva@example.com">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="stefikocheva2005@gmail.com">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="lastName">Телефонен номер</label>
-                                        <input type="text" class="form-control" id="lastName" readonly="readonly" value="+359 2 062 9005">
+                                        <label for="phoneNumber">Телефонен номер</label>
+                                        <input type="text" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="0897065644">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <a class="btn btn-primary mr-1 mb-1">Редактирай</a>
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                    <button id="edit" onclick="enable('firstName', 'lastName', 'email', 'phoneNumber', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                    <script>
+                                        function enable(firstName, lastName, email, phoneNumber, hiddenButton, edit) {
+                                            document.getElementById(firstName).disabled = false;
+                                            document.getElementById(lastName).disabled = false;
+                                            document.getElementById(email).disabled = false;
+                                            document.getElementById(phoneNumber).disabled = false;
+                                            document.getElementById(edit).disabled = true;
+
+                                            document.getElementById(hiddenButton).style.visibility = "visible";
+                                        }
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </form>           
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="changeProfilePicture" tabindex="-1" role="dialog" aria-labelledby="changeProfilePictureTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeProfilePictureTitle">Промени снимка</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
+            </div>
+            <form method="post" enctype="multipart/form-data" action="/Users/ChangePhoto?area=default">
+                <div class="modal-body">
+                    <p>Тук може да промените своята профилна снимка.</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Нова снимка</label>
+                                <div class="form-file">
+                                    <input type="file" class="form-file-input" id="UserProfileViewModel_Image" name="UserProfileViewModel.Image">
+                                    <label class="form-file-label">
+                                        <span class="form-file-text">Изберете файл...</span>
+                                        <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                    <i class="bx bx-x d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Затвори</span>
+                </button>
+                <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                    <i class="bx bx-check d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Промени</span>
+                </button>
             </div>
         </div>
     </div>

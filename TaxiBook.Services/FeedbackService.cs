@@ -7,7 +7,7 @@
     using Data.Models;
     using Interfaces;
     using Microsoft.EntityFrameworkCore;
-    using TaxiBook.Services.ViewModels.Home;
+    using TaxiBook.Services.ViewModels.Feedbacks;
 
     public class FeedbackService : IFeedbackService
     {
@@ -62,7 +62,7 @@
             await this.db.SaveChangesAsync();
         }
 
-        private async Task<Feedback?> ByIdAndByUserId(
+        private async Task<Feedback> ByIdAndByUserId(
             string id, 
             string userId)
            => await this.db

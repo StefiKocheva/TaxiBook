@@ -25,42 +25,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a>Иванина Такси</a></td>
-                        <td>1.18 лв.</td>
-                        <td><a href="tel:+359 2 091 3254">+359 2 091 3254</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Елит Такси</a></td>
-                        <td>1.20 лв.</td>
-                        <td><a href="tel:089 706 5688">+359 2 285 6380</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Тико Такси</a></td>
-                        <td>1.15 лв.</td>
-                        <td><a href="tel:089 706 5688">+359 2 255 4173</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>ВИП Такси</a></td>
-                        <td>1.20 лв.</td>
-                        <td><a href="tel:089 706 5688">+359 2 962 2214</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>Шанс</a></td>
-                        <td>1.01 лв.</td>
-                        <td><a href="tel:089 706 5688">+359 2 268 8060</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a>България такси</a></td>
-                        <td>1.16 лв.</td>
-                        <td><a href="tel:089 706 5688">+359 2 693 9721</a></td>
-                        <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
-                    </tr>
+                    @foreach (var company in this.Model.Companies)
+                    {
+                        <tr>
+                            <td>@company.Name</td>
+                            @{
+                                int dailyTariffStart = 6;
+                                int nightTariffStart = 22;
+                                int currentTime = DateTime.Now.Hour;
+                            }
+                            @if (currentTime > dailyTariffStart && currentTime < nightTariffStart)
+                            {
+                                <td>@company.OneКilometerМileageDailyPrice</td>
+                            }
+                            else
+                            {
+                                <td>@company.OneКilometerМileageNightPrice</td>
+                            }
+                            <td><a href="tel:@company.PhoneNumber">@company.PhoneNumber</a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

@@ -5,9 +5,12 @@
                 <div data-aos="zoom-out">
                     <h1>Бъдете в крак с <span>времето</span></h1>
                     <h2>Удобство, качество и сигурност на едно място</h2>
-                    <div class="text-center text-lg-start">
-                        <a asp-area="Identity" asp-controller="Account" asp-action="Login" class="btn-get-started scrollto">Започни сега</a>
-                    </div>
+                    @if (!this.User.Identity.IsAuthenticated)
+                    {
+                        <div class="text-center text-lg-start">
+                            <a asp-area="Identity" asp-controller="Account" asp-action="Login" class="btn-get-started scrollto">Започни сега</a>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
@@ -57,7 +60,7 @@
                             <td>1.20 лв.</td>
                             <td>Пазарджик</td>
                             <td><a href="tel:089 706 5688">+359 2 962 2214</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                         <tr class="text-center">
                             <td>2</td>
@@ -65,7 +68,7 @@
                             <td>1.15 лв.</td>
                             <td>Пловдив</td>
                             <td><a href="tel:089 706 5688">+359 2 255 4173</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                         <tr class="text-center">
                             <td>3</td>
@@ -73,7 +76,7 @@
                             <td>1.55 лв.</td>
                             <td>Пловдив</td>
                             <td><a href="tel:089 706 5699">+359 2 268 8060</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                         <tr class="text-center">
                             <td>4</td>
@@ -81,7 +84,7 @@
                             <td>1.20 лв.</td>
                             <td>Калофер</td>
                             <td><a href="tel:089 706 5688">+359 2 285 6380</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                         <tr class="text-center">
                             <td>5</td>
@@ -89,11 +92,11 @@
                             <td>1.18 лв.</td>
                             <td>Смолян</td>
                             <td><a href="tel:089 706 5699">+359 2 693 9721</a></td>
-                            <td><a asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
-                <a asp-controller="Company" asp-action="All" type="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-lg btn-block">Виж всички</a>
+                <a asp-controller="Companies" asp-action="All" type="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-lg btn-block">Виж всички</a>
             </div>
         </div>
     </div>

@@ -49,12 +49,17 @@
                     }
                     else
                     {
-                        <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+                        @if (this.User.IsInRole("Manager"))
+                        {
+                            <li><a asp-area="Manager" asp-controller="Feedbacks" asp-action="All" class="nav-link scrollto">Табло</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+                        }
 
-                        
                         <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout" class="nav-link scrollto">Изход</a></li>
                     }
-                    
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

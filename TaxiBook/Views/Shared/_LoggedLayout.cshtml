@@ -21,130 +21,138 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                       <h1>Клиент</h1>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
-                                <i class="fas fa-home"></i>
-                                <span>Начало</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Order" asp-action="Overview" class='sidebar-link'>
-                                <i class="fas fa-search-location"></i>
-                                <span>Текуща поръчка</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Home" asp-action="CompletedОrders" class='sidebar-link'>
-                                <i class="fas fa-clone"></i>
-                                <span>Отминали поръчки</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
-                                <i class="fas fa-bookmark"></i>
-                                <span>Любими</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Home" asp-action="CreateFeedback" class='sidebar-link'>
-                                <i class="fas fa-comment-dots"></i>
-                                <span>Оцени пътуване</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Default" asp-controller="Company" asp-action="Create" class='sidebar-link'>
-                                <i class="fas fa-plus"></i>
-                                <span>Добави компания</span>
-                            </a> 
-                        </li>
-                        <h1>Мениджър</h1>
-                        <li class="sidebar-item">
-                            <a asp-area="Manager" asp-controller="Home" asp-action="Index" class='sidebar-link'>
-                                <i class="fas fa-home"></i>
-                                <span>Начало</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Manager" asp-controller="Employees" asp-action="All" class='sidebar-link'>
-                                <i class="fas fa-users"></i>
-                                <span>Служители</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Manager" asp-controller="Schedule" asp-action="CurrentMonth" class='sidebar-link'>
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>График</span>
-                            </a>
-                        </li>
-                        <h1>Шофьор</h1>
-                        <li class="sidebar-item">
-                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Unaccepted" class='sidebar-link'>
-                                <i class="fas fa-home"></i>
-                                <span>Начало</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
-                                <i class="fas fa-plus"></i>
-                                <span>Направи поръчка</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Accepted" class='sidebar-link'>
-                                <i class="far fa-check-circle"></i>
-                                <span>Приети поръчки</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Refused" class='sidebar-link'>
-                                <i class="far fa-times-circle"></i>
-                                <span>Отказани поръчки</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>График</span>
-                            </a>
-                        </li>
-                        <h1>Диспечер</h1>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Unprocessed" class='sidebar-link'>
-                                <i class="fas fa-home"></i>
-                                <span>Начало</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
-                                <i class="fas fa-plus"></i>
-                                <span>Направи поръчка</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Track"  class='sidebar-link'>
-                                <i class="fas fa-search-location"></i>
-                                <span>Проследи такси</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Processed" class='sidebar-link'>
-                                <i class="far fa-check-circle"></i>
-                                <span>Обработени поръчки</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Refused" class='sidebar-link'>
-                                <i class="far fa-times-circle"></i>
-                                <span>Отказани поръчки</span>
-                            </a> 
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-area="Dispatcher" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>График</span>
-                            </a>
-                        </li>
+                        @if (this.User.IsInRole("Manager"))
+                        {
+                            <li class="sidebar-item">
+                                <a asp-area="Manager" asp-controller="Feedbacks" asp-action="All" class='sidebar-link'>
+                                    <i class="fas fa-home"></i>
+                                    <span>Начало</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Manager" asp-controller="Employees" asp-action="All" class='sidebar-link'>
+                                    <i class="fas fa-users"></i>
+                                    <span>Служители</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Manager" asp-controller="Schedule" asp-action="CurrentMonth" class='sidebar-link'>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>График</span>
+                                </a>
+                            </li>
+                        }
+                        else if (this.User.IsInRole("Dispatcher"))
+                        {
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Unprocessed" class='sidebar-link'>
+                                    <i class="fas fa-home"></i>
+                                    <span>Начало</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
+                                    <i class="fas fa-plus"></i>
+                                    <span>Направи поръчка</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Home" asp-action="Track"  class='sidebar-link'>
+                                    <i class="fas fa-search-location"></i>
+                                    <span>Проследи такси</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Processed" class='sidebar-link'>
+                                    <i class="far fa-check-circle"></i>
+                                    <span>Обработени поръчки</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Orders" asp-action="Refused" class='sidebar-link'>
+                                    <i class="far fa-times-circle"></i>
+                                    <span>Отказани поръчки</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Dispatcher" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>График</span>
+                                </a>
+                            </li>
+                        }
+                        else if (this.User.IsInRole("TaxiDriver"))
+                        {
+                            <li class="sidebar-item">
+                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Unaccepted" class='sidebar-link'>
+                                    <i class="fas fa-home"></i>
+                                    <span>Начало</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create" class='sidebar-link'>
+                                    <i class="fas fa-plus"></i>
+                                    <span>Направи поръчка</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Accepted" class='sidebar-link'>
+                                    <i class="far fa-check-circle"></i>
+                                    <span>Приети поръчки</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Refused" class='sidebar-link'>
+                                    <i class="far fa-times-circle"></i>
+                                    <span>Отказани поръчки</span>
+                                </a> 
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" class='sidebar-link'>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>График</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
+                                    <i class="fas fa-home"></i>
+                                    <span>Начало</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Orders" asp-action="Overview" class='sidebar-link'>
+                                    <i class="fas fa-search-location"></i>
+                                    <span>Текуща поръчка</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Orders" asp-action="Past" class='sidebar-link'>
+                                    <i class="fas fa-clone"></i>
+                                    <span>Отминали поръчки</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>Любими</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Feedbacks" asp-action="Create" class='sidebar-link'>
+                                    <i class="fas fa-comment-dots"></i>
+                                    <span>Оцени пътуване</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-area="Default" asp-controller="Companies" asp-action="Create" class='sidebar-link'>
+                                    <i class="fas fa-plus"></i>
+                                    <span>Добави компания</span>
+                                </a> 
+                            </li>
+                        }
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -165,11 +173,16 @@
                                 <div class="avatar mr-1">
                                     <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Здравей, Стефани!</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.User.FindFirst("FisrtName")?.Value)!</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>
                                 <div class="dropdown-divider"></div>
+                                @if (this.User.IsInRole("Manager"))
+                                {
+                                    <a class="dropdown-item" asp-area="Manager" asp-controller="Companies" asp-action="Overview"><i data-feather="edit-3"></i> Компания</a>
+                                    <div class="dropdown-divider"></div>
+                                }
                                 <a class="dropdown-item" asp-area="Identity" asp-controller="Account" asp-action="Logout"><i data-feather="log-out"></i> Излез</a>
                             </div>
                         </li>

@@ -3,18 +3,19 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using TaxiBook.Services.Interfaces;
-    using TaxiBook.Services.ViewModels.Home;
+    using TaxiBook.Services.ViewModels.Feedbacks;
 
     [Authorize]
     [Area("Manager")]
-    public class HomeController : Controller
+    public class FeedbacksController : Controller
     {
         private readonly IFeedbackService feedbackService;
 
-        public HomeController(IFeedbackService feedbackService) => this.feedbackService = feedbackService;
+        public FeedbacksController(IFeedbackService feedbackService)
+            => this.feedbackService = feedbackService;
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult All()
         {
             var model = new FeedbackListingViewModel();
 

@@ -64,6 +64,11 @@
             public string Email { get; set; }
 
             [Required(ErrorMessage = RequiredErrorMessage)]
+            [Phone]
+            [Display(Name = DisplayPhoneNumberName)]
+            public string PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = RequiredErrorMessage)]
             [StringLength(
                 MaxPasswordLength, 
                 ErrorMessage = PasswordLengthErrorMessage, 
@@ -78,7 +83,8 @@
                 PasswordPropertyName, 
                 ErrorMessage = ComparePasswordErrorMessage)]
             public string ConfirmPassword { get; set; }
-            
+
+            [Required(ErrorMessage = RequiredErrorMessage)]
             public IFormFile ProfilePicture { get; set; }
         }
 
@@ -131,6 +137,7 @@
                     LastName = this.Input.LastName, 
                     UserName = this.Input.Email, 
                     Email = this.Input.Email,
+                    PhoneNumber = this.Input.PhoneNumber,
                     EmailConfirmed = true,
                     ImageUrl = imageUrl
                 };

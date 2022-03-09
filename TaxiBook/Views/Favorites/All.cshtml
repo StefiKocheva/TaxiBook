@@ -1,5 +1,6 @@
-﻿@using TaxiBook.Services.ViewModels.Favorites
-@model CreateFavoriteViewModel
+﻿@*@using TaxiBook.Services.ViewModels.Companies
+@using TaxiBook.Services.ViewModels.Favorites
+@model CompanyListingViewModel*@
 @{
     this.Layout = "_LoggedLayout";
 }
@@ -40,43 +41,43 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">Добави</button>
-            <br /><br />
+            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Добави към любими</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <i data-feather="x"></i>
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Vertically Centered</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <p>Моля изберете своята любима компания от падащото меню.</p>
-                            <form method="post" asp-area="default" asp-controller="Favorites" asp-action="Create" enctype="multipart/form-data"><div class="col-12">
-                                <fieldset class="form-group">
-                                    <label for="companyName">Име на компания</label>
-                                    <select asp-for="CompanyName" class="form-select" id="companyName">
-                                        <option>Избери компания</option>
-                                        <option>Евролийз Такси</option>
-                                        <option>Рефлекс Плюс</option>
+                        <form method="post" asp-area="default" asp-controller="Favorites" asp-action="Create">
+                            <div class="modal-body">
+                                <p>Моля изберете компания.</p>
+                                <div class="form-group mb-3">
+                                    <label for="room-type">Задай</label>
+                                    <select @*asp-for="CreateFavoriteViewModel.CompanyName"*@ id="room-type" class="form-control">
+                                        @*@foreach (var company in this.Model.Companies)
+                                        {
+                                            <option value="@company.Id">@company.Name</option>
+                                        }*@
                                     </select>
-                                </fieldset>
-                                <span asp-validation-for="CompanyName" class="text-danger"></span>
-                            </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                                <i class="bx bx-x d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Затвори</span>
-                            </button>
-                            <a class="btn btn-primary" type="button" asp-area="Default" asp-controller="Favorites" asp-action="All">Добави</a>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Затвори</span>
+                                </button>
+                                <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Добави</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-

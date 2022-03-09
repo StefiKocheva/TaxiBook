@@ -15,7 +15,8 @@
         private readonly TaxiBookDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CreateController(RoleManager<IdentityRole> roleManager, 
+        public CreateController(
+            RoleManager<IdentityRole> roleManager, 
             IHttpContextAccessor httpContextAccessor, 
             TaxiBookDbContext db, 
             UserManager<ApplicationUser> userManager)

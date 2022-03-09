@@ -5,14 +5,20 @@
     using Services.Interfaces;
     using Services.ViewModels.Orders;
 
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly IOrderService orderService;
 
-        public OrderController(IOrderService orderService) => this.orderService = orderService;
+        public OrdersController(IOrderService orderService) => this.orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Past()
         {
             return this.View();
         }

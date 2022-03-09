@@ -231,6 +231,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("EmployeeType")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -341,6 +344,9 @@ namespace TaxiBook.Data.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Province")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

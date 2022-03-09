@@ -40,9 +40,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="email" >Телефонен номер</label>
-                                        <input id="email" class="form-control" placeholder="Телефонен номер">
-                                        <span class="text-danger"></span>
+                                        <label for="phoneNumber" asp-for="Input.PhoneNumber">Телефонен номер</label>
+                                        <input id="phoneNumber" asp-for="Input.PhoneNumber" class="form-control" placeholder="Телефонен номер">
+                                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -63,10 +63,10 @@
                                     <div class="form-group">
                                         <label>Профилна снимка</label>
                                         <div class="form-file">
-                                            <input type="file" class="form-file-input" id="profilePicture">
+                                            <input asp-for="Input.ProfilePicture" type="file" class="form-file-input" id="profilePicture">
                                             <label class="form-file-label" for="profilePicture">
                                                 <span class="form-file-text">Изберете файл...</span>
-                                                <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
+                                                <span class="form-file-button btn-primary"><i data-feather="upload"></i></span>
                                             </label>
                                             <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
                                         </div>

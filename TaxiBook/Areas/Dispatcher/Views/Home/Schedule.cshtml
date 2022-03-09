@@ -2,13 +2,71 @@
 @model ForthcomingАbsenceViewModel
 
 <div class="page-title">
-    <h3>Месечен график</h3>
-    <p class="text-subtitle text-muted">Освен, че имате на разположение своя месечен график със съответните за всеки ден работни смени, то при необходимост можете и да уведомите работодателя си за предстоящото отсъствие.</p>
+    <h3>График</h3>
+    <p class="text-subtitle text-muted">Тук е вашият месечен график, с който може да следите работното си време. Имате възможността да изпратите молба към мениджъра си за предстоящо отсътвие.</p>
 </div>
+@{
+    var currentMonth = DateTime.UtcNow.Month;
+    var currentYear = DateTime.UtcNow.Year;
+
+    string displayMonth = "";
+
+    switch (currentMonth)
+    {
+        case 1:
+            displayMonth = "Януари";
+            break;
+        case 2:
+            displayMonth = "Февруари";
+            break;
+        case 3:
+            displayMonth = "Март";
+            break;
+        case 4:
+            displayMonth = "Април";
+            break;
+        case 5:
+            displayMonth = "Май";
+            break;
+        case 6:
+            displayMonth = "Юни";
+            break;
+        case 7:
+            displayMonth = "Юли";
+            break;
+        case 8:
+            displayMonth = "Август";
+            break;
+        case 9:
+            displayMonth = "Септември";
+            break;
+        case 10:
+            displayMonth = "Октомври";
+            break;
+        case 11:
+            displayMonth = "Ноември";
+            break;
+        case 12:
+            displayMonth = "Декември";
+            break;
+	}
+
+    const int daysInWeek = 7;
+    int daysInMonth = DateTime.DaysInMonth(currentYear, currentMonth);
+    int today = DateTime.Today.Date.Day;
+
+    var weekDayMonthStart = (double)new DateTime(currentYear, currentMonth, 1).DayOfWeek;
+    var weekDayMonthEnd = (int)new DateTime(currentYear, currentMonth, daysInMonth).DayOfWeek;
+
+    double firstWeekDaysFromPreviousMonth = weekDayMonthStart - 1;
+    double weeks = Math.Ceiling((daysInMonth + firstWeekDaysFromPreviousMonth) / daysInWeek);
+            
+    int start = 0, end = 0;
+}
 <div class="card collapse-icon accordion-icon-rotate"><br />
     <div class="card-content">
         <div class="card-header">
-            <h4 class="card-title, text-center">Февруари, 2022</h4>
+            <h4 class="card-title, text-center">@displayMonth, @currentYear</h4>
         </div>
         <div class="card-body">
             <table class="table">
@@ -24,51 +82,90 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="text-center"></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">1</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">2</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">3</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">4</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">5</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">6</a></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">7</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">8</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">9</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">10</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">11</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">12</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">13</a></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">14</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">15</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">16</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">17</a></td>
-                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">18</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">19</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">20</a></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">21</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">22</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">23</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">24</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">25</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">26</a></td>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">27</a></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">28</a></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                    </tr>
+                    @for (var row = 1; row <= weeks; row++)
+                    {
+                        if (row == 1)
+                        {
+                            <tr>
+                                @for (var col = 1; col <= daysInWeek; col++)
+                                {
+                                    if (col < weekDayMonthStart)
+                                    {
+                                        <td class="text-center"></td>
+                                    }
+                                    else
+                                    {
+                                        col -= (int)firstWeekDaysFromPreviousMonth;
+
+                                        if (col == today)
+                                        {
+                                            <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                        }
+
+                                        col += (int)firstWeekDaysFromPreviousMonth;
+
+                                         if (col == daysInWeek)
+                                         {
+                                             start = col - (int)firstWeekDaysFromPreviousMonth + 1;
+                                         }
+                                    }
+                                }
+                            </tr>
+                        }
+                        else if (row == weeks)
+                        {
+                            int lastWeekDaysFromNextMonth = daysInWeek - weekDayMonthEnd;
+                            end = lastWeekDaysFromNextMonth + daysInMonth;
+
+                            <tr>
+                                @for (int col = start; col <= end; col++)
+                                {
+                                    if (col <= daysInMonth)
+                                    {
+                                        if (col == today)
+                                        {
+                                            <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                        else
+                        {
+                            end = start + 6;
+
+                            <tr>
+                                @for (int col = start; col <= end; col++)
+                                {
+                                    if (col == today)
+                                    {
+                                        <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                    }
+
+                                    if (col == end)
+                                    {
+                                        start = col + 1;
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
             <button type="submit" data-toggle="modal" data-target="#forthcomingAbsence" class="btn btn-primary btn-block">Предстоящо отсъствие</button>
@@ -82,11 +179,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p> Моля попълнете празните полета.</p>
-                            <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule" enctype="multipart/form-data">
+                            <p>Моля попълнете.</p>
+                            <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Home" asp-action="Schedule">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="absenceStartDay">От кога ще остъствате?</label>
+                                        <label for="absenceStartDay">От</label>
                                         <div class="position-relative">
                                             <input asp-for="From" type="date" class="form-control" id="absenceStartDay">
                                             <span asp-validation-for="From" class="text-danger"></span>
@@ -95,7 +192,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="absenceEndDay">До кога няма да сте на работа?</label>
+                                        <label for="absenceEndDay">До</label>
                                         <div class="position-relative">
                                             <input asp-for="Till" type="date" class="form-control" id="absenceEndDay">
                                             <span asp-validation-for="Till" class="text-danger"></span>
@@ -105,9 +202,9 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
-                                <i class="bx bx-x d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Назад</span>
+                            <button type="button" class="btn btn-outline-primary ml-1" data-dismiss="modal">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Затвори</span>
                             </button>
                             <button type="submit" class="btn btn-primary ml-1" data-dismiss="modal">
                                 <i class="bx bx-check d-block d-sm-none"></i>
@@ -121,7 +218,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Дневно работно време</h5>
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Работно време - 04.03.2021</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <i data-feather="x"></i>
                             </button>
@@ -157,6 +254,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
+                            
                             <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
                                 <i class="bx bx-check d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Затвори</span>

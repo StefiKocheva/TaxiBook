@@ -10,13 +10,21 @@
     using Data.Models;
     using Interfaces;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
     {
         private readonly TaxiBookDbContext db;
+        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public CompanyService(TaxiBookDbContext db) => this.db = db;
+        public CompanyService(TaxiBookDbContext db, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
+        {
+            this.db = db;
+            this.httpContextAccessor = httpContextAccessor;
+            this.userManager = userManager;
+        }
 
         public IEnumerable<CompanyDetailsViewModel> All() 
             => this.db
@@ -26,39 +34,72 @@
                 {
                     Id = c.Id,
                     Name = c.Name,
-                    //DailyTariff = c.DailyTariff,
-                    //NightTariff = c.NightTariff,
                     PhoneNumber = c.PhoneNumber,
-                    // Address = c.Address - address of company
-                    // Region = c.Region - area for orders
+                    Description = c.Description,
+                    //License = c.License,
+                    Province = c.Province, 
+                    OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
+                    OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
+                    DailyPricePerCall = c.DailyPricePerCall,
+                    NightPricePerCall = c.NightPricePerCall,
+                    InitialDailyFee = c.InitialDailyFee,
+                    InitialNightFee = c.InitialNightFee,
+                    DailyPricePerMinuteStay = c.DailyPricePerMinuteStay,
+                    NightPricePerMinuteStay = c.NightPricePerMinuteStay,
                 })
                 .ToHashSet();
 
         public async Task<string> CreateAsync(
             string name, 
-            decimal dailyTariff, 
-            decimal nightTariff, 
             string phoneNumber,
-            //string province,
-            string description 
-            /*IFormFile license*/)
+            string description,
+            /*IFormFile license,*/
+            string province,
+            decimal oneКilometerМileageDailyPrice,
+            decimal oneКilometerМileageNightPrice,
+            decimal dailyPricePerCall,
+            decimal nightPricePerCall,
+            decimal initialDailyFee,
+            decimal initialNightFee,
+            decimal dailyPricePerMinuteStay,
+            decimal nightPricePerMinuteStay)
         {
             //var licenseUrl = await this.UploadImageAsync(license);
 
             var company = new Company()
             {
                 Name = name,
-                //DailyTariff = dailyTariff,
-                //NightTariff = nightTariff,
                 PhoneNumber = phoneNumber,
                 Description = description,
+                //LicenseUrl = licenseUrl,
+                Province = province,
+                OneКilometerМileageDailyPrice = oneКilometerМileageDailyPrice,
+                OneКilometerМileageNightPrice = oneКilometerМileageNightPrice,
+                DailyPricePerCall = dailyPricePerCall,
+                NightPricePerCall = nightPricePerCall,
+                InitialDailyFee = initialDailyFee,
+                InitialNightFee = initialNightFee,
+                DailyPricePerMinuteStay = dailyPricePerMinuteStay,
+                NightPricePerMinuteStay = nightPricePerMinuteStay,
             };
 
             await db.Companies.AddAsync(company);
 
             await db.SaveChangesAsync();
 
+            await AddUserToRoleAsync();
+            await db.SaveChangesAsync();
+
             return company.Id;
+        }
+
+        private async Task AddUserToRoleAsync()
+        {
+            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
+
+            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
+
+            await this.userManager.AddToRoleAsync(user, "Manager");
         }
 
         private async Task<string> UploadImageAsync(IFormFile license)

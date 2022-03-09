@@ -98,27 +98,68 @@
             </div>
         </div>
     </div>
-
-<!-- Calendar creation by my imagination 
 @{
     var currentMonth = DateTime.UtcNow.Month;
     var currentYear = DateTime.UtcNow.Year;
 
+    string displayMonth = "";
+
+    switch (currentMonth)
+    {
+        case 1:
+            displayMonth = "Януари";
+            break;
+        case 2:
+            displayMonth = "Февруари";
+            break;
+        case 3:
+            displayMonth = "Март";
+            break;
+        case 4:
+            displayMonth = "Април";
+            break;
+        case 5:
+            displayMonth = "Май";
+            break;
+        case 6:
+            displayMonth = "Юни";
+            break;
+        case 7:
+            displayMonth = "Юли";
+            break;
+        case 8:
+            displayMonth = "Август";
+            break;
+        case 9:
+            displayMonth = "Септември";
+            break;
+        case 10:
+            displayMonth = "Октомври";
+            break;
+        case 11:
+            displayMonth = "Ноември";
+            break;
+        case 12:
+            displayMonth = "Декември";
+            break;
+	}
+
     const int daysInWeek = 7;
     int daysInMonth = DateTime.DaysInMonth(currentYear, currentMonth);
+    int today = DateTime.Today.Date.Day;
 
     var weekDayMonthStart = (double)new DateTime(currentYear, currentMonth, 1).DayOfWeek;
     var weekDayMonthEnd = (int)new DateTime(currentYear, currentMonth, daysInMonth).DayOfWeek;
 
     double firstWeekDaysFromPreviousMonth = weekDayMonthStart - 1;
     double weeks = Math.Ceiling((daysInMonth + firstWeekDaysFromPreviousMonth) / daysInWeek);
-    
+            
     int start = 0, end = 0;
 }
 <div class="card collapse-icon accordion-icon-rotate"><br />
     <div class="card-content">
         <div class="card-header">
-            <h4 class="card-title, text-center">Декември</h4>
+            <h4 class="card-title, text-center">@displayMonth, @currentYear</h4>
         </div>
         <div class="card-body">
             <table class="table">
@@ -134,79 +175,92 @@
                     </tr>
                 </thead>
                 <tbody>
-                    for (int i = 1; i <= weeks; i++)
+                    @for (var row = 1; row <= weeks; row++)
                     {
-                        if (i == 1)
-                        {
-                            for (int j = 1; j <= daysInWeek; j++)
-                            {
-                                if (j == 1)
-                                {
-                                    <tr>
-                                }
-                                else if (j < weekDayMonthStart && j > 1)
-                                {
-                                    <td class="text-center"></td>
-                                }
-                                else
-                                {
-                                    j -= (int)firstWeekDaysFromPreviousMonth;
-
-                                    <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">j</a></td>
-
-                                    j += (int)firstWeekDaysFromPreviousMonth;
-
-                                    if (j == daysInWeek)
-                                    {
-                                        start = j - (int)firstWeekDaysFromPreviousMonth + 1;
-
-                                        </tr>
-                                    }
-                                }
-                            }
-                        }
-                        else if (i == weeks)
+                        if (row == 1)
                         {
                             <tr>
+                                @for (var col = 1; col <= daysInWeek; col++)
+                                {
+                                    if (col < weekDayMonthStart)
+                                    {
+                                        <td class="text-center"></td>
+                                    }
+                                    else
+                                    {
+                                        col -= (int)firstWeekDaysFromPreviousMonth;
+
+                                        if (col == today)
+                                        {
+                                            <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><a class="btn nohover" asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                        }
+
+                                        col += (int)firstWeekDaysFromPreviousMonth;
+
+                                         if (col == daysInWeek)
+                                         {
+                                             start = col - (int)firstWeekDaysFromPreviousMonth + 1;
+                                         }
+                                    }
+                                }
+                            </tr>
+                        }
+                        else if (row == weeks)
+                        {
                             int lastWeekDaysFromNextMonth = daysInWeek - weekDayMonthEnd;
                             end = lastWeekDaysFromNextMonth + daysInMonth;
 
-                            for (int j = start; j <= end; j++)
-                            {
-                                if (j <= daysInMonth)
+                            <tr>
+                                @for (int col = start; col <= end; col++)
                                 {
-                                    <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">j</a></td>
+                                    if (col <= daysInMonth)
+                                    {
+                                        if (col == today)
+                                        {
+                                            <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><a class="btn nohover" asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"></td>
+                                    }
                                 }
-                                else if (j == end)
-                                {
-                                    <td class="text-center"></td>
-                                    </tr>
-                                }
-                                else if (j > daysInMonth && j != end)
-                                {
-                                    <td class="text-center"></td>
-                                }
-                            }
+                            </tr>
                         }
                         else
                         {
-                            <tr>
                             end = start + 6;
 
-                            for (int j = start; j <= end; j++)
-                            {
-                                <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">j</a></td>
-
-                                if (j == end)
+                            <tr>
+                                @for (int col = start; col <= end; col++)
                                 {
-                                    start = j + 1;
-                                    </tr>
+                                    if (col == today)
+                                    {
+                                        <td class="text-center"><a asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><a class="btn nohover" asp-area="Manager" asp-controller="Schedule" asp-action="Employees">@col</a></td>
+                                    }
+
+                                    if (col == end)
+                                    {
+                                        start = col + 1;
+                                    }
                                 }
-                            }
+                            </tr>
                         }
                     }
                 </tbody>
             </table>
         </div>
     </div>
-</div> -->
+</div>

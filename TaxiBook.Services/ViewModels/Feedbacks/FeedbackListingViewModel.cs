@@ -1,4 +1,4 @@
-﻿namespace TaxiBook.Services.ViewModels.Home
+﻿namespace TaxiBook.Services.ViewModels.Feedbacks
 {
     using System.Collections.Generic;
 

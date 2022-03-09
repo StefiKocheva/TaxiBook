@@ -20,23 +20,19 @@ namespace TaxiBook
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
+        
+    public IConfiguration Configuration { get; }
         
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TaxiBookDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetDefaultConnectionString(),
-                x => x.MigrationsAssembly("TaxiBook.Data"))
-                /*.UseLazyLoadingProxies()*/);
+                x => x.MigrationsAssembly("TaxiBook.Data")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TaxiBookDbContext>();
-
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<DbContext>();
 
             services
                 .AddTransient<ICompanyService, CompanyService>()
@@ -66,27 +62,6 @@ namespace TaxiBook
             app.UseEndpoints();
 
             app.SeedData();
-
-            //CreateRoles(serviceProvider).Wait();
         }
-
-        //private async Task CreateRoles(IServiceProvider serviceProvider)
-        //{
-        //    //adding customs roles : Question 1
-        //    var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        //    var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        //    string[] roleNames = new [] { "TaxiDriver", "Dispatcher", "Manager" };
-        //    IdentityResult roleResult;
-        //
-        //    foreach (var roleName in roleNames)
-        //    {
-        //        var roleExist = await RoleManager.RoleExistsAsync(roleName);
-        //        if (!roleExist)
-        //        {
-        //            //create the roles and seed them to the database: Question 2
-        //            roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
-        //        }
-        //    }
-        //}
     }
 }

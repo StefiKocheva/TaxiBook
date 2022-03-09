@@ -4,19 +4,19 @@
     {
         public class ForgotPasswordModel
         {
-            public const string RequiredErrorMessage = "Полето е задължително";
+            public const string RequiredErrorMessage = "Полето е задължително.";
         }
 
         public class LoginModel
         {
-            public const string RequiredErrorMessage = "Полето е задължително";
+            public const string RequiredErrorMessage = "Полето е задължително.";
 
             public const string DisplayRememberMeName = "Запомни ме?";
         }
 
         public class RegisterModel
         {
-            public const string RequiredErrorMessage = "Полето е задължително";
+            public const string RequiredErrorMessage = "Полето е задължително.";
 
             public const string FirstNameLengthErrorMessage = "Първото име трябва да бъде между {2} и {1} символа дълго.";
 
@@ -39,6 +39,8 @@
             public const string DisplayPasswordName = "Паролата";
 
             public const string DisplayEmailName = "Email";
+
+            public const string DisplayPhoneNumberName = "Телефонен номер";
 
             public const string PasswordPropertyName = "Password";
         }

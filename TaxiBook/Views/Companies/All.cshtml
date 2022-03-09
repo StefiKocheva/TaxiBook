@@ -1,0 +1,54 @@
+﻿@using TaxiBook.Services.ViewModels.Companies
+@model CompanyListingViewModel
+@{
+    this.Layout = "_AllCompaniesLayout";
+}
+
+<section id="allCompanies" class="about">
+    <div class="row content">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-4 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Всички компании</h2>
+                </div>
+                <h3>Изборът е изцяло ваш</h3>
+                <p>Тук са регистрираните компании в приложението.</p><br/>
+                <table class='table table-striped' id="table1">
+                    <thead>
+                        <tr>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Компания</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Цена за километър</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Област</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Обади се точно сега</th>
+                          <th style="background-color:#17B57D; color:white;" class="text-center">Поръчай онлайн</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var company in this.Model.Companies)
+                    {
+                        <tr>
+                            <td>@company.Name</td>
+                            @{
+                                int dailyTariffStart = 6;
+                                int nightTariffStart = 22;
+                                int currentTime = DateTime.Now.Hour;
+                            }
+                            @if (currentTime > dailyTariffStart && currentTime < nightTariffStart)
+                            {
+                                <td>@company.OneКilometerМileageDailyPrice</td>
+                            }
+                            else
+                            {
+                                <td>@company.OneКilometerМileageNightPrice</td>
+                            }
+                            <td>@company.Province</td>
+                            <td><a href="tel:@company.PhoneNumber">@company.PhoneNumber</a></td>
+                            <td><a asp-controller="Orders" asp-action="Details"><i class="fas fa-plus"></i></a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
