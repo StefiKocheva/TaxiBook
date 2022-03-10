@@ -1,7 +1,7 @@
 ﻿namespace TaxiBook.Areas.TaxiDriver.Services.Inerfaces
 {
     using System.Threading.Tasks;
-    using TaxiBook.Areas.TaxiDriver.ViewModels.Orders;
+    using ViewModels.Orders;
 
     public interface IOrderService
     {

@@ -17,8 +17,4 @@
     <PackageReference Include="CloudinaryDotNet" Version="1.15.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TaxiBook.Data\TaxiBook.Data.csproj" />
-  </ItemGroup>
-
 </Project>

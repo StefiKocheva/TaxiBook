@@ -4,7 +4,7 @@
     using Data;
     using Data.Models;
     using Services.Inerfaces;
-    using TaxiBook.Areas.TaxiDriver.ViewModels.Home;
+    using ViewModels.Home;
 
     public class ScheduleService : IScheduleService
     {

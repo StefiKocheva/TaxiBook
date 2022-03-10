@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
-    using Services.Interfaces;
+    using Interfaces;
     using ViewModels.Home;
 
     public class ScheduleService : IScheduleService

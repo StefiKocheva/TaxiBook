@@ -5,7 +5,7 @@
     using Data;
     using Data.Models;
     using Microsoft.EntityFrameworkCore;
-    using Services.Interfaces;
+    using Interfaces;
     using ViewModels.Orders;
 
     public class OrderService : IOrderService

@@ -1,7 +1,7 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Services.Interfaces
 {
     using System.Threading.Tasks;
-    using TaxiBook.Areas.Dispatcher.ViewModels.Orders;
+    using ViewModels.Orders;
 
     public interface IOrderService
     {

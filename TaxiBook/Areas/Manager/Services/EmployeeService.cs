@@ -6,9 +6,9 @@
     using Data;
     using Data.Models;
     using Data.Models.Enums;
+    using Inerfaces;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using Services.Inerfaces;
     using ViewModels.Employees;
 
     public class EmployeeService : IEmployeeService

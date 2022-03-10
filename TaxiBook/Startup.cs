@@ -1,5 +1,7 @@
 namespace TaxiBook
 {
+    using Areas.Manager.Services;
+    using Areas.Manager.Services.Inerfaces;
     using Data;
     using Data.Models;
     using Infrastructure;
@@ -11,8 +13,6 @@ namespace TaxiBook
     using Microsoft.Extensions.DependencyInjection;
     using Services;
     using Services.Interfaces;
-    using TaxiBook.Areas.Manager.Services;
-    using TaxiBook.Areas.Manager.Services.Inerfaces;
 
     public class Startup
     {
@@ -26,8 +26,7 @@ namespace TaxiBook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TaxiBookDbContext>(options =>
-                options.UseSqlServer(this.Configuration.GetDefaultConnectionString(),
-                x => x.MigrationsAssembly("TaxiBook.Data")));
+                options.UseSqlServer(this.Configuration.GetDefaultConnectionString()));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>()

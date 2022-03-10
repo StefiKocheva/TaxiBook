@@ -1,14 +1,14 @@
 ﻿namespace TaxiBook.Areas.Manager.Services
 {
     using System;
-    using System.Threading.Tasks;
-    using Data.Models;
-    using Services.Interfaces;
-    using Data;
     using System.Collections.Generic;
-    using TaxiBook.Areas.Manager.ViewModels.Schedule;
     using System.Linq;
+    using System.Threading.Tasks;
+    using Data;
+    using Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Services.Interfaces;
+    using ViewModels.Schedule;
 
     public class ScheduleService : IScheduleService
     {

@@ -4,8 +4,8 @@
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Inerfaces;
     using Microsoft.EntityFrameworkCore;
-    using Services.Inerfaces;
     using ViewModels.Orders;
 
     public class OrderService : IOrderService
