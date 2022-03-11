@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using TaxiBook.Data.Models.Enums;
 
-    using static Vallidation.Bookings;
+    using static Vallidation.Orders;
 
     public class Order
     {

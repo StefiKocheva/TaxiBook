@@ -10,9 +10,10 @@
     [Area("TaxiDriver")]
     public class OrdersController : Controller
     {
-        private readonly IOrderService _orderService;
+        private readonly IOrderService orderService;
 
-        public OrdersController(IOrderService orderService) => this._orderService = orderService;
+        public OrdersController(IOrderService orderService) 
+            => this.orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -28,7 +29,7 @@
                 return this.BadRequest();
             }
 
-            var orderId = await this._orderService.CreateAsync(
+            var orderId = await this.orderService.CreateAsync(
                 model.CurrentLocation,
                 model.CurrentLocationDetails,
                 model.EndLocation,

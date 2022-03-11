@@ -8,11 +8,9 @@
     {
         private readonly ICompanyService companyService;
 
-        public HomeController(ICompanyService companyService)
-        {
-            this.companyService = companyService;
-        }
-
+        public HomeController(ICompanyService companyService) 
+            => this.companyService = companyService;
+       
         [HttpGet]
         public IActionResult Index()
         {

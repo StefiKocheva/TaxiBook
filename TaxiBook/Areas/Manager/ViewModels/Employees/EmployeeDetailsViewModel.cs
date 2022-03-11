@@ -8,6 +8,6 @@
 
         public string FullName { get; set; }
 
-        public EmployeeType EmployeeType { get; set; }
+        public EmployeeRole EmployeeRole { get; set; }
     }
 }

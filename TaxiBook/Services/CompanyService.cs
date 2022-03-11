@@ -19,7 +19,10 @@
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CompanyService(TaxiBookDbContext db, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
+        public CompanyService(
+            TaxiBookDbContext db, 
+            IHttpContextAccessor httpContextAccessor, 
+            UserManager<ApplicationUser> userManager)
         {
             this.db = db;
             this.httpContextAccessor = httpContextAccessor;

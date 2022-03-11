@@ -12,7 +12,8 @@
     {
         private readonly TaxiBookDbContext db;
 
-        public OrderService(TaxiBookDbContext db) => this.db = db;
+        public OrderService(TaxiBookDbContext db) 
+            => this.db = db;
 
         public async Task<string> CreateAsync(
             string currentLocation, 

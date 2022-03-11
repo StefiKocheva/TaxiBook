@@ -7,9 +7,9 @@
             public const int MaxNameLength = 30;
         }
 
-        public class Bookings
+        public class Orders
         {
-            public const int MaxDetailsLength = 150;
+            public const int MaxDetailsLength = 300;
 
             public const int MinPassengersCount = 1;
 

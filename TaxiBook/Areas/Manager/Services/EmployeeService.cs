@@ -16,24 +16,28 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly TaxiBookDbContext db;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
         public EmployeeService(
             UserManager<ApplicationUser> userManager, 
-            TaxiBookDbContext db)
+            TaxiBookDbContext db,
+            SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
+
             this.db = db;
+            this.signInManager = signInManager;
         }
 
         public IEnumerable<EmployeeDetailsViewModel> All()
             => this.db
                 .Users
-                .OrderBy(u => u.CreatedOn)
+                .OrderByDescending(u => u.CreatedOn)
                 .Select(u => new EmployeeDetailsViewModel()
                 {
                     Id = u.Id,
                     FullName = u.FirstName + " " + u.LastName,
-                    EmployeeType = u.EmployeeType,
+                    EmployeeRole = u.EmployeeRole,
                 })
                 .ToHashSet();
 
@@ -42,7 +46,7 @@
             string lastName, 
             string email, 
             string phoneNumber,
-            EmployeeType employeeType,
+            EmployeeRole employeeRole,
             string numberPlate,
             string brand,
             string model)
@@ -53,20 +57,16 @@
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
+                UserName = email,
                 PhoneNumber = phoneNumber,
-                EmployeeType = employeeType,
-                PasswordHash = "Employee_123",
-                SecurityStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true,
+                ImageUrl = null,
+                EmployeeRole = employeeRole,
             };
 
-            await this.db.AddAsync(user);
-
-            await this.db.SaveChangesAsync();
-
             var password = "Employee_123";
-            await this.userManager.CreateAsync(user, "Employee_123");
-
-            await this.db.SaveChangesAsync();
+            await this.userManager.CreateAsync(user, password);
+            await this.userManager.AddToRoleAsync(user, employeeRole.ToString());
 
             if (numberPlate != null && brand != null && model != null)
             {
@@ -82,20 +82,7 @@
                 await this.db.SaveChangesAsync();
             }
 
-            await this.AddToRoleAsync(user);
-
             return user.Id;
-        }
-
-        private async Task AddToRoleAsync(ApplicationUser user)
-        {
-            var employeeType = user.EmployeeType.ToString();
-
-            _ = employeeType == "TaxiDriver" ? 
-                await this.userManager.AddToRoleAsync(user, "TaxiDriver") 
-                : await this.userManager.AddToRoleAsync(user, "Dispatcher");
-
-            await this.db.SaveChangesAsync();
         }
 
         public async void DeleteAsync(string id)
@@ -112,17 +99,12 @@
             string firstName, 
             string lastName, 
             string email, 
-            string phoneNumber//,
-            //string brand,
-            //string model,
-            /*string numberPlate*/)
+            string phoneNumber,
+            string brand,
+            string model,
+            string numberPlate)
         {
             var user = await this.ByIdAndByUserId(id);
-
-            //if (order == null)
-            //{
-            //    return "";
-            //}
 
             user.FirstName = firstName;
             user.LastName = lastName;
@@ -134,7 +116,7 @@
             return user.Id;
         }
 
-        private async Task<ApplicationUser?> ByIdAndByUserId(string id)
+        private async Task<ApplicationUser> ByIdAndByUserId(string id)
         {
             var employee = await this.db.Users.FindAsync(id);
 

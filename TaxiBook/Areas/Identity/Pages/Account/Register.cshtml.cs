@@ -15,24 +15,24 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
-
+    using TaxiBook.Data.Models.Enums;
     using static Vallidation.RegisterModel;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<RegisterModel> _logger;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly ILogger<RegisterModel> logger;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _logger = logger;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.logger = logger;
         }
 
         [BindProperty] 
@@ -90,13 +90,13 @@
         public async Task OnGetAsync(string returnUrl = null)
         {
             this.ReturnUrl = returnUrl;
-            this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             if (this.ModelState.IsValid)
             {
@@ -138,15 +138,16 @@
                     Email = this.Input.Email,
                     PhoneNumber = this.Input.PhoneNumber,
                     EmailConfirmed = true,
-                    ImageUrl = imageUrl
+                    ImageUrl = imageUrl,
+                    EmployeeRole = EmployeeRole.None,
                 };
 
-                var result = await this._userManager.CreateAsync(user, Input.Password);
+                var result = await this.userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    this._logger.LogInformation("User created a new account with password.");
-                    await this._signInManager.SignInAsync(user, isPersistent: false);
+                    this.logger.LogInformation("User created a new account with password.");
+                    await this.signInManager.SignInAsync(user, isPersistent: false);
 
                     return this.LocalRedirect(returnUrl);
                 }

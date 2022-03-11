@@ -18,11 +18,11 @@
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string EndLocation { get; set; }
 
-        [MaxLength(MaxLocationDetailsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string StartLocationDetails { get; set; }
 
         [MaxLength(
-            MaxLocationDetailsLength)]
+            MaxDetailsLength)]
         public string EndLocationDetails { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
@@ -33,7 +33,7 @@
             ErrorMessage = CountOfPassengersRangeErrorMessage)]
         public int CountOfPassengers { get; set; }
 
-        [MaxLength(MaxAdditionalRequirementsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string AdditionalRequirements { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]

@@ -11,7 +11,8 @@
     {
         private readonly TaxiBookDbContext db;
         
-        public FavoriteService(TaxiBookDbContext db) => this.db = db;
+        public FavoriteService(TaxiBookDbContext db) 
+            => this.db = db;
 
         public async Task<string> AddAsync(string companyName)
         {

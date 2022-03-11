@@ -9,7 +9,8 @@
     {
         private readonly IOrderService orderService;
 
-        public OrdersController(IOrderService orderService) => this.orderService = orderService;
+        public OrdersController(IOrderService orderService) 
+            => this.orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -24,20 +25,20 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateOrderViewModel model)
+        public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
             var orderId = await this.orderService.CreateAsync(
-                 model.CurrentLocation,
-                 model.CurrentLocationDetails,
-                 model.EndLocation,
-                 model.EndLocationDetails,
-                 model.CountOfPassengers,
-                 model.AdditionalRequirements);
+                 viewModel.CurrentLocation,
+                 viewModel.CurrentLocationDetails,
+                 viewModel.EndLocation,
+                 viewModel.EndLocationDetails,
+                 viewModel.CountOfPassengers,
+                 viewModel.AdditionalRequirements);
 
             return this.RedirectPermanent("Create");
         }

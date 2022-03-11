@@ -10,7 +10,7 @@
 
     public class CreateController : Controller
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly TaxiBookDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
@@ -21,7 +21,7 @@
             TaxiBookDbContext db, 
             UserManager<ApplicationUser> userManager)
         {
-            _roleManager = roleManager;
+            this.roleManager = roleManager;
             this.httpContextAccessor = httpContextAccessor;
             this.db = db;
             this.userManager = userManager;
@@ -29,14 +29,14 @@
 
         public async Task<IActionResult> Roles()
         {
-            var roles = new [] { "TaxiDriver", "Dispatcher", "Manager" };
-        
+            var roles = new [] { "Client", "TaxiDriver", "Dispatcher", "Manager" };
+
             foreach (var role in roles)
             {
-                await this._roleManager
+                await this.roleManager
                     .CreateAsync(new IdentityRole(role));
             }
-        
+
             return this.RedirectPermanent("/");
         }
 

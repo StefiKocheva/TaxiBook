@@ -14,22 +14,8 @@
     {
         private readonly TaxiBookDbContext db;
 
-        public ScheduleService(TaxiBookDbContext db) => this.db = db;
-
-        public async Task<string> ForthcomingАbsenceAsync(DateTime from, DateTime till)
-        {
-            var forthcomingАbsence = new Absence
-            {
-                // From = from,
-                // Till = till,
-            };
-
-            await db.Absences.AddAsync(forthcomingАbsence);
-
-            await db.SaveChangesAsync();
-
-            return forthcomingАbsence.Id;
-        }
+        public ScheduleService(TaxiBookDbContext db) 
+            => this.db = db;
 
         public async Task<string> AddEmployeeAsync(string email, string role, string from, string till)
         {

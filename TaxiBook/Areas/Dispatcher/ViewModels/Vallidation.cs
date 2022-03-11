@@ -11,9 +11,7 @@
         {
             public const string RequiredErrorMessage = "Полето е задължително.";
 
-            public const int MaxLocationDetailsLength = 300;
-
-            public const int MaxAdditionalRequirementsLength = 200;
+            public const int MaxDetailsLength = 300;
 
             public const string CountOfPassengersRangeErrorMessage = "Пътниците трябва да бъдат между {1} и {2} броя.";
 

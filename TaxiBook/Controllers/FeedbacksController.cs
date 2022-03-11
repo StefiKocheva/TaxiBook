@@ -9,7 +9,8 @@
     {
         private readonly IFeedbackService feedbackService;
 
-        public FeedbacksController(IFeedbackService feedbackService) => this.feedbackService = feedbackService;
+        public FeedbacksController(IFeedbackService feedbackService) 
+            => this.feedbackService = feedbackService;
 
         [HttpGet]
         public ActionResult Create(string userId)
@@ -18,7 +19,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateFeedbackViewModel model)
+        public async Task<IActionResult> Create(CreateFeedbackViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -26,9 +27,9 @@
             }
 
             var feedbackId = await this.feedbackService.CreateAsync(
-                model.Company,
-                model.IsLiked,
-                model.Opinion);
+                viewModel.Company,
+                viewModel.IsLiked,
+                viewModel.Opinion);
 
             return this.RedirectToAction("CreateFeedback");
         }

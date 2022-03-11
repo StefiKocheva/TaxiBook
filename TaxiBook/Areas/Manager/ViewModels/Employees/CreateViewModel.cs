@@ -30,9 +30,12 @@
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public EmployeeType EmployeeType { get; set; }
+        public EmployeeRole EmployeeRole { get; set; }
 
-        [Range(MinNumberPlateLength, MaxNumberPlateLength)]
+        [StringLength(
+            MaxNumberPlateLength,
+            ErrorMessage = StringLengthErrorMessage,
+            MinimumLength = MinNumberPlateLength)]
         public string NumberPlate { get; set; }
 
         [StringLength(

@@ -9,7 +9,8 @@
     {
         private readonly IFavoriteService favoriteService;
 
-        public FavoritesController(IFavoriteService favoriteService) => this.favoriteService = favoriteService;
+        public FavoritesController(IFavoriteService favoriteService) 
+            => this.favoriteService = favoriteService;
 
         [HttpGet]
         public IActionResult All()
@@ -18,14 +19,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompany(CreateFavoriteViewModel model)
+        public async Task<IActionResult> AddCompany(CreateFavoriteViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
-            var favoriteId = await this.favoriteService.AddAsync(model.CompanyName);
+            var favoriteId = await this.favoriteService.AddAsync(viewModel.CompanyName);
 
             return this.RedirectToAction("All");
         }

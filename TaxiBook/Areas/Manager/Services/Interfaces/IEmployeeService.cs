@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Data.Models.Enums;
+    using TaxiBook.Data.Models.Enums;
     using ViewModels.Employees;
 
     public interface IEmployeeService
@@ -12,7 +12,7 @@
             string lastName,
             string email,
             string phoneNumber,
-            EmployeeType employeeType,
+            EmployeeRole employeeRole,
             string numberPlate,
             string brand,
             string model);
@@ -22,10 +22,10 @@
             string firstName, 
             string lastName, 
             string email, 
-            string phoneNumber//,
-            //string numberPlate,
-            //string brand,
-            /*string model*/);
+            string phoneNumber,
+            string numberPlate,
+            string brand,
+            string model);
 
         void DeleteAsync(string id);
 

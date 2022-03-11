@@ -24,13 +24,13 @@
                     <tbody class="text-center">
                         @foreach (var employee in this.Model.Employees)
                         {
-                            var employeeType = @employee.EmployeeType.ToString();
+                            var employeeRole = @employee.EmployeeRole.ToString();
                             
-                            if (@employeeType != "None")
+                            if (employeeRole != "None")
                             {
                                 <tr>
                                     <td>@employee.FullName</td>
-                                    @if (employeeType == "TaxiDriver")
+                                    @if (employeeRole == "TaxiDriver")
                                     {
                                         <td>Таксиметров шофьор</td>
                                     }

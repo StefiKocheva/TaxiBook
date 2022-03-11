@@ -43,7 +43,7 @@
                 viewModel.LastName,
                 viewModel.Email,
                 viewModel.PhoneNumber,
-                viewModel.EmployeeType,
+                viewModel.EmployeeRole,
                 viewModel.NumberPlate,
                 viewModel.Brand,
                 viewModel.Model);
@@ -58,14 +58,19 @@
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(string id, UpdateEmployeeViewModel viewModel)
+        public async Task<IActionResult> Update(
+            string id, 
+            UpdateEmployeeViewModel viewModel)
         {
-            _ = await this.employeeService.UpdateAsync(
+            await this.employeeService.UpdateAsync(
                 id, 
                 viewModel.FirstName, 
                 viewModel.LastName, 
                 viewModel.Email, 
-                viewModel.PhoneNumber);
+                viewModel.PhoneNumber,
+                viewModel.Brand,
+                viewModel.Model,
+                viewModel.NumberPlate);
 
             return this.RedirectToAction("All");
         }

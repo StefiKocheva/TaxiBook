@@ -13,7 +13,8 @@
     {
         private readonly TaxiBookDbContext db;
 
-        public FeedbackService(TaxiBookDbContext db) => this.db = db;
+        public FeedbackService(TaxiBookDbContext db) 
+            => this.db = db;
 
         public IEnumerable<FeedbackDetailsViewModel> All()
             => this.db

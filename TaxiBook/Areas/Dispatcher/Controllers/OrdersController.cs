@@ -11,10 +11,10 @@
     [Area("Dispatcher")]
     public class OrdersController : Controller
     {
-        private readonly IOrderService _orderService;
+        private readonly IOrderService orderService;
 
         public OrdersController(IOrderService orderService) 
-            => this._orderService = orderService;
+            => this.orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -30,7 +30,7 @@
                 return this.View(viewModel);
             }
 
-            _ = await this._orderService.CreateAsync(
+            await this.orderService.CreateAsync(
                 viewModel.ClientName,
                 viewModel.PhoneNumber,
                 viewModel.StartLocation,
