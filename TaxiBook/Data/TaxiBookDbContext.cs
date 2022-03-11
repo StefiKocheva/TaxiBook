@@ -29,6 +29,8 @@
 
         public DbSet<Taxi> Taxies { get; set; }
 
+        public DbSet<WorkTime> WorkTimes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -79,12 +81,12 @@
 
             builder.Entity<Order>()
                 .HasOne(o => o.User)
-                .WithMany(u => u.Bookings)
+                .WithMany(u => u.Orders)
                 .HasForeignKey(o => o.UserId);
 
             builder.Entity<Order>()
                 .HasOne(o => o.Taxi)
-                .WithMany(t => t.Bookings)
+                .WithMany(t => t.Orders)
                 .HasForeignKey(o => o.TaxiId);
 
             builder.Entity<Feedback>()
@@ -96,6 +98,11 @@
                 .HasOne(a => a.Employee)
                 .WithMany(e => e.Absences)
                 .HasForeignKey(a => a.EmployeeId);
+
+            builder.Entity<WorkTime>()
+                .HasOne(wt => wt.Employee)
+                .WithMany(e => e.WorkTimes)
+                .HasForeignKey(wt => wt.EmployeeId);
 
             builder.Entity<Company>()
                 .HasOne(c => c.Location)

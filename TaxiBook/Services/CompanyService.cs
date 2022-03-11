@@ -55,14 +55,14 @@
             string description,
             /*IFormFile license,*/
             string province,
-            decimal oneКilometerМileageDailyPrice,
-            decimal oneКilometerМileageNightPrice,
-            decimal dailyPricePerCall,
-            decimal nightPricePerCall,
-            decimal initialDailyFee,
-            decimal initialNightFee,
-            decimal dailyPricePerMinuteStay,
-            decimal nightPricePerMinuteStay)
+            decimal? oneКilometerМileageDailyPrice,
+            decimal? oneКilometerМileageNightPrice,
+            decimal? dailyPricePerCall,
+            decimal? nightPricePerCall,
+            decimal? initialDailyFee,
+            decimal? initialNightFee,
+            decimal? dailyPricePerMinuteStay,
+            decimal? nightPricePerMinuteStay)
         {
             //var licenseUrl = await this.UploadImageAsync(license);
 

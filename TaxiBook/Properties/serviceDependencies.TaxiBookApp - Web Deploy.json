@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "secrets1": {
-      "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/TaxiBookvault",
-      "type": "secrets.keyVault",
-      "connectionId": "VaultUri"
+      "ignored": "true",
+      "suggestion": "true",
+      "type": "secrets",
+      "connectionId": ""
     },
     "mssql1": {
-      "secretStore": "AzureKeyVault",
+      "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/taxibookdbserver/databases/TaxiBook_db",
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:DefaultConnection"

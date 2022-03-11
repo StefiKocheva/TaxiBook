@@ -3,16 +3,18 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
     using Services.Interfaces;
     using ViewModels.Orders;
 
-    [Authorize]
+    [Authorize(Roles = "Dispatcher")]
     [Area("Dispatcher")]
     public class OrdersController : Controller
     {
         private readonly IOrderService _orderService;
 
-        public OrdersController(IOrderService orderService) => this._orderService = orderService;
+        public OrdersController(IOrderService orderService) 
+            => this._orderService = orderService;
 
         [HttpGet]
         public IActionResult Create()
@@ -21,25 +23,25 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateOrderViewModel model)
+        public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
-        
-            var orderId = await this._orderService.CreateAsync(
-                model.ClientName,
-                model.PhoneNumber,
-                model.CurrentLocation,
-                model.CurrentLocationDetails,
-                model.EndLocation,
-                model.EndLocationDetails,
-                model.CountOfPassengers,
-                model.AdditionalRequirements,
-                model.TaxiDriver); // TaxiDriver.FullName -> FirstName + LastName
-        
-            return this.RedirectPermanent("Create");
+
+            _ = await this._orderService.CreateAsync(
+                viewModel.ClientName,
+                viewModel.PhoneNumber,
+                viewModel.StartLocation,
+                viewModel.StartLocationDetails,
+                viewModel.EndLocation,
+                viewModel.EndLocationDetails,
+                viewModel.CountOfPassengers,
+                viewModel.AdditionalRequirements,
+                viewModel.TaxiDriver);
+
+            return this.RedirectToAction("Create");
         }
 
         [HttpGet]

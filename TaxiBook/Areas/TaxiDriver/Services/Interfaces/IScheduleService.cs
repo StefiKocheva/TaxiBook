@@ -5,8 +5,8 @@
 
     public interface IScheduleService
     {
-        Task<string> ForthcomingАbsenceAsync(
-            string from, 
+        Task<string> CreateАbsenceAsync(
+            string from,
             string till);
 
         Task<WorkTimeDetailsViewModel> Details(string id);

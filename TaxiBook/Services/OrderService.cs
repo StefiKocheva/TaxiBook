@@ -24,7 +24,7 @@
         {
             var location = new Address
             {
-                Coordinates = currentLocation,
+                //Coordinates = currentLocation,
             };
 
             var order = new Order

@@ -10,11 +10,11 @@
 
         public string PhoneNumber { get; set; }
 
-        public string CurrentLocation { get; set; }
+        public string StartLocation { get; set; }
 
         public string EndLocation { get; set; }
 
-        public string CurrentLocationDetails { get; set; }
+        public string StartLocationDetails { get; set; }
 
         public string EndLocationDetails { get; set; }
 

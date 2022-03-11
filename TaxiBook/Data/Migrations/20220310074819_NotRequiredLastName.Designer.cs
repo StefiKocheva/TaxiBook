@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
     [DbContext(typeof(TaxiBookDbContext))]
-    partial class TaxiBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220310074819_NotRequiredLastName")]
+    partial class NotRequiredLastName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,6 +242,7 @@ namespace TaxiBook.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -308,15 +311,10 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("DailyPricePerCall")
-                        .IsRequired()
+                    b.Property<decimal>("DailyPricePerCall")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("DailyPricePerMinuteStay")
-                        .IsRequired()
+                    b.Property<decimal>("DailyPricePerMinuteStay")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
@@ -324,12 +322,10 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<decimal?>("InitialDailyFee")
-                        .IsRequired()
+                    b.Property<decimal>("InitialDailyFee")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("InitialNightFee")
-                        .IsRequired()
+                    b.Property<decimal>("InitialNightFee")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("LicenseUrl")
@@ -340,20 +336,16 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal?>("NightPricePerCall")
-                        .IsRequired()
+                    b.Property<decimal>("NightPricePerCall")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("NightPricePerMinuteStay")
-                        .IsRequired()
+                    b.Property<decimal>("NightPricePerMinuteStay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("OneКilometerМileageDailyPrice")
-                        .IsRequired()
+                    b.Property<decimal>("OneКilometerМileageDailyPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("OneКilometerМileageNightPrice")
-                        .IsRequired()
+                    b.Property<decimal>("OneКilometerМileageNightPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("PhoneNumber")
@@ -424,7 +416,7 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<DateTime?>("CompletedOn")
+                    b.Property<DateTime>("CompletedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CountOfPassengers")
@@ -535,29 +527,6 @@ namespace TaxiBook.Data.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Taxies");
-                });
-
-            modelBuilder.Entity("TaxiBook.Data.Models.WorkTime", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("From")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Till")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("WorkTimes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -677,11 +646,11 @@ namespace TaxiBook.Data.Migrations
                         .HasForeignKey("EndLocationId");
 
                     b.HasOne("TaxiBook.Data.Models.Taxi", "Taxi")
-                        .WithMany("Orders")
+                        .WithMany("Bookings")
                         .HasForeignKey("TaxiId");
 
                     b.HasOne("TaxiBook.Data.Models.ApplicationUser", "User")
-                        .WithMany("Orders")
+                        .WithMany("Bookings")
                         .HasForeignKey("UserId");
 
                     b.Navigation("CurrentLocation");
@@ -723,15 +692,6 @@ namespace TaxiBook.Data.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("TaxiBook.Data.Models.WorkTime", b =>
-                {
-                    b.HasOne("TaxiBook.Data.Models.ApplicationUser", "Employee")
-                        .WithMany("WorkTimes")
-                        .HasForeignKey("EmployeeId");
-
-                    b.Navigation("Employee");
-                });
-
             modelBuilder.Entity("TaxiBook.Data.Models.Address", b =>
                 {
                     b.Navigation("CurrentLocations");
@@ -747,17 +707,15 @@ namespace TaxiBook.Data.Migrations
 
                     b.Navigation("Address");
 
+                    b.Navigation("Bookings");
+
                     b.Navigation("Favorites");
 
                     b.Navigation("Feedbacks");
 
-                    b.Navigation("Orders");
-
                     b.Navigation("Schedule");
 
                     b.Navigation("Taxies");
-
-                    b.Navigation("WorkTimes");
                 });
 
             modelBuilder.Entity("TaxiBook.Data.Models.Company", b =>
@@ -771,7 +729,7 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Taxi", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("Bookings");
 
                     b.Navigation("Users");
                 });

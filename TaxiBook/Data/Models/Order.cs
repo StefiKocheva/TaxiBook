@@ -11,6 +11,8 @@
         public Order()
         {
             this.Id = Guid.NewGuid().ToString();
+
+            this.CreatedOn = DateTime.Now;
         }
 
         public string Id { get; set; }
@@ -38,7 +40,7 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public DateTime CompletedOn { get; set; }
+        public DateTime? CompletedOn { get; set; }
 
         public OrderState OrderState { get; set; }
 

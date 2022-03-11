@@ -30,27 +30,27 @@
         public string Province { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal OneКilometerМileageDailyPrice { get; set; }
+        public decimal? OneКilometerМileageDailyPrice { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal OneКilometerМileageNightPrice { get; set; }
+        public decimal? OneКilometerМileageNightPrice { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal DailyPricePerCall { get; set; }
+        public decimal? DailyPricePerCall { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal NightPricePerCall { get; set; }
+        public decimal? NightPricePerCall { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal InitialDailyFee { get; set; }
+        public decimal? InitialDailyFee { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal InitialNightFee { get; set; }
+        public decimal? InitialNightFee { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal DailyPricePerMinuteStay { get; set; }
+        public decimal? DailyPricePerMinuteStay { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public decimal NightPricePerMinuteStay { get; set; }
+        public decimal? NightPricePerMinuteStay { get; set; }
     }
 }

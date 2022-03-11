@@ -6,13 +6,14 @@
     using Services.Interfaces;
     using ViewModels.Home;
 
-    [Authorize]
+    [Authorize(Roles = "Dispatcher")]
     [Area("Dispatcher")]
     public class HomeController : Controller
     {
-        private readonly IScheduleService _homeService;
+        private readonly IScheduleService scheduleService;
 
-        public HomeController(IScheduleService homeService) => this._homeService = homeService;
+        public HomeController(IScheduleService scheduleService)
+            => this.scheduleService = scheduleService;
 
         [HttpGet]
         public IActionResult Schedule()
@@ -21,18 +22,18 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Schedule(ForthcomingАbsenceViewModel model)
+        public async Task<IActionResult> Schedule(CreateАbsenceViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
-        
-            //var forthcomingAbsenceId = await this._homeService.CreateАbsenceAsync(
-            //    model.From,
-            //    model.Till);
-        
-            return this.RedirectPermanent("Schedule");
+
+            _ = await this.scheduleService.CreateАbsenceAsync(
+                viewModel.From,
+                viewModel.Till);
+
+            return this.RedirectToAction("Schedule");
         }
 
         [HttpGet]

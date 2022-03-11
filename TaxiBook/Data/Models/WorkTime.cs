@@ -3,9 +3,9 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Absence
+    public class WorkTime
     {
-        public Absence()
+        public WorkTime()
         {
             this.Id = Guid.NewGuid().ToString();
         }

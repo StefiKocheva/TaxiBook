@@ -5,13 +5,13 @@
 
     using static Vallidation.ForthcomingАbsenceViewModel;
 
-    public class ForthcomingАbsenceViewModel 
+    public class CreateАbsenceViewModel 
     {
         [Required(ErrorMessage = RequiredErrorMessage)]
-        // From today due current year [Range(DateTime.UtcNow.Date, DateTime.UtcNow.Year)]
-        public DateTime From { get; set; }
+        //[Range(DateTime.Now.Date.Day, DateTime.Now.Year)]
+        public string From { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public DateTime Till { get; set; }
+        public string Till { get; set; }
     }
 }

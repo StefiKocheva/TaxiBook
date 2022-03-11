@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Areas.Manager.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -54,11 +55,16 @@
                 Email = email,
                 PhoneNumber = phoneNumber,
                 EmployeeType = employeeType,
+                PasswordHash = "Employee_123",
+                SecurityStamp = Guid.NewGuid().ToString(),
             };
 
-            await this.userManager.CreateAsync(user, "Employee_123");
-
             await this.db.AddAsync(user);
+
+            await this.db.SaveChangesAsync();
+
+            var password = "Employee_123";
+            await this.userManager.CreateAsync(user, "Employee_123");
 
             await this.db.SaveChangesAsync();
 
@@ -94,18 +100,14 @@
 
         public async void DeleteAsync(string id)
         {
-            var employee = await this.ByIdAndByUserId(id);
-            //if (favoriteCompany == null)
-            //{
-            //    Is it necessary to check if it's null?
-            //}
+            var employee = await this.db.Users.FindAsync(id);
 
             this.db.Users.Remove(employee);
 
             await this.db.SaveChangesAsync();
         }
         
-        public async void UpdateAsync(
+        public async Task<string> UpdateAsync(
             string id, 
             string firstName, 
             string lastName, 
@@ -128,12 +130,15 @@
             user.PhoneNumber = phoneNumber;
 
             await this.db.SaveChangesAsync();
+
+            return user.Id;
         }
 
         private async Task<ApplicationUser?> ByIdAndByUserId(string id)
-           => await this.db
-               .Users
-               .Where(u => u.Id == id)
-               .FirstOrDefaultAsync();
+        {
+            var employee = await this.db.Users.FindAsync(id);
+
+            return employee;
+        }
     }
 }

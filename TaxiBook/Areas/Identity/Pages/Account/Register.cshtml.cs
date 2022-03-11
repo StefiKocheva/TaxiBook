@@ -84,7 +84,6 @@
                 ErrorMessage = ComparePasswordErrorMessage)]
             public string ConfirmPassword { get; set; }
 
-            [Required(ErrorMessage = RequiredErrorMessage)]
             public IFormFile ProfilePicture { get; set; }
         }
 

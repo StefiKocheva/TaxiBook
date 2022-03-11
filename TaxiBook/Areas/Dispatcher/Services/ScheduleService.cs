@@ -10,21 +10,24 @@
     {
         private readonly TaxiBookDbContext db;
 
-        public ScheduleService(TaxiBookDbContext db) => this.db = db;
+        public ScheduleService(TaxiBookDbContext db) 
+            => this.db = db;
 
-        public async Task<string> CreateАbsenceAsync(string from, string till)
+        public async Task<string> CreateАbsenceAsync(
+            string from, 
+            string till)
         {
-            var forthcomingАbsence = new Absence
+            var absence = new Absence
             {
                From = from,
                Till = till,
             };
 
-            await db.Absences.AddAsync(forthcomingАbsence);
+            await this.db.Absences.AddAsync(absence);
 
-            await db.SaveChangesAsync();
+            await this.db.SaveChangesAsync();
 
-            return forthcomingАbsence.Id;
+            return absence.Id;
         }
 
         public async Task<WorkTimeDetailsViewModel> Details(string id)

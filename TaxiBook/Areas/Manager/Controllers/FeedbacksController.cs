@@ -5,7 +5,7 @@
     using TaxiBook.Services.Interfaces;
     using TaxiBook.Services.ViewModels.Feedbacks;
 
-    [Authorize]
+    [Authorize(Roles = "Manager")]
     [Area("Manager")]
     public class FeedbacksController : Controller
     {

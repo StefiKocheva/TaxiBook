@@ -7,40 +7,67 @@
     using Microsoft.EntityFrameworkCore;
     using Interfaces;
     using ViewModels.Orders;
+    using Data.Models.Enums;
 
     public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
 
-        public OrderService(TaxiBookDbContext db) => this.db = db;
+        public OrderService(TaxiBookDbContext db) 
+            => this.db = db;
 
         public async Task<string> CreateAsync(
             string name, 
             string phoneNumber, 
-            string currentLocation, 
-            string currentLocationDetails, 
+            string startLocation, 
+            string startLocationDetails, 
             string endLocation, 
             string endLocationDetails, 
             int countOfPassengers, 
             string additionalRequirements, 
-            string taxiDriverName)
+            string taxiDriverEmail)
         {
-            var order = new Order
+            var user = new ApplicationUser
             {
-                // ClientName = name,
-                // PhoneNumber = phoneNumber,
-                // CurrentLocation = currentLocation,
-                // EndLocation = endLocation,
-                CurrentLocationDetails = currentLocationDetails,
-                EndLocationDetails = endLocationDetails,
-                CountOfPassengers = countOfPassengers,
-                AdditionalRequirements = additionalRequirements, 
-                // Taxi.Driver.FullName (FirstName + LastName) = taxiDriverName,
+                FirstName = name,
+                PhoneNumber = phoneNumber,
             };
 
-            await db.Orders.AddAsync(order);
+            await this.db.Users.AddAsync(user);
 
-            await db.SaveChangesAsync();
+            await this.db.SaveChangesAsync();
+
+            var location = new Address()
+            {
+                StartLocationCoordinates = startLocation,
+                EndLocationCoordinates = endLocation,
+            };
+
+            await this.db.Addresses.AddAsync(location);
+
+            await this.db.SaveChangesAsync();
+
+            var order = new Order
+            {
+                CurrentLocationDetails = startLocationDetails,
+                EndLocationDetails = endLocationDetails,
+                CountOfPassengers = countOfPassengers,
+                AdditionalRequirements = additionalRequirements,
+                OrderState = OrderState.Processed,
+            };
+
+            await this.db.Orders.AddAsync(order);
+
+            await this.db.SaveChangesAsync();
+
+            var taxiDriver = new ApplicationUser()
+            {
+                Email = taxiDriverEmail,
+            };
+
+            await this.db.Users.AddAsync(taxiDriver);
+
+            await this.db.SaveChangesAsync();
 
             return order.Id;
         }
@@ -55,9 +82,9 @@
                     CreatorId = o.UserId,
                     ClientName = o.User.FirstName + " " + o.User.LastName,
                     PhoneNumber = o.User.PhoneNumber,
-                    CurrentLocation = o.CurrentLocation.ToString(),
+                    StartLocation = o.CurrentLocation.ToString(),
                     EndLocation = o.EndLocation.ToString(),
-                    CurrentLocationDetails = o.CurrentLocationDetails,
+                    StartLocationDetails = o.CurrentLocationDetails,
                     EndLocationDetails = o.EndLocationDetails,
                     CountOfPassengers = o.CountOfPassengers,
                     AdditionalRequirements = o.AdditionalRequirements,

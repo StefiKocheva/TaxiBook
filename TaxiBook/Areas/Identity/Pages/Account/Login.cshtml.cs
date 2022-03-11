@@ -22,7 +22,8 @@
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, 
+        public LoginModel(
+            SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -86,9 +87,9 @@
                     .PasswordSignInAsync(
                         this.Input.Email, 
                         this.Input.Password, 
-                        this.Input.RememberMe, 
+                        this.Input.RememberMe,
                         lockoutOnFailure: false);
-                
+
                 if (result.Succeeded)
                 {
                     this._logger.LogInformation("User logged in.");

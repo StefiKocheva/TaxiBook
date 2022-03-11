@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -17,7 +19,7 @@
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
-                    <img src="~/images/logo-first-type.svg" alt="" srcset="">
+                    <a asp-area="Default" asp-controller="Home" asp-action="Index"><img src="~/images/logo-first-type.svg" alt="" srcset=""></a>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
@@ -173,7 +175,7 @@
                                 <div class="avatar mr-1">
                                     <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.User.FindFirst("FisrtName")?.Value)!</div>
+                                <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.Context.User.Identity.Name)!</div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>

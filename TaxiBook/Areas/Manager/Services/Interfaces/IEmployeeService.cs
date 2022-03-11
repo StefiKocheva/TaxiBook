@@ -17,7 +17,7 @@
             string brand,
             string model);
 
-        void UpdateAsync(
+        Task<string> UpdateAsync(
             string id, 
             string firstName, 
             string lastName, 

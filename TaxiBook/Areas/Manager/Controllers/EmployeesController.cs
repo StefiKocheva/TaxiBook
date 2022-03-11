@@ -6,7 +6,7 @@
     using Services.Inerfaces;
     using ViewModels.Employees;
 
-    [Authorize]
+    [Authorize(Roles = "Manager")]
     [Area("Manager")]
     public class EmployeesController : Controller
     {
@@ -18,12 +18,12 @@
         [HttpGet]
         public IActionResult All()
         {
-            var model = new EmployeeListingViewModel
+            var viewModel = new EmployeeListingViewModel
             {
                 Employees = this.employeeService.All()
             };
 
-            return this.View(model);
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -35,10 +35,10 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
-            _ = await this.employeeService.CreateAsync(
+            await this.employeeService.CreateAsync(
                 viewModel.FirstName,
                 viewModel.LastName,
                 viewModel.Email,
@@ -58,9 +58,29 @@
         }
 
         [HttpPut]
-        public  async Task Update(string id, UpdateEmployeeViewModel viewModel)
+        public async Task<IActionResult> Update(string id, UpdateEmployeeViewModel viewModel)
         {
-            // TODO
+            _ = await this.employeeService.UpdateAsync(
+                id, 
+                viewModel.FirstName, 
+                viewModel.LastName, 
+                viewModel.Email, 
+                viewModel.PhoneNumber);
+
+            return this.RedirectToAction("All");
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(string id)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.Ok();
+            }
+
+            this.employeeService.DeleteAsync(id);
+
+            return this.RedirectToAction("All");
         }
     }
 }

@@ -13,19 +13,24 @@
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public string CurrentLocation { get; set; }
+        public string StartLocation { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string EndLocation { get; set; }
 
         [MaxLength(MaxLocationDetailsLength)]
-        public string CurrentLocationDetails { get; set; }
+        public string StartLocationDetails { get; set; }
 
-        [MaxLength(MaxLocationDetailsLength)]
+        [MaxLength(
+            MaxLocationDetailsLength)]
         public string EndLocationDetails { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        [Range(MinCountOfPassengers, MaxCountOfPassengers)]
+
+        [Range(
+            MinCountOfPassengers, 
+            MaxCountOfPassengers, 
+            ErrorMessage = CountOfPassengersRangeErrorMessage)]
         public int CountOfPassengers { get; set; }
 
         [MaxLength(MaxAdditionalRequirementsLength)]

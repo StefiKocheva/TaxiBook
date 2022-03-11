@@ -6,7 +6,7 @@
     using Services.Interfaces;
     using ViewModels.Schedule;
 
-    [Authorize]
+    [Authorize(Roles = "Manager")]
     [Area("Manager")]
     public class ScheduleController : Controller
     {

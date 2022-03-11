@@ -17,17 +17,16 @@
             this.CreatedOn = DateTime.Now;
 
             this.Feedbacks = new HashSet<Feedback>();
-            this.Bookings = new HashSet<Order>();
+            this.Orders = new HashSet<Order>();
             this.Taxies = new HashSet<Taxi>();
             this.Absences = new HashSet<Absence>();
             this.Favorites = new HashSet<Favorite>();
+            this.WorkTimes = new HashSet<WorkTime>();
         }
 
-        [Required]
         [MaxLength(MaxNameLength)]
         public string FirstName { get; set; }
 
-        [Required]
         [MaxLength(MaxNameLength)]
         public string LastName { get; set; }
 
@@ -47,12 +46,14 @@
 
         public virtual IEnumerable<Feedback> Feedbacks { get; set; }
 
-        public virtual IEnumerable<Order> Bookings { get; set; }
+        public virtual IEnumerable<Order> Orders { get; set; }
 
         public virtual IEnumerable<Taxi> Taxies { get; set; }
 
         public virtual IEnumerable<Absence> Absences { get; set; }
 
         public virtual IEnumerable<Favorite> Favorites { get; set; }
+
+        public virtual IEnumerable<WorkTime> WorkTimes { get; set; }
     }
 }

@@ -10,6 +10,8 @@
         {
             this.Id = Guid.NewGuid().ToString();
 
+            this.CreatedOn = DateTime.Now;
+
             this.Employees = new HashSet<ApplicationUser>();
             this.Taxies = new HashSet<Taxi>();
         }
@@ -31,6 +33,8 @@
 
         public string Province { get; set; }
 
+        public DateTime? CreatedOn { get; set; }
+
         //public string ProvinceId { get; set; }
 
         //[Required]
@@ -39,28 +43,28 @@
         public Address Location { get; set; }
 
         [Required]
-        public decimal OneКilometerМileageDailyPrice { get; set; }
+        public decimal? OneКilometerМileageDailyPrice { get; set; }
 
         [Required]
-        public decimal OneКilometerМileageNightPrice { get; set; }
+        public decimal? OneКilometerМileageNightPrice { get; set; }
 
         [Required]
-        public decimal DailyPricePerCall { get; set; }
+        public decimal? DailyPricePerCall { get; set; }
 
         [Required]
-        public decimal NightPricePerCall { get; set; }
+        public decimal? NightPricePerCall { get; set; }
 
         [Required]
-        public decimal InitialDailyFee { get; set; }
+        public decimal? InitialDailyFee { get; set; }
 
         [Required]
-        public decimal InitialNightFee { get; set; }
+        public decimal? InitialNightFee { get; set; }
 
         [Required]
-        public decimal DailyPricePerMinuteStay { get; set; }
+        public decimal? DailyPricePerMinuteStay { get; set; }
 
         [Required]
-        public decimal NightPricePerMinuteStay { get; set; }
+        public decimal? NightPricePerMinuteStay { get; set; }
 
         public string LicenseUrl { get; set; }
 

@@ -20,7 +20,11 @@
 
         [Required]
         [MaxLength(500)]
-        public string Coordinates { get; set; }
+        public string StartLocationCoordinates { get; set; }
+
+        [Required]
+        [MaxLength(500)]
+        public string EndLocationCoordinates { get; set; }
 
         public string UserId { get; set; }
 

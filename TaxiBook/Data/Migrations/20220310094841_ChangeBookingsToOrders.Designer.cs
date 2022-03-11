@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
     [DbContext(typeof(TaxiBookDbContext))]
-    partial class TaxiBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220310094841_ChangeBookingsToOrders")]
+    partial class ChangeBookingsToOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -308,15 +310,10 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("DailyPricePerCall")
-                        .IsRequired()
+                    b.Property<decimal>("DailyPricePerCall")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("DailyPricePerMinuteStay")
-                        .IsRequired()
+                    b.Property<decimal>("DailyPricePerMinuteStay")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
@@ -324,12 +321,10 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<decimal?>("InitialDailyFee")
-                        .IsRequired()
+                    b.Property<decimal>("InitialDailyFee")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("InitialNightFee")
-                        .IsRequired()
+                    b.Property<decimal>("InitialNightFee")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("LicenseUrl")
@@ -340,20 +335,16 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal?>("NightPricePerCall")
-                        .IsRequired()
+                    b.Property<decimal>("NightPricePerCall")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("NightPricePerMinuteStay")
-                        .IsRequired()
+                    b.Property<decimal>("NightPricePerMinuteStay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("OneКilometerМileageDailyPrice")
-                        .IsRequired()
+                    b.Property<decimal>("OneКilometerМileageDailyPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("OneКilometerМileageNightPrice")
-                        .IsRequired()
+                    b.Property<decimal>("OneКilometerМileageNightPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("PhoneNumber")
@@ -424,7 +415,7 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<DateTime?>("CompletedOn")
+                    b.Property<DateTime>("CompletedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CountOfPassengers")

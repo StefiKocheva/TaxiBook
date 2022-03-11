@@ -5,12 +5,12 @@
 
     using static Vallidation.ForthcomingАbsenceViewModel;
 
-    public class ForthcomingАbsenceViewModel
+    public class CreateАbsenceViewModel
     {
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public DateTime From { get; set; }
+        public string From { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public DateTime Till { get; set; }
+        public string Till { get; set; }
     }
 }

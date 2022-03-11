@@ -6,7 +6,7 @@
     using Services.Inerfaces;
     using ViewModels.Orders;
 
-    [Authorize]
+    [Authorize(Roles = "TaxiDriver")]
     [Area("TaxiDriver")]
     public class OrdersController : Controller
     {

@@ -1,28 +1,16 @@
 ﻿namespace TaxiBook.Controllers
 {
     using System.Threading.Tasks;
-    using Data.Models;
-    using Data;
     using Services.Interfaces;
     using Services.ViewModels.Companies;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Identity;
 
     public class CompaniesController : Controller
     {
         private readonly ICompanyService companyService;
-        private readonly IHttpContextAccessor httpContextAccessor;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly TaxiBookDbContext db;
 
-        public CompaniesController(ICompanyService companyService, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager, TaxiBookDbContext db)
-        {
-            this.companyService = companyService;
-            this.httpContextAccessor = httpContextAccessor;
-            this.userManager = userManager;
-            this.db = db;
-        }
+        public CompaniesController(ICompanyService companyService)
+            => this.companyService = companyService;
 
         [HttpGet]
         public IActionResult All()
@@ -41,27 +29,27 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateCompanyViewModel model)
+        public async Task<IActionResult> Create(CreateCompanyViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
             await this.companyService.CreateAsync(
-                model.Name,
-                model.PhoneNumber,
-                model.Description,
+                viewModel.Name,
+                viewModel.PhoneNumber,
+                viewModel.Description,
                 //model.License,
-                model.Province,
-                model.OneКilometerМileageDailyPrice,
-                model.OneКilometerМileageNightPrice,
-                model.DailyPricePerCall,
-                model.NightPricePerCall,
-                model.InitialDailyFee,
-                model.InitialNightFee,
-                model.DailyPricePerMinuteStay,
-                model.NightPricePerMinuteStay);
+                viewModel.Province,
+                viewModel.OneКilometerМileageDailyPrice,
+                viewModel.OneКilometerМileageNightPrice,
+                viewModel.DailyPricePerCall,
+                viewModel.NightPricePerCall,
+                viewModel.InitialDailyFee,
+                viewModel.InitialNightFee,
+                viewModel.DailyPricePerMinuteStay,
+                viewModel.NightPricePerMinuteStay);
 
             return this.RedirectToAction("All");
         }

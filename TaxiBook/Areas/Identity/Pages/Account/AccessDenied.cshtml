@@ -1,0 +1,28 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    this.Layout = "_AuthenticationLayout";
+}
+
+<div id="auth">
+    <div class="container">
+        <br /><br /><br />
+        <div class="row">
+            <div class="col-md-5 col-sm-12 mx-auto">
+                <div class="card py-4">
+                    <div class="card-body">
+                        <div class="text-center mb-5">
+                            <a asp-area="Default" asp-controller="Home" asp-action="Index"><img src="~/images/logo-second-type.png" height="48" class='mb-4'></a>
+                            <h3>Достъпът е отказен</h3>
+                            <p>Нямате достъп до тази страница.</p>
+                            <div class="col-12 d-flex justify-content-center">
+                                <a type="submit" href="javascript:window.history.back()" class="btn btn-outline-primary float-right mr-1 mb-1">Назад</a> 
+                                <a role="button" asp-area="Default" asp-controller="Home" asp-action="Index" class="btn btn-primary float-right mr-1 mb-1">Начало</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
