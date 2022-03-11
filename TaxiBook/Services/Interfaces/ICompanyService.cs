@@ -22,5 +22,7 @@
             decimal? initialNightFee,
             decimal? dailyPricePerMinuteStay,
             decimal? nightPricePerMinuteStay);
+
+        Task<CompanyDetailsViewModel> DetailsAsync(string id);
     }
 }

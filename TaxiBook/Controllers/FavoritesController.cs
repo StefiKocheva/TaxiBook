@@ -1,10 +1,12 @@
 ﻿namespace TaxiBook.Controllers
 {
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Interfaces;
     using Services.ViewModels.Favorites;
 
+    [Authorize(Roles = "Client")]
     public class FavoritesController : Controller
     {
         private readonly IFavoriteService favoriteService;

@@ -30,5 +30,8 @@
         void DeleteAsync(string id);
 
         IEnumerable<EmployeeDetailsViewModel> All();
+
+
+        //IEnumerable<EmployeeDetailsViewModel> Details(string id);
     }
 }

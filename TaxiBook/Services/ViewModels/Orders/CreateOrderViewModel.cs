@@ -1,7 +1,8 @@
 ﻿namespace TaxiBook.Services.ViewModels.Orders
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using TaxiBook.Services.ViewModels.Companies;
     using static Vallidation.CreateOrderViewModel;
 
     public class CreateOrderViewModel
@@ -12,17 +13,19 @@
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string EndLocation { get; set; }
 
-        [MaxLength(MaxLocationDetailsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string CurrentLocationDetails { get; set; }
 
-        [MaxLength(MaxLocationDetailsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string EndLocationDetails { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [Range(MinCountOfPassengers, MaxCountOfPassengers)]
+        [Range(
+            MinCountOfPassengers,
+            MaxCountOfPassengers,
+            ErrorMessage = CountOfPassengersRangeErrorMessage)]
         public int CountOfPassengers { get; set; }
 
-        [MaxLength(MaxAdditionalRequirementsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string AdditionalRequirements { get; set; }
     }
 }

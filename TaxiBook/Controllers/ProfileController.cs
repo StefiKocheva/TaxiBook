@@ -1,17 +1,13 @@
 ﻿namespace TaxiBook.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = "Client,TaxiDriver,Dispatcher,Manager")]
     public class ProfileController : Controller
     {
         [HttpGet]
         public IActionResult Overview(string userId)
-        {
-            return this.View();
-        }
-
-        [HttpGet]
-        public IActionResult Edit(string userId)
         {
             return this.View();
         }

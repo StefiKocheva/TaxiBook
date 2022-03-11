@@ -5,15 +5,23 @@
     using Data;
     using Data.Models;
     using Interfaces;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
+    using TaxiBook.Data.Models.Enums;
     using ViewModels.Orders;
 
     public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public OrderService(TaxiBookDbContext db) 
-            => this.db = db;
+        public OrderService(
+            TaxiBookDbContext db, 
+            IHttpContextAccessor httpContextAccessor)
+        {
+            this.db = db;
+            this.httpContextAccessor = httpContextAccessor;
+        }
 
         public async Task<string> CreateAsync(
             string currentLocation, 
@@ -23,10 +31,9 @@
             int countOfPassengers, 
             string additionalRequirements)
         {
-            var location = new Address
-            {
-                //Coordinates = currentLocation,
-            };
+
+            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
+            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
 
             var order = new Order
             {
@@ -34,11 +41,25 @@
                 EndLocationDetails = endLocationDetails,
                 CountOfPassengers = countOfPassengers,
                 AdditionalRequirements = additionalRequirements,
+                OrderState = OrderState.Unprocessed,
+                User = user,
+                UserId = user.Id,
             };
 
-            await db.Orders.AddAsync(order);
+            await this.db.Orders.AddAsync(order);
 
-            await db.SaveChangesAsync();
+            await this.db.SaveChangesAsync();
+            var location = new Address()
+            {
+                StartLocationCoordinates = currentLocation,
+                EndLocationCoordinates = endLocation,
+                User = user,
+                UserId = user.Id,
+            };
+
+            await this.db.Addresses.AddAsync(location);
+
+            await this.db.SaveChangesAsync();
 
             return order.Id;
         }
@@ -48,10 +69,6 @@
             string userId)
         {
             var order = await this.ByIdAndByUserId(id, userId);
-            //if (order == null)
-            //{
-            //    Is it necessary to check if it's null?
-            //}
 
             this.db.Orders.Remove(order);
 
@@ -76,7 +93,7 @@
                 })
                 .FirstOrDefaultAsync();
 
-        private async Task<Order?> ByIdAndByUserId(
+        private async Task<Order> ByIdAndByUserId(
             string id, 
             string userId)
             => await this.db

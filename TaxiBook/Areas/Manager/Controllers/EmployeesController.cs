@@ -52,8 +52,13 @@
         }
 
         [HttpGet]
-        public IActionResult Overview(string userId)
+        public IActionResult Overview()
         {
+            //var viewModel = new EmployeeListingViewModel
+            //{
+            //    Employees = this.employeeService.Details(id)
+            //};
+
             return this.View();
         }
 

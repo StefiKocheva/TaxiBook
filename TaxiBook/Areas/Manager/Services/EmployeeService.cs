@@ -52,7 +52,7 @@
             string model)
         {
 
-            var user = new ApplicationUser
+            var employee = new ApplicationUser
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -65,8 +65,8 @@
             };
 
             var password = "Employee_123";
-            await this.userManager.CreateAsync(user, password);
-            await this.userManager.AddToRoleAsync(user, employeeRole.ToString());
+            await this.userManager.CreateAsync(employee, password);
+            await this.userManager.AddToRoleAsync(employee, employeeRole.ToString());
 
             if (numberPlate != null && brand != null && model != null)
             {
@@ -75,6 +75,7 @@
                     NumberPlate = numberPlate,
                     Model = model,
                     Brand = brand,
+                    DriverId = employee.Id,
                 };
 
                 await this.db.AddAsync(taxi);
@@ -82,7 +83,7 @@
                 await this.db.SaveChangesAsync();
             }
 
-            return user.Id;
+            return employee.Id;
         }
 
         public async void DeleteAsync(string id)
@@ -93,7 +94,22 @@
 
             await this.db.SaveChangesAsync();
         }
-        
+
+        //public IEnumerable<EmployeeDetailsViewModel> Details(string id)
+        //    => this.db
+        //    .Users
+        //    .Where(u => u.Id == id)
+        //    .Select(u => new EmployeeDetailsViewModel()
+        //    {
+        //        FirstName = u.FirstName,
+        //        LastName = u.LastName,
+        //        Email = u.Email,
+        //        PhoneNumber = u.PhoneNumber,
+        //        NumberPlate = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.NumberPlate).ToString(),
+        //        Brand = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Brand).ToString(),
+        //        Model = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Model).ToString(),
+        //    }).ToHashSet();
+
         public async Task<string> UpdateAsync(
             string id, 
             string firstName, 
@@ -104,23 +120,23 @@
             string model,
             string numberPlate)
         {
-            var user = await this.ByIdAndByUserId(id);
+            var employee = await this.db.Users.FindAsync(id);
 
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.Email = email;
-            user.PhoneNumber = phoneNumber;
+            employee.FirstName = firstName;
+            employee.LastName = lastName;
+            employee.Email = email;
+            employee.PhoneNumber = phoneNumber;
 
             await this.db.SaveChangesAsync();
 
-            return user.Id;
+            return employee.Id;
         }
 
-        private async Task<ApplicationUser> ByIdAndByUserId(string id)
-        {
-            var employee = await this.db.Users.FindAsync(id);
+        //private async Task<ApplicationUser> ByIdAndByUserId(string id)
+        //{
+        //    var employee = await this.db.Users.FindAsync(id);
 
-            return employee;
-        }
+        //    return employee;
+        //}
     }
 }

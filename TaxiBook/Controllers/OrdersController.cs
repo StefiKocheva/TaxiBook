@@ -1,6 +1,7 @@
 ﻿namespace TaxiBook.Controllers
 {
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Interfaces;
     using Services.ViewModels.Orders;
@@ -12,18 +13,23 @@
         public OrdersController(IOrderService orderService) 
             => this.orderService = orderService;
 
+        [Authorize(Roles = "Client,TaxiDriver,Dispatcher,Manager")]
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Create()
         {
             return this.View();
         }
 
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult Past()
         {
             return this.View();
         }
 
+        [Authorize(Roles = "Client")]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
         {
@@ -32,7 +38,7 @@
                 return this.View(viewModel);
             }
 
-            var orderId = await this.orderService.CreateAsync(
+            await this.orderService.CreateAsync(
                  viewModel.CurrentLocation,
                  viewModel.CurrentLocationDetails,
                  viewModel.EndLocation,
@@ -40,17 +46,13 @@
                  viewModel.CountOfPassengers,
                  viewModel.AdditionalRequirements);
 
-            return this.RedirectPermanent("Create");
+            return this.RedirectToAction("Overview");
         }
 
+        [Authorize(Roles = "Client")]
+        [AllowAnonymous]
         [HttpGet]
-        public IActionResult Overview(string orderId)
-        {
-            return this.View();
-        }
-
-        [HttpGet]
-        public IActionResult Details(string orderId)
+        public IActionResult Overview(string id)
         {
             return this.View();
         }

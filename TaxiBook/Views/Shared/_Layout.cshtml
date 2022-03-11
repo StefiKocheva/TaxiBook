@@ -53,11 +53,18 @@
                         {
                             <li><a asp-area="Manager" asp-controller="Feedbacks" asp-action="All" class="nav-link scrollto">Табло</a></li>
                         }
+                        else if (this.User.IsInRole("Dispatcher"))
+                        {
+                            <li><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Unprocessed" class="nav-link scrollto">Табло</a></li>
+                        }
+                        else if (this.User.IsInRole("TaxiDriver"))
+                        {
+                            <li><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Unaccepted" class="nav-link scrollto">Табло</a></li>
+                        }
                         else
                         {
-                            <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
+                            <li><a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class="nav-link scrollto">Табло</a></li>
                         }
-
                         <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout" class="nav-link scrollto">Изход</a></li>
                     }
                 </ul>

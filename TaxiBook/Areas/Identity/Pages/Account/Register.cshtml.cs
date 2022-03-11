@@ -129,6 +129,10 @@
 
                     imageUrl = uploadResult.Url.ToString();
                 }
+                else
+                {
+                    imageUrl = "https://res.cloudinary.com/taxibook/image/upload/v1647003664/account_rbozxn.png";
+                }
 
                 var user = new ApplicationUser
                 {
@@ -146,6 +150,7 @@
 
                 if (result.Succeeded)
                 {
+                    await this.userManager.AddToRoleAsync(user, "Client");
                     this.logger.LogInformation("User created a new account with password.");
                     await this.signInManager.SignInAsync(user, isPersistent: false);
 

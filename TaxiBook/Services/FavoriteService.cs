@@ -28,30 +28,11 @@
             return favorite.Id;
         }
 
-        //public async Task<IEnumerable<FavoriteListingViewModel>> AllAsync()
-            //=> await this.db
-                //.Favorites
-                //.OrderBy(f => f.CompanyName)
-                //.Select(f => new FavoriteListingViewModel()
-                //{
-                    //Id = f.Id,
-                    //CompanyName = f.CompanyName,
-                    ////DailyTariff = f.Client.Company.DailyTariff,
-                    ////NightTariff = f.Client.Company.NightTariff,
-                    //PhoneNumber = f.Client.Company.PhoneNumber,
-                    //// Region = f.Client.Company.Address.Region,
-                //})
-                //.ToListAsync();
-
         public async void DeleteAsync(
             string id,
             string userId)
         {
             var favoriteCompany = await this.ByIdAndByUserId(id, userId);
-            //if (favoriteCompany == null)
-            //{
-            //    Is it necessary to check if it's null?
-            //}
 
             this.db.Favorites.Remove(favoriteCompany);
 

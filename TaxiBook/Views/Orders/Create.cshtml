@@ -32,83 +32,73 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form method="post" asp-area="default" asp-controller="Order" asp-action="Create" enctype="multipart/form-data">
+                        <form method="post" asp-area="Default" asp-controller="Orders" asp-action="Create">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="currentLocation">Текущо местоположение</label>
                                         <div class="position-relative">
                                             <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Текущо местоположение" id="currentLocation">
-                                            <span asp-validation-for="CurrentLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-street-view"></i>
                                             </div>
-                                        </div>
+                                        </div>                  
+                                        <span asp-validation-for="CurrentLocation" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label asp-for="CurrentLocationDetails" for="currentLocationDetails">Уточнение за начална точка</label>
+                                        <textarea asp-for="CurrentLocationDetails" id="currentLocationDetails" class="form-control" rows="2" placeholder="Уточнение за начална точка"></textarea>              
+                                        <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
+                                        <label asp-for="EndLocation" for="endLocation">Крайна дестинация</label>
                                         <div class="position-relative">
-                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
-                                            <span asp-validation-for="EndLocation" class="text-danger"></span>
+                                            <input asp-for="EndLocation"  type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
                                         </div>
+                                        <span asp-validation-for="EndLocation" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label asp-for="EndLocationDetails" for="endLocationDetails">Уточнение за крайна точка</label>
+                                        <textarea asp-for="EndLocationDetails" id="endLocationDetails" class="form-control" rows="2" placeholder="Уточнение за крайна точка"></textarea>             
+                                        <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="currentLocationDetails">Повече детайли</label>
+                                        <label asp-for="CountOfPassengers" for="countOfPassengers">Бройка на пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за местоположение ви и/или крайна дестинация" id="currentLocationDetails">
-                                            <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="countOfPassengers">Бройка на пътуващи</label>
-                                        <div class="position-relative">
-                                            <input asp-for="CountOfPassengers" type="number" min="1" max="6" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
-                                            <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
+                                            <input asp-for="CountOfPassengers" type="number" min="1" max="6" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">    
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
                                         </div>
+                                        <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="endLocationDetails">Метод на плащане</label>
-                                        <div class="position-relative">
-                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder="Метод на плащане" id="endLocationDetails">
-                                            <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-wallet"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="additionalRequirements">Допълнителни изисквания</label>
+                                        <label asp-for="AdditionalRequirements" for="additionalRequirements">Допълнителни изисквания</label>
                                         <div class="position-relative">
                                             <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например: помощ с багаж" id="additionalRequirements">
-                                            <span asp-validation-for="CurrentLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="far fa-handshake"></i>
                                             </div>
                                         </div>
+                                        <span asp-validation-for="CurrentLocation" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="Default" asp-controller="Orders" asp-action="Overview" class="btn btn-primary mr-1 mb-1">Поръчай</a>
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Поръчай</button>
                             </div>
                         </form>
                     </div>

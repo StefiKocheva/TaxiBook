@@ -4,7 +4,9 @@
     using Services.Interfaces;
     using Services.ViewModels.Companies;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize(Roles = "Client")]
     public class CompaniesController : Controller
     {
         private readonly ICompanyService companyService;
@@ -53,5 +55,23 @@
 
             return this.RedirectToAction("All");
         }
+
+
+
+        [Authorize(Roles = "Client")]
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Details(string id)
+        {
+            return this.View();
+        }
+
+        //[Authorize(Roles = "Client")]
+        //[AllowAnonymous]
+        //[HttpGet]
+        //public IActionResult Details(string id)
+        //{
+        //    return this.View(this.companyService.DetailsAsync(id));
+        //}
     }
 }

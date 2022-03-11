@@ -41,7 +41,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -51,17 +51,21 @@
                             <i data-feather="x"></i>
                             </button>
                         </div>
-                        <form method="post" asp-area="default" asp-controller="Favorites" asp-action="Create">
+                        <form method="post">
                             <div class="modal-body">
                                 <p>Моля изберете компания.</p>
-                                <div class="form-group mb-3">
-                                    <label for="room-type">Задай</label>
-                                    <select @*asp-for="CreateFavoriteViewModel.CompanyName"*@ id="room-type" class="form-control">
-                                        @*@foreach (var company in this.Model.Companies)
-                                        {
-                                            <option value="@company.Id">@company.Name</option>
-                                        }*@
-                                    </select>
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group form-label-group">
+                                        <label for="companyName">Услугите на чия компания използвахте?</label>
+                                        <fieldset class="form-group">
+                                            <select class="form-select" id="companyName">
+                                                <option selected="true" disabled="disabled">Изберете...</option>  
+                                                <option value="България Такси">България Такси</option>
+                                                <option value="Диамант Такси">Диамант Такси</option>
+                                            </select>
+                                        </fieldset>
+                                        <span class="text-danger"></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

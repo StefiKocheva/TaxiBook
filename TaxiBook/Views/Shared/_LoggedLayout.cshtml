@@ -130,24 +130,27 @@
                                     <span>Текуща поръчка</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
-                                <a asp-area="Default" asp-controller="Orders" asp-action="Past" class='sidebar-link'>
-                                    <i class="fas fa-clone"></i>
-                                    <span>Отминали поръчки</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a asp-area="Default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
-                                    <i class="fas fa-bookmark"></i>
-                                    <span>Любими</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a asp-area="Default" asp-controller="Feedbacks" asp-action="Create" class='sidebar-link'>
-                                    <i class="fas fa-comment-dots"></i>
-                                    <span>Оцени пътуване</span>
-                                </a>
-                            </li>
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Orders" asp-action="Past" class='sidebar-link'>
+                                        <i class="fas fa-clone"></i>
+                                        <span>Отминали поръчки</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Favorites" asp-action="All" class='sidebar-link'>
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Любими</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Feedbacks" asp-action="Create" class='sidebar-link'>
+                                        <i class="fas fa-comment-dots"></i>
+                                        <span>Оцени пътуване</span>
+                                    </a>
+                                </li>
+                            }
                             <li class="sidebar-item">
                                 <a asp-area="Default" asp-controller="Companies" asp-action="Create" class='sidebar-link'>
                                     <i class="fas fa-plus"></i>
@@ -161,36 +164,39 @@
             </div>
         </div>
         <div id="main">
-            <nav class="navbar navbar-header navbar-expand navbar-light">
-                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
-                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
-                        <li class="dropdown nav-icon mr-2">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                <div class="avatar mr-1">
-                                    <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
-                                </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.Context.User.Identity.Name)!</div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>
-                                <div class="dropdown-divider"></div>
-                                @if (this.User.IsInRole("Manager"))
-                                {
-                                    <a class="dropdown-item" asp-area="Manager" asp-controller="Companies" asp-action="Overview"><i data-feather="edit-3"></i> Компания</a>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <nav class="navbar navbar-header navbar-expand navbar-light">
+                    <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                    <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                            <li class="dropdown nav-icon mr-2">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                    <div class="avatar mr-1">
+                                        <img src="@this.User.FindFirst("ImageUrl")?.Value">
+                                    </div>
+                                    <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.Context.User.Identity.Name)!</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>
                                     <div class="dropdown-divider"></div>
-                                }
-                                <a class="dropdown-item" asp-area="Identity" asp-controller="Account" asp-action="Logout"><i data-feather="log-out"></i> Излез</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                                    @if (this.User.IsInRole("Manager"))
+                                    {
+                                        <a class="dropdown-item" asp-area="Manager" asp-controller="Companies" asp-action="Overview"><i data-feather="edit-3"></i> Компания</a>
+                                        <div class="dropdown-divider"></div>
+                                    }
+                                    <a class="dropdown-item" asp-area="Identity" asp-controller="Account" asp-action="Logout"><i data-feather="log-out"></i> Излез</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            }
 
             <div class="main-content container-fluid">
                 @this.RenderBody()

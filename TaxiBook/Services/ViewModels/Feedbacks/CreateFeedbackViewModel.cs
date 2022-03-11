@@ -6,8 +6,6 @@
 
     public class CreateFeedbackViewModel
     {
-        // Enum?
-        [Required(ErrorMessage = RequiredErrorMessage)]
         public string Company { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]

@@ -4,7 +4,9 @@
     using System.Threading.Tasks;
     using Services.Interfaces;
     using Services.ViewModels.Feedbacks;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize(Roles = "Client")]
     public class FeedbacksController : Controller
     {
         private readonly IFeedbackService feedbackService;
@@ -13,7 +15,7 @@
             => this.feedbackService = feedbackService;
 
         [HttpGet]
-        public ActionResult Create(string userId)
+        public ActionResult Create()
         {
             return this.View();
         }
@@ -23,15 +25,15 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
-            var feedbackId = await this.feedbackService.CreateAsync(
+            await this.feedbackService.CreateAsync(
                 viewModel.Company,
                 viewModel.IsLiked,
                 viewModel.Opinion);
 
-            return this.RedirectToAction("CreateFeedback");
+            return this.RedirectToAction("Create");
         }
     }
 }

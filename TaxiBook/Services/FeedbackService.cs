@@ -6,15 +6,22 @@
     using Data;
     using Data.Models;
     using Interfaces;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using ViewModels.Feedbacks;
 
     public class FeedbackService : IFeedbackService
     {
         private readonly TaxiBookDbContext db;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public FeedbackService(TaxiBookDbContext db) 
-            => this.db = db;
+        public FeedbackService(
+            TaxiBookDbContext db, 
+            IHttpContextAccessor httpContextAccessor)
+        {
+            this.db = db;
+            this.httpContextAccessor = httpContextAccessor;
+        }
 
         public IEnumerable<FeedbackDetailsViewModel> All()
             => this.db
@@ -34,11 +41,15 @@
             bool isLiked, 
             string description)
         {
+            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
+            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
+
             var feedback = new Feedback
             {
                 CompanyName = company,
                 IsLiked = isLiked,
                 Description = description,
+                ClientId = user.Id,
             };
 
             await db.Feedbacks.AddAsync(feedback);
@@ -50,13 +61,9 @@
 
         public async void Delete(
             string id, 
-            string userId)
+            string clientId)
         {
-            var feedback = await this.ByIdAndByUserId(id, userId);
-            //if (order == null)
-            //{
-            //    Is it necessary to check if it's null?
-            //}
+            var feedback = await this.ByIdAndByUserId(id, clientId);
 
             this.db.Feedbacks.Remove(feedback);
 
@@ -65,10 +72,10 @@
 
         private async Task<Feedback> ByIdAndByUserId(
             string id, 
-            string userId)
+            string clientId)
            => await this.db
                .Feedbacks
-               .Where(f => f.Id == id && f.ClientId == userId)
+               .Where(f => f.Id == id && f.ClientId == clientId)
                .FirstOrDefaultAsync();
     }
 }

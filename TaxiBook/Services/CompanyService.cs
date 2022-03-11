@@ -11,6 +11,7 @@
     using Interfaces;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
@@ -104,6 +105,26 @@
 
             await this.userManager.AddToRoleAsync(user, "Manager");
         }
+
+        public async Task<CompanyDetailsViewModel> DetailsAsync(string id)
+            => await this.db
+                .Companies
+                .Where(c => c.Id == id)
+                .Select(c => new CompanyDetailsViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
+                    DailyPricePerCall = c.DailyPricePerCall,
+                    InitialDailyFee = c.InitialDailyFee,
+                    DailyPricePerMinuteStay= c.DailyPricePerMinuteStay,
+                    OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
+                    NightPricePerCall = c.NightPricePerCall,
+                    InitialNightFee = c.InitialNightFee,
+                    NightPricePerMinuteStay = c.NightPricePerMinuteStay,
+                })
+                .FirstOrDefaultAsync();
 
         private async Task<string> UploadImageAsync(IFormFile license)
         {
