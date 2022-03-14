@@ -22,7 +22,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateOrderViewModel model)
+        public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -30,12 +30,12 @@
             }
 
             var orderId = await this.orderService.CreateAsync(
-                model.CurrentLocation,
-                model.CurrentLocationDetails,
-                model.EndLocation,
-                model.EndLocationDetails,
-                model.CountOfPassengers,
-                model.AdditionalRequirements); 
+                viewModel.CurrentLocation,
+                viewModel.CurrentLocationDetails,
+                viewModel.EndLocation,
+                viewModel.EndLocationDetails,
+                viewModel.CountOfPassengers,
+                viewModel.AdditionalRequirements); 
 
             return this.RedirectPermanent("Create");
         }
@@ -65,13 +65,13 @@
         }
 
         [HttpGet]
-        public IActionResult Edit(string userId)
+        public IActionResult Details()
         {
             return this.View();
         }
 
         [HttpPut]
-        public IActionResult Update(string id)
+        public IActionResult Update()
         {
             return this.Ok();
         }

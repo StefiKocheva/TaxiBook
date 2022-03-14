@@ -31,7 +31,6 @@
 
         IEnumerable<EmployeeDetailsViewModel> All();
 
-
         //IEnumerable<EmployeeDetailsViewModel> Details(string id);
     }
 }

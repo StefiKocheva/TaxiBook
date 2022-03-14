@@ -12,7 +12,10 @@ namespace TaxiBook
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Services;
-    using Services.Interfaces;
+    using TaxiBook.Areas.TaxiDriver.Services;
+    using TaxiBook.Areas.TaxiDriver.Services.Interfaces;
+    using TaxiBook.Infrastructure.Services;
+    using TaxiBook.Services.Interfaces;
 
     public class Startup
     {
@@ -34,8 +37,9 @@ namespace TaxiBook
                 .AddEntityFrameworkStores<TaxiBookDbContext>();
 
             services
-                .AddTransient<ICompanyService, CompanyService>()
-                .AddTransient<IOrderService, OrderService>()
+                .AddTransient<ICompanyService, Services.CompanyService>()
+                .AddTransient<Areas.Manager.Services.Interfaces.ICompanyService, Areas.Manager.Services.CompanyService>()
+                .AddTransient<IOrderService, Services.OrderService>()
                 .AddTransient<IFeedbackService, FeedbackService>()
                 .AddTransient<IFavoriteService, FavoriteService>()
                 .AddTransient<Areas.Dispatcher.Services.Interfaces.IScheduleService, Areas.Dispatcher.Services.ScheduleService>()
@@ -43,7 +47,10 @@ namespace TaxiBook
                 .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IOrderService, Areas.TaxiDriver.Services.OrderService>()
                 .AddTransient<Areas.TaxiDriver.Services.Inerfaces.IScheduleService, Areas.TaxiDriver.Services.ScheduleService>()
                 .AddTransient<IEmployeeService, EmployeeService>()
-                .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, ScheduleService>();
+                .AddTransient<Areas.Manager.Services.Interfaces.IScheduleService, Areas.Manager.Services.ScheduleService>()
+                .AddTransient<ICurrentUserService, CurrentUserService>()
+                .AddTransient<ITaxiService, TaxiService>()
+                .AddTransient<IProfileService, ProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env /*IServiceProvider serviceProvider*/)

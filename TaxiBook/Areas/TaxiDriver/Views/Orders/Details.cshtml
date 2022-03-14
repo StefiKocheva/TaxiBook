@@ -26,7 +26,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="name">Kлиент</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value="Стефани" id="name">
+                                            <input disabled type="text" class="form-control" value="Стефани" id="name">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user-circle"></i>
                                             </div>
@@ -37,7 +37,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="phoneNumber">Телефонен номер</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value="089 6654 2341" id="phoneNumber">
+                                            <input disabled type="text" class="form-control" value="089 6654 2341" id="phoneNumber">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-phone-alt"></i>
                                             </div>
@@ -45,54 +45,44 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="currentLocation">Начална точка</label>
-                                        <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value='бул. "Мария Луиза" 10' id="currentLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-street-view"></i>
-                                            </div>
-                                        </div>
+                            <div class="form-group has-icon-left">
+                                <label for="currentLocation">Начална точка</label>
+                                <div class="position-relative">
+                                    <input disabled type="text" class="form-control" value='@*@order.CurrentLocation*@' id="currentLocation">
+                                    <div class="form-control-icon">
+                                        <i class="fas fa-street-view"></i>
+                                    </div>
+                                </div>                  
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group position-relative">
+                                <label for="currentLocationDetails">Уточнение за начална точка</label>
+                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@*@order.CurrentLocationDetails*@</textarea>              
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="endLocation">Крайна точка</label>
+                                <div class="position-relative">
+                                    <input disabled type="text" class="form-control" value='@*@order.EndLocation*@' id="endLocation">
+                                    <div class="form-control-icon">
+                                        <i class="fas fa-map-marked-alt"></i>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
-                                        <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value='Парк "Писковец"' id="endLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-map-marked-alt"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="currentLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value='-' id="currentLocationDetails">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value='-' id="endLocationDetails">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group position-relative">
+                                <label for="endLocationDetails">Уточнение за крайна точка</label>
+                                <textarea disabled id="endLocationDetails" class="form-control" rows="2">@*@order.EndLocationDetails*@</textarea>             
+                            </div>
+                        </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="number" class="form-control" value="2" id="countOfPassengers">
+                                            <input disabled type="number" class="form-control" value="2" id="countOfPassengers">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
@@ -103,7 +93,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="additionalRequirements">Допълнителни изисквания</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value="-" id="additionalRequirements">
+                                            <input disabled type="text" class="form-control" value="-" id="additionalRequirements">
                                             <div class="form-control-icon">
                                                 <i class="far fa-handshake"></i>
                                             </div>
@@ -114,7 +104,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="createdOn">Направена</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value="5.60 лв." id="createdOn">
+                                            <input disabled type="text" class="form-control" value="5.60 лв." id="createdOn">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-clock"></i>
                                             </div>
@@ -125,7 +115,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="completedOn">Приключена</label>
                                         <div class="position-relative">
-                                            <input readonly="readonly" type="text" class="form-control" value="5.60 лв." id="completedOn">
+                                            <input disabled type="text" class="form-control" value="5.60 лв." id="completedOn">
                                             <div class="form-control-icon">
                                                 <i class="far fa-clock"></i>
                                             </div>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using TaxiBook.Services.ViewModels.Profiles
+@model ProfileListingViewModel
+@{
     this.Layout = "_LoggedLayout";
 }
 
@@ -13,42 +15,45 @@
                 <div class="card-body">
                     <form class="form form-vertical">
                         <div class="form-body">
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-center">
-                                    <div class="avatar avatar-xl me-3">
-                                        <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
-                                    </div><br />
-                                </div>
-                                <div class="col-12 d-flex justify-content-center">
-                                    <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#changeProfilePicture">Промени снимка</button><br /><br />
+                            @foreach (var profile in this.Model.Profiles)
+                            {
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="avatar avatar-xl me-3">
+                                            <img src="@profile.ImageUrl">
+                                        </div><br />
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="mt-3">
+                                            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#changeProfilePicture">Промени снимка</button><br /><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="firstName">Първо име</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="@profile.FirstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="lastName">Фамилия</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="@profile.LastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="@profile.Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="phoneNumber">Телефонен номер</label>
+                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="@profile.PhoneNumber">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="firstName">Първо име</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="Стефани">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="lastName">Фамилия</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="Кочева">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="stefikocheva2005@gmail.com">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="phoneNumber">Телефонен номер</label>
-                                        <input type="text" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="0897065644">
-                                    </div>
-                                </div>
-                            </div>
+                            }
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
                                     <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>

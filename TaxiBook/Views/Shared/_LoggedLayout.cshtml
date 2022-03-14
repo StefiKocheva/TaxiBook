@@ -1,4 +1,11 @@
 ﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@using TaxiBook.Data.Models
+@inject UserManager<ApplicationUser> userManager
+@{
+    var userFirstName = ((await this.userManager?.GetUserAsync(User))?.FirstName);
+    var userImageUrl = ((await this.userManager?.GetUserAsync(User))?.ImageUrl);
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +20,7 @@
     <link rel="stylesheet" href="~/vendors/chartjs/Chart.min.css" />
     <link rel="stylesheet" href="~/css/app.css" />
     <link rel="shortcut icon" href="~/images/logo-second-type.png" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/responsive-map.css" />
 </head>
 <body>
     <div id="app">
@@ -150,13 +158,13 @@
                                         <span>Оцени пътуване</span>
                                     </a>
                                 </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Companies" asp-action="Create" class='sidebar-link'>
+                                        <i class="fas fa-plus"></i>
+                                        <span>Добави компания</span>
+                                    </a> 
+                                </li>
                             }
-                            <li class="sidebar-item">
-                                <a asp-area="Default" asp-controller="Companies" asp-action="Create" class='sidebar-link'>
-                                    <i class="fas fa-plus"></i>
-                                    <span>Добави компания</span>
-                                </a> 
-                            </li>
                         }
                     </ul>
                 </div>
@@ -178,16 +186,21 @@
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                     <div class="avatar mr-1">
-                                        <img src="@this.User.FindFirst("ImageUrl")?.Value">
+                                        <img src="@userImageUrl">
                                     </div>
-                                    <div class="d-none d-md-block d-lg-inline-block">Здравей, @(this.Context.User.Identity.Name)!</div>
+                                    <div class="d-none d-md-block d-lg-inline-block">Здравей, @userFirstName!</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" asp-area="default" asp-controller="Profile" asp-action="Overview"><i data-feather="user"></i> Профил</a>
+                                    <a class="dropdown-item" asp-area="Default" asp-controller="Profiles" asp-action="Overview"><i data-feather="user"></i> Профил</a>
                                     <div class="dropdown-divider"></div>
                                     @if (this.User.IsInRole("Manager"))
                                     {
                                         <a class="dropdown-item" asp-area="Manager" asp-controller="Companies" asp-action="Overview"><i data-feather="edit-3"></i> Компания</a>
+                                        <div class="dropdown-divider"></div>
+                                    }
+                                    @if (this.User.IsInRole("TaxiDriver"))
+                                    {
+                                        <a class="dropdown-item" asp-area="TaxiDriver" asp-controller="Taxies" asp-action="Overview"><i data-feather="edit-3"></i> Такси</a>
                                         <div class="dropdown-divider"></div>
                                     }
                                     <a class="dropdown-item" asp-area="Identity" asp-controller="Account" asp-action="Logout"><i data-feather="log-out"></i> Излез</a>

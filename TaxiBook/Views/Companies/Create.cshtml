@@ -34,7 +34,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
                                         <label for="description">Описание</label>
-                                        <textarea asp-for="Description" class="form-control" rows="2" placeholder="Повече за вашата компания" id="description"></textarea>             
+                                        <textarea asp-for="Description" class="form-control" rows="2" placeholder="Кратко описание на компанията ви" id="description"></textarea>             
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
@@ -57,61 +57,61 @@
                                         <span asp-validation-for="Province" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <h4 class="card-title">Дневна тарифа</h4>
+                                <h4 class="card-title">Дневна тарифа (лв.)</h4>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="oneКilometerМileageDailyPrice">Цена за 1 километър пробег</label>
-                                        <input asp-for="OneКilometerМileageDailyPrice" type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageDailyPrice">
+                                        <label for="oneКilometerМileageDailyPrice">Цена за километър пробег</label>
+                                        <input asp-for="OneКilometerМileageDailyPrice" type="number" step="any" class="form-control" placeholder="0.00" id="oneКilometerМileageDailyPrice">
                                         <span asp-validation-for="OneКilometerМileageDailyPrice" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="dailyPricePerCall">Цена за повикване</label>
-                                        <input asp-for="DailyPricePerCall" type="number" class="form-control" placeholder="0.00" id="dailyPricePerCall">
+                                        <input asp-for="DailyPricePerCall" type="number"step="any" class="form-control" placeholder="0.00" id="dailyPricePerCall">
                                         <span asp-validation-for="DailyPricePerCall" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="initialDailyFee">Първоначална такса</label>
-                                        <input asp-for="InitialDailyFee" type="number" class="form-control" placeholder="0.00" id="initialDailyFee">
+                                        <input asp-for="InitialDailyFee" type="number" step="any" class="form-control" placeholder="0.00" id="initialDailyFee">
                                         <span asp-validation-for="InitialDailyFee" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="dailyPricePerMinuteStay">Цена за 1 минута престой</label>
-                                        <input asp-for="DailyPricePerMinuteStay" type="number" class="form-control" placeholder="0.00" id="dailyPricePerMinuteStay">
+                                        <label for="dailyPricePerMinuteStay">Цена за минута престой</label>
+                                        <input asp-for="DailyPricePerMinuteStay" type="number" step="any" class="form-control" placeholder="0.00" id="dailyPricePerMinuteStay">
                                          <span asp-validation-for="DailyPricePerMinuteStay" class="text-danger"></span>
                                     </div>
                                 </div> 
-                                <h4 class="card-title">Нощна тарифа</h4>
+                                <h4 class="card-title">Нощна тарифа (лв.)</h4>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="oneКilometerМileageNightPrice">Цена за 1 километър пробег</label>
-                                        <input asp-for="OneКilometerМileageNightPrice" type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageNightPrice">
+                                        <label for="oneКilometerМileageNightPrice">Цена за километър пробег</label>
+                                        <input asp-for="OneКilometerМileageNightPrice" type="number" step="any" class="form-control" placeholder="0.00" id="oneКilometerМileageNightPrice">
                                         <span asp-validation-for="OneКilometerМileageNightPrice" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="nightPricePerCall">Цена за повикване</label>
-                                        <input asp-for="NightPricePerCall" type="number" class="form-control" placeholder="0.00" id="nightPricePerCall">
+                                        <input asp-for="NightPricePerCall" type="number" step="any" class="form-control" placeholder="0.00" id="nightPricePerCall">
                                         <span asp-validation-for="NightPricePerCall" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="initialNightFee">Първоначална такса</label>
-                                        <input asp-for="InitialNightFee" type="number" class="form-control" placeholder="0.00" id="initialNightFee">
+                                        <input asp-for="InitialNightFee" type="number" step="any" class="form-control" placeholder="0.00" id="initialNightFee">
                                         <span asp-validation-for="InitialNightFee" class="text-danger"></span>
                                     </div>
                                 </div> 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="nightPricePerMinuteStay">Цена за 1 минута престой</label>
-                                        <input asp-for="NightPricePerMinuteStay" type="number" class="form-control" placeholder="0.00" id="nightPricePerMinuteStay">
+                                        <label for="nightPricePerMinuteStay">Цена за минута престой</label>
+                                        <input asp-for="NightPricePerMinuteStay" type="number" step="any" class="form-control" placeholder="0.00" id="nightPricePerMinuteStay">
                                         <span asp-validation-for="NightPricePerMinuteStay" class="text-danger"></span>
                                     </div>
                                 </div> 

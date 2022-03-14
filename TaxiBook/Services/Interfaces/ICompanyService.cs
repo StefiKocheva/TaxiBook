@@ -8,6 +8,8 @@
     {
         IEnumerable<CompanyDetailsViewModel> All();
 
+        IEnumerable<CompanyDetailsViewModel> TopFive();
+
         Task<string> CreateAsync(
             string name,
             string phoneNumber,

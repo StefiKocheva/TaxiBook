@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Services.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using ViewModels.Orders;
 
@@ -18,5 +19,7 @@
             string clientId);
 
         Task<OrderDetailsViewModel> DetailsAsync(string id);
+
+        IEnumerable<OrderDetailsViewModel> Overview();
     }
 }

@@ -21,7 +21,7 @@
                     <tr class="text-center">
                         <th>Компания</th>
                         <th>Цена за километър</th>
-                        @*<th>Област</th>*@
+                        <th>Област</th>
                         <th>Обади се сега</th>
                         <th>Функции</th>
                     </tr>
@@ -30,38 +30,41 @@
                     <tr class="text-center">
                         <td><a>Иванина Такси</a></td>
                         <td>1.18 лв.</td>
+                        <td>Пазарджик</td>
                         <td><a href="tel:+359 2 091 3254">+359 2 091 3254</a></td>
                         <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                     <tr class="text-center">
                         <td><a>Елит Такси</a></td>
                         <td>1.20 лв.</td>
+                        <td>Пазарджик</td>
                         <td><a href="tel:089 706 5688">+359 2 285 6380</a></td>
                         <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
+            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Vertically Centered</h5>
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Добави към любими</h5>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
+                                <i data-feather="x"></i>
                             </button>
                         </div>
                         <form method="post">
                             <div class="modal-body">
                                 <p>Моля изберете компания.</p>
-                                <div class="col-md-4 mb-4">
+                                <div class="col-md-12 col-12">
                                     <div class="form-group form-label-group">
-                                        <label for="companyName">Услугите на чия компания използвахте?</label>
+                                        <label for="companyName">Име</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" id="companyName">
                                                 <option selected="true" disabled="disabled">Изберете...</option>  
                                                 <option value="България Такси">България Такси</option>
                                                 <option value="Диамант Такси">Диамант Такси</option>
+                                                <option value="ОК Такси">ОК Такси</option>
                                             </select>
                                         </fieldset>
                                         <span class="text-danger"></span>

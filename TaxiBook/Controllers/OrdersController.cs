@@ -52,9 +52,14 @@
         [Authorize(Roles = "Client")]
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Overview(string id)
+        public IActionResult Overview()
         {
-            return this.View();
+            var viewModel = new OrderListingViewModel()
+            {
+                Orders = this.orderService.Overview(),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

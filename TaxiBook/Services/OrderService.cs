@@ -1,26 +1,27 @@
 ﻿namespace TaxiBook.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Data.Models.Enums;
+    using Infrastructure.Services;
     using Interfaces;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
-    using TaxiBook.Data.Models.Enums;
     using ViewModels.Orders;
 
     public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly ICurrentUserService currentUserService;
 
         public OrderService(
             TaxiBookDbContext db, 
-            IHttpContextAccessor httpContextAccessor)
+            ICurrentUserService currentUserService)
         {
             this.db = db;
-            this.httpContextAccessor = httpContextAccessor;
+            this.currentUserService = currentUserService;
         }
 
         public async Task<string> CreateAsync(
@@ -31,9 +32,15 @@
             int countOfPassengers, 
             string additionalRequirements)
         {
+            var location = new Address()
+            {
+                StartLocationCoordinates = currentLocation,
+                EndLocationCoordinates = endLocation,
+            };
 
-            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
-            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
+            await this.db.Addresses.AddAsync(location);
+
+            await this.db.SaveChangesAsync();
 
             var order = new Order
             {
@@ -42,22 +49,12 @@
                 CountOfPassengers = countOfPassengers,
                 AdditionalRequirements = additionalRequirements,
                 OrderState = OrderState.Unprocessed,
-                User = user,
-                UserId = user.Id,
+                User = this.currentUserService.GetUser(),
+                CurrentLocationId = location.Id,
+                EndLocationId = location.Id,
             };
 
             await this.db.Orders.AddAsync(order);
-
-            await this.db.SaveChangesAsync();
-            var location = new Address()
-            {
-                StartLocationCoordinates = currentLocation,
-                EndLocationCoordinates = endLocation,
-                User = user,
-                UserId = user.Id,
-            };
-
-            await this.db.Addresses.AddAsync(location);
 
             await this.db.SaveChangesAsync();
 
@@ -84,14 +81,32 @@
                     Id = o.Id,
                     ClientId = o.UserId,
                     PhoneNumber = o.User.PhoneNumber,
-                    CurrentLocation = o.CurrentLocation.ToString(),
-                    EndLocation = o.EndLocation.ToString(),
+                    CurrentLocation = o.CurrentLocation.StartLocationCoordinates,
+                    EndLocation = o.EndLocation.EndLocationCoordinates,
                     CurrentLocationDetails = o.CurrentLocationDetails,
                     EndLocationDetails  = o.EndLocationDetails,
                     CountOfPassengers = o.CountOfPassengers,
                     AdditionalRequirements = o.AdditionalRequirements,
                 })
                 .FirstOrDefaultAsync();
+
+        public IEnumerable<OrderDetailsViewModel> Overview()
+            => this.db
+            .Orders
+            .Where(o => o.UserId == this.currentUserService.GetId())
+            .OrderByDescending(o => o.CreatedOn)
+            .Where(o => o.OrderState == OrderState.Unprocessed)
+            .Select(o => new OrderDetailsViewModel()
+            {
+                CurrentLocation = o.CurrentLocation.StartLocationCoordinates,
+                CurrentLocationDetails = o.CurrentLocationDetails,
+                EndLocation = o.EndLocation.EndLocationCoordinates,
+                EndLocationDetails = o.EndLocationDetails,
+                CountOfPassengers = o.CountOfPassengers,
+                AdditionalRequirements = o.AdditionalRequirements,
+            })
+            .Take(1)
+            .ToHashSet();
 
         private async Task<Order> ByIdAndByUserId(
             string id, 

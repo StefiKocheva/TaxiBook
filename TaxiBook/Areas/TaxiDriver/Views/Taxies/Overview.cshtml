@@ -1,0 +1,63 @@
+﻿@using TaxiBook.Areas.TaxiDriver.ViewModels.Taxies
+@model TaxiListingViewModel
+
+<div class="page-title">
+    <h3>Моето такси</h3>
+    <p class="text-subtitle text-muted">Тук са данните за вашето такси.</p>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form form-vertical">
+                        <div class="form-body">
+                            @foreach (var taxi in this.Model.Taxies)
+                            {
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="brand">Марка</label>
+                                            <input type="text" class="form-control" id="brand" placeholder="Марка" disabled value="@taxi.Brand">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="model">Модел</label>
+                                            <input type="text" class="form-control" placeholder="Модел" id="model" disabled value="@taxi.Model">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="numberPlate">Регистрационен номер</label>
+                                            <input type="text" class="form-control" placeholder="Регистрационен номер" id="numberPlate" disabled name="" value="@taxi.NumberPlate">
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                <button id="edit" onclick="enable('brand', 'model', 'numberPlate', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                <script>
+                                    function enable(brand, model, numberPlate, hiddenButton, edit) {
+                                        document.getElementById(brand).disabled = false;
+                                        document.getElementById(model).disabled = false;
+                                        document.getElementById(numberPlate).disabled = false;
+                                        document.getElementById(edit).disabled = true;
+
+                                        document.getElementById(hiddenButton).style.visibility = "visible";
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </form>           
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br /><br />

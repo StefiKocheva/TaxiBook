@@ -12,28 +12,29 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Infrastructure.Services;
     using ViewModels.Companies;
 
     public class CompanyService : ICompanyService
     {
         private readonly TaxiBookDbContext db;
-        private readonly IHttpContextAccessor httpContextAccessor;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ICurrentUserService currentUserService;
 
         public CompanyService(
             TaxiBookDbContext db, 
-            IHttpContextAccessor httpContextAccessor, 
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            ICurrentUserService currentUserService) 
         {
             this.db = db;
-            this.httpContextAccessor = httpContextAccessor;
             this.userManager = userManager;
+            this.currentUserService = currentUserService;
         }
 
         public IEnumerable<CompanyDetailsViewModel> All() 
             => this.db
                 .Companies
-                .OrderBy(c => c.Name)
+                .OrderByDescending(c => c.CreatedOn)
                 .Select(c => new CompanyDetailsViewModel()
                 {
                     Id = c.Id,
@@ -87,23 +88,18 @@
                 NightPricePerMinuteStay = nightPricePerMinuteStay,
             };
 
-            await db.Companies.AddAsync(company);
+            await this.db.Companies.AddAsync(company);
+            await this.db.SaveChangesAsync();
 
-            await db.SaveChangesAsync();
+            var currentUser = this.currentUserService.GetUser();
 
-            await AddUserToRoleAsync();
-            await db.SaveChangesAsync();
+            await this.userManager.AddToRoleAsync(currentUser, "Manager");
+
+            currentUser.CompanyId = company.Id;
+
+            await this.db.SaveChangesAsync();
 
             return company.Id;
-        }
-
-        private async Task AddUserToRoleAsync()
-        {
-            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
-
-            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
-
-            await this.userManager.AddToRoleAsync(user, "Manager");
         }
 
         public async Task<CompanyDetailsViewModel> DetailsAsync(string id)
@@ -125,6 +121,21 @@
                     NightPricePerMinuteStay = c.NightPricePerMinuteStay,
                 })
                 .FirstOrDefaultAsync();
+
+        public IEnumerable<CompanyDetailsViewModel> TopFive()
+            => this.db
+                .Companies
+                .Select(c => new CompanyDetailsViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    PhoneNumber = c.PhoneNumber,
+                    Province = c.Province,
+                    OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
+                    OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
+                })
+                .Take(5)?
+                .ToHashSet();
 
         private async Task<string> UploadImageAsync(IFormFile license)
         {

@@ -14,14 +14,16 @@
         public CompaniesController(ICompanyService companyService)
             => this.companyService = companyService;
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult All()
         {
-            var model = new CompanyListingViewModel();
+            var viewModel = new CompanyListingViewModel
+            {
+                Companies = this.companyService.All()
+            };
 
-            model.Companies = this.companyService.All();
-
-            return this.View(model);
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -55,8 +57,6 @@
 
             return this.RedirectToAction("All");
         }
-
-
 
         [Authorize(Roles = "Client")]
         [AllowAnonymous]

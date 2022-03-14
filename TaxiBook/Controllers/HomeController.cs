@@ -17,17 +17,23 @@
         [HttpGet]
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new CompanyListingViewModel
+            {
+                Companies = this.companyService.TopFive()
+            };
+
+            return this.View(viewModel);
         }
         
         [HttpGet]
         public IActionResult Dashboard()
         {
-            var model = new CompanyListingViewModel();
+            var viewModel = new CompanyListingViewModel
+            {
+                Companies = this.companyService.All()
+            };
 
-            model.Companies = this.companyService.All();
-
-            return this.View(model);
+            return this.View(viewModel);
         }
     }
 }

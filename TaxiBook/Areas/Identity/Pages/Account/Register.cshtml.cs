@@ -16,6 +16,7 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
     using TaxiBook.Data.Models.Enums;
+
     using static Vallidation.RegisterModel;
 
     [AllowAnonymous]
@@ -111,8 +112,7 @@
 
                     await this.Input.ProfilePicture.CopyToAsync(fileStream);
 
-                    var account = new CloudinaryDotNet.Account
-                        {ApiKey = "597981955165718", ApiSecret = "YrIRgn7E7ffUnN1kXSJhyGQJS54", Cloud = "hotelcollab"};
+                    var account = new Account("taxibook", "413572826222444", "NHKg_TnitQUKUm_1XTGqTHd9zeg");
 
                     fileStream.Close();
 
@@ -131,7 +131,7 @@
                 }
                 else
                 {
-                    imageUrl = "https://res.cloudinary.com/taxibook/image/upload/v1647003664/account_rbozxn.png";
+                    imageUrl = "https://res.cloudinary.com/taxibook/image/upload/v1647115888/blank-profile-picture-g0a15d8433_1280_vvvvpb.png";
                 }
 
                 var user = new ApplicationUser
@@ -144,6 +144,8 @@
                     EmailConfirmed = true,
                     ImageUrl = imageUrl,
                     EmployeeRole = EmployeeRole.None,
+                    CreatorId = null,
+                    CompanyId = null,
                 };
 
                 var result = await this.userManager.CreateAsync(user, Input.Password);

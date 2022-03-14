@@ -229,6 +229,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatorId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -446,9 +449,6 @@ namespace TaxiBook.Data.Migrations
 
                     b.Property<string>("EndLocationId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderState")
                         .HasColumnType("int");

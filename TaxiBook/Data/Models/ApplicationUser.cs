@@ -36,6 +36,8 @@
 
         public EmployeeRole EmployeeRole { get; set; }
 
+        public string CreatorId { get; set; }
+
         public Address Address { get; set; }
 
         public Schedule Schedule { get; set; }

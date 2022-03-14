@@ -44,8 +44,6 @@
 
         public OrderState OrderState { get; set; }
 
-        public int MyProperty { get; set; }
-
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }

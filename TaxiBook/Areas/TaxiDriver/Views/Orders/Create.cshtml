@@ -5,11 +5,13 @@
     <div class="row">
         <div class="col-12">
             <h3>Направи поръчка</h3>
-            <p class="text-subtitle text-muted">Тук лесно може да въведете данните на клиента, който е решил да използва услугите на Вашата компания.</p>
+            <p class="text-subtitle text-muted">Тук можете да създадете нова поръчка.</p>
         </div>
     </div>
 </div>
-<div class="mapouter"><div class="gmap_canvas"><iframe width="1400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=Pazardzik&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;height:350px;width:1120px;}</style><a href="https://www.embedgooglemap.net">custom google map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:350px;width:1120px;}</style></div></div><br />
+<div class="map-responsive">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2956.173642003534!2d24.332994640815865!3d42.189354637596956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbg!4v1647159005753!5m2!1sen!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
@@ -20,21 +22,9 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="currentLocation">Начална точка</label>
+                                        <label for="endLocation">Крайна точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="CurrentLocation" type="text" class="form-control" placeholder="Начална точка" id="currentLocation">
-                                            <span asp-validation-for="CurrentLocation" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-street-view"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
-                                        <div class="position-relative">
-                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна дестинация" id="endLocation">
+                                            <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна точка" id="endLocation">
                                             <span asp-validation-for="EndLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
@@ -44,33 +34,9 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="currentLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input asp-for="CurrentLocationDetails" type="text" class="form-control" placeholder="Повече за местоположението на Вашия клиент" id="currentLocationDetails">
-                                            <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocationDetails">Уточнение</label>
-                                        <div class="position-relative">
-                                            <input asp-for="EndLocationDetails" type="text" class="form-control" placeholder='Повече за крайната дестинация на Вашия клиент' id="endLocationDetails">
-                                            <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-pen"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
+                                            <input asp-for="CountOfPassengers" type="number" min="1" max="6" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
                                             <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
@@ -78,21 +44,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="additionalRequirements">Допълнителни изисквания</label>
-                                        <div class="position-relative">
-                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например помощ с багаж" id="additionalRequirements">
-                                            <span asp-validation-for="AdditionalRequirements" class="text-danger"></span>
-                                            <div class="form-control-icon">
-                                                <i class="far fa-handshake"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary mr-1 mb-1">Стартирай</button>
+                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Overview" class="btn btn-primary mr-1 mb-1">Стартирай</a>
                             </div>
                         </form>
                     </div>

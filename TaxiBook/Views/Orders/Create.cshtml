@@ -13,18 +13,15 @@
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Orders" asp-action="Details">Таксита около мен</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Моят избор</li>
+                    <li class="breadcrumb-item"><a asp-area="Default" asp-controller="Companies" asp-action="Details">Повече за компанията</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Създаване на поръчка</li>
                 </ol>
             </nav>
         </div>
     </div>
 </div>
-<div class="mapouter">
-    <div class="gmap_canvas">
-        <iframe class="card-img-top img-fluid" alt="singleminded" id="gmap_canvas" src="https://maps.google.com/maps?q=Sofia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-        <a href="https://123movies-to.org"></a><br />
-    </div>
+<div class="map-responsive">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2956.173642003534!2d24.332994640815865!3d42.189354637596956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbg!4v1647159005753!5m2!1sen!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 <section id="multiple-column-form">
     <div class="row match-height">
@@ -48,8 +45,8 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
-                                        <label asp-for="CurrentLocationDetails" for="currentLocationDetails">Уточнение за начална точка</label>
-                                        <textarea asp-for="CurrentLocationDetails" id="currentLocationDetails" class="form-control" rows="2" placeholder="Уточнение за начална точка"></textarea>              
+                                        <label asp-for="CurrentLocationDetails" for="currentLocationDetails">Уточнение за текущо местоположение</label>
+                                        <textarea asp-for="CurrentLocationDetails" id="currentLocationDetails" class="form-control" rows="2" placeholder="Уточнение за текущо местоположение"></textarea>              
                                         <span asp-validation-for="CurrentLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -67,14 +64,14 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
-                                        <label asp-for="EndLocationDetails" for="endLocationDetails">Уточнение за крайна точка</label>
-                                        <textarea asp-for="EndLocationDetails" id="endLocationDetails" class="form-control" rows="2" placeholder="Уточнение за крайна точка"></textarea>             
+                                        <label asp-for="EndLocationDetails" for="endLocationDetails">Уточнение за крайна дестинация</label>
+                                        <textarea asp-for="EndLocationDetails" id="endLocationDetails" class="form-control" rows="2" placeholder="Уточнение за крайна дестинация"></textarea>             
                                         <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="CountOfPassengers" for="countOfPassengers">Бройка на пътуващи</label>
+                                        <label asp-for="CountOfPassengers" for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
                                             <input asp-for="CountOfPassengers" type="number" min="1" max="6" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">    
                                             <div class="form-control-icon">

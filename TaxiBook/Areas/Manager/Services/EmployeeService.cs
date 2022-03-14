@@ -8,30 +8,31 @@
     using Data.Models;
     using Data.Models.Enums;
     using Inerfaces;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
     using ViewModels.Employees;
+    using TaxiBook.Infrastructure.Services;
 
     public class EmployeeService : IEmployeeService
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly TaxiBookDbContext db;
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly ICurrentUserService currentUserService;
 
         public EmployeeService(
             UserManager<ApplicationUser> userManager, 
             TaxiBookDbContext db,
-            SignInManager<ApplicationUser> signInManager)
+            ICurrentUserService currentUserService)
         {
             this.userManager = userManager;
-
             this.db = db;
-            this.signInManager = signInManager;
+            this.currentUserService = currentUserService;
         }
 
         public IEnumerable<EmployeeDetailsViewModel> All()
             => this.db
                 .Users
+                .Where(u => u.CreatorId == this.currentUserService.GetId())
                 .OrderByDescending(u => u.CreatedOn)
                 .Select(u => new EmployeeDetailsViewModel()
                 {
@@ -51,7 +52,6 @@
             string brand,
             string model)
         {
-
             var employee = new ApplicationUser
             {
                 FirstName = firstName,
@@ -60,11 +60,13 @@
                 UserName = email,
                 PhoneNumber = phoneNumber,
                 EmailConfirmed = true,
-                ImageUrl = null,
+                ImageUrl = "https://res.cloudinary.com/taxibook/image/upload/v1647115888/blank-profile-picture-g0a15d8433_1280_vvvvpb.png",
                 EmployeeRole = employeeRole,
+                CreatorId = this.currentUserService.GetId(),  
+                CompanyId = this.currentUserService.GetUser().CompanyId,
             };
 
-            var password = "Employee_123";
+            string password = employeeRole == EmployeeRole.Dispatcher ? "Dispatcher_123" : "TaxiDriver_123";
             await this.userManager.CreateAsync(employee, password);
             await this.userManager.AddToRoleAsync(employee, employeeRole.ToString());
 
