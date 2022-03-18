@@ -47,14 +47,17 @@
             // await this.db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<EmployeeListingViewModel>> All()
-            => await this.db.Schedules.Select(s => new EmployeeListingViewModel()
+        public IEnumerable<AbsenceDetailsViewModel> All()
+            => this.db
+            .Absences
+            .Select(a => new AbsenceDetailsViewModel()
             {
-                Id = s.Id,
-                FullName = s.Employee.FirstName + " " + s.Employee.LastName,
-                //Role = s.Employee.Role
-
-            })//.OrderByDescending(s => s.AddedOn)
-            .ToListAsync();
+                Id = a.Id,
+                FullName = a.Employee.FirstName + " " + a.Employee.LastName,
+                Role = a.Employee.EmployeeRole,
+                From = a.From,
+                Till = a.Till,
+            })?
+            .ToHashSet();
     }
 }

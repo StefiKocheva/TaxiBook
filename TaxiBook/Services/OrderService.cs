@@ -108,6 +108,23 @@
             .Take(1)
             .ToHashSet();
 
+        public IEnumerable<OrderDetailsViewModel> OverviewPast()
+            => this.db
+            .Orders
+            .Where(o => o.UserId == this.currentUserService.GetId())
+            .OrderByDescending(o => o.CreatedOn)
+            .Where(o => o.OrderState == OrderState.Past)
+            .Select(o => new OrderDetailsViewModel()
+            {
+                CurrentLocation = o.CurrentLocation.StartLocationCoordinates,
+                CurrentLocationDetails = o.CurrentLocationDetails,
+                EndLocation = o.EndLocation.EndLocationCoordinates,
+                EndLocationDetails = o.EndLocationDetails,
+                CountOfPassengers = o.CountOfPassengers,
+                AdditionalRequirements = o.AdditionalRequirements,
+            })
+            .ToHashSet();
+
         private async Task<Order> ByIdAndByUserId(
             string id, 
             string userId)

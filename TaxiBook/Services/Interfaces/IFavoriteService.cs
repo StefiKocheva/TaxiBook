@@ -6,9 +6,11 @@
 
     public interface IFavoriteService
     {
-        //Task<IEnumerable<FavoriteListingViewModel>> AllAsync();
-
         Task<string> AddAsync(string companyName);
+
+        IEnumerable<CompanyDetailsViewModel> OverviewCompanies();
+
+        IEnumerable<FavoriteDetailsModel> OverviewFavoriteCompanies();
 
         void DeleteAsync(
             string id, 

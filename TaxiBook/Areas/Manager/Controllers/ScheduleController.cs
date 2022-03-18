@@ -10,14 +10,19 @@
     [Area("Manager")]
     public class ScheduleController : Controller
     {
-        private readonly IScheduleService _scheduleService;
+        private readonly IScheduleService scheduleService;
 
         public ScheduleController(IScheduleService scheduleService) 
-            => this._scheduleService = scheduleService;
+            => this.scheduleService = scheduleService;
 
         [HttpGet]
         public IActionResult CurrentMonth()
         {
+            //var viewModel = new AbsenceListingViewModel()
+            //{
+            //    Absences = this.scheduleService.All(),
+            //};
+
             return this.View();
         }
 
@@ -41,7 +46,7 @@
                 return this.BadRequest();
             }
 
-            var userId = await this._scheduleService.AddEmployeeAsync(
+            await this.scheduleService.AddEmployeeAsync(
                 model.Email,
                 model.Role,
                 model.From,

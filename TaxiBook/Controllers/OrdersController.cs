@@ -25,7 +25,12 @@
         [HttpGet]
         public IActionResult Past()
         {
-            return this.View();
+            var viewModel = new OrderListingViewModel()
+            {
+                Orders = this.orderService.OverviewPast(),
+            };
+
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = "Client")]

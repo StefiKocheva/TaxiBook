@@ -8,6 +8,7 @@
     using Interfaces;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
+    using TaxiBook.Services.ViewModels.Favorites;
     using ViewModels.Feedbacks;
 
     public class FeedbackService : IFeedbackService
@@ -35,6 +36,16 @@
                     Opinion = f.Description,
                 })
                 .ToHashSet();
+
+        public IEnumerable<CompanyDetailsViewModel> OverviewCompanies()
+            => this.db
+            .Companies
+            .OrderByDescending(c => c.Name)
+            .Select(c => new CompanyDetailsViewModel()
+            {
+                Name = c.Name,
+            })
+            .ToHashSet();
 
         public async Task<string> CreateAsync(
             string company, 

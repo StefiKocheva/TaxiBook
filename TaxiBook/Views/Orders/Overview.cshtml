@@ -118,5 +118,12 @@
 }
 else
 {
-    <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+    if (!this.User.Identity.IsAuthenticated)
+    {
+        <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+    }
+    else
+    {
+        <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+    }
 }

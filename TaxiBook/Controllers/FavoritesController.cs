@@ -5,30 +5,42 @@
     using Microsoft.AspNetCore.Mvc;
     using Services.Interfaces;
     using Services.ViewModels.Favorites;
+    using TaxiBook.Infrastructure.Services;
 
     [Authorize(Roles = "Client")]
     public class FavoritesController : Controller
     {
         private readonly IFavoriteService favoriteService;
+        private readonly ICurrentUserService currentUserService;
 
-        public FavoritesController(IFavoriteService favoriteService) 
-            => this.favoriteService = favoriteService;
+        public FavoritesController(IFavoriteService favoriteService, ICurrentUserService currentUserService)
+        {
+            this.favoriteService = favoriteService;
+            this.currentUserService = currentUserService;
+        }
 
         [HttpGet]
         public IActionResult All()
         {
-            return this.View();
+            var viewModel = new ListingViewModel
+            {
+                AllCompanies = this.favoriteService.OverviewCompanies(),
+                FavoriteCompanies = this.favoriteService.OverviewFavoriteCompanies(),
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompany(CreateFavoriteViewModel viewModel)
+        public async Task<IActionResult> All(ListingViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 return this.View(viewModel);
             }
 
-            var favoriteId = await this.favoriteService.AddAsync(viewModel.CompanyName);
+            await this.favoriteService
+                .AddAsync(viewModel.CreateFavoriteViewModel.CompanyName);
 
             return this.RedirectToAction("All");
         }
@@ -40,9 +52,12 @@
         }
 
         [HttpDelete]
-        public IActionResult Delete()
+        public IActionResult All(string id)
         {
-            return this.Ok();
+            this.favoriteService
+                .DeleteAsync(id, this.currentUserService.GetId());
+
+            return this.RedirectToAction("All");
         }
     }
 }

@@ -21,5 +21,7 @@
         Task<OrderDetailsViewModel> DetailsAsync(string id);
 
         IEnumerable<OrderDetailsViewModel> Overview();
+
+        IEnumerable<OrderDetailsViewModel> OverviewPast();
     }
 }

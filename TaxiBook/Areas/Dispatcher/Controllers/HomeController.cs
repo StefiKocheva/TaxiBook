@@ -29,7 +29,7 @@
                 return this.View(viewModel);
             }
 
-            _ = await this.scheduleService.CreateАbsenceAsync(
+            await this.scheduleService.CreateАbsenceAsync(
                 viewModel.From,
                 viewModel.Till);
 
@@ -37,7 +37,7 @@
         }
 
         [HttpGet]
-        public IActionResult Track(string orderId)
+        public IActionResult Track()
         {
             return this.View();
         }

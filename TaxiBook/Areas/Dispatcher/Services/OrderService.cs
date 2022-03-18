@@ -54,6 +54,8 @@
                 CountOfPassengers = countOfPassengers,
                 AdditionalRequirements = additionalRequirements,
                 OrderState = OrderState.Processed,
+                CurrentLocationId = location.Id,
+                EndLocationId = location.Id,
             };
 
             await this.db.Orders.AddAsync(order);

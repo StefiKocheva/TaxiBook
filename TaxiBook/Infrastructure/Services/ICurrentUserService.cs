@@ -1,7 +1,7 @@
-﻿using TaxiBook.Data.Models;
-
-namespace TaxiBook.Infrastructure.Services
+﻿namespace TaxiBook.Infrastructure.Services
 {
+    using TaxiBook.Data.Models;
+
     public interface ICurrentUserService
     {
         string GetId();

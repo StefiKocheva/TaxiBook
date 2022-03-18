@@ -1,8 +1,7 @@
 ﻿namespace TaxiBook.Services.ViewModels.Orders
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using TaxiBook.Services.ViewModels.Companies;
+
     using static Vallidation.CreateOrderViewModel;
 
     public class CreateOrderViewModel
@@ -19,10 +18,9 @@
         [MaxLength(MaxDetailsLength)]
         public string EndLocationDetails { get; set; }
 
-        [Range(
-            MinCountOfPassengers,
-            MaxCountOfPassengers,
-            ErrorMessage = CountOfPassengersRangeErrorMessage)]
+        //[Required(ErrorMessage = RequiredErrorMessage)]
+        //[Range(10, 1000,
+        //ErrorMessage = "Value for {0} must be between {1} and {2}.")] 
         public int CountOfPassengers { get; set; }
 
         [MaxLength(MaxDetailsLength)]

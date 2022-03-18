@@ -17,7 +17,12 @@
         [HttpGet]
         public ActionResult Create()
         {
-            return this.View();
+            var viewModel = new ListingViewModel
+            {
+                AllCompanies = this.feedbackService.OverviewCompanies(),
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpPost]

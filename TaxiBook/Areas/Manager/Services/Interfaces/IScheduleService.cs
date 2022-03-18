@@ -14,6 +14,6 @@
 
         void DeleteEmployeeAsync(string id, string userId);
 
-        Task<IEnumerable<EmployeeListingViewModel>> All();
+        IEnumerable<AbsenceDetailsViewModel> All();
     }
 }

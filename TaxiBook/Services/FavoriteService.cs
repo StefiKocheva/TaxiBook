@@ -1,50 +1,102 @@
 ﻿namespace TaxiBook.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Infrastructure.Services;
     using Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using ViewModels.Favorites;
 
     public class FavoriteService : IFavoriteService
     {
         private readonly TaxiBookDbContext db;
-        
-        public FavoriteService(TaxiBookDbContext db) 
-            => this.db = db;
+        private readonly ICurrentUserService currentUserService;
+
+        public FavoriteService(
+            TaxiBookDbContext db, 
+            ICurrentUserService currentUserService)
+        {
+            this.db = db;
+            this.currentUserService = currentUserService;
+        }
 
         public async Task<string> AddAsync(string companyName)
         {
             var favorite = new Favorite()
             {
                 CompanyName = companyName,
+                ClientId = this.currentUserService.GetId(),
             };
 
-            await db.Favorites.AddAsync(favorite);
+            var company = this.db
+                .Companies
+                .Where(c => c.Name == favorite.CompanyName)
+                .Select(c => new FavoriteDetailsModel()
+                {
+                    OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
+                    OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
+                    Province = c.Province,
+                    PhoneNumber = c.PhoneNumber,
+                })
+                .FirstOrDefault();
 
+            favorite.OneКilometerМileageDailyPrice = company.OneКilometerМileageDailyPrice;
+            favorite.OneКilometerМileageNightPrice = company.OneКilometerМileageNightPrice;
+            favorite.Province = company.Province;
+            favorite.PhoneNumber = company.PhoneNumber;
+
+            await db.Favorites.AddAsync(favorite);
             await db.SaveChangesAsync();
 
             return favorite.Id;
         }
 
+        public IEnumerable<CompanyDetailsViewModel> OverviewCompanies()
+            => this.db
+            .Companies
+            .OrderByDescending(c => c.Name)
+            .Select(c => new CompanyDetailsViewModel()
+            {
+                Name = c.Name,
+            })
+            .ToHashSet();
+
+        public IEnumerable<FavoriteDetailsModel> OverviewFavoriteCompanies()
+            => this.db
+            .Favorites
+            .OrderBy(c => c.CreatedOn)
+            .Where(c => c.ClientId == this.currentUserService.GetId())
+            .Select(c => new FavoriteDetailsModel()
+            {
+                CompanyName = c.CompanyName,
+                OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
+                OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
+                Province = c.Province,
+                PhoneNumber = c.PhoneNumber,
+            })
+            .ToHashSet();
+
         public async void DeleteAsync(
             string id,
             string userId)
         {
-            var favoriteCompany = await this.ByIdAndByUserId(id, userId);
+            var favoriteCompany = this.ByIdAndByUserId(id, userId);
 
             this.db.Favorites.Remove(favoriteCompany);
 
             await this.db.SaveChangesAsync();
         }
 
-        private async Task<Favorite> ByIdAndByUserId(
+        private Favorite ByIdAndByUserId(
             string id, 
             string userId)
-            => await this.db
+            => this.db
                 .Favorites
                 .Where(f => f.Id == id && f.ClientId == userId)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
+
     }
 }

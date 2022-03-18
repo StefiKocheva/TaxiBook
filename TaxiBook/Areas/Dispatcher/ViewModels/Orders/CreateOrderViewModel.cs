@@ -27,10 +27,10 @@
 
         [Required(ErrorMessage = RequiredErrorMessage)]
 
-        [Range(
-            MinCountOfPassengers, 
-            MaxCountOfPassengers, 
-            ErrorMessage = CountOfPassengersRangeErrorMessage)]
+        //[Range(
+        //    MinCountOfPassengers, 
+        //    MaxCountOfPassengers, 
+        //    ErrorMessage = CountOfPassengersRangeErrorMessage)]
         public int CountOfPassengers { get; set; }
 
         [MaxLength(MaxDetailsLength)]

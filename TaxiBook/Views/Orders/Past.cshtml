@@ -1,160 +1,183 @@
-﻿@{
+﻿@using TaxiBook.Services.ViewModels.Orders
+@model OrderListingViewModel
+@{
     this.Layout = "_LoggedLayout";
 }
 
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-12 order-md-1 order-last">
-            <h3>Завършени поръчки</h3>
-            <p class="text-subtitle text-muted">Тук може да отркиете всички отминали поръчки. Можете да ги редактирате с цел отново поръчване.</p>
+            <h3>Отминали поръчки</h3>
+            <p class="text-subtitle text-muted">Тук може да отркиете всички отминали поръчки.</p>
         </div>
     </div>
 </div>
-<div class="card collapse-icon accordion-icon-rotate">
-    <div class="card-content">
-        <div class="card-body">
-            <div class="accordion" id="cardAccordion">
-                <div class="card collapse-header">
-                    <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
-                        <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022</span>
-                    </div>
-                    <div id="collapseTwo" class="collapse pt-1" aria-labelledby="headingTwo" data-parent="#cardAccordion">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="currentLocation">Текущо местоположение</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='ул. "Хаджи Димитър" 14' id="currentLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-street-view"></i>
+@if (this.Model.Orders.Count() != 0)
+{
+    <div class="card collapse-icon accordion-icon-rotate">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="accordion" id="cardAccordion">
+                    @{int count = 1;}
+                    @foreach (var order in this.Model.Orders)
+                    {
+                        if (count == 1)
+                        {
+                            <div class="card collapse-header">
+                                <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                                    <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022</span>
+                                </div>
+                                <div id="collapseTwo" class="collapse pt-1" aria-labelledby="headingTwo" data-parent="#cardAccordion">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="currentLocation">Текущо местоположение</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.CurrentLocation' id="currentLocation">
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-street-view"></i>
+                                                        </div>
+                                                    </div>                  
+                                                </div>
                                             </div>
-                                        </div>                  
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative">
-                                        <label for="currentLocationDetails">Уточнение за текущо местоположение</label>
-                                        <textarea disabled id="currentLocationDetails" class="form-control" rows="2"></textarea>              
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='ул. "Добри Чинтулов" 5' id="endLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-map-marked-alt"></i>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group position-relative">
+                                                    <label for="currentLocationDetails">Уточнение за текущо местоположение</label>
+                                                    <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@order.CurrentLocationDetails</textarea>              
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative">
-                                        <label for="endLocationDetails">Уточнение за крайна дестинация</label>
-                                        <textarea disabled id="endLocationDetails" class="form-control" rows="2"></textarea>             
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="countOfPassengers">Брой пътуващи</label>
-                                        <div class="position-relative">
-                                            <input disabled type="number" min="1" max="6" class="form-control" value="3" id="countOfPassengers">    
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-users"></i>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="endLocation">Крайна дестинация</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.EndLocation' id="endLocation">
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-map-marked-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="additionalRequirements">Допълнителни изисквания</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='Помощ с пазарска чанта.' id="additionalRequirements">
-                                            <div class="form-control-icon">
-                                                <i class="far fa-handshake"></i>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group position-relative">
+                                                    <label for="endLocationDetails">Уточнение за крайна дестинация</label>
+                                                    <textarea disabled id="endLocationDetails" class="form-control" rows="2">@order.EndLocationDetails</textarea>             
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="Default" asp-controller="Orders" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card collapse-header">
-                    <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
-                        <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022</span>
-                    </div>
-                    <div id="collapseThree" class="collapse pt-1" aria-labelledby="headingThree" data-parent="#cardAccordion">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="currentLocation">Текущо местоположение</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='ул. "Кокиче" 15' id="currentLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-street-view"></i>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="countOfPassengers">Брой пътуващи</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="number" min="1" max="6" class="form-control" value="@order.CountOfPassengers" id="countOfPassengers">    
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-users"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>                  
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative">
-                                        <label for="currentLocationDetails">Уточнение за текущо местоположение</label>
-                                        <textarea disabled id="currentLocationDetails" class="form-control" rows="2">Срещу входа на училище "Любен Каравелов".</textarea>              
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="endLocation">Крайна дестинация</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='ул. "Димчо Дебелянов" 3' id="endLocation">
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-map-marked-alt"></i>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="additionalRequirements">Допълнителни изисквания</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.AdditionalRequirements' id="additionalRequirements">
+                                                        <div class="form-control-icon">
+                                                            <i class="far fa-handshake"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group position-relative">
-                                        <label for="endLocationDetails">Уточнение за крайна дестинация</label>
-                                        <textarea disabled id="endLocationDetails" class="form-control" rows="2">Пред входа на Кауфланд.</textarea>             
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="countOfPassengers">Брой пътуващи</label>
-                                        <div class="position-relative">
-                                            <input disabled type="number" min="1" max="6" class="form-control" value="1" id="countOfPassengers">    
-                                            <div class="form-control-icon">
-                                                <i class="fas fa-users"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
-                                        <label for="additionalRequirements">Допълнителни изисквания</label>
-                                        <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value='' id="additionalRequirements">
-                                            <div class="form-control-icon">
-                                                <i class="far fa-handshake"></i>
-                                            </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <a asp-area="Default" asp-controller="Orders" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="Default" asp-controller="Orders" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+
+                            count++;
+                        }
+                        else
+                        {
+                            <div class="card collapse-header">
+                                <div class="card-header" id="heading_@count" data-bs-toggle="collapse" data-bs-target="#collapse_@count" aria-expanded="false" aria-controls="collapse_@count" role="button">
+                                    <span class="collapsed collapse-title">12:20 - 12:40, 19.02.2022</span>
+                                </div>
+                                <div id="collapse_@count" class="collapse pt-1" aria-labelledby="heading_@count" data-parent="#cardAccordion">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="currentLocation">Текущо местоположение</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.CurrentLocation' id="currentLocation">
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-street-view"></i>
+                                                        </div>
+                                                    </div>                  
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group position-relative">
+                                                    <label for="currentLocationDetails">Уточнение за текущо местоположение</label>
+                                                    <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@order.CurrentLocationDetails</textarea>              
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="endLocation">Крайна дестинация</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.EndLocation' id="endLocation">
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-map-marked-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group position-relative">
+                                                    <label for="endLocationDetails">Уточнение за крайна дестинация</label>
+                                                    <textarea disabled id="endLocationDetails" class="form-control" rows="2">@order.EndLocationDetails</textarea>             
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="countOfPassengers">Брой пътуващи</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="number" min="1" max="6" class="form-control" value="@order.CountOfPassengers" id="countOfPassengers">    
+                                                        <div class="form-control-icon">
+                                                            <i class="fas fa-users"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="additionalRequirements">Допълнителни изисквания</label>
+                                                    <div class="position-relative">
+                                                        <input disabled type="text" class="form-control" value='@order.AdditionalRequirements' id="additionalRequirements">
+                                                        <div class="form-control-icon">
+                                                            <i class="far fa-handshake"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <a asp-area="Default" asp-controller="Orders" asp-action="Create" class="btn btn-primary mr-1 mb-1">Редактирай и поръчай отново</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+                            count++;
+                        }
+                    }
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+}

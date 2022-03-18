@@ -18,8 +18,8 @@
         [MaxLength(MaxLocationDetailsLength)]
         public string EndLocationDetails { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [Range(MinCountOfPassengers, MaxCountOfPassengers)]
+        //[Required(ErrorMessage = RequiredErrorMessage)]
+        //[Range(MinCountOfPassengers, MaxCountOfPassengers)]
         public int CountOfPassengers { get; set; }
 
         [MaxLength(MaxAdditionalRequirementsLength)]

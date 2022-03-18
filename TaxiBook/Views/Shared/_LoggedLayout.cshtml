@@ -126,12 +126,24 @@
                         }
                         else
                         {
-                            <li class="sidebar-item">
-                                <a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
-                                    <i class="fas fa-home"></i>
-                                    <span>Начало</span>
-                                </a>
-                            </li>
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Home" asp-action="Dashboard" class='sidebar-link'>
+                                        <i class="fas fa-home"></i>
+                                        <span>Начало</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (!this.User.Identity.IsAuthenticated)
+                            {
+                                <li class="sidebar-item">
+                                    <a asp-area="Default" asp-controller="Companies" asp-action="All" class='sidebar-link'>
+                                        <i class="fas fa-home"></i>
+                                        <span>Всички компании</span>
+                                    </a>
+                                </li>
+                            }
                             <li class="sidebar-item">
                                 <a asp-area="Default" asp-controller="Orders" asp-action="Overview" class='sidebar-link'>
                                     <i class="fas fa-search-location"></i>

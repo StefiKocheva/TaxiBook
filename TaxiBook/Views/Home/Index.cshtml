@@ -6,12 +6,12 @@
         <div class="row justify-content-between">
             <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                 <div data-aos="zoom-out">
-                    <h1>Бъдете в крак с <span>времето</span></h1>
+                    <h1><span>Бъдете в крак с времето</span></h1>
                     <h2>Удобно, достъпно и сигурно</h2>
                     @if (!this.User.Identity.IsAuthenticated)
                     {
                         <div class="text-center text-lg-start">
-                            <a asp-area="Identity" asp-controller="Account" asp-action="Login" class="btn-get-started scrollto">Започни сега</a>
+                            <a asp-area="Identity" asp-controller="Account" asp-action="Register" class="btn-get-started scrollto">Започни сега</a>
                         </div>
                     }
                 </div>
@@ -86,7 +86,7 @@
                             }
                     </tbody>
                 </table>
-                <a asp-controller="Companies" asp-action="All" role="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-lg btn-block">Виж всички</a>
+                <a asp-area="Default" asp-controller="Companies" asp-action="All" role="button" id="myButton" style="width:100%; background-color:#17B57D;" class="btn btn-success btn-block">Виж всички</a>
             </div>
         </div>
     </div>
@@ -98,11 +98,11 @@
                 <div class="section-title" data-aos="fade-up">
                     <h2>За проекта</h2>
                 </div>
-                <h3>Предимства</h3>
+                <h3>Приложението предлага</h3>
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon"><i class="bi bi-emoji-smile"></i></div>
-                    <h4 class="title"><a>Мултифункционалност</a></h4>
-                    <p class="description">Повече възможности на едно място, осигуряващи пълното удобство на потребителя.</p>
+                    <h4 class="title"><a>Удобство</a></h4>
+                    <p class="description">Вариация от възможности на едно място, осигуряващи пълното удобство на потребителя.</p>
                 </div>
                 <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon"><i class="bi bi-graph-up"></i></div>

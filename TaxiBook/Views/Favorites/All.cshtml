@@ -1,6 +1,5 @@
-﻿@*@using TaxiBook.Services.ViewModels.Companies
-@using TaxiBook.Services.ViewModels.Favorites
-@model CompanyListingViewModel*@
+﻿@using TaxiBook.Services.ViewModels.Favorites
+@model ListingViewModel
 @{
     this.Layout = "_LoggedLayout";
 }
@@ -27,20 +26,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center">
-                        <td><a>Иванина Такси</a></td>
-                        <td>1.18 лв.</td>
-                        <td>Пазарджик</td>
-                        <td><a href="tel:+359 2 091 3254">+359 2 091 3254</a></td>
-                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                    </tr>
-                    <tr class="text-center">
-                        <td><a>Елит Такси</a></td>
-                        <td>1.20 лв.</td>
-                        <td>Пазарджик</td>
-                        <td><a href="tel:089 706 5688">+359 2 285 6380</a></td>
-                        <td><a asp-area="default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                    </tr>
+                    @foreach (var favoriteCompany in this.Model.FavoriteCompanies)
+                    {
+                        <tr class="text-center">
+                            <td>@favoriteCompany.CompanyName</td>
+                            @{
+                                int dailyTariffStart = 6;
+                                int nightTariffStart = 22;
+                                int currentTime = DateTime.Now.Hour;
+                            }
+                            @if (currentTime > dailyTariffStart && currentTime < nightTariffStart)
+                            {
+                                <td>@favoriteCompany.OneКilometerМileageDailyPrice</td>
+                            }
+                            else
+                            {
+                                <td>@favoriteCompany.OneКilometerМileageNightPrice</td>
+                            }
+                            <td>@favoriteCompany.Province</td>
+                            <td><a href="tel:@favoriteCompany.PhoneNumber">@favoriteCompany.PhoneNumber</a></td>
+                            <td><a asp-area="Default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Добави</button>
@@ -53,18 +60,19 @@
                                 <i data-feather="x"></i>
                             </button>
                         </div>
-                        <form method="post">
+                        <form method="post" asp-area="Default" asp-controller="Favorites" asp-action="All">
                             <div class="modal-body">
                                 <p>Моля изберете компания.</p>
                                 <div class="col-md-12 col-12">
                                     <div class="form-group form-label-group">
-                                        <label for="companyName">Име</label>
+                                        <label asp-for="CreateFavoriteViewModel.CompanyName" for="companyName">Име</label>
                                         <fieldset class="form-group">
-                                            <select class="form-select" id="companyName">
-                                                <option selected="true" disabled="disabled">Изберете...</option>  
-                                                <option value="България Такси">България Такси</option>
-                                                <option value="Диамант Такси">Диамант Такси</option>
-                                                <option value="ОК Такси">ОК Такси</option>
+                                            <select asp-for="CreateFavoriteViewModel.CompanyName" class="form-select" id="companyName">
+                                                <option selected="true" disabled="disabled">Изберете...</option>
+                                                @foreach (var favCompany in this.Model.AllCompanies)
+                                                {
+                                                    <option asp-for="CreateFavoriteViewModel.CompanyName" value="@favCompany.Name">@favCompany.Name</option>
+                                                }
                                             </select>
                                         </fieldset>
                                         <span class="text-danger"></span>

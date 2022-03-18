@@ -1,6 +1,5 @@
 ﻿ @using TaxiBook.Services.ViewModels.Feedbacks
- @using TaxiBook.Services.ViewModels.Companies
- @model CreateFeedbackViewModel
+ @model ListingViewModel
 @{
     this.Layout = "_LoggedLayout";
 }
@@ -16,19 +15,21 @@
 <div class="card">
     <div class="card-content">
         <div class="card-body">
-            <form method="post" asp-area="Home" asp-controller="Feedbacks" asp-action="Create">
+            <form method="post" asp-area="Default" asp-controller="Feedbacks" asp-action="Create">
                 <div>
                     <div class="col-md-4 mb-4">
                         <div class="form-group form-label-group">
-                            <label asp-for="Company" for="companyName">Услугите на чия компания използвахте?</label>
+                            <label asp-for="CreateFeedbackViewModel.Company" for="companyName">Услугите на чия компания използвахте?</label>
                             <fieldset class="form-group">
-                                <select class="form-select" id="companyName">
+                                <select asp-for="CreateFeedbackViewModel.Company" class="form-select" id="companyName">
                                     <option selected="true" disabled="disabled">Изберете...</option>  
-                                    <option value="България Такси">България Такси</option>
-                                    <option value="Диамант Такси">Диамант Такси</option>
+                                    @foreach (var favCompany in this.Model.AllCompanies)
+                                    {
+                                        <option asp-for="CreateFeedbackViewModel.Company" value="@favCompany.Name">@favCompany.Name</option>
+                                    }
                                 </select>
                             </fieldset>
-                            <span asp-validation-for="Company" class="text-danger"></span>
+                            <span asp-validation-for="CreateFeedbackViewModel.Company" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group form-label-group">
@@ -38,18 +39,18 @@
                         <li class="d-inline-block me-2 mb-1" >
                             <div class='form-check'>
                                 <div class="checkbox">
-                                    <input asp-for="IsLiked" type="checkbox" class="form-check-input" name="check" onclick="onlyOne(this)">
-                                    <label asp-for="IsLiked"><i data-feather="thumbs-up"></i></label>
-                                    <span asp-validation-for="IsLiked" class="text-danger"></span>
+                                    <input asp-for="CreateFeedbackViewModel.IsLiked" type="checkbox" class="form-check-input" name="check" onclick="onlyOne(this)">
+                                    <label asp-for="CreateFeedbackViewModel.IsLiked"><i data-feather="thumbs-up"></i></label>
+                                    <span asp-validation-for="CreateFeedbackViewModel.IsLiked" class="text-danger"></span>
                                 </div>
                             </div>
                         </li>
                         <li class="d-inline-block me-2 mb-1" style="margin-left: 14em;">
                             <div class='form-check'>
                                 <div class="checkbox">
-                                    <input asp-for="IsLiked" type="checkbox" class="form-check-input" name="check" onclick="onlyOne(this)">
-                                    <label asp-for="IsLiked"><i data-feather="thumbs-down"></i></label>
-                                    <span asp-validation-for="IsLiked" class="text-danger"></span>
+                                    <input asp-for="CreateFeedbackViewModel.IsLiked" type="checkbox" class="form-check-input" name="check" onclick="onlyOne(this)">
+                                    <label asp-for="CreateFeedbackViewModel.IsLiked"><i data-feather="thumbs-down"></i></label>
+                                    <span asp-validation-for="CreateFeedbackViewModel.IsLiked" class="text-danger"></span>
                                 </div>
                             </div>
                         </li>
@@ -57,8 +58,8 @@
                 </div><br />
                 <div class="form-body">
                     <div class="form-group form-label-group">
-                        <label asp-for="Opinion" for="description">Има ли нещо друго, което искате да споделите?</label>
-                        <textarea asp-for="Opinion" class="form-control" rows="4" placeholder="Напишете тук" id="description"></textarea>
+                        <label asp-for="CreateFeedbackViewModel.Opinion" for="description">Има ли нещо друго, което искате да споделите?</label>
+                        <textarea asp-for="CreateFeedbackViewModel.Opinion" class="form-control" rows="4" placeholder="Напишете тук" id="description"></textarea>
                     </div>
                 </div>
                 <div class="form-actions d-flex justify-content-end">
