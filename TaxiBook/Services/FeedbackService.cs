@@ -6,22 +6,22 @@
     using Data;
     using Data.Models;
     using Interfaces;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
-    using TaxiBook.Services.ViewModels.Favorites;
+    using TaxiBook.Infrastructure.Services;
+    using ViewModels.Favorites;
     using ViewModels.Feedbacks;
 
     public class FeedbackService : IFeedbackService
     {
         private readonly TaxiBookDbContext db;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly ICurrentUserService currentUserService;
 
         public FeedbackService(
             TaxiBookDbContext db, 
-            IHttpContextAccessor httpContextAccessor)
+            ICurrentUserService currentUserService)
         {
             this.db = db;
-            this.httpContextAccessor = httpContextAccessor;
+            this.currentUserService = currentUserService;
         }
 
         public IEnumerable<FeedbackDetailsViewModel> All()
@@ -52,20 +52,26 @@
             bool isLiked, 
             string description)
         {
-            var userName = this.httpContextAccessor.HttpContext.User.Identity.Name;
-            var user = this.db.Users.FirstOrDefault(x => x.UserName == userName);
-
             var feedback = new Feedback
             {
                 CompanyName = company,
                 IsLiked = isLiked,
                 Description = description,
-                ClientId = user.Id,
+                ClientId = this.currentUserService.GetId(),
             };
 
             await db.Feedbacks.AddAsync(feedback);
-
             await db.SaveChangesAsync();
+
+            var companyId = this.db
+                .Companies
+                .Where(c => c.Name == feedback.CompanyName)
+                .Select(c => c.Id)
+                .FirstOrDefault();
+
+            feedback.CompanyId = companyId;
+
+            await this.db.SaveChangesAsync();
 
             return feedback.Id;
         }
@@ -77,7 +83,6 @@
             var feedback = await this.ByIdAndByUserId(id, clientId);
 
             this.db.Feedbacks.Remove(feedback);
-
             await this.db.SaveChangesAsync();
         }
 

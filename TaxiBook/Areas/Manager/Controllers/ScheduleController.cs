@@ -18,12 +18,12 @@
         [HttpGet]
         public IActionResult CurrentMonth()
         {
-            //var viewModel = new AbsenceListingViewModel()
-            //{
-            //    Absences = this.scheduleService.All(),
-            //};
+            var viewModel = new AbsenceListingViewModel()
+            {
+                Absences = this.scheduleService.All(),
+            };
 
-            return this.View();
+            return this.View(viewModel);
         }
 
         [HttpGet]

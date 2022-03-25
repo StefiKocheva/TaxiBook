@@ -24,6 +24,10 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public string CompanyId { get; set; }
+
+        public virtual Company Company { get; set; }
+
         public string ClientId { get; set; }
 
         public virtual ApplicationUser Client { get; set; }

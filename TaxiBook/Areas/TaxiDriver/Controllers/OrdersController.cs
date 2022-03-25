@@ -29,13 +29,9 @@
                 return this.BadRequest();
             }
 
-            var orderId = await this.orderService.CreateAsync(
-                viewModel.CurrentLocation,
-                viewModel.CurrentLocationDetails,
+            await this.orderService.CreateAsync(
                 viewModel.EndLocation,
-                viewModel.EndLocationDetails,
-                viewModel.CountOfPassengers,
-                viewModel.AdditionalRequirements); 
+                viewModel.CountOfPassengers); 
 
             return this.RedirectPermanent("Create");
         }

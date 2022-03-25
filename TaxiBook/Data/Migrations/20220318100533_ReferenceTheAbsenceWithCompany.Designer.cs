@@ -9,8 +9,8 @@ namespace TaxiBook.Data.Migrations
     using Microsoft.EntityFrameworkCore.Migrations;
 
     [DbContext(typeof(TaxiBookDbContext))]
-    [Migration("20220317011702_AddNewPropertiesInFavoriteDataModel")]
-    partial class AddNewPropertiesInFavoriteDataModel
+    [Migration("20220318100533_ReferenceTheAbsenceWithCompany")]
+    partial class ReferenceTheAbsenceWithCompany
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -160,6 +160,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
@@ -172,6 +175,8 @@ namespace TaxiBook.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("EmployeeId");
 
@@ -631,9 +636,15 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Absence", b =>
                 {
+                    b.HasOne("TaxiBook.Data.Models.Company", "Company")
+                        .WithMany("Absences")
+                        .HasForeignKey("CompanyId");
+
                     b.HasOne("TaxiBook.Data.Models.ApplicationUser", "Employee")
                         .WithMany("Absences")
                         .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Company");
 
                     b.Navigation("Employee");
                 });
@@ -780,6 +791,8 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Company", b =>
                 {
+                    b.Navigation("Absences");
+
                     b.Navigation("Employees");
 
                     b.Navigation("Location");

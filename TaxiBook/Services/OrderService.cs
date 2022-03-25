@@ -39,7 +39,6 @@
             };
 
             await this.db.Addresses.AddAsync(location);
-
             await this.db.SaveChangesAsync();
 
             var order = new Order

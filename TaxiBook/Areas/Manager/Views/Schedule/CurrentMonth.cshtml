@@ -1,4 +1,7 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.Manager.ViewModels.Schedule
+@model AbsenceListingViewModel
+
+<div class="page-title">
     <h3>График</h3>
     <p class="text-subtitle text-muted">Тук е вашият месечен график и молбите, подадени от служителите ви за предстоящи отсъствия.</p>
 </div>
@@ -184,12 +187,37 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <td>Стефани Кочева</td>
-                        <td>Диспечер</td>
-                        <td>20.03.2022 - 24.03.2022</td>
-                        <td><button class="btn btn-primary"><i class="fas fa-check"></i></button> <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button></td>
-                    </tr>
+                    @foreach (var absence in this.Model.Absences)
+                    {
+                        <tr>
+                            <td>@absence.FullName</td>
+                            @{
+                                string role = absence.Role.ToString() == "Dispatcher" 
+                                    ? "Диспечер" 
+                                    : "Таксиметров шофьор";
+                            }
+                            <td>@role</td>
+                            @{
+                                string[] fromArr = absence.From.Split('-');
+                                string from = string.Empty;
+
+                                for (int i = fromArr.Length; i > 0; i--)
+                                {
+                                    from += i - 1 == 0 ? fromArr[i - 1] : $"{fromArr[i - 1]}.";
+                                }
+
+                                string[] tillArr = absence.Till.Split('-');
+                                string till = string.Empty;
+
+                                for (int i = tillArr.Length; i > 0; i--)
+                                {
+                                    till += i - 1 == 0 ? tillArr[i - 1] : $"{tillArr[i - 1]}.";
+                                }
+                            }
+                            <td>@from - @till</td>
+                            <td><button class="btn btn-primary"><i class="fas fa-check"></i></button> <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

@@ -14,6 +14,7 @@
 
             this.Employees = new HashSet<ApplicationUser>();
             this.Taxies = new HashSet<Taxi>();
+            this.Feedbacks = new HashSet<Feedback>();
         }
 
         public string Id { get; set; }
@@ -68,8 +69,12 @@
 
         public string LicenseUrl { get; set; }
 
+        public virtual IEnumerable<Absence> Absences { get; set; }
+
         public virtual IEnumerable<ApplicationUser> Employees { get; set; }
 
         public virtual IEnumerable<Taxi> Taxies { get; set; }
+
+        public virtual IEnumerable<Feedback> Feedbacks { get; set; }
     }
 }

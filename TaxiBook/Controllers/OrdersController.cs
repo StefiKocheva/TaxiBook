@@ -38,7 +38,7 @@
         [HttpPost]
         public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 return this.View(viewModel);
             }

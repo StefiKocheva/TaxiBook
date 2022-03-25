@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
     using TaxiBook.Services.Interfaces;
     using TaxiBook.Services.ViewModels.Profiles;
 
@@ -24,10 +25,21 @@
             return this.View(viewModel);
         }
 
-        [HttpPut]
-        public IActionResult Update(string userId)
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateProfileViewModel viewModel)
         {
-            return this.Ok();
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("Overview", viewModel);
+            }
+
+            await this.profileService.UpdateAsync(
+                viewModel.FirstName,
+                viewModel.LastName,
+                viewModel.Email,
+                viewModel.PhoneNumber);
+
+            return this.RedirectToAction("Overview");
         }
     }
 }

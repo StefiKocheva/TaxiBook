@@ -21,5 +21,9 @@
         public string EmployeeId { get; set; }
 
         public ApplicationUser Employee { get; set; }
+
+        public string CompanyId { get; set; }
+
+        public Company Company { get; set; }
     }
 }

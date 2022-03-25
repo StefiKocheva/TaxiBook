@@ -48,5 +48,10 @@
 
             public const int MaxCountOfPassengers = 6;
         }
+
+        public class UpdateProfileViewModel
+        {
+            public const string RequiredErrorMessage = "Полето е задължително.";
+        }
     }
 }

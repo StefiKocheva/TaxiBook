@@ -8,14 +8,21 @@
     using Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Services.Interfaces;
+    using TaxiBook.Infrastructure.Services;
     using ViewModels.Schedule;
 
     public class ScheduleService : IScheduleService
     {
         private readonly TaxiBookDbContext db;
+        private readonly ICurrentUserService currentUserService;
 
-        public ScheduleService(TaxiBookDbContext db) 
-            => this.db = db;
+        public ScheduleService(
+            TaxiBookDbContext db, 
+            ICurrentUserService currentUserService)
+        {
+            this.db = db;
+            this.currentUserService = currentUserService;
+        }
 
         public async Task<string> AddEmployeeAsync(string email, string role, string from, string till)
         {
@@ -50,9 +57,9 @@
         public IEnumerable<AbsenceDetailsViewModel> All()
             => this.db
             .Absences
+            .Where(a => a.CompanyId == this.currentUserService.GetUser().CompanyId)
             .Select(a => new AbsenceDetailsViewModel()
             {
-                Id = a.Id,
                 FullName = a.Employee.FirstName + " " + a.Employee.LastName,
                 Role = a.Employee.EmployeeRole,
                 From = a.From,

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Data;
     using Infrastructure.Services;
     using Interfaces;
@@ -33,5 +34,21 @@
                 ImageUrl = u.ImageUrl,
             })
             .ToHashSet();
+
+        public async Task UpdateAsync(
+            string firstName, 
+            string lastName, 
+            string email, 
+            string phoneNumber)
+        {
+            var user = this.currentUserService.GetUser();
+
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+            user.PhoneNumber = phoneNumber;
+
+            await this.db.SaveChangesAsync();
+        }
     }
 }

@@ -6,35 +6,39 @@
     using Data.Models;
     using Inerfaces;
     using Microsoft.EntityFrameworkCore;
+    using TaxiBook.Infrastructure.Services;
     using ViewModels.Orders;
 
     public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
+        private readonly ICurrentUserService currentUserService;
 
-        public OrderService(TaxiBookDbContext db) 
-            => this.db = db;
+        public OrderService(TaxiBookDbContext db, ICurrentUserService currentUserService)
+        {
+            this.db = db;
+            this.currentUserService = currentUserService;
+        }
 
         public async Task<string> CreateAsync(
-            string currentLocation, 
-            string currentLocationDetails, 
             string endLocation, 
-            string endLocationDetails, 
-            int countOfPassengers, 
-            string additionalRequirements)
+            int countOfPassengers)
         {
+            var location = new Address()
+            {
+                EndLocationCoordinates = endLocation,
+            };
+
+            await this.db.Addresses.AddAsync(location);
+            await this.db.SaveChangesAsync();
+
             var order = new Order
             {
-                // CurrentLocation = currentLocation,
-                // EndLocation = endLocation,
-                CurrentLocationDetails = currentLocationDetails,
-                EndLocationDetails = endLocationDetails,
                 CountOfPassengers = countOfPassengers,
-                AdditionalRequirements = additionalRequirements,
+                EndLocationId = location.Id,
             };
 
             await db.Orders.AddAsync(order);
-
             await db.SaveChangesAsync();
 
             return order.Id;

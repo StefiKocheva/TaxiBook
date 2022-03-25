@@ -5,5 +5,7 @@
     public class FeedbackListingViewModel
     {
         public IEnumerable<FeedbackDetailsViewModel> Feedbacks { get; set; }
+
+        public CreateFeedbackViewModel CreateFeedbackViewModel { get; set; }
     }
 }

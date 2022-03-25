@@ -6,12 +6,8 @@
     public interface IOrderService
     {
         Task<string> CreateAsync(
-            string currentLocation, 
-            string currentLocationDetails, 
-            string endLocation, string 
-            endLocationDetails, 
-            int countOfPassengers, 
-            string additionalRequirements);
+            string endLocation,
+            int countOfPassengers);
 
         void UpdateAsync(
             string id,

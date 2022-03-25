@@ -94,10 +94,20 @@
                 .WithMany(c => c.Feedbacks)
                 .HasForeignKey(f => f.ClientId);
 
+            builder.Entity<Feedback>()
+                .HasOne(f => f.Company)
+                .WithMany(c => c.Feedbacks)
+                .HasForeignKey(f => f.CompanyId);
+
             builder.Entity<Absence>()
                 .HasOne(a => a.Employee)
                 .WithMany(e => e.Absences)
                 .HasForeignKey(a => a.EmployeeId);
+
+            builder.Entity<Absence>()
+                .HasOne(a => a.Company)
+                .WithMany(c => c.Absences)
+                .HasForeignKey(a => a.CompanyId);
 
             builder.Entity<WorkTime>()
                 .HasOne(wt => wt.Employee)

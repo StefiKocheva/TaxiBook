@@ -29,6 +29,7 @@
                 From = from,
                 Till = till,
                 EmployeeId = this.currentUserService.GetId(),
+                CompanyId = this.currentUserService.GetUser().CompanyId, 
             };
 
             await this.db.Absences.AddAsync(absence);

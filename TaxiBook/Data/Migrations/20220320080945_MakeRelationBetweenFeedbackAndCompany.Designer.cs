@@ -9,8 +9,8 @@ namespace TaxiBook.Data.Migrations
     using Microsoft.EntityFrameworkCore.Migrations;
 
     [DbContext(typeof(TaxiBookDbContext))]
-    [Migration("20220317011702_AddNewPropertiesInFavoriteDataModel")]
-    partial class AddNewPropertiesInFavoriteDataModel
+    [Migration("20220320080945_MakeRelationBetweenFeedbackAndCompany")]
+    partial class MakeRelationBetweenFeedbackAndCompany
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -160,6 +160,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
@@ -172,6 +175,8 @@ namespace TaxiBook.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("EmployeeId");
 
@@ -416,6 +421,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
@@ -432,6 +440,8 @@ namespace TaxiBook.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Feedbacks");
                 });
@@ -631,9 +641,15 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Absence", b =>
                 {
+                    b.HasOne("TaxiBook.Data.Models.Company", "Company")
+                        .WithMany("Absences")
+                        .HasForeignKey("CompanyId");
+
                     b.HasOne("TaxiBook.Data.Models.ApplicationUser", "Employee")
                         .WithMany("Absences")
                         .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Company");
 
                     b.Navigation("Employee");
                 });
@@ -681,7 +697,13 @@ namespace TaxiBook.Data.Migrations
                         .WithMany("Feedbacks")
                         .HasForeignKey("ClientId");
 
+                    b.HasOne("TaxiBook.Data.Models.Company", "Company")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("CompanyId");
+
                     b.Navigation("Client");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("TaxiBook.Data.Models.Order", b =>
@@ -780,7 +802,11 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Company", b =>
                 {
+                    b.Navigation("Absences");
+
                     b.Navigation("Employees");
+
+                    b.Navigation("Feedbacks");
 
                     b.Navigation("Location");
 
