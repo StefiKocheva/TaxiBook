@@ -11,7 +11,7 @@
     {
         private readonly IProfileService profileService;
 
-        public ProfilesController(IProfileService profileService) 
+        public ProfilesController(IProfileService profileService)
             => this.profileService = profileService;
 
         [HttpGet]

@@ -62,6 +62,12 @@
             return this.View();
         }
 
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return this.View();
+        }
+
         [HttpPut]
         public async Task<IActionResult> Update(
             string id, 

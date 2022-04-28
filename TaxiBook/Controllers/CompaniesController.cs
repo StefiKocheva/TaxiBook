@@ -6,11 +6,11 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
 
-    [Authorize(Roles = "Client")]
+    [Authorize]
     public class CompaniesController : Controller
     {
         private readonly ICompanyService companyService;
-
+        
         public CompaniesController(ICompanyService companyService)
             => this.companyService = companyService;
 
@@ -58,20 +58,13 @@
             return this.RedirectToAction("All");
         }
 
-        [Authorize(Roles = "Client")]
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
-            return this.View();
-        }
+            var model = await this.companyService.DetailsAsync(id);
 
-        //[Authorize(Roles = "Client")]
-        //[AllowAnonymous]
-        //[HttpGet]
-        //public IActionResult Details(string id)
-        //{
-        //    return this.View(this.companyService.DetailsAsync(id));
-        //}
+            return this.View(model);
+        }
     }
 }

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Стефани Кочева</h3>
-            <p class="text-subtitle text-muted">Тук може да управлявате данните за избран служител.</p>
+            <p class="text-subtitle text-muted">Тук може да следите работата, извършваща се от избрания служител.</p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -14,117 +14,183 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="row match-height">
-        <div class="col-12">
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form form-vertical" method="post" asp-area="Manager" asp-controller="Employees" asp-action="Update">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <div class="avatar avatar-xl me-3">
-                                            <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
-                                        </div><br /><br /><br /><br />
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="firstName">Първо име</label>
-                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="Стефани">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="lastName">Фамилия</label>
-                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="Кочева">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="stefanitaxidriver@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="phoneNumber">Телефонен номер</label>
-                                            <input type="number" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="1235436753">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                        <button id="edit" onclick="enable('firstName', 'lastName', 'email', 'phoneNumber', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
-                                        <script>
-                                            function enable(firstName, lastName, email, phoneNumber, hiddenButton, edit) {
-                                                document.getElementById(firstName).disabled = false;
-                                                document.getElementById(lastName).disabled = false;
-                                                document.getElementById(email).disabled = false;
-                                                document.getElementById(phoneNumber).disabled = false;
-                                                document.getElementById(edit).disabled = true;
-
-                                                document.getElementById(hiddenButton).style.visibility = "visible";
-                                            }
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>  
-                    </div>
+                <div class="card-header">
+                    <h4>Статистика, съпоставяща свършена работа през текущия месец с предишния</h4>
+                </div>
+                <div class="card-body">
+                    <div id="area"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section>
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <h5 class="card-title">Такси</h5><br />
-                        <form class="form form-vertical">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="brand">Марка</label>
-                                            <input type="text" class="form-control" id="brand" placeholder="Марка" disabled name="" value="Дачия">
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <h3>Поръчки</h3>
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="passed-tab" data-toggle="tab" href="#passed" role="tab" aria-controls="passed" aria-selected="false">Текуща</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="active-tab" data-toggle="tab" href="#active" role="tab" aria-controls="active" aria-selected="true">Отминали</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="passed" role="tabpanel" aria-labelledby="passed-tab">
+                        <br />
+                        <button type="button" class="btn btn-outline-primary btn-block" data-bs-toggle="modal" data-bs-target="#seeLocation">Виж локация</button>
+                        <br />
+                        <div class="modal fade text-left" id="seeLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary">
+                                        <h5 class="modal-title white" id="myModalLabel160">Локация</h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="map-responsive">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2956.173642003534!2d24.332994640815865!3d42.189354637596956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbg!4v1647159005753!5m2!1sen!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="model">Модел</label>
-                                            <input type="text" class="form-control" id="model" placeholder="Модел" disabled name="" value="Логан">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="numberPlate">Регистрационен номер</label>
-                                            <input type="text" class="form-control" id="numberPlate" placeholder="Регистрационен номер" disabled name="" value="EXAMPLE">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button id="hiddenButtonAboutTaxi" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                        <button id="editAboutTaxi" onclick="enableAboutTaxi('brand', 'model', 'numberPlate', 'hiddenButtonAboutTaxi', 'editAboutTaxi')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
-                                        <script>
-                                            function enableAboutTaxi(brand, model, numberPlate, hiddenButtonAboutTaxi, editAboutTaxi) {
-                                                document.getElementById(brand).disabled = false;
-                                                document.getElementById(model).disabled = false;
-                                                document.getElementById(numberPlate).disabled = false;
-                                                document.getElementById(editAboutTaxi).disabled = true;
-
-                                                document.getElementById(hiddenButtonAboutTaxi).style.visibility = "visible";
-                                            }
-                                        </script>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Затвори</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </form>  
+                        </div>
+                        <section class="section">
+                            <div class="card open">
+                                <div class="card-header" id="order-progress" data-toggle="collapse" data-target="#progress" aria-expanded="true" aria-controls="progress" >
+                                    <h4 style="text-align: center;">Прогрес на поръчка</h4><br />
+                                    <div class="progress progress-primary  mb-3">
+                                        <div class="progress-bar" role="progressbar" style="width: 50%"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion" id="cardAccordion">
+                                <div class="card open">
+                                    <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" role="button">
+                                        <h4 class="collapsed collapse-title">Детайли</h4>
+                                    </div>
+                                    <div id="collapseThree" class="collapse show pt-1" aria-labelledby="headingThree" data-parent="#cardAccordion">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="clientName">Име</label>
+                                                        <div class="position-relative">
+                                                            <input disabled type="text" class="form-control" value='Тест' id="clientName">
+                                                            <div class="form-control-icon">
+                                                                <i class="fas fa-street-view"></i>
+                                                            </div>
+                                                        </div>                  
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="phoneNumber">Телефонен номер</label>
+                                                        <div class="position-relative">
+                                                            <input disabled type="tel" class="form-control" value='8765464334' id="phoneNumber">
+                                                            <div class="form-control-icon">
+                                                                <i class="fas fa-street-view"></i>
+                                                            </div>
+                                                        </div>                  
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="currentLocation">Начална точка</label>
+                                                        <div class="position-relative">
+                                                            <input disabled type="text" class="form-control" value='бул. "България" 50' id="currentLocation">
+                                                            <div class="form-control-icon">
+                                                                <i class="fas fa-street-view"></i>
+                                                            </div>
+                                                        </div>                  
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group position-relative">
+                                                        <label for="currentLocationDetails">Уточнение за начална точка</label>
+                                                        <textarea disabled id="currentLocationDetails" class="form-control" rows="2"></textarea>              
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="endLocation">Крайна точка</label>
+                                                        <div class="position-relative">
+                                                            <input disabled type="text" class="form-control" value='ул. "Кокиче" 20' id="endLocation">
+                                                            <div class="form-control-icon">
+                                                                <i class="fas fa-map-marked-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group position-relative">
+                                                        <label for="endLocationDetails">Уточнение за крайна точка</label>
+                                                        <textarea disabled id="endLocationDetails" class="form-control" rows="2"></textarea>             
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="countOfPassengers">Брой пътуващи</label>
+                                                        <div class="position-relative">
+                                                            <input disabled type="number" min="1" max="6" class="form-control" value="3" id="countOfPassengers">    
+                                                            <div class="form-control-icon">
+                                                                <i class="fas fa-users"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group position-relative">
+                                                        <label for="endLocationDetails">Допълнителни изисквания</label>
+                                                        <textarea disabled id="endLocationDetails" class="form-control" rows="2"></textarea>             
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="tab-pane fade" id="active" role="tabpanel" aria-labelledby="active-tab">
+                        <table class='table table'>
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Състояние</th>
+                                    <th class="text-center">Детайли</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>Отказана</td>
+                                    <td><a href="#"><i class="fas fa-plus"></i></a></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Потвърдена</td>
+                                    <td><a href="#"><i class="fas fa-plus"></i></a></td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>Приключена</td>
+                                    <td><a href="#"><i class="fas fa-plus"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

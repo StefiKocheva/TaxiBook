@@ -38,7 +38,11 @@
                                     {
                                         <td>Диспечер</td>
                                     }
-                                    <td><a asp-area="Manager" asp-controller="Employees" asp-action="Overview" role="button" class="table-element"><i class="fas fa-user-edit"></i></a><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span></td>
+                                    <td>
+                                        <a asp-area="Manager" asp-controller="Employees" asp-action="Overview" role="button" class="table-element"><i class="fas fa-user-alt"></i></a>
+                                        <a asp-area="Manager" asp-controller="Employees" asp-action="Edit" role="button" class="table-element"><i class="fas fa-pen"></i></a>
+                                        <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"> <i class="far fa-trash-alt"></i></span>
+                                    </td>
                                 </tr>
                             }
                         }
