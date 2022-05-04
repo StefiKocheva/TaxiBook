@@ -6,11 +6,14 @@ namespace TaxiBook.Data.Migrations
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Infrastructure;
     using Microsoft.EntityFrameworkCore.Metadata;
+    using Microsoft.EntityFrameworkCore.Migrations;
+    using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
     [DbContext(typeof(TaxiBookDbContext))]
-    partial class TaxiBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220430085621_AddReferenceBetweenOrderAndCompany")]
+    partial class AddReferenceBetweenOrderAndCompany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -453,9 +456,6 @@ namespace TaxiBook.Data.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime?>("CompletedOn")
                         .HasColumnType("datetime2");
 
@@ -479,6 +479,9 @@ namespace TaxiBook.Data.Migrations
                     b.Property<string>("EndLocationId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("OrderState")
                         .HasColumnType("int");
 
@@ -490,11 +493,11 @@ namespace TaxiBook.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId");
-
                     b.HasIndex("CurrentLocationId");
 
                     b.HasIndex("EndLocationId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("TaxiId");
 
@@ -711,10 +714,6 @@ namespace TaxiBook.Data.Migrations
 
             modelBuilder.Entity("TaxiBook.Data.Models.Order", b =>
                 {
-                    b.HasOne("TaxiBook.Data.Models.Company", "Company")
-                        .WithMany("Orders")
-                        .HasForeignKey("CompanyId");
-
                     b.HasOne("TaxiBook.Data.Models.Address", "CurrentLocation")
                         .WithMany("CurrentLocations")
                         .HasForeignKey("CurrentLocationId");
@@ -722,6 +721,10 @@ namespace TaxiBook.Data.Migrations
                     b.HasOne("TaxiBook.Data.Models.Address", "EndLocation")
                         .WithMany("EndLocations")
                         .HasForeignKey("EndLocationId");
+
+                    b.HasOne("TaxiBook.Data.Models.Company", "Company")
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("TaxiBook.Data.Models.Taxi", "Taxi")
                         .WithMany("Orders")

@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Services.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using ViewModels.Orders;
 
@@ -16,17 +17,17 @@
             string additionalRequirements, 
             string taxiDriverName);
 
-        void UpdateAsync(
-            string id,
-            string name,
-            string phoneNumber,
-            string currentLocation,
-            string currentLocationDetails,
-            string endLocation,
-            string endLocationDetails,
-            int countOfPassengers,
-            string additionalRequirements,
-            string userId);
+        IEnumerable<OrderDetailsViewModel> GetAllUnprocessedOrders();
+
+        IEnumerable<OrderDetailsViewModel> GetAllProcessedOrders();
+
+        IEnumerable<OrderDetailsViewModel> GetAllRefusedOrders();
+
+        //IEnumerable<DriverDetailsViewModel> GetAvailableDriversDetails();
+
+        void RefuseAsync(string id);
+
+        void ProcessAsync(string id);
 
         Task<OrderDetailsViewModel> DetailsAsync(string id);
     }

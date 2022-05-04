@@ -1,12 +1,11 @@
 ﻿namespace TaxiBook.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Interfaces;
     using Services.ViewModels.Orders;
-    using TaxiBook.Data;
+    using Data;
 
     public class OrdersController : Controller
     {
@@ -22,21 +21,11 @@
         [Authorize(Roles = "Client,TaxiDriver,Dispatcher,Manager")]
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
+            TempData["CompanyId"] = id;
+
             return this.View();
-        }
-
-        [Authorize(Roles = "Client")]
-        [HttpGet]
-        public IActionResult Past()
-        {
-            var viewModel = new OrderListingViewModel()
-            {
-                Orders = this.orderService.OverviewPast(),
-            };
-
-            return this.View(viewModel);
         }
 
         [Authorize(Roles = "Client")]
@@ -49,7 +38,10 @@
                 return this.View(viewModel);
             }
 
+            string companyId = TempData["CompanyId"].ToString();
+
             await this.orderService.CreateAsync(
+                 companyId,
                  viewModel.CurrentLocation,
                  viewModel.CurrentLocationDetails,
                  viewModel.EndLocation,
@@ -73,22 +65,24 @@
             return this.View(viewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        [HttpGet]
+        public IActionResult Refuse(string id)
         {
-            //await this.orderService.DeleteAsync(
-            //    viewModel.Id,
-            //    viewModel.ClientId);
-            var order = await this.db.Orders.FindAsync(id);
-
-            if (order == null)
-            {
-                return this.NotFound();
-            }
-            db.Remove(order);
-            await db.SaveChangesAsync();
+            this.orderService.Refuse(id);
 
             return this.RedirectToActionPermanent("Overview");
+        }
+
+        [Authorize(Roles = "Client")]
+        [HttpGet]
+        public IActionResult Past()
+        {
+            var viewModel = new OrderListingViewModel()
+            {
+                Orders = this.orderService.OverviewPast(),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

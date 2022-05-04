@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using TaxiBook.Data.Models.Enums;
+    using Data.Models.Enums;
     using ViewModels.Employees;
 
     public interface IEmployeeService
@@ -31,6 +31,6 @@
 
         IEnumerable<EmployeeDetailsViewModel> All();
 
-        //IEnumerable<EmployeeDetailsViewModel> Details(string id);
+        Task<UpdateEmployeeViewModel> ShowDetailsAsync(string id);
     }
 }

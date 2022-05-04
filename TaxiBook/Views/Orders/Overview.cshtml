@@ -104,10 +104,7 @@
                                                 <i class="bx bx-x d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Затвори</span>
                                             </button>
-                                            <form asp-controller="Orders" asp-action="Delete" method="post">
-                                                                                            <a asp-controller="Orders" asp-action="Delete" asp-route-id="@order.Id" class="btn btn-primary">Откажи поръчка</a>
-
-                                            </form>
+                                            <a asp-controller="Orders" asp-action="Refuse" asp-route-id="@order.Id" class="btn btn-primary">Откажи поръчка</a>
                                         </div>
                                     </div>
                                 </div>

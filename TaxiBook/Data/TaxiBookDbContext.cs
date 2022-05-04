@@ -89,6 +89,11 @@
                 .WithMany(t => t.Orders)
                 .HasForeignKey(o => o.TaxiId);
 
+            builder.Entity<Order>()
+                .HasOne(o => o.Company)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(o => o.CompanyId);
+
             builder.Entity<Feedback>()
                 .HasOne(f => f.Client)
                 .WithMany(c => c.Feedbacks)

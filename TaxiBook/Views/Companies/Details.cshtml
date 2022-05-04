@@ -7,8 +7,8 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>@Model.Name</h3>
-            <p class="text-subtitle text-muted">@Model.Description</p>
+            <h3>@this.Model.Name</h3>
+            <p class="text-subtitle text-muted">@this.Model.Description</p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -38,23 +38,23 @@
   <tbody>
     <tr>
       <th scope="row">Цена за километър пробег</th>
-      <td class="text-center">0.85</td>
-      <td class="text-center">0.96</td>
+      <td class="text-center">@this.Model.OneКilometerМileageDailyPrice</td>
+      <td class="text-center">@this.Model.OneКilometerМileageNightPrice</td>
     </tr>
     <tr>
       <th scope="row">Цена за повикване</th>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>@this.Model.DailyPricePerCall</td>
+      <td>@this.Model.NightPricePerCall</td>
     </tr>
     <tr>
       <th scope="row">Първоначална такса</th>
-      <td class="text-center">1.30</td>
-      <td class="text-center">1.50</td>
+      <td class="text-center">@this.Model.InitialDailyFee</td>
+      <td class="text-center">@this.Model.InitialNightFee</td>
     </tr>
     <tr>
       <th scope="row">Цена за минута престой</th>
-      <td class="text-center">0.30</td>
-      <td class="text-center">0.42</td>
+      <td class="text-center">@this.Model.DailyPricePerMinuteStay</td>
+      <td class="text-center">@this.Model.NightPricePerMinuteStay</td>
     </tr>
   </tbody>
 </table>
@@ -64,7 +64,7 @@
 <section class="section">
     <div class="col-12 d-flex justify-content-end">
         <a data-toggle="modal" style="width:20%" data-target="#exampleModalCenter" class="btn btn-outline-primary mr-1 mb-1">Пресметни пътуване</a>
-        <a asp-area="Default" asp-controller="Orders" asp-action="Create" style="width:20%"  class="btn btn-primary mr-1 mb-1">Напред към поръчка</a>
+        <a asp-area="Default" asp-controller="Orders" asp-action="Create" asp-route-id="@this.Model.Id" style="width:20%"  class="btn btn-primary mr-1 mb-1">Напред към поръчка</a>
     </div>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">

@@ -49,75 +49,43 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        @*@foreach (var feedback in Model.Feedbacks)
-                        {*@
-                             @*<tr>
-                                <td>@feedback.ClientName</td>
-                                <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedback">Прочети</button></td>
-                                <td><span class="table-element"><i data-feather="thumbs-up"></i></span></td>
-                                <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                            </tr>
-                            <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="feedbackTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="feedbackTitle">Мнение</h5>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                <i data-feather="x"></i>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>
-                                                @feedback.Opinion
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Затвори</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }*@
-                        <tr>
-                                <td>Стефани Кочева</td>
-                                <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedback">Прочети</button></td>
-                                <td><span class="table-element"><i data-feather="thumbs-up"></i></span></td>
-                                <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
-                            </tr>
+                        @foreach (var feedback in this.Model.Feedbacks)
+                        {
                             <tr>
-                                <td>Тест Тестов</td>
+                                <td>@feedback.FirstName</td>
                                 <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedback">Прочети</button></td>
-                                <td><span class="table-element"><i data-feather="thumbs-down"></i></span></td>
+                                <td><span class="table-element"><i data-feather="thumbs-up"></i></span></td>
                                 <td><span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
                             </tr>
-                            <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="feedbackTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="feedbackTitle">Мнение</h5>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                <i data-feather="x"></i>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>
-                                                Професионализъм и високо качество на услугите! Стриктно спазване на хигиенни изисквания! 
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                <span class="d-none d-sm-block">Затвори</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                       }
                     </tbody>
                 </table>
+                @foreach (var feedback in this.Model.Feedbacks)
+                {
+                    <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="feedbackTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="feedbackTitle">Мнение</h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        @feedback.Opinion
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Затвори</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

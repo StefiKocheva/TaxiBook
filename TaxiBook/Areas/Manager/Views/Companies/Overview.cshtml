@@ -2,7 +2,7 @@
 @model CompanyListingViewModel
 
 <div class="page-title">
-    <h3>Моята компания</h3>
+    @foreach (var company in this.Model.Companies) { <h3>@company.Name</h3> }
     <p class="text-subtitle text-muted">Тук са данните за вашата компания.</p>
 </div>
 @{

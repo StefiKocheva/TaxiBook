@@ -1,32 +1,57 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.Dispatcher.ViewModels.Orders
+@model OrderListingViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12">
-            <h3>Приети поръчки</h3>
-            <p class="text-subtitle text-muted">Можете да управлявате приетите Ви поръчки за деня, като така направата на отчет става далеч по-приятна работа.</p>
+            <h3>Обработени поръчки</h3>
+            <p class="text-subtitle text-muted">Можете да управлявате обработените си поръчки за деня, като така направата на отчет става далеч по-приятна работа.</p>
         </div>
     </div>
 </div>
-<section class="section">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th>Време на изпълнение</th>
-                        <th>Повече детайли</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    <tr>
-                        <td>6 минути</td>
-                        <td><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Edit" role="button"><i class="fas fa-edit"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>20 минути</td>
-                        <td><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Edit" role="button"><i class="fas fa-edit"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
+@if (this.Model.ProcessedOrders.Count() > 0)
+{
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Време на изпълнение</th>
+                            <th>Повече детайли</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var order in this.Model.ProcessedOrders)
+                        {
+                            <tr>
+                                <td>6 минути</td> <!-- In real time counter -->
+                                <td><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Overview" asp-route-id="@order.Id" role="button"><i class="fas fa-edit"></i></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+else
+{
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Време на изпълнение</th>
+                            <th>Повече детайли</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <br /><br /><br /><br /><br /><br />
+}

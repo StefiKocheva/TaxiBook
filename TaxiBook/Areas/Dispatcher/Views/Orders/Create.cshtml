@@ -1,5 +1,5 @@
 ﻿@using TaxiBook.Areas.Dispatcher.ViewModels.Orders
-@model CreateOrderViewModel
+@model ListingViewModel
 
 <div class="page-title">
     <div class="row">
@@ -22,95 +22,95 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="ClientName" for="name">Име</label>
+                                        <label asp-for="CreateOrderViewModel.ClientName" for="name">Име</label>
                                         <div class="position-relative">
-                                            <input asp-for="ClientName" type="text" class="form-control" placeholder="Име" id="name">
+                                            <input asp-for="CreateOrderViewModel.ClientName" type="text" class="form-control" placeholder="Име" id="name">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user"></i>
                                             </div>
                                         </div>
-                                        <span asp-validation-for="ClientName" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.ClientName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="PhoneNumber" for="phoneNumber">Телефонен номер</label>
+                                        <label asp-for="CreateOrderViewModel.PhoneNumber" for="phoneNumber">Телефонен номер</label>
                                         <div class="position-relative">
-                                            <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
+                                            <input asp-for="CreateOrderViewModel.PhoneNumber" type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-phone-alt"></i>
                                             </div>
                                         </div>
-                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="StartLocation" for="startLocation">Начална точка</label>
+                                        <label asp-for="CreateOrderViewModel.StartLocation" for="startLocation">Начална точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="StartLocation" type="text" class="form-control" placeholder="Начална точка" id="startLocation">
+                                            <input asp-for="CreateOrderViewModel.StartLocation" type="text" class="form-control" placeholder="Начална точка" id="startLocation">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-street-view"></i>
                                             </div>
                                         </div>                                            
-                                        <span asp-validation-for="StartLocation" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.StartLocation" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
-                                        <label asp-for="StartLocationDetails" for="startLocationDetails">Уточнение за начална точка</label>
-                                        <textarea asp-for="StartLocationDetails" id="startLocationDetails" class="form-control" rows="2" placeholder="Уточнение за начална точка"></textarea>              
-                                        <span asp-validation-for="StartLocationDetails" class="text-danger"></span>
+                                        <label asp-for="CreateOrderViewModel.StartLocationDetails" for="startLocationDetails">Уточнение за начална точка</label>
+                                        <textarea asp-for="CreateOrderViewModel.StartLocationDetails" id="startLocationDetails" class="form-control" rows="2" placeholder="Уточнение за начална точка"></textarea>              
+                                        <span asp-validation-for="CreateOrderViewModel.StartLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="EndLocation" for="endLocation">Крайна точка</label>
+                                        <label asp-for="CreateOrderViewModel.EndLocation" for="endLocation">Крайна точка</label>
                                         <div class="position-relative">
-                                            <input asp-for="EndLocation"  type="text" class="form-control" placeholder="Крайна точка" id="endLocation">
+                                            <input asp-for="CreateOrderViewModel.EndLocation"  type="text" class="form-control" placeholder="Крайна точка" id="endLocation">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
                                         </div>
-                                        <span asp-validation-for="EndLocation" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.EndLocation" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
-                                        <label asp-for="EndLocationDetails" for="endLocationDetails">Уточнение за крайна точка</label>
-                                        <textarea asp-for="EndLocationDetails" id="endLocationDetails" class="form-control" rows="2" placeholder="Уточнение за крайна точка"></textarea>             
-                                        <span asp-validation-for="EndLocationDetails" class="text-danger"></span>
+                                        <label asp-for="CreateOrderViewModel.EndLocationDetails" for="endLocationDetails">Уточнение за крайна точка</label>
+                                        <textarea asp-for="CreateOrderViewModel.EndLocationDetails" id="endLocationDetails" class="form-control" rows="2" placeholder="Уточнение за крайна точка"></textarea>             
+                                        <span asp-validation-for="CreateOrderViewModel.EndLocationDetails" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="CountOfPassengers" for="countOfPassengers">Брой пътуващи</label>
+                                        <label asp-for="CreateOrderViewModel.CountOfPassengers" for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CountOfPassengers" type="number" class="form-control" placeholder="Брой пътуващи" id="countOfPassengers">
+                                            <input asp-for="CreateOrderViewModel.CountOfPassengers" type="number" class="form-control" placeholder="Брой пътуващи" id="countOfPassengers">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
                                         </div>
-                                        <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.CountOfPassengers" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
-                                        <label asp-for="AdditionalRequirements" for="additionalRequirements">Допълнителни изисквания</label>
-                                        <textarea asp-for="AdditionalRequirements" id="additionalRequirements" class="form-control" rows="2" placeholder="Допълнителни изисквания"></textarea>             
-                                        <span asp-validation-for="AdditionalRequirements" class="text-danger"></span>
+                                        <label asp-for="CreateOrderViewModel.AdditionalRequirements" for="additionalRequirements">Допълнителни изисквания</label>
+                                        <textarea asp-for="CreateOrderViewModel.AdditionalRequirements" id="additionalRequirements" class="form-control" rows="2" placeholder="Допълнителни изисквания"></textarea>             
+                                        <span asp-validation-for="CreateOrderViewModel.AdditionalRequirements" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label asp-for="TaxiDriver" for="taxiDriver">Таксиметров шофьор</label>
+                                        <label asp-for="CreateOrderViewModel.TaxiDriver" for="taxiDriver">Таксиметров шофьор</label>
                                         <div class="position-relative">
-                                            <input asp-for="TaxiDriver" type="text" class="form-control" placeholder="Таксиметров шофьор (ctrl + v)" id="taxiDriver">
+                                            <input asp-for="CreateOrderViewModel.TaxiDriver" type="text" class="form-control" placeholder="Таксиметров шофьор (ctrl + v)" id="taxiDriver">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user-tie"></i>
                                             </div>
                                         </div>
-                                        <span asp-validation-for="TaxiDriver" class="text-danger"></span>
+                                        <span asp-validation-for="CreateOrderViewModel.TaxiDriver" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +140,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @*@foreach (var driver in this.Model.AvailableDrivers)
+                    {
+                        <tr>
+                            <td class="text-center">@driver.Email</td>
+                            <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('@driver.Email')"><i class="fas fa-copy"></i></a></td>
+                        </tr>
+                    }*@
                     <tr>
-                        <td class="text-center">stefanitaxidriver@example.com</td>
-                        <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('stefanitaxidriver@example.com')"><i class="fas fa-copy"></i></a></td>
+                        <td class="text-center">driver.Email</td>
+                        <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('driver.Email')"><i class="fas fa-copy"></i></a></td>
                     </tr>
                 </tbody>
             </table>

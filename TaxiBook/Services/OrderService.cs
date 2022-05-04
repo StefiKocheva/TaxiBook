@@ -25,6 +25,7 @@
         }
 
         public async Task<string> CreateAsync(
+            string companyId,
             string currentLocation, 
             string currentLocationDetails, 
             string endLocation, 
@@ -51,6 +52,7 @@
                 User = this.currentUserService.GetUser(),
                 CurrentLocationId = location.Id,
                 EndLocationId = location.Id,
+                CompanyId = companyId,
             };
 
             await this.db.Orders.AddAsync(order);
@@ -60,13 +62,12 @@
             return order.Id;
         }
 
-        public async void DeleteAsync(
-            string id,
-            string userId)
+        public async void Refuse(
+            string id)
         {
-            var order = await this.ByIdAndByUserId(id, userId);
-
-            this.db.Orders.Remove(order);
+            var order = this.db.Orders
+                .FirstOrDefault(o => o.Id == id)
+                .OrderState =  OrderState.Refused;
 
             await this.db.SaveChangesAsync();
         }
@@ -124,12 +125,12 @@
             })
             .ToHashSet();
 
-        private async Task<Order> ByIdAndByUserId(
-            string id, 
-            string userId)
-            => await this.db
-                .Orders
-                .Where(o => o.Id == id && o.UserId == userId)
-                .FirstOrDefaultAsync();
+        //private async Task<Order> ByIdAndByUserId(
+        //    string id, 
+        //    string userId)
+        //    => await this.db
+        //        .Orders
+        //        .Where(o => o.Id == id && o.UserId == userId)
+        //        .FirstOrDefaultAsync();
     }   
 }

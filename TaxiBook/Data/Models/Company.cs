@@ -12,6 +12,8 @@
 
             this.CreatedOn = DateTime.Now;
 
+            this.Absences = new HashSet<Absence>();
+            this.Orders = new HashSet<Order>();
             this.Employees = new HashSet<ApplicationUser>();
             this.Taxies = new HashSet<Taxi>();
             this.Feedbacks = new HashSet<Feedback>();
@@ -70,6 +72,8 @@
         public string LicenseUrl { get; set; }
 
         public virtual IEnumerable<Absence> Absences { get; set; }
+
+        public virtual IEnumerable<Order> Orders { get; set; }
 
         public virtual IEnumerable<ApplicationUser> Employees { get; set; }
 

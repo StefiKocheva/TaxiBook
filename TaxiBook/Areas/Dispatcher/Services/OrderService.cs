@@ -1,20 +1,26 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
-    using Microsoft.EntityFrameworkCore;
-    using Interfaces;
-    using ViewModels.Orders;
     using Data.Models.Enums;
+    using Infrastructure.Services;
+    using Interfaces;
+    using Microsoft.EntityFrameworkCore;
+    using ViewModels.Orders;
 
     public class OrderService : IOrderService
     {
         private readonly TaxiBookDbContext db;
+        private readonly ICurrentUserService currentUserService;
 
-        public OrderService(TaxiBookDbContext db) 
-            => this.db = db;
+        public OrderService(TaxiBookDbContext db, ICurrentUserService currentUserService)
+        {
+            this.db = db;
+            this.currentUserService = currentUserService;
+        }
 
         public async Task<string> CreateAsync(
             string name, 
@@ -56,6 +62,7 @@
                 OrderState = OrderState.Processed,
                 CurrentLocationId = location.Id,
                 EndLocationId = location.Id,
+                User = user,
             };
 
             await this.db.Orders.AddAsync(order);
@@ -90,50 +97,108 @@
                     EndLocationDetails = o.EndLocationDetails,
                     CountOfPassengers = o.CountOfPassengers,
                     AdditionalRequirements = o.AdditionalRequirements,
-
+                    CreatedOn = o.CreatedOn,  
                 })
                 .FirstOrDefaultAsync();
 
-        public async void UpdateAsync(
-            string id, 
-            string name, 
-            string phoneNumber, 
-            string currentLocation, 
-            string currentLocationDetails, 
-            string endLocation, 
-            string endLocationDetails, 
-            int countOfPassengers, 
-            string additionalRequirements,
-            string userId)
+        public IEnumerable<OrderDetailsViewModel> GetAllProcessedOrders()
+            => this.db
+                .Orders
+                .Where(o => o.CompanyId == this.currentUserService.GetUser().CompanyId && o.OrderState == OrderState.Processed)
+                .OrderByDescending(o => o.CreatedOn)
+                .Select(o => new OrderDetailsViewModel()
+                {
+                    Id = o.Id,
+                    ClientName = o.User.FirstName + o.User.LastName,
+                    //CreatorId = can be in role: Client, Dispatcher or TaxiDriver
+                    PhoneNumber = o.User.PhoneNumber,
+                    StartLocation = o.CurrentLocation.StartLocationCoordinates,
+                    StartLocationDetails = o.CurrentLocationDetails,
+                    EndLocation = o.EndLocation.EndLocationCoordinates,
+                    EndLocationDetails = o.EndLocationDetails,
+                    CountOfPassengers = o.CountOfPassengers,
+                    AdditionalRequirements = o.AdditionalRequirements,
+                    CreatedOn = o.CreatedOn,
+                })
+                .ToHashSet();
+
+        public IEnumerable<OrderDetailsViewModel> GetAllRefusedOrders()
+            => this.db
+                .Orders
+                .Where(o => o.CompanyId == this.currentUserService.GetUser().CompanyId && o.OrderState == OrderState.Unaccepted)
+                .OrderByDescending(o => o.CreatedOn)
+                .Select(o => new OrderDetailsViewModel()
+                {
+                    Id = o.Id,
+                    ClientName = o.User.FirstName + o.User.LastName,
+                    //CreatorId = can be in role: Client, Dispatcher or TaxiDriver
+                    PhoneNumber = o.User.PhoneNumber,
+                    StartLocation = o.CurrentLocation.StartLocationCoordinates,
+                    StartLocationDetails = o.CurrentLocationDetails,
+                    EndLocation = o.EndLocation.EndLocationCoordinates,
+                    EndLocationDetails = o.EndLocationDetails,
+                    CountOfPassengers = o.CountOfPassengers,
+                    AdditionalRequirements = o.AdditionalRequirements,
+                    CreatedOn = o.CreatedOn,
+                })
+                .ToHashSet();
+
+        public IEnumerable<OrderDetailsViewModel> GetAllUnprocessedOrders()
+            => this.db
+                .Orders
+                .Where(o => o.CompanyId == this.currentUserService.GetUser().CompanyId && o.OrderState == OrderState.Unprocessed)
+                .OrderByDescending(o => o.CreatedOn)
+                .Select(o => new OrderDetailsViewModel()
+                {
+                    Id = o.Id,
+                    ClientName = o.User.FirstName + o.User.LastName,
+                    //CreatorId = can be in role: Client, Dispatcher or TaxiDriver
+                    PhoneNumber = o.User.PhoneNumber,
+                    StartLocation = o.CurrentLocation.StartLocationCoordinates,
+                    StartLocationDetails = o.CurrentLocationDetails,
+                    EndLocation = o.EndLocation.EndLocationCoordinates,
+                    EndLocationDetails = o.EndLocationDetails,
+                    CountOfPassengers = o.CountOfPassengers,
+                    AdditionalRequirements = o.AdditionalRequirements,
+                    CreatedOn = o.CreatedOn,
+                })
+                .ToHashSet();
+
+        public async void ProcessAsync(string id)
         {
-            var order = await this.ByIdAndByUserId(id, userId);
+            var order = await this.db
+                .Orders
+                .Where(o => o.Id == id)
+                .FirstOrDefaultAsync();
 
-            //if (order == null)
-            //{
-            //    return "";
-            //}
-
-            var orderClientName = order.User.FirstName + " " + order.User.LastName;
-            orderClientName = name;
-            order.User.PhoneNumber = phoneNumber;
-            var orderCurrentLocation = order.CurrentLocation.ToString();
-            orderCurrentLocation = currentLocation;
-            var orderEndLocation = order.EndLocation.ToString();
-            orderEndLocation = endLocation;
-            order.CurrentLocationDetails = currentLocationDetails;
-            order.EndLocationDetails = endLocationDetails;
-            order.CountOfPassengers = countOfPassengers;
-            order.AdditionalRequirements = additionalRequirements;
+            order.OrderState = OrderState.Processed;
 
             await this.db.SaveChangesAsync();
         }
 
-        private async Task<Order?> ByIdAndByUserId(
-            string id, 
-            string userId)
-            => await this.db
+        public async void RefuseAsync(string id)
+        {
+            var order = await this.db
                 .Orders
-                .Where(o => o.Id == id && o.UserId == userId)
+                .Where(o => o.Id == id)
                 .FirstOrDefaultAsync();
+
+            order.OrderState = OrderState.Unaccepted;
+
+            await this.db.SaveChangesAsync();
+        }
+
+        //public IEnumerable<DriverDetailsViewModel> GetAvailableDriversDetails()
+        //    => this.db
+        //    .Taxies
+        //    .Where(t => !t.IsBusy)
+        //    .Select(t => t.Users
+        //    .Where(u => u.CompanyId == this.currentUserService.GetUser().CompanyId)
+        //    .Select(u => new DriverDetailsViewModel()
+        //    {
+        //        Id = u.Id,
+        //        Email = u.Email,
+        //    }))
+        //    .ToHashSet();
     }
 }

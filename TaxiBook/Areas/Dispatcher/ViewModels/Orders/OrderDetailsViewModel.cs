@@ -1,5 +1,7 @@
 ﻿namespace TaxiBook.Areas.Dispatcher.ViewModels.Orders
 {
+    using System;
+
     public class OrderDetailsViewModel
     {
         public string Id { get; set; }
@@ -21,5 +23,9 @@
         public int CountOfPassengers { get; set; }
 
         public string AdditionalRequirements { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime CompletedOn { get; set; }
     }
 }

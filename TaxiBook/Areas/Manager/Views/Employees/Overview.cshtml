@@ -1,14 +1,17 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.Manager.ViewModels.Employees
+@model UpdateEmployeeViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Стефани Кочева</h3>
+            <h3>@Model.FirstName @Model.LastName</h3>
             <p class="text-subtitle text-muted">Тук може да следите работата, извършваща се от избрания служител.</p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a asp-area="Manager" asp-controller="Employees" asp-action="All">Всички служители</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Стефани Кочева</li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.FirstName @Model.LastName</li>
                 </ol>
             </nav>
         </div>

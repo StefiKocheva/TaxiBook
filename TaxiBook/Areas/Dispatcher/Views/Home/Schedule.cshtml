@@ -58,10 +58,20 @@
     var weekDayMonthStart = (double)new DateTime(currentYear, currentMonth, 1).DayOfWeek;
     var weekDayMonthEnd = (int)new DateTime(currentYear, currentMonth, daysInMonth).DayOfWeek;
 
+    if (weekDayMonthStart == 0)
+    {
+        weekDayMonthStart = 7;
+    }
+
     double firstWeekDaysFromPreviousMonth = weekDayMonthStart - 1;
     double weeks = Math.Ceiling((daysInMonth + firstWeekDaysFromPreviousMonth) / daysInWeek);
             
     int start = 0, end = 0;
+
+    if (weekDayMonthStart == 7)
+    {
+        weekDayMonthStart = 0;
+    }
 }
 <div class="card collapse-icon accordion-icon-rotate"><br />
     <div class="card-content">
@@ -89,35 +99,75 @@
                             <tr>
                                 @for (var col = 1; col <= daysInWeek; col++)
                                 {
-                                    if (col < weekDayMonthStart)
+                                    if (weekDayMonthStart == 0)
                                     {
-                                        <td class="text-center"></td>
-                                    }
-                                    else
-                                    {
-                                        col -= (int)firstWeekDaysFromPreviousMonth;
+                                        weekDayMonthStart = 7;
 
-                                        if (col == today)
+                                        if (col < weekDayMonthStart)
                                         {
-                                            <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            <td class="text-center"></td>
                                         }
                                         else
                                         {
-                                            <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            col -= (int)firstWeekDaysFromPreviousMonth;
+
+                                            if (col == today)
+                                            {
+                                                <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            }
+
+                                            col += (int)firstWeekDaysFromPreviousMonth;
+
+                                            if (col == daysInWeek)
+                                            {
+                                                start = col - (int)firstWeekDaysFromPreviousMonth + 1;
+                                            }
                                         }
 
-                                        col += (int)firstWeekDaysFromPreviousMonth;
+                                        weekDayMonthStart = 0;
+                                    }
+                                    else
+                                    {
+                                        if (col < weekDayMonthStart)
+                                        {
+                                            <td class="text-center"></td>
+                                        }
+                                        else
+                                        {
+                                            col -= (int)firstWeekDaysFromPreviousMonth;
 
-                                         if (col == daysInWeek)
-                                         {
-                                             start = col - (int)firstWeekDaysFromPreviousMonth + 1;
-                                         }
+                                            if (col == today)
+                                            {
+                                                <td class="text-center"><a class="table-element" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center"><a class="btn nohover" role="button" data-toggle="modal" data-target="#workTime">@col</a></td>
+                                            }
+
+                                            col += (int)firstWeekDaysFromPreviousMonth;
+
+                                            if (col == daysInWeek)
+                                            {
+                                                start = col - (int)firstWeekDaysFromPreviousMonth + 1;
+                                            }
+                                        }
+                                         
                                     }
                                 }
                             </tr>
                         }
                         else if (row == weeks)
                         {
+                            if (weekDayMonthEnd == 0)
+                            {
+                                weekDayMonthEnd = 7;
+                            }
+
                             int lastWeekDaysFromNextMonth = daysInWeek - weekDayMonthEnd;
                             end = lastWeekDaysFromNextMonth + daysInMonth;
 

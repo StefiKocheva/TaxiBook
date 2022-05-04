@@ -21,8 +21,7 @@
         [MaxLength(MaxDetailsLength)]
         public string StartLocationDetails { get; set; }
 
-        [MaxLength(
-            MaxDetailsLength)]
+        [MaxLength(MaxDetailsLength)]
         public string EndLocationDetails { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]

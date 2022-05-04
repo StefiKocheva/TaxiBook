@@ -8,10 +8,10 @@
     using Data.Models;
     using Data.Models.Enums;
     using Inerfaces;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using ViewModels.Employees;
-    using TaxiBook.Infrastructure.Services;
+    using Infrastructure.Services;
+    using Microsoft.EntityFrameworkCore;
 
     public class EmployeeService : IEmployeeService
     {
@@ -90,27 +90,29 @@
 
         public async void DeleteAsync(string id)
         {
-            var employee = await this.db.Users.FindAsync(id);
+            var employee = await this.db.Users.Where(u => u.Id == id).FirstOrDefaultAsync(); // FindAsync()
 
             this.db.Users.Remove(employee);
 
             await this.db.SaveChangesAsync();
         }
 
-        //public IEnumerable<EmployeeDetailsViewModel> Details(string id)
-        //    => this.db
-        //    .Users
-        //    .Where(u => u.Id == id)
-        //    .Select(u => new EmployeeDetailsViewModel()
-        //    {
-        //        FirstName = u.FirstName,
-        //        LastName = u.LastName,
-        //        Email = u.Email,
-        //        PhoneNumber = u.PhoneNumber,
-        //        NumberPlate = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.NumberPlate).ToString(),
-        //        Brand = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Brand).ToString(),
-        //        Model = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Model).ToString(),
-        //    }).ToHashSet();
+        public async Task<UpdateEmployeeViewModel> ShowDetailsAsync(string id)
+            => await this.db
+            .Users
+            .Where(u => u.Id == id)
+            .Select(u => new UpdateEmployeeViewModel()
+            {
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                PhoneNumber = u.PhoneNumber,
+                EmployeeRole = u.EmployeeRole,
+                NumberPlate = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.NumberPlate).ToString(),
+                Brand = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Brand).ToString(),
+                Model = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Model).ToString(),
+            })
+            .FirstOrDefaultAsync();
 
         public async Task<string> UpdateAsync(
             string id, 
@@ -133,12 +135,5 @@
 
             return employee.Id;
         }
-
-        //private async Task<ApplicationUser> ByIdAndByUserId(string id)
-        //{
-        //    var employee = await this.db.Users.FindAsync(id);
-
-        //    return employee;
-        //}
     }
 }

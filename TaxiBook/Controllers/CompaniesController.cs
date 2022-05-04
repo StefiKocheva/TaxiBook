@@ -62,9 +62,9 @@
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var model = await this.companyService.DetailsAsync(id);
+            var viewModel = await this.companyService.DetailsAsync(id);
 
-            return this.View(model);
+            return this.View(viewModel);
         }
     }
 }

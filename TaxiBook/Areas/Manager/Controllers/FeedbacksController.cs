@@ -17,11 +17,12 @@
         [HttpGet]
         public IActionResult All()
         {
-            var model = new FeedbackListingViewModel();
+            var viewModel = new FeedbackListingViewModel
+            {
+                Feedbacks = this.feedbackService.All()
+            };
 
-            model.Feedbacks = this.feedbackService.All();
-
-            return this.View(model);
+            return this.View(viewModel);
         }
     }
 }

@@ -6,7 +6,6 @@
     {
         public IEnumerable<ProfileDetailsViewModel> Profiles { get; set; }
 
-
         public UpdateProfileViewModel UpdateProfileViewModel { get; set; }
     }
 }

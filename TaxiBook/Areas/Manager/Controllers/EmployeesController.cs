@@ -52,20 +52,19 @@
         }
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview(string id)
         {
-            //var viewModel = new EmployeeListingViewModel
-            //{
-            //    Employees = this.employeeService.Details(id)
-            //};
+            var viewModel = await this.employeeService.ShowDetailsAsync(id);
 
-            return this.View();
+            return this.View(viewModel);
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(string id)
         {
-            return this.View();
+            var viewModel = await this.employeeService.ShowDetailsAsync(id);
+
+            return this.View(viewModel);
         }
 
         [HttpPut]
@@ -86,14 +85,9 @@
             return this.RedirectToAction("All");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult Delete(string id)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.Ok();
-            }
-
             this.employeeService.DeleteAsync(id);
 
             return this.RedirectToAction("All");

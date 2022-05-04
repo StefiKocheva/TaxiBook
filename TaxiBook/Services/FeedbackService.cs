@@ -31,7 +31,8 @@
                 .Select(f => new FeedbackDetailsViewModel()
                 {
                     Id = f.Id,
-                    ClientName = f.Client.FirstName + " " + f.Client.LastName,
+                    FirstName = f.Client.FirstName,
+                    LastName = f.Client.LastName,
                     IsLiked = f.IsLiked,
                     Opinion = f.Description,
                 })
@@ -61,6 +62,7 @@
             };
 
             await db.Feedbacks.AddAsync(feedback);
+
             await db.SaveChangesAsync();
 
             var companyId = this.db

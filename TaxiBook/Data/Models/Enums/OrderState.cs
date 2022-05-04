@@ -7,5 +7,6 @@
         Accepted = 2,
         Unaccepted = 3,
         Past = 4,
+        Refused = 5,
     }
 }

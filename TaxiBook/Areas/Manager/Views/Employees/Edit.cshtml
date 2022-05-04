@@ -1,7 +1,11 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Data.Models.Enums
+@using TaxiBook.Areas.Manager.ViewModels.Employees
+@model UpdateEmployeeViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Стефани Кочева</h3>
+            <h3>@Model.FirstName @Model.LastName</h3>
             <p class="text-subtitle text-muted">Тук може да управлявате данните за избран служител.</p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
@@ -31,25 +35,25 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="firstName">Първо име</label>
-                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="Стефани">
+                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="@Model.FirstName">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="lastName">Фамилия</label>
-                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="Кочева">
+                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="@Model.LastName">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="stefanitaxidriver@example.com">
+                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="@Model.Email">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="phoneNumber">Телефонен номер</label>
-                                            <input type="number" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="1235436753">
+                                            <input type="number" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="@Model.PhoneNumber">
                                         </div>
                                     </div>
                                 </div>
@@ -78,56 +82,59 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <h5 class="card-title">Такси</h5><br />
-                        <form class="form form-vertical">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="brand">Марка</label>
-                                            <input type="text" class="form-control" id="brand" placeholder="Марка" disabled name="" value="Дачия">
+@if (this.Model.EmployeeRole == EmployeeRole.TaxiDriver)
+{
+    <section>
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <h5 class="card-title">Такси</h5><br />
+                            <form class="form form-vertical">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="brand">Марка</label>
+                                                <input type="text" class="form-control" id="brand" placeholder="Марка" disabled name="" value="@Model.Brand">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="model">Модел</label>
+                                                <input type="text" class="form-control" id="model" placeholder="Модел" disabled name="" value="@Model.Model">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="numberPlate">Регистрационен номер</label>
+                                                <input type="text" class="form-control" id="numberPlate" placeholder="Регистрационен номер" disabled name="" value="@Model.NumberPlate">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="model">Модел</label>
-                                            <input type="text" class="form-control" id="model" placeholder="Модел" disabled name="" value="Логан">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="numberPlate">Регистрационен номер</label>
-                                            <input type="text" class="form-control" id="numberPlate" placeholder="Регистрационен номер" disabled name="" value="EXAMPLE">
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button id="hiddenButtonAboutTaxi" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                            <button id="editAboutTaxi" onclick="enableAboutTaxi('brand', 'model', 'numberPlate', 'hiddenButtonAboutTaxi', 'editAboutTaxi')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                            <script>
+                                                function enableAboutTaxi(brand, model, numberPlate, hiddenButtonAboutTaxi, editAboutTaxi) {
+                                                    document.getElementById(brand).disabled = false;
+                                                    document.getElementById(model).disabled = false;
+                                                    document.getElementById(numberPlate).disabled = false;
+                                                    document.getElementById(editAboutTaxi).disabled = true;
+    
+                                                    document.getElementById(hiddenButtonAboutTaxi).style.visibility = "visible";
+                                                }
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button id="hiddenButtonAboutTaxi" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                        <button id="editAboutTaxi" onclick="enableAboutTaxi('brand', 'model', 'numberPlate', 'hiddenButtonAboutTaxi', 'editAboutTaxi')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
-                                        <script>
-                                            function enableAboutTaxi(brand, model, numberPlate, hiddenButtonAboutTaxi, editAboutTaxi) {
-                                                document.getElementById(brand).disabled = false;
-                                                document.getElementById(model).disabled = false;
-                                                document.getElementById(numberPlate).disabled = false;
-                                                document.getElementById(editAboutTaxi).disabled = true;
-
-                                                document.getElementById(hiddenButtonAboutTaxi).style.visibility = "visible";
-                                            }
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>  
+                            </form>  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>   
+}
