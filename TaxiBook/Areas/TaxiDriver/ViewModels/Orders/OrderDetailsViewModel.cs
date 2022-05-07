@@ -1,4 +1,6 @@
-﻿namespace TaxiBook.Areas.TaxiDriver.ViewModels.Orders
+﻿using System;
+
+namespace TaxiBook.Areas.TaxiDriver.ViewModels.Orders
 {
     public class OrderDetailsViewModel
     {
@@ -21,5 +23,9 @@
         public int CountOfPassengers { get; set; }
 
         public string AdditionalRequirements { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? CompletedOn { get; set; }
     }
 }

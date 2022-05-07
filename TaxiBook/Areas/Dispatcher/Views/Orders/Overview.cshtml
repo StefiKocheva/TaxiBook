@@ -115,7 +115,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="completedOn">Приключена</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="@this.Model.CompletedOn.ToString("dd.MM.yyyy") г." id="completedOn">
+                                            <input disabled type="text" class="form-control" value="@this.Model.CompletedOn?.ToString("dd.MM.yyyy") г." id="completedOn">
                                             <div class="form-control-icon">
                                                 <i class="far fa-clock"></i>
                                             </div>

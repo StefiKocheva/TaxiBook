@@ -125,21 +125,15 @@
         public IEnumerable<OrderDetailsViewModel> GetAllRefusedOrders()
             => this.db
                 .Orders
-                .Where(o => o.CompanyId == this.currentUserService.GetUser().CompanyId && o.OrderState == OrderState.Unaccepted)
+                .Where(o => o.CompanyId == this.currentUserService.GetUser().CompanyId)
+                .Where(o => o.OrderState == OrderState.Unaccepted || o.OrderState == OrderState.Refused)
                 .OrderByDescending(o => o.CreatedOn)
                 .Select(o => new OrderDetailsViewModel()
                 {
                     Id = o.Id,
-                    ClientName = o.User.FirstName + o.User.LastName,
                     //CreatorId = can be in role: Client, Dispatcher or TaxiDriver
-                    PhoneNumber = o.User.PhoneNumber,
-                    StartLocation = o.CurrentLocation.StartLocationCoordinates,
-                    StartLocationDetails = o.CurrentLocationDetails,
-                    EndLocation = o.EndLocation.EndLocationCoordinates,
-                    EndLocationDetails = o.EndLocationDetails,
-                    CountOfPassengers = o.CountOfPassengers,
-                    AdditionalRequirements = o.AdditionalRequirements,
                     CreatedOn = o.CreatedOn,
+                    CompletedOn = o.CompletedOn,
                 })
                 .ToHashSet();
 

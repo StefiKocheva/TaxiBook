@@ -1,4 +1,7 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.TaxiDriver.ViewModels.Orders
+@model OrderDetailsViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <h3>Детайли за избраната поръчка</h3>
@@ -7,7 +10,7 @@
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="AcceptedOrders">Приети поръчки</a></li>
+                    <li class="breadcrumb-item"><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Accepted">Приети поръчки</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Повече детайли</li>
                 </ol>
             </nav>
@@ -26,7 +29,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="name">Kлиент</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="Стефани" id="name">
+                                            <input disabled type="text" class="form-control" value="@this.Model.ClientName" id="name">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user-circle"></i>
                                             </div>
@@ -37,7 +40,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="phoneNumber">Телефонен номер</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="589 6654 2341" id="phoneNumber">
+                                            <input disabled type="text" class="form-control" value="@this.Model.PhoneNumber" id="phoneNumber">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-phone-alt"></i>
                                             </div>
@@ -45,44 +48,44 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                            <div class="form-group has-icon-left">
-                                <label for="currentLocation">Начална точка</label>
-                                <div class="position-relative">
-                                    <input disabled type="text" class="form-control" value='ул. "сан Стефано" 1' id="currentLocation">
-                                    <div class="form-control-icon">
-                                        <i class="fas fa-street-view"></i>
-                                    </div>
-                                </div>                  
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group position-relative">
-                                <label for="currentLocationDetails">Уточнение за начална точка</label>
-                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">До входа на ПМГ "Константин Величков".</textarea>              
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group has-icon-left">
-                                <label for="endLocation">Крайна точка</label>
-                                <div class="position-relative">
-                                    <input disabled type="text" class="form-control" value='ул. "Марица" 10' id="endLocation">
-                                    <div class="form-control-icon">
-                                        <i class="fas fa-map-marked-alt"></i>
+                                    <div class="form-group has-icon-left">
+                                        <label for="currentLocation">Начална точка</label>
+                                        <div class="position-relative">
+                                            <input disabled type="text" class="form-control" value='@this.Model.CurrentLocation' id="currentLocation">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-street-view"></i>
+                                            </div>
+                                        </div>                  
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group position-relative">
-                                <label for="endLocationDetails">Уточнение за крайна точка</label>
-                                <textarea disabled id="endLocationDetails" class="form-control" rows="2"></textarea>             
-                            </div>
-                        </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="currentLocationDetails">Уточнение за начална точка</label>
+                                        <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@this.Model.CurrentLocationDetails</textarea>              
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="endLocation">Крайна точка</label>
+                                        <div class="position-relative">
+                                            <input disabled type="text" class="form-control" value='@this.Model.EndLocation' id="endLocation">
+                                            <div class="form-control-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="endLocationDetails">Уточнение за крайна точка</label>
+                                        <textarea disabled id="endLocationDetails" class="form-control" rows="2">@this.Model.EndLocationDetails</textarea>             
+                                    </div>
+                                </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input disabled type="number" class="form-control" value="2" id="countOfPassengers">
+                                            <input disabled type="number" class="form-control" value="@this.Model.CountOfPassengers" id="countOfPassengers">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
@@ -92,15 +95,14 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
                                         <label  for="startLocationDetails">Допълнителни изисквания</label>
-                                        <textarea  disabled id="startLocationDetails" class="form-control" rows="2" placeholder=""></textarea>              
-                                        
+                                        <textarea  disabled id="startLocationDetails" class="form-control" rows="2">@this.Model.AdditionalRequirements</textarea>              
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="createdOn">Направена</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="15:30" id="createdOn">
+                                            <input disabled type="text" class="form-control" value="@this.Model.CreatedOn.ToString("HH:mm"), @this.Model.CreatedOn.ToString("dd.MM.yyyy") г." id="createdOn">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-clock"></i>
                                             </div>
@@ -111,16 +113,20 @@
                                     <div class="form-group has-icon-left">
                                         <label for="completedOn">Приключена</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="15:40" id="completedOn">
+                                            @if (this.Model.CompletedOn != null)
+                                            {
+                                                <input disabled type="text" class="form-control" value="@this.Model.CompletedOn?.ToString("HH:mm"), @this.Model.CompletedOn?.ToString("dd.MM.yyyy") г." id="completedOn">
+                                            }
+                                            else
+                                            {
+                                                <input disabled type="text" class="form-control" value="" id="completedOn">                                        
+                                            }
                                             <div class="form-control-icon">
-                                                <i class="far fa-clock"></i>
+                                                <i class="fas fa-clock"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <button class="btn btn-primary mr-1 mb-1">Редактирай</button>
                             </div>
                         </form>
                     </div>

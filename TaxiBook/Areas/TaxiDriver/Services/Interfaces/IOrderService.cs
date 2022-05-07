@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Areas.TaxiDriver.Services.Inerfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using ViewModels.Orders;
 
@@ -9,18 +10,16 @@
             string endLocation,
             int countOfPassengers);
 
-        void UpdateAsync(
-            string id,
-            string name,
-            string phoneNumber,
-            string currentLocation,
-            string currentLocationDetails,
-            string endLocation,
-            string endLocationDetails,
-            int countOfPassengers,
-            string additionalRequirements,
-            string userId);
+        IEnumerable<OrderDetailsViewModel> GetAllUnacceptedOrders();
+
+        void AcceptAsync(string id);
+
+        IEnumerable<OrderDetailsViewModel> GetAllAcceptedOrders();
 
         Task<OrderDetailsViewModel> DetailsAsync(string id);
+
+        IEnumerable<OrderDetailsViewModel> GetAllRefusedOrders();
+
+        Task<OrderDetailsViewModel> OverviewAsync();
     }
 }

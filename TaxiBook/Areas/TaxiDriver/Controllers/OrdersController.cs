@@ -17,9 +17,7 @@
 
         [HttpGet]
         public IActionResult Create()
-        {
-            return this.View();
-        }
+            =>  this.View();
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateOrderViewModel viewModel)
@@ -31,45 +29,58 @@
 
             await this.orderService.CreateAsync(
                 viewModel.EndLocation,
-                viewModel.CountOfPassengers); 
+                viewModel.CountOfPassengers);
 
-            return this.RedirectPermanent("Create");
+            return this.RedirectToAction("Overview");
         }
 
         [HttpGet]
         public IActionResult Unaccepted()
         {
-            return this.View();
+            var viewModel = new OrderListingViewModel
+            {
+                UnacceptedOrders = this.orderService.GetAllUnacceptedOrders(),
+            };
+            
+            return this.View(viewModel);
         }
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview()
         {
-            return this.View();
+            var viewModel = await this.orderService.OverviewAsync();
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
         public IActionResult Accepted()
         {
-            return this.View();
+            var viewModel = new OrderListingViewModel
+            {
+                AcceptedOrders = this.orderService.GetAllAcceptedOrders(),
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
         public IActionResult Refused()
         {
-            return this.View();
+            var viewModel = new OrderListingViewModel
+            {
+                RefusedOrders = this.orderService.GetAllRefusedOrders(),
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
-        public IActionResult Details()
+        public async Task<IActionResult> Details(string id)
         {
-            return this.View();
-        }
+            var viewModel = await this.orderService.DetailsAsync(id);
 
-        [HttpPut]
-        public IActionResult Update()
-        {
-            return this.Ok();
+            return this.View(viewModel);
         }
     }
 }

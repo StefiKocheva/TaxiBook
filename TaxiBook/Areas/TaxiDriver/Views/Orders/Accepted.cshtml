@@ -1,4 +1,7 @@
-﻿<div class="page-title">
+﻿@using TaxiBook.Areas.TaxiDriver.ViewModels.Orders
+@model OrderListingViewModel
+
+<div class="page-title">
     <div class="row">
         <div class="col-12">
             <h3>Приети поръчки</h3>
@@ -6,31 +9,91 @@
         </div>
     </div>
 </div>
-<section class="section">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th>Време на изпълнение</th>
-                        <th>Повече детайли</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    <tr>
-                        <td>10 минути</td>
-                        <td><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Details" role="button"><i class="fas fa-edit"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>10 минути</td>
-                        <td><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Details" role="button"><i class="fas fa-edit"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>30 минути</td>
-                        <td><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Details" role="button"><i class="fas fa-edit"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
+@if (this.Model.AcceptedOrders.Count() != 0)
+{
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Време на изпълнение</th>
+                            <th>Повече детайли</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var order in this.Model.AcceptedOrders)
+                        {
+                            <tr>
+                                @{
+                                    var hours = 0;
+                                    var minutes = 0;
+    
+                                    if (order.CompletedOn != null)
+                                    {
+                                        hours = order.CompletedOn.Value.Hour - order.CreatedOn.Hour;
+                                        minutes = order.CompletedOn.Value.Minute - order.CreatedOn.Minute;
+                                    }
+                                }
+                                @if (hours == 1 && minutes == 1)
+                                {
+                                    <td>@hours час и @minutes минута</td>
+                                }
+                                else if (hours == 1 && minutes > 1)
+                                {
+                                    <td>@hours час и @minutes минути</td>
+                                }
+                                else if (hours > 1 && minutes == 1)
+                                {
+                                    <td>@hours часa и @minutes минута</td>
+                                }
+                                else if (hours == 0 && minutes > 1)
+                                {
+                                    <td>@minutes минути</td>
+                                }
+                                else if (hours == 1 && minutes == 0)
+                                {
+                                    <td>@hours час</td>
+                                }
+                                else if (hours > 1 && minutes == 0)
+                                {
+                                    <td>@hours часа</td>
+                                }
+                                else if (hours > 1 && minutes > 1)
+                                {
+                                    <td>@hours часа и @minutes минути</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td><a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" role="button"><i class="fas fa-edit"></i></a></td>
+                            </tr>                        
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</section>
+    </section>    
+    <br /><br /><br />
+}
+else
+{
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Време на изпълнение</th>
+                            <th>Повече детайли</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <br /><br /><br /><br /><br /><br />
+}

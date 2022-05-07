@@ -18,18 +18,18 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create" enctype="multipart/form-data">
+                        <form class="form" method="post" asp-area="TaxiDriver" asp-controller="Orders" asp-action="Create">
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="endLocation">Крайна точка</label>
                                         <div class="position-relative">
                                             <input asp-for="EndLocation" type="text" class="form-control" placeholder="Крайна точка" id="endLocation">
-                                            <span asp-validation-for="EndLocation" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-map-marked-alt"></i>
                                             </div>
                                         </div>
+                                        <span asp-validation-for="EndLocation" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -37,16 +37,16 @@
                                         <label for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
                                             <input asp-for="CountOfPassengers" type="number" min="1" max="6" class="form-control" placeholder="Бройка на пътуващи" id="countOfPassengers">
-                                            <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
                                         </div>
+                                        <span asp-validation-for="CountOfPassengers" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <a asp-area="TaxiDriver" asp-controller="Orders" asp-action="Overview" class="btn btn-primary mr-1 mb-1">Стартирай</a>
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Стартирай</button>
                             </div>
                         </form>
                     </div>
