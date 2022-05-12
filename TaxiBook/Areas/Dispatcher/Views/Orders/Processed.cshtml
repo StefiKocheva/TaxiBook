@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h3>Обработени поръчки</h3>
-            <p class="text-subtitle text-muted">Можете да управлявате обработените си поръчки за деня, като така направата на отчет става далеч по-приятна работа.</p>
+            <p class="text-subtitle text-muted">Тук са всички поръчки, които сте обработили и одобрили за изпълнение.</p>
         </div>
     </div>
 </div>
@@ -25,8 +25,49 @@
                         @foreach (var order in this.Model.ProcessedOrders)
                         {
                             <tr>
-                                <td>6 минути</td> <!-- In real time counter -->
-                                <td><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Overview" asp-route-id="@order.Id" role="button"><i class="fas fa-edit"></i></a></td>
+                                @{
+                                    var hours = 0;
+                                    var minutes = 0;
+    
+                                    if (order.CompletedOn != null)
+                                    {
+                                        hours = order.CompletedOn.Value.Hour - order.CreatedOn.Hour;
+                                        minutes = order.CompletedOn.Value.Minute - order.CreatedOn.Minute;
+                                    }
+                                }
+                                @if (hours == 1 && minutes == 1)
+                                {
+                                    <td>@hours час и @minutes минута</td>
+                                }
+                                else if (hours == 1 && minutes > 1)
+                                {
+                                    <td>@hours час и @minutes минути</td>
+                                }
+                                else if (hours > 1 && minutes == 1)
+                                {
+                                    <td>@hours часa и @minutes минута</td>
+                                }
+                                else if (hours == 0 && minutes > 1)
+                                {
+                                    <td>@minutes минути</td>
+                                }
+                                else if (hours == 1 && minutes == 0)
+                                {
+                                    <td>@hours час</td>
+                                }
+                                else if (hours > 1 && minutes == 0)
+                                {
+                                    <td>@hours часа</td>
+                                }
+                                else if (hours > 1 && minutes > 1)
+                                {
+                                    <td>@hours часа и @minutes минути</td>
+                                }
+                                else
+                                {
+                                    <td>Поръчката все още не е завършена.</td>
+                                }
+                                <td><a asp-area="Dispatcher" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" role="button"><i class="fas fa-edit"></i></a></td>
                             </tr>
                         }
                     </tbody>
@@ -34,6 +75,7 @@
             </div>
         </div>
     </section>
+    <br /><br /><br />
 }
 else
 {

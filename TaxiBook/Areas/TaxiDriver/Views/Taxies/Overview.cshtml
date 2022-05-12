@@ -1,5 +1,5 @@
 ﻿@using TaxiBook.Areas.TaxiDriver.ViewModels.Taxies
-@model TaxiListingViewModel
+@model TaxiInformationViewModel
 
 <div class="page-title">
     <h3>Моето такси</h3>
@@ -10,39 +10,42 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-vertical">
+                    <form asp-area="TaxiDriver" asp-controller="Taxies" asp-action="Edit" method="post">
                         <div class="form-body">
-                            @foreach (var taxi in this.Model.Taxies)
-                            {
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="brand">Марка</label>
-                                            <input type="text" class="form-control" id="brand" placeholder="Марка" disabled value="@taxi.Brand">
-                                            <span class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="model">Модел</label>
-                                            <input type="text" class="form-control" placeholder="Модел" id="model" disabled value="@taxi.Model">
-                                            <span class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="numberPlate">Регистрационен номер</label>
-                                            <input type="text" class="form-control" placeholder="Регистрационен номер" id="numberPlate" disabled name="" value="@taxi.NumberPlate">
-                                            <span class="text-danger"></span>
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.UpdateTaxiViewModel.Brand" for="brand">Марка</label>
+                                        <input asp-for="@this.Model.UpdateTaxiViewModel.Brand" type="text" class="form-control" id="brand" placeholder="Марка" disabled value="@this.Model.Brand">
+                                        <span asp-validation-for="@this.Model.UpdateTaxiViewModel.Brand" class="text-danger"></span>
                                     </div>
                                 </div>
-                            }
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.UpdateTaxiViewModel.Model" for="model">Модел</label>
+                                        <input asp-for="@this.Model.UpdateTaxiViewModel.Model" type="text" class="form-control" placeholder="Модел" id="model" disabled value="@this.Model.Model">
+                                        <span asp-validation-for="@this.Model.UpdateTaxiViewModel.Model" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.UpdateTaxiViewModel.NumberPlate" for="numberPlate">Регистрационен номер</label>
+                                        <input asp-for="@this.Model.UpdateTaxiViewModel.NumberPlate" type="text" class="form-control" placeholder="Регистрационен номер" id="numberPlate" disabled value="@this.Model.NumberPlate">
+                                        <span asp-validation-for="@this.Model.UpdateTaxiViewModel.NumberPlate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
-                                <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                <button id="edit" onclick="enable('brand', 'model', 'numberPlate', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                <span style="float:left;">
+                                    <form asp-area="TaxiDriver" asp-controller="Taxies" asp-action="Edit" method="post">
+                                        <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                    </form>
+                                </span>
+                                <span style="float:right;">
+                                    <button id="edit" onclick="enable('brand', 'model', 'numberPlate', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                </span>
                                 <script>
                                     function enable(brand, model, numberPlate, hiddenButton, edit) {
                                         document.getElementById(brand).disabled = false;

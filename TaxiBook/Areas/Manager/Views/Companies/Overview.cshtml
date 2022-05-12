@@ -1,28 +1,10 @@
 ﻿@using TaxiBook.Areas.Manager.ViewModels.Companies
-@model CompanyListingViewModel
+@model CompanyInformationViewModel
 
 <div class="page-title">
-    @foreach (var company in this.Model.Companies) { <h3>@company.Name</h3> }
+    <h3>@this.Model.Name</h3> 
     <p class="text-subtitle text-muted">Тук са данните за вашата компания.</p>
 </div>
-@{
-    var dispatchersCount = 0;
-    var taxiDriversCount = 0;
-
-    foreach (var company in this.Model.Companies)
-    {
-        foreach (var employee in this.Model.Employees)
-        {
-            if (employee.CompanyId == company.Id)
-            {
-                _ = employee.EmployeeRole == TaxiBook.Data.Models.Enums.EmployeeRole.Dispatcher 
-                    ? dispatchersCount++ 
-                    : taxiDriversCount++;
-            }
-            
-        }
-    }
-}
 <div class="row mb-2">
     <div class="col-12 col-md-6">
         <div class="card card-statistic">
@@ -31,7 +13,7 @@
                     <div class='px-3 py-3 d-flex justify-content-between'>
                         <h3 class='card-title'>Диспечери</h3>
                         <div class="card-right d-flex align-items-center">
-                            <p>@dispatchersCount</p>
+                            <p>@this.Model.CountOfDispatchers</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +27,7 @@
                     <div class='px-3 py-3 d-flex justify-content-between'>
                         <h3 class='card-title'>Таксиметрови шофьори</h3>
                         <div class="card-right d-flex align-items-center">
-                            <p>@taxiDriversCount</p>
+                            <p>@this.Model.CountOfTaxiDrivers</p>
                         </div>
                     </div>
                 </div>
@@ -58,35 +40,33 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-vertical">
+                    <form method="post" asp-area="Manager" asp-controller="Companies" asp-action="Edit" asp-route-id="@this.Model.Id">
                         <div class="form-body">
-                            @foreach (var company in this.Model.Companies)
-                            {
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="companyName">Име</label>
-                                            <input type="text" class="form-control" id="companyName" placeholder="Име на компанията" disabled name="" value="@company.Name">
+                                            <input type="text" class="form-control" id="companyName" placeholder="Име на компанията" disabled name="" value="@this.Model.Name">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="phoneNumber">Телефонен номер</label>
-                                            <input type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber" disabled name="" value="@company.PhoneNumber">
+                                            <input type="text" class="form-control" placeholder="Телефонен номер" id="phoneNumber" disabled name="" value="@this.Model.PhoneNumber">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group position-relative">
                                             <label for="description">Описание</label>
-                                            <textarea class="form-control" rows="2" placeholder="Повече за вашата компания" id="description" disabled name="">@company.Description</textarea>             
+                                            <textarea class="form-control" rows="2" placeholder="Повече за вашата компания" id="description" disabled name="">@this.Model.Description</textarea>             
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="province">Област</label>
-                                            <input type="text" class="form-control" placeholder="Област" id="province" disabled name="" value="@company.Province">
+                                            <input type="text" class="form-control" placeholder="Област" id="province" disabled name="" value="@this.Model.Province">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div>
@@ -94,28 +74,28 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="oneКilometerМileageDailyPrice">Цена за километър пробег</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageDailyPrice" disabled name="" value="@company.OneКilometerМileageDailyPrice">
+                                            <input type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageDailyPrice" disabled value="@this.Model.OneКilometerМileageDailyPrice">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="dailyPricePerCall">Цена за повикване</label>
-                                            <input  type="number" class="form-control" placeholder="0.00" id="dailyPricePerCall" disabled name="" value="@company.DailyPricePerCall">
+                                            <input  type="number" class="form-control" placeholder="0.00" id="dailyPricePerCall" disabled name="" value="@this.Model.DailyPricePerCall">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="initialDailyFee">Първоначална такса</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="initialDailyFee" disabled name="" value="@company.InitialDailyFee">
+                                            <input type="number" class="form-control" placeholder="0.00" id="initialDailyFee" disabled name="" value="@this.Model.InitialDailyFee">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="dailyPricePerMinuteStay">Цена за минута престой</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="dailyPricePerMinuteStay" disabled name="" value="@company.DailyPricePerMinuteStay">
+                                            <input type="number" class="form-control" placeholder="0.00" id="dailyPricePerMinuteStay" disabled name="" value="@this.Model.DailyPricePerMinuteStay">
                                              <span class="text-danger"></span>
                                         </div>
                                     </div> 
@@ -123,38 +103,44 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="oneКilometerМileageNightPrice">Цена за километър пробег</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageNightPrice" disabled name="" value="@company.OneКilometerМileageNightPrice">
+                                            <input type="number" class="form-control" placeholder="0.00" id="oneКilometerМileageNightPrice" disabled name="" value="@this.Model.OneКilometerМileageNightPrice">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="nightPricePerCall">Цена за повикване</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="nightPricePerCall" disabled name="" value="@company.NightPricePerCall">
+                                            <input type="number" class="form-control" placeholder="0.00" id="nightPricePerCall" disabled name="" value="@this.Model.NightPricePerCall">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="initialNightFee">Първоначална такса</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="initialNightFee" disabled name="" value="@company.InitialNightFee">
+                                            <input type="number" class="form-control" placeholder="0.00" id="initialNightFee" disabled name="" value="@this.Model.InitialNightFee">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="nightPricePerMinuteStay">Цена за 1 минута престой</label>
-                                            <input type="number" class="form-control" placeholder="0.00" id="nightPricePerMinuteStay" disabled name="" value="@company.NightPricePerMinuteStay">
+                                            <input class="form-control" placeholder="0.00" id="nightPricePerMinuteStay" disabled name="" value="@this.Model.NightPricePerMinuteStay">
                                             <span class="text-danger"></span>
                                         </div>
                                     </div> 
                                 </div>
-                            }
                         </div>
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
-                                <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                <button id="edit" onclick="enable('companyName', 'phoneNumber', 'description', 'province', 'oneКilometerМileageDailyPrice', 'dailyPricePerCall', 'initialDailyFee', 'dailyPricePerMinuteStay', 'oneКilometerМileageNightPrice', 'nightPricePerCall', 'initialNightFee', 'nightPricePerMinuteStay', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                <span style="float:left;">
+                                    <form asp-area="Manager" asp-controller="Companies" asp-action="Edit" >
+                                        <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                    </form>
+                                </span>
+                                <span style="float:right;">
+                                    <button id="edit" onclick="enable('companyName', 'phoneNumber', 'description', 'province', 'oneКilometerМileageDailyPrice', 'dailyPricePerCall', 'initialDailyFee', 'dailyPricePerMinuteStay', 'oneКilometerМileageNightPrice', 'nightPricePerCall', 'initialNightFee', 'nightPricePerMinuteStay', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                </span>
+                                
                                 <script>
                                     function enable(companyName, phoneNumber, description, province, oneКilometerМileageDailyPrice, dailyPricePerCall, initialDailyFee, dailyPricePerMinuteStay, oneКilometerМileageNightPrice, nightPricePerCall, initialNightFee, nightPricePerMinuteStay, hiddenButton, edit) {
                                         document.getElementById(companyName).disabled = false;

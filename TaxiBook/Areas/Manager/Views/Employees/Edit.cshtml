@@ -29,31 +29,31 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
                                         <div class="avatar avatar-xl me-3">
-                                            <img src="~/images/avatar/profile-picture.png" alt="" srcset="">
+                                            <img src="@this.Model.ImageUrl" alt="" srcset="">
                                         </div><br /><br /><br /><br />
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="firstName">Първо име</label>
-                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="@Model.FirstName">
+                                            <input type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="@this.Model.FirstName">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="lastName">Фамилия</label>
-                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="@Model.LastName">
+                                            <input type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="@this.Model.LastName">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="@Model.Email">
+                                            <input type="text" class="form-control" id="email" placeholder="email" disabled name="" value="@this.Model.Email">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="phoneNumber">Телефонен номер</label>
-                                            <input type="number" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="@Model.PhoneNumber">
+                                            <input type="number" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="@this.Model.PhoneNumber">
                                         </div>
                                     </div>
                                 </div>
@@ -97,19 +97,19 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="brand">Марка</label>
-                                                <input type="text" class="form-control" id="brand" placeholder="Марка" disabled name="" value="@Model.Brand">
+                                                <input type="text" class="form-control" id="brand" placeholder="Марка" disabled name="" value="@this.Model.Brand">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="model">Модел</label>
-                                                <input type="text" class="form-control" id="model" placeholder="Модел" disabled name="" value="@Model.Model">
+                                                <input type="text" class="form-control" id="model" placeholder="Модел" disabled name="" value="@this.Model.Model">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="numberPlate">Регистрационен номер</label>
-                                                <input type="text" class="form-control" id="numberPlate" placeholder="Регистрационен номер" disabled name="" value="@Model.NumberPlate">
+                                                <input type="text" class="form-control" id="numberPlate" placeholder="Регистрационен номер" disabled name="" value="@this.Model.NumberPlate">
                                             </div>
                                         </div>
                                     </div>

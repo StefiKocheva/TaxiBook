@@ -45,7 +45,22 @@
                             }
                             <td>@favoriteCompany.Province</td>
                             <td><a href="tel:@favoriteCompany.PhoneNumber">@favoriteCompany.PhoneNumber</a></td>
-                            <td><a asp-area="Default" asp-controller="Order" asp-action="Details"><i class="fas fa-plus"></i></a> <span class="table-element" role="button" value="Delete Row" onclick="DeleteRowFunction(this)"><i class="far fa-trash-alt"></i></span></td>
+                            <td>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <span style="float:left;">
+                                        <a asp-area="Default" asp-controller="Order" asp-action="Details">
+                                            <i class="fas fa-plus"></i>
+                                        </a> 
+                                    </span>
+                                    <span style="float:right;">
+                                        <form method="post" asp-area="Default" asp-controller="Favorites" asp-action="Delete" asp-route-id="@favoriteCompany.Id">
+                                            <button style="padding: 0;border: none; background: none;" type="submit" class="table-element">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </span>
+                                </div>
+                            </td>
                         </tr>
                     }
                 </tbody>

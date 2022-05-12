@@ -94,6 +94,41 @@
                 .WithMany(c => c.Orders)
                 .HasForeignKey(o => o.CompanyId);
 
+            builder.Entity<Order>()
+                .HasOne(o => o.CreatedBy)
+                .WithMany(cb => cb.CreatedOrders)
+                .HasForeignKey(o => o.CreatedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.RefusedBy)
+                .WithMany(rb => rb.RefusedOrders)
+                .HasForeignKey(o => o.RefusedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.ProcessedBy)
+                .WithMany(pb => pb.ProcessedOrders)
+                .HasForeignKey(o => o.ProcessedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.UnprocessedBy)
+                .WithMany(upb => upb.UnprocessedOrders)
+                .HasForeignKey(o => o.UnprocessedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.AcceptedBy)
+                .WithMany(ab => ab.AcceptedOrders)
+                .HasForeignKey(o => o.AcceptedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.UnacceptedBy)
+                .WithMany(uab => uab.UnacceptedOrders)
+                .HasForeignKey(o => o.UnacceptedById);
+
+            builder.Entity<Order>()
+                .HasOne(o => o.ChosenTaxiDriver)
+                .WithMany(ctd => ctd.ChosenTaxiDriverOrders)
+                .HasForeignKey(o => o.ChosenTaxiDriverId);
+
             builder.Entity<Feedback>()
                 .HasOne(f => f.Client)
                 .WithMany(c => c.Feedbacks)

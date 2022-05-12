@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h3>Отказани поръчки</h3>
-            <p class="text-subtitle text-muted">Можете да управлявате отказаните Ви поръчки за деня, като така направата на отчет става далеч по-приятна работа.</p>
+            <p class="text-subtitle text-muted">Тук са всички ваши неприето поръчки, както и тези, които са били одобрени от вас, но в процесът на изплнение - отказани от клиента.</p>
         </div>
     </div>
 </div>
@@ -26,21 +26,15 @@
                         {
                             <tr>
                                 <td>@order.CreatedOn.ToString("HH:mm"), @order.CreatedOn.ToString("dd.MM.yyyy") г.</td>
-                                @if (order.CompletedOn != null)
-                                {
-                                    <td>@order.CompletedOn?.ToString("HH:mm"), @order.CompletedOn?.ToString("dd.MM.yyyy") г.</td>
-                                }
-                                else
-                                {
-                                    <td></td>
-                                }
+                                <td>@order.CompletedOn?.ToString("HH:mm"), @order.CompletedOn?.ToString("dd.MM.yyyy") г.</td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-    </section>   
+    </section>
+    <br /><br /><br />
 }
 else
 {

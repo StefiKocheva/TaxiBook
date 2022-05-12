@@ -15,36 +15,21 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="accordion" id="cardAccordion">
+                    @{int count = 1;}
                     @foreach (var order in this.Model.UnacceptedOrders)
                     {
-                        char[] charArray= order.Id.ToCharArray();
-                        for (var i = 0; i < charArray.Length; i++)
-                        {
-                            if (Char.IsDigit(charArray[i]) || Char.IsNumber(charArray[i]))
-                            {
-                                Random random = new Random();
-                                int @char = random.Next(0, 26);
-                                char letter = (char)('a' + @char);
-                                charArray[i] = letter;
-                            }
-                        }
-                            
-                        var randomString = new string(charArray);
-                        var accordionParameterOne = randomString + "one";
-                        var accordionParameterTwo = randomString + "two";
-    
                         <div class="card collapse-header">
-                            <div class="card-header" id="@accordionParameterOne" data-bs-toggle="collapse" data-bs-target="#@accordionParameterTwo" aria-expanded="false" aria-controls="@accordionParameterTwo" role="button">
+                            <div class="card-header" id="heading_@count" data-bs-toggle="collapse" data-bs-target="#collapse_@count" aria-expanded="false" aria-controls="collapse_@count" role="button">
                                 <span class="collapsed collapse-title">@order.CreatedOn.ToString("HH:mm"), @order.CreatedOn.Date.ToString("dd.MM.yyyy") г.</span>
                             </div>
-                            <div id="@accordionParameterTwo" class="collapse pt-1" aria-labelledby="@accordionParameterOne" data-parent="#cardAccordion">
+                            <div id="collapse_@count" class="collapse pt-1" aria-labelledby="heading_@count" data-parent="#cardAccordion">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group has-icon-left">
                                                 <label for="clientName">Име</label>
                                                 <div class="position-relative">
-                                                    <input disabled type="text" class="form-control" value='@order.ClientName' id="clientName">
+                                                    <input disabled type="text" class="form-control" value='@order.FirstName' id="clientName">
                                                     <div class="form-control-icon">
                                                         <i class="fas fa-user-circle"></i>
                                                     </div>
@@ -66,7 +51,7 @@
                                             <div class="form-group has-icon-left">
                                                 <label for="currentLocation">Начална точка</label>
                                                 <div class="position-relative">
-                                                    <input disabled type="text" class="form-control" value='@order.CurrentLocation' id="currentLocation">
+                                                    <input disabled type="text" class="form-control" value='@order.StartLocation' id="currentLocation">
                                                     <div class="form-control-icon">
                                                         <i class="fas fa-street-view"></i>
                                                     </div>
@@ -76,7 +61,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group position-relative">
                                                 <label for="currentLocationDetails">Уточнение за начална точка</label>
-                                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@order.CurrentLocationDetails</textarea>              
+                                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@order.StartLocationDetails</textarea>              
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -115,11 +100,15 @@
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <a role="button" class="btn btn-primary mr-1 mb-1" href="/TaxiDriver/Orders/Overview">Приеми</a>
+                                        <form method="post" asp-area="TaxiDriver" asp-controller="Orders" asp-action="Accept" asp-route-id="@order.Id">
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1">Приеми</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        count++;
                     }
                 </div>
             </div>

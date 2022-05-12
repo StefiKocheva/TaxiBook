@@ -3,7 +3,7 @@ using TaxiBook.Data.Models;
 
 namespace TaxiBook.Areas.Manager.ViewModels.Companies
 {
-    public class CompanyDetailsViewModel 
+    public class CompanyInformationViewModel 
     {
         public string Id { get; set; }
 
@@ -32,5 +32,11 @@ namespace TaxiBook.Areas.Manager.ViewModels.Companies
         public decimal? DailyPricePerMinuteStay { get; set; }
 
         public decimal? NightPricePerMinuteStay { get; set; }
+
+        public UpdateCompanyViewModel UpdateCompanyViewModel { get; set; }
+
+        public int? CountOfDispatchers { get; set; }
+
+        public int? CountOfTaxiDrivers { get; set; }
     }
 }

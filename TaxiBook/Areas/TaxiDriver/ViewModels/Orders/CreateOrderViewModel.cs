@@ -11,8 +11,6 @@
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string EndLocation { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        //[Range(MinCountOfPassengers, MaxCountOfPassengers)]
-        public int CountOfPassengers { get; set; }
+        public int? CountOfPassengers { get; set; }
     }
 }

@@ -53,6 +53,8 @@
                 CurrentLocationId = location.Id,
                 EndLocationId = location.Id,
                 CompanyId = companyId,
+                CreatedBy = this.currentUserService.GetUser(),
+                CreatedById = this.currentUserService.GetId(),
             };
 
             await this.db.Orders.AddAsync(order);
@@ -124,13 +126,5 @@
                 AdditionalRequirements = o.AdditionalRequirements,
             })
             .ToHashSet();
-
-        //private async Task<Order> ByIdAndByUserId(
-        //    string id, 
-        //    string userId)
-        //    => await this.db
-        //        .Orders
-        //        .Where(o => o.Id == id && o.UserId == userId)
-        //        .FirstOrDefaultAsync();
     }   
 }

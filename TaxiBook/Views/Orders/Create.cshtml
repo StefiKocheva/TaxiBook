@@ -82,14 +82,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group has-icon-left">
+                                    <div class="form-group position-relative">
                                         <label asp-for="AdditionalRequirements" for="additionalRequirements">Допълнителни изисквания</label>
-                                        <div class="position-relative">
-                                            <input asp-for="AdditionalRequirements" type="text" class="form-control" placeholder="Като например: помощ с багаж" id="additionalRequirements">
-                                            <div class="form-control-icon">
-                                                <i class="far fa-handshake"></i>
-                                            </div>
-                                        </div>
+                                        <textarea asp-for="AdditionalRequirements" id="additionalRequirements" class="form-control" rows="2" placeholder="Допълнителни изисквания, като например - помощ с багаж"></textarea>             
                                         <span asp-validation-for="AdditionalRequirements" class="text-danger"></span>
                                     </div>
                                 </div>

@@ -189,34 +189,44 @@
                 <tbody class="text-center">
                     @foreach (var absence in this.Model.Absences)
                     {
-                        <tr>
-                            <td>@absence.FullName</td>
-                            @{
-                                string role = absence.Role.ToString() == "Dispatcher" 
-                                    ? "Диспечер" 
-                                    : "Таксиметров шофьор";
-                            }
-                            <td>@role</td>
-                            @{
-                                string[] fromArr = absence.From.Split('-');
-                                string from = string.Empty;
-
-                                for (int i = fromArr.Length; i > 0; i--)
-                                {
-                                    from += i - 1 == 0 ? fromArr[i - 1] : $"{fromArr[i - 1]}.";
+                        if (absence.IsApproved == false)
+                        {
+                            <tr>
+                                <td>@absence.FullName</td>
+                                @{
+                                    string role = absence.Role.ToString() == "Dispatcher" 
+                                        ? "Диспечер" 
+                                        : "Таксиметров шофьор";
                                 }
+                                <td>@role</td>
+                                @{
+                                    string[] fromArr = absence.From.Split('-');
+                                    string from = string.Empty;
 
-                                string[] tillArr = absence.Till.Split('-');
-                                string till = string.Empty;
+                                    for (int i = fromArr.Length; i > 0; i--)
+                                    {
+                                        from += i - 1 == 0 ? fromArr[i - 1] : $"{fromArr[i - 1]}.";
+                                    }
 
-                                for (int i = tillArr.Length; i > 0; i--)
-                                {
-                                    till += i - 1 == 0 ? tillArr[i - 1] : $"{tillArr[i - 1]}.";
+                                    string[] tillArr = absence.Till.Split('-');
+                                    string till = string.Empty;
+
+                                    for (int i = tillArr.Length; i > 0; i--)
+                                    {
+                                        till += i - 1 == 0 ? tillArr[i - 1] : $"{tillArr[i - 1]}.";
+                                    }
                                 }
-                            }
-                            <td>@from - @till</td>
-                            <td><button class="btn btn-primary"><i class="fas fa-check"></i></button> <button class="btn btn-outline-primary"><i class="fas fa-times"></i></button></td>
-                        </tr>
+                                <td>@from - @till</td>
+                                <td>
+                                    <span style="float:left;">
+                                        <form asp-area="Manager" asp-controller="Schedule" asp-action="ApproveAbsence" asp-route-id="@absence.Id" method="post"><button type="submit"  role="button" class="btn btn-primary"><i class="fas fa-check"></i></button></form> 
+                                    </span>
+                                    <span style="float:right;">
+                                        <form asp-area="Manager" asp-controller="Schedule" asp-action="DisapproveAbsence" asp-route-id="@absence.Id" method="post"><button class="btn btn-outline-primary"><i class="fas fa-times"></i></button></form>
+                                    </span>
+                                </td>
+                            </tr> 
+                        }
                     }
                 </tbody>
             </table>

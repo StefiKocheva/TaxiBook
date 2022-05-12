@@ -12,8 +12,6 @@
 
         IEnumerable<FavoriteDetailsModel> OverviewFavoriteCompanies();
 
-        void DeleteAsync(
-            string id, 
-            string userId);
+        Task DeleteAsync(string id);
     }
 }

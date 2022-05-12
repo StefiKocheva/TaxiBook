@@ -29,7 +29,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="name">Kлиент</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="@this.Model.ClientName" id="name">
+                                            <input disabled type="text" class="form-control" value="@this.Model.FirstName @this.Model.LastName" id="name">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-user-circle"></i>
                                             </div>
@@ -58,11 +58,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group position-relative">
                                         <label for="startLocationDetails">Уточнение за начална точка</label>
                                         <textarea disabled id="startLocationDetails" class="form-control" rows="2">@this.Model.StartLocationDetails</textarea>              
-                                        
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -97,7 +96,6 @@
                                     <div class="form-group position-relative">
                                         <label  for="startLocationDetails">Допълнителни изисквания</label>
                                         <textarea  id="startLocationDetails" class="form-control" rows="2" disabled>@this.Model.AdditionalRequirements</textarea>              
-                                        
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -115,9 +113,16 @@
                                     <div class="form-group has-icon-left">
                                         <label for="completedOn">Приключена</label>
                                         <div class="position-relative">
-                                            <input disabled type="text" class="form-control" value="@this.Model.CompletedOn?.ToString("dd.MM.yyyy") г." id="completedOn">
+                                            @if (this.Model.CompletedOn != null)
+                                            {
+                                                <input disabled type="text" class="form-control" value="@this.Model.CompletedOn?.ToString("HH:mm"), @this.Model.CompletedOn?.ToString("dd.MM.yyyy") г." id="completedOn">
+                                            }
+                                            else
+                                            {
+                                                <input disabled type="text" class="form-control" value="" id="completedOn">                                        
+                                            }
                                             <div class="form-control-icon">
-                                                <i class="far fa-clock"></i>
+                                                <i class="fas fa-clock"></i>
                                             </div>
                                         </div>
                                     </div>

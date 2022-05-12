@@ -14,6 +14,10 @@
 
         void DeleteEmployeeAsync(string id, string userId);
 
-        IEnumerable<AbsenceDetailsViewModel> All();
+        IEnumerable<AbsenceDetailsViewModel> ShowAllRequestsForAbsences();
+
+        void ApproveAbsenceAsync(string id);
+
+        void DisapproveAbsenceAsync(string id);
     }
 }

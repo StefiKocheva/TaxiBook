@@ -6,9 +6,9 @@
     {
         public string Id { get; set; }
 
-        public string ClientName { get; set; }
+        public string FirstName { get; set; }
 
-        public string CreatorId { get; set; }
+        public string LastName { get; set; }
 
         public string PhoneNumber { get; set; }
 
@@ -20,7 +20,7 @@
 
         public string EndLocationDetails { get; set; }
 
-        public int CountOfPassengers { get; set; }
+        public int? CountOfPassengers { get; set; }
 
         public string AdditionalRequirements { get; set; }
 

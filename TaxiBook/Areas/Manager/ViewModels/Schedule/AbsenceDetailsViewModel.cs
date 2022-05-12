@@ -1,7 +1,6 @@
 ﻿namespace TaxiBook.Areas.Manager.ViewModels.Schedule
 {
-    using System;
-    using TaxiBook.Data.Models.Enums;
+    using Data.Models.Enums;
 
     public class AbsenceDetailsViewModel
     {
@@ -14,5 +13,7 @@
         public string From { get; set; }
 
         public string Till { get; set; }
+
+        public bool IsApproved { get; set; }
     }
 }

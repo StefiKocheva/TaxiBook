@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Interfaces;
+    using System.Threading.Tasks;
     using ViewModels.Taxies;
 
     [Authorize(Roles = "TaxiDriver")]
@@ -15,14 +16,27 @@
             => this.taxiService = taxiService;
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview()
         {
-            var viewModel = new TaxiListingViewModel
-            {
-                Taxies = this.taxiService.Overview(),
-            };
+            var viewModel = await this.taxiService.OverviewAsync();
 
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(TaxiInformationViewModel viewModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("Overview", viewModel);
+            }
+
+            await this.taxiService.EditAsync(
+                viewModel.UpdateTaxiViewModel.Brand,
+                viewModel.UpdateTaxiViewModel.Model,
+                viewModel.UpdateTaxiViewModel.NumberPlate);
+
+            return this.RedirectToAction("Overview");
         }
     }
 }

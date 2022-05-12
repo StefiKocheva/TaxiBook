@@ -2,8 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Data;
     using Infrastructure.Services;
+    using Microsoft.EntityFrameworkCore;
     using Services.Interfaces;
     using ViewModels.Companies;
 
@@ -20,11 +22,11 @@
             this.db = db;
         }
 
-        public IEnumerable<CompanyDetailsViewModel> Overview()
-            => this.db
+        public async Task<CompanyInformationViewModel> OverviewAsync()
+            => await this.db
             .Companies
             .Where(c => c.Employees.FirstOrDefault(e => e.Id == this.currentUserService.GetId()).CompanyId == c.Id)
-            .Select(c => new CompanyDetailsViewModel()
+            .Select(c => new CompanyInformationViewModel()
             {
                 Id = c.Id,
                 Name = c.Name,
@@ -39,18 +41,104 @@
                 NightPricePerCall = c.NightPricePerCall,
                 InitialNightFee = c.InitialNightFee,
                 NightPricePerMinuteStay = c.NightPricePerMinuteStay,
+                CountOfDispatchers = this.GetCountOfDispatchers(),
+                CountOfTaxiDrivers = this.GetCountOfTaxiDrivers(),
             })
-            .ToHashSet();
+            .FirstOrDefaultAsync();
 
-        public IEnumerable<EmpployeeDetailsViewModel> EmployeesInCompany()
-            => this.db
-            .Users
-            .Where(u => u.EmployeeRole != Data.Models.Enums.EmployeeRole.None)
-            .Select(u => new EmpployeeDetailsViewModel()
+        private int GetCountOfDispatchers() 
+            => this.db.Users
+                .Where(u => u.CompanyId == this.currentUserService.GetUser().CompanyId)
+                .Where(u => u.EmployeeRole == Data.Models.Enums.EmployeeRole.Dispatcher)
+                .Count();
+
+        private int GetCountOfTaxiDrivers()
+            => this.db.Users
+                .Where(u => u.CompanyId == this.currentUserService.GetUser().CompanyId)
+                .Where(u => u.EmployeeRole == Data.Models.Enums.EmployeeRole.TaxiDriver)
+                .Count();
+
+        public async Task EditAsync(
+            string id,
+            string name, 
+            string phoneNumber,
+            string description,
+            string province, 
+            decimal? oneКilometerМileageDailyPrice,
+            decimal? dailyPricePerCall, 
+            decimal? initialDailyFee, 
+            decimal? dailyPricePerMinuteStay, 
+            decimal? oneКilometerМileageNightPrice, 
+            decimal? nightPricePerCall, 
+            decimal? initialNightFee,
+            decimal? nightPricePerMinuteStay)
+        {
+            var company = this.db
+                .Companies
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+
+            if (company.Name != name && name != null)
             {
-                CompanyId = u.CompanyId,
-                EmployeeRole = u.EmployeeRole,
-            })
-            .ToHashSet();
+                company.Name = name;
+            }
+
+            if (company.PhoneNumber != phoneNumber && phoneNumber != null)
+            {
+                company.PhoneNumber = phoneNumber;
+            }
+
+            if (company.Description != description && description != null)
+            {
+                company.Description = description;
+            }
+
+            if (company.Province != province && province != null)
+            {
+                company.Province = province;
+            }
+
+            if (company.OneКilometerМileageDailyPrice != oneКilometerМileageDailyPrice && oneКilometerМileageDailyPrice != null)
+            {
+                company.OneКilometerМileageDailyPrice = oneКilometerМileageDailyPrice;
+            }
+
+            if (company.DailyPricePerCall != dailyPricePerCall && dailyPricePerCall != null)
+            {
+                company.DailyPricePerCall = dailyPricePerCall;
+            }
+
+            if (company.InitialDailyFee != initialDailyFee && initialDailyFee != null)
+            {
+                company.InitialDailyFee = initialDailyFee;
+            }
+
+            if (company.DailyPricePerMinuteStay != dailyPricePerMinuteStay && dailyPricePerMinuteStay != null)
+            {
+                company.DailyPricePerMinuteStay = dailyPricePerMinuteStay;
+            }
+
+            if (company.OneКilometerМileageNightPrice != oneКilometerМileageNightPrice && oneКilometerМileageNightPrice != null)
+            {
+                company.OneКilometerМileageNightPrice = oneКilometerМileageNightPrice;
+            }
+
+            if (company.NightPricePerCall != nightPricePerCall && nightPricePerCall != null)
+            {
+                company.NightPricePerCall = nightPricePerCall;
+            }
+
+            if (company.InitialNightFee != initialNightFee && initialNightFee != null)
+            {
+                company.InitialNightFee = initialNightFee;
+            }
+
+            if (company.DailyPricePerMinuteStay != dailyPricePerMinuteStay && dailyPricePerMinuteStay != null)
+            {
+                company.DailyPricePerMinuteStay = dailyPricePerMinuteStay;
+            }
+
+            await this.db.SaveChangesAsync();
+        }
     }
 }

@@ -27,7 +27,7 @@
             string brand,
             string model);
 
-        void DeleteAsync(string id);
+        Task DeleteAsync(string id);
 
         IEnumerable<EmployeeDetailsViewModel> All();
 

@@ -8,11 +8,11 @@
     {
         Task<string> CreateAsync(
             string endLocation,
-            int countOfPassengers);
+            int? countOfPassengers);
 
         IEnumerable<OrderDetailsViewModel> GetAllUnacceptedOrders();
 
-        void AcceptAsync(string id);
+        Task AcceptAsync(string id);
 
         IEnumerable<OrderDetailsViewModel> GetAllAcceptedOrders();
 

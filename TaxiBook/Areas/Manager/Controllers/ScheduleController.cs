@@ -20,7 +20,7 @@
         {
             var viewModel = new AbsenceListingViewModel()
             {
-                Absences = this.scheduleService.All(),
+                Absences = this.scheduleService.ShowAllRequestsForAbsences(),
             };
 
             return this.View(viewModel);
@@ -53,6 +53,22 @@
                 model.Till);
 
             return this.RedirectPermanent("Employees");
+        }
+
+        [HttpPost]
+        public ActionResult ApproveAbsence(string id)
+        {
+            this.scheduleService.ApproveAbsenceAsync(id);
+
+            return this.RedirectToActionPermanent("CurrentMonth");
+        }
+
+        [HttpPost]
+        public ActionResult DisapproveAbsence(string id)
+        {
+            this.scheduleService.DisapproveAbsenceAsync(id);
+
+            return this.RedirectToActionPermanent("CurrentMonth");
         }
     }
 }

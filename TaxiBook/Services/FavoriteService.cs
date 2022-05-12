@@ -7,7 +7,6 @@
     using Data.Models;
     using Infrastructure.Services;
     using Interfaces;
-    using Microsoft.EntityFrameworkCore;
     using ViewModels.Favorites;
 
     public class FavoriteService : IFavoriteService
@@ -71,6 +70,7 @@
             .Where(c => c.ClientId == this.currentUserService.GetId())
             .Select(c => new FavoriteDetailsModel()
             {
+                Id = c.Id,
                 CompanyName = c.CompanyName,
                 OneКilometerМileageDailyPrice = c.OneКilometerМileageDailyPrice,
                 OneКilometerМileageNightPrice = c.OneКilometerМileageNightPrice,
@@ -79,11 +79,10 @@
             })
             .ToHashSet();
 
-        public async void DeleteAsync(
-            string id,
-            string userId)
+        public async Task DeleteAsync(string id)
         {
-            var favoriteCompany = this.ByIdAndByUserId(id, userId);
+            var clientId = this.currentUserService.GetId();
+            var favoriteCompany = this.ByIdAndByUserId(id, clientId);
 
             this.db.Favorites.Remove(favoriteCompany);
 

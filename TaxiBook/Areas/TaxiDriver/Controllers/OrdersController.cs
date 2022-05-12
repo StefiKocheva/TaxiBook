@@ -24,14 +24,14 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.View(viewModel);
             }
 
             await this.orderService.CreateAsync(
                 viewModel.EndLocation,
                 viewModel.CountOfPassengers);
 
-            return this.RedirectToAction("Overview");
+            return this.RedirectToActionPermanent("Overview");
         }
 
         [HttpGet]
@@ -62,6 +62,14 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Accept(string id)
+        {
+            await this.orderService.AcceptAsync(id);
+
+            return this.RedirectToActionPermanent("Overview");
         }
 
         [HttpGet]

@@ -38,11 +38,11 @@
                                     {
                                         <td>Диспечер</td>
                                     }
-                                    <td>
-                                        <a asp-area="Manager" asp-controller="Employees" asp-action="Overview" asp-route-id="@employee.Id" role="button" class="table-element"><i class="fas fa-user-alt"></i></a>
-                                        <a asp-area="Manager" asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id" role="button" class="table-element"><i class="fas fa-pen"></i></a>
-                                        <form asp-area="Manager" asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.Id" method="post">
-                                            <button type="submit" class="table-element" role="button"> <i class="far fa-trash-alt"></i></button>
+                                    <td style="display:flex;" class="justify-content-center">
+                                        <a style="float:left;margin-right: 5px;" asp-area="Manager" asp-controller="Employees" asp-action="Overview" asp-route-id="@employee.Id" role="button" class="table-element"><i class="fas fa-user-alt"></i></a>
+                                        <a style="float:none;margin-right: 5px;" asp-area="Manager" asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id" role="button" class="table-element"><i class="fas fa-pen"></i></a>
+                                        <form style="float:right;" asp-area="Manager" asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.Id" method="post">
+                                            <button class="table-element" type="submit" style="padding: 0;border: none; background: none;"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

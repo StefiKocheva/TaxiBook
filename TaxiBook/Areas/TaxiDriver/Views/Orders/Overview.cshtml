@@ -29,7 +29,7 @@
                             <div class="form-group has-icon-left">
                                 <label for="clientName">Клиент</label>
                                 <div class="position-relative">
-                                    <input disabled type="text" class="form-control" value='@this.Model.ClientName' id="clientName">
+                                    <input disabled type="text" class="form-control" value='@this.Model.FirstName' id="clientName">
                                     <div class="form-control-icon">
                                         <i class="fas fa-user-circle"></i>
                                     </div>
@@ -51,7 +51,7 @@
                             <div class="form-group has-icon-left">
                                 <label for="currentLocation">Начална точка</label>
                                 <div class="position-relative">
-                                    <input disabled type="text" class="form-control" value='@this.Model.CurrentLocation' id="currentLocation">
+                                    <input disabled type="text" class="form-control" value='@this.Model.StartLocation' id="currentLocation">
                                     <div class="form-control-icon">
                                         <i class="fas fa-street-view"></i>
                                     </div>
@@ -61,7 +61,7 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group position-relative">
                                 <label for="currentLocationDetails">Уточнение за начална точка</label>
-                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@this.Model.CurrentLocationDetails</textarea>              
+                                <textarea disabled id="currentLocationDetails" class="form-control" rows="2">@this.Model.StartLocationDetails</textarea>              
                             </div>
                         </div>
                         <div class="col-md-6 col-12">

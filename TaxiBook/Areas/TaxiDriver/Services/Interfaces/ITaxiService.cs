@@ -1,10 +1,15 @@
 ﻿namespace TaxiBook.Areas.TaxiDriver.Services.Interfaces
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using ViewModels.Taxies;
 
     public interface ITaxiService
     {
-        IEnumerable<TaxiDetailsViewModel> Overview();
+        Task<TaxiInformationViewModel> OverviewAsync();
+
+        Task EditAsync(
+            string brand, 
+            string model, 
+            string numberPlate);
     }
 }

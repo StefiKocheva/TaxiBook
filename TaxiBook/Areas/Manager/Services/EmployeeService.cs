@@ -88,9 +88,12 @@
             return employee.Id;
         }
 
-        public async void DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            var employee = await this.db.Users.Where(u => u.Id == id).FirstOrDefaultAsync(); // FindAsync()
+            var employee = this.db
+                .Users
+                .Where(u => u.Id == id)
+                .FirstOrDefault(); 
 
             this.db.Users.Remove(employee);
 
@@ -107,10 +110,11 @@
                 LastName = u.LastName,
                 Email = u.Email,
                 PhoneNumber = u.PhoneNumber,
+                ImageUrl = u.ImageUrl,
                 EmployeeRole = u.EmployeeRole,
-                NumberPlate = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.NumberPlate).ToString(),
-                Brand = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Brand).ToString(),
-                Model = this.db.Taxies.Where(t => t.DriverId == id).Select(t => t.Model).ToString(),
+                NumberPlate = u.Taxies.FirstOrDefault().NumberPlate,
+                Brand = u.Taxies.FirstOrDefault().Brand,
+                Model = u.Taxies.FirstOrDefault().Model,
             })
             .FirstOrDefaultAsync();
 

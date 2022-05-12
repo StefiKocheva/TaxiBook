@@ -18,12 +18,12 @@
         [HttpGet]
         public IActionResult Create()
         {
-            //var viewModel = new ListingViewModel
-            //{
-            //    AvailableDrivers = this.orderService.GetAvailableDriversDetails()
-            //};
+            var viewModel = new ListingViewModel
+            {
+                AvailableDrivers = this.orderService.GetAvailableDriversDetails()
+            };
 
-            return this.View();
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -49,17 +49,19 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Overview(string id)
+        public async Task<IActionResult> Details(string id)
         {
             var viewModel = await this.orderService.DetailsAsync(id);
 
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public IActionResult Process(string id)
+        [HttpPost]
+        public async Task<IActionResult> Process(string id)
         {
-            return this.View();
+            await this.orderService.ProcessAsync(id);
+
+            return this.RedirectToActionPermanent("Unprocessed");
         }
 
         [HttpGet]
@@ -67,7 +69,7 @@
         {
             var viewModel = new OrderListingViewModel
             {
-                UnprocessedOrders = this.orderService.GetAllProcessedOrders()
+                ProcessedOrders = this.orderService.GetAllProcessedOrders()
             };
 
             return this.View(viewModel);
@@ -84,10 +86,12 @@
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public IActionResult Unaccept(string id)
+        [HttpPost]
+        public async Task<IActionResult> Unaccept(string id)
         {
-            return this.View();
+            await this.orderService.UnacceptAsync(id);
+
+            return this.RedirectToActionPermanent("Unprocessed");
         }
 
         [HttpGet]
@@ -95,7 +99,7 @@
         {
             var viewModel = new OrderListingViewModel
             {
-                UnprocessedOrders = this.orderService.GetAllRefusedOrders()
+                RefusedOrders = this.orderService.GetAllRefusedOrders()
             };
 
             return this.View(viewModel);

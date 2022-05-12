@@ -86,9 +86,9 @@
         }
 
         [HttpPost]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            this.employeeService.DeleteAsync(id);
+            await this.employeeService.DeleteAsync(id);
 
             return this.RedirectToAction("All");
         }

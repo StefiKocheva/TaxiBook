@@ -18,6 +18,8 @@
         [Required]
         public string Till { get; set; }
 
+        public bool IsApproved { get; set; }
+
         public string EmployeeId { get; set; }
 
         public ApplicationUser Employee { get; set; }

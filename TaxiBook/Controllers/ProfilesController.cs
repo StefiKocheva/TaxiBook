@@ -1,10 +1,10 @@
 ﻿namespace TaxiBook.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
-    using TaxiBook.Services.Interfaces;
-    using TaxiBook.Services.ViewModels.Profiles;
+    using Services.Interfaces;
+    using Services.ViewModels.Profiles;
 
     [Authorize(Roles = "Client,TaxiDriver,Dispatcher,Manager")]
     public class ProfilesController : Controller
@@ -15,29 +15,34 @@
             => this.profileService = profileService;
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview()
         {
-            var viewModel = new ProfileListingViewModel()
-            {
-                Profiles = this.profileService.Overview()
-            };
+            var viewModel = await this.profileService.OverviewAsync();
 
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateProfileViewModel viewModel)
+        public async Task<IActionResult> Edit(ProfileInformationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View("Overview", viewModel);
             }
 
-            await this.profileService.UpdateAsync(
-                viewModel.FirstName,
-                viewModel.LastName,
-                viewModel.Email,
-                viewModel.PhoneNumber);
+            await this.profileService.EditAsync(
+                viewModel.UpdateProfileViewModel.FirstName, 
+                viewModel.UpdateProfileViewModel.LastName, 
+                viewModel.UpdateProfileViewModel.Email,
+                viewModel.UpdateProfileViewModel.PhoneNumber);
+
+            return this.RedirectToAction("Overview");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeProfilePicture(ProfileInformationViewModel viewModel)
+        {
+            await this.profileService.ChangeProfilePictureAsync(viewModel.UpdateProfileViewModel.ProfilePicture);
 
             return this.RedirectToAction("Overview");
         }

@@ -1,5 +1,5 @@
 ﻿@using TaxiBook.Services.ViewModels.Profiles
-@model ProfileListingViewModel
+@model ProfileInformationViewModel
 @{
     this.Layout = "_LoggedLayout";
 }
@@ -13,51 +13,54 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    <form method="post" class="form form-vertical" asp-area="Default" asp-controller="Profiles" asp-action="Update">
+                    <form method="post" asp-area="Default" asp-controller="Profiles" asp-action="Edit">
                         <div class="form-body">
-                            @foreach (var profile in this.Model.Profiles)
-                            {
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <div class="avatar avatar-xl me-3">
-                                            <img src="@profile.ImageUrl">
-                                        </div><br />
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <div class="mt-3">
-                                            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#changeProfilePicture">Промени снимка</button><br /><br />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label asp-for="UpdateProfileViewModel.FirstName" for="firstName">Първо име</label>
-                                            <input asp-for="UpdateProfileViewModel.FirstName" type="text" class="form-control" id="firstName" placeholder="Първо име" disabled name="" value="@profile.FirstName">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label asp-for="UpdateProfileViewModel.LastName" for="lastName">Фамилия</label>
-                                            <input asp-for="UpdateProfileViewModel.LastName" type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled name="" value="@profile.LastName">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label asp-for="UpdateProfileViewModel.Email" for="email">Email</label>
-                                            <input asp-for="UpdateProfileViewModel.Email" type="text" class="form-control" id="email" placeholder="Email" disabled name="" value="@profile.Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label asp-for="UpdateProfileViewModel.Email" for="phoneNumber">Телефонен номер</label>
-                                            <input asp-for="UpdateProfileViewModel.Email" type="text" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled name="" value="@profile.PhoneNumber">
-                                        </div>
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="avatar avatar-xl me-3">
+                                        <img src="@this.Model.ImageUrl">
+                                    </div><br />
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#changeProfilePicture">Промени снимка</button><br /><br />
                                     </div>
                                 </div>
-                            }
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="firstName">Първо име</label>
+                                        <input asp-for="@this.Model.UpdateProfileViewModel.FirstName" type="text" class="form-control" id="firstName" value="@this.Model.FirstName" placeholder="Първо име" disabled >
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="lastName">Фамилия</label>
+                                        <input asp-for="@this.Model.UpdateProfileViewModel.LastName" type="text" class="form-control" id="lastName" placeholder="Фамилия" disabled value="@this.Model.LastName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.UpdateProfileViewModel.Email" for="email">Email</label>
+                                        <input asp-for="@this.Model.UpdateProfileViewModel.Email" type="text" class="form-control" id="email" placeholder="Email" disabled value="@this.Model.Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.UpdateProfileViewModel.PhoneNumber" for="phoneNumber">Телефонен номер</label>
+                                        <input asp-for="@this.Model.UpdateProfileViewModel.PhoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Телефонен номер" disabled value="@this.Model.PhoneNumber">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
-                                    <button id="edit" onclick="enable('firstName', 'lastName', 'email', 'phoneNumber', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                    <span style="float:left;">
+                                        <form asp-area="Default" asp-controller="Profiles" asp-action="Edit" method="post">
+                                            <button id="hiddenButton" type="submit" class="btn btn-outline-primary mr-1 mb-1" style="visibility: hidden">Запази</button>
+                                         </form>
+                                    </span>
+                                    <span style="float:right;">
+                                        <button id="edit" onclick="enable('firstName', 'lastName', 'email', 'phoneNumber', 'hiddenButton', 'edit')" type="button" class="btn btn-primary mr-1 mb-1">Редактирай</button>
+                                    </span>
                                     <script>
                                         function enable(firstName, lastName, email, phoneNumber, hiddenButton, edit) {
                                             document.getElementById(firstName).disabled = false;
@@ -85,15 +88,15 @@
                 <h5 class="modal-title" id="changeProfilePictureTitle">Промени снимка</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
             </div>
-            <form method="post" enctype="multipart/form-data" action="/Users/ChangePhoto?area=default">
+            <form method="post" asp-area="Default" asp-controller="Profiles" asp-action="ChangeProfilePicture" enctype="multipart/form-data">
                 <div class="modal-body">
                     <p>Тук може да промените своята профилна снимка.</p>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Нова снимка</label>
+                                <label for="profilePicture">Нова снимка</label>
                                 <div class="form-file">
-                                    <input type="file" class="form-file-input" id="UserProfileViewModel_Image" name="UserProfileViewModel.Image">
+                                    <input asp-for="@this.Model.UpdateProfileViewModel.ProfilePicture" type="file" class="form-file-input" id="profilePicture">
                                     <label class="form-file-label">
                                         <span class="form-file-text">Изберете файл...</span>
                                         <span class="form-file-button btn-primary "><i data-feather="upload"></i></span>
@@ -103,17 +106,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <span style="float:left;">
+                        <form asp-area="Default" asp-controller="Profiles" asp-action="ChangeProfilePicture" method="post">
+                            <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Промени</span>
+                            </button>
+                        </form>
+                    </span>
+                    <span style="float:right;">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Затвори</span>
+                        </button>
+                    </span>
+                </div>
             </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Затвори</span>
-                </button>
-                <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Промени</span>
-                </button>
-            </div>
         </div>
     </div>
 </div>

@@ -45,17 +45,11 @@
             return this.RedirectToAction("All");
         }
 
-        [HttpPut]
-        public IActionResult Update()
-        {
-            return this.Ok();
-        }
 
-        [HttpDelete]
-        public IActionResult All(string id)
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
         {
-            this.favoriteService
-                .DeleteAsync(id, this.currentUserService.GetId());
+            await this.favoriteService.DeleteAsync(id);
 
             return this.RedirectToAction("All");
         }

@@ -21,5 +21,7 @@
         public string Model { get; set; }
 
         public string NumberPlate { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

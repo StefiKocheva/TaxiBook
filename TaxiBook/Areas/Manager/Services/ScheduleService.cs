@@ -1,14 +1,13 @@
 ﻿namespace TaxiBook.Areas.Manager.Services
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Infrastructure.Services;
     using Microsoft.EntityFrameworkCore;
     using Services.Interfaces;
-    using TaxiBook.Infrastructure.Services;
     using ViewModels.Schedule;
 
     public class ScheduleService : IScheduleService
@@ -41,6 +40,17 @@
             return user.Id;
         }
 
+        public async void ApproveAbsenceAsync(string id)
+        {
+            var absence = await this.db
+                .Absences
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            absence.IsApproved = true;
+
+            await this.db.SaveChangesAsync();
+        }
+
         public async void DeleteEmployeeAsync(string id, string userId)
         {
             // var user = await this.ByIdAndByUserId(id, userId);
@@ -54,17 +64,29 @@
             // await this.db.SaveChangesAsync();
         }
 
-        public IEnumerable<AbsenceDetailsViewModel> All()
+        public async void DisapproveAbsenceAsync(string id)
+        {
+            var absence = await this.db
+                .Absences
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            this.db.Remove(absence);
+
+            await this.db.SaveChangesAsync();
+        }
+
+        public IEnumerable<AbsenceDetailsViewModel> ShowAllRequestsForAbsences()
             => this.db
             .Absences
             .Where(a => a.CompanyId == this.currentUserService.GetUser().CompanyId)
             .Select(a => new AbsenceDetailsViewModel()
             {
+                Id = a.Id,
                 FullName = a.Employee.FirstName + " " + a.Employee.LastName,
                 Role = a.Employee.EmployeeRole,
                 From = a.From,
                 Till = a.Till,
-            })?
+            })
             .ToHashSet();
     }
 }

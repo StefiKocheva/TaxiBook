@@ -13,7 +13,7 @@
             string currentLocationDetails,
             string endLocation, 
             string endLocationDetails, 
-            int countOfPassengers, 
+            int? countOfPassengers, 
             string additionalRequirements, 
             string taxiDriverName);
 
@@ -23,11 +23,11 @@
 
         IEnumerable<OrderDetailsViewModel> GetAllRefusedOrders();
 
-        //IEnumerable<DriverDetailsViewModel> GetAvailableDriversDetails();
+        IEnumerable<DriverDetailsViewModel> GetAvailableDriversDetails();
 
-        void RefuseAsync(string id);
+        Task UnacceptAsync(string id);
 
-        void ProcessAsync(string id);
+        Task ProcessAsync(string id);
 
         Task<OrderDetailsViewModel> DetailsAsync(string id);
     }

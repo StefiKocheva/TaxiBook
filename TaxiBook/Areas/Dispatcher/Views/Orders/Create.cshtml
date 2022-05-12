@@ -86,7 +86,7 @@
                                     <div class="form-group has-icon-left">
                                         <label asp-for="CreateOrderViewModel.CountOfPassengers" for="countOfPassengers">Брой пътуващи</label>
                                         <div class="position-relative">
-                                            <input asp-for="CreateOrderViewModel.CountOfPassengers" type="number" class="form-control" placeholder="Брой пътуващи" id="countOfPassengers">
+                                            <input min="1" max="6" asp-for="CreateOrderViewModel.CountOfPassengers" type="number" class="form-control" placeholder="Брой пътуващи" id="countOfPassengers">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
@@ -140,17 +140,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @*@foreach (var driver in this.Model.AvailableDrivers)
+                    @foreach (var driver in this.Model.AvailableDrivers)
                     {
                         <tr>
                             <td class="text-center">@driver.Email</td>
                             <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('@driver.Email')"><i class="fas fa-copy"></i></a></td>
                         </tr>
-                    }*@
-                    <tr>
-                        <td class="text-center">driver.Email</td>
-                        <td class="text-center"><a class="table-element" role="button" onclick="copyFunction('driver.Email')"><i class="fas fa-copy"></i></a></td>
-                    </tr>
+                    }
                 </tbody>
             </table>
         </div>
