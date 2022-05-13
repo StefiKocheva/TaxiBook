@@ -154,6 +154,11 @@
                 .WithMany(e => e.WorkTimes)
                 .HasForeignKey(wt => wt.EmployeeId);
 
+            builder.Entity<WorkTime>()
+                .HasOne(wt => wt.Company)
+                .WithMany(c => c.WorkTimes)
+                .HasForeignKey(wt => wt.Companyid);
+
             builder.Entity<Company>()
                 .HasOne(c => c.Location)
                 .WithOne(a => a.Company)

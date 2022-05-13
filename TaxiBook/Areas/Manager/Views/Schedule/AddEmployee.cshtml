@@ -27,30 +27,46 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input asp-for="Email" type="text" class="form-control" id="email" placeholder="Име">
-                                        <span asp-validation-for="Email" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="role">Роля</label>
-                                        <input type="text" asp-for="Role" class="form-control" id="role" placeholder="Роля">
-                                        <span asp-validation-for="Role" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
                                         <label for="from">От</label>
-                                        <input type="time" asp-for="From" class="form-control" id="from">
-                                        <span asp-validation-for="From" class="text-danger"></span>
+                                        <input type="time" asp-for="@this.Model.From" class="form-control" id="from">
+                                        <span asp-validation-for="@this.Model.From" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="till">До</label>
-                                        <input type="time" asp-for="Till" class="form-control" id="till">
-                                        <span asp-validation-for="Till" class="text-danger"></span>
+                                        <input type="time" asp-for="@this.Model.Till" class="form-control" id="till">
+                                        <span asp-validation-for="@this.Model.Till" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.Name" for="companyName">Услугите на чия компания използвахте?</label>
+                                        <fieldset class="form-group">
+                                            <select asp-for="@this.Model.Name" class="form-select" id="companyName">
+                                                <option selected="true" disabled="disabled">Изберете...</option>  
+                                                @foreach (var employee in this.Model.Employees)
+                                                {
+                                                    <option asp-for="@this.Model.Name" value="@employee.FirstName @employee.LastName">@employee.FirstName @employee.LastName</option>
+                                                }
+                                            </select>
+                                        </fieldset>
+                                        <span asp-validation-for="@this.Model.Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="@this.Model.Email" for="companyName">Услугите на чия компания използвахте?</label>
+                                        <fieldset class="form-group">
+                                            <select asp-for="@this.Model.Email" class="form-select" id="companyName">
+                                                <option selected="true" disabled="disabled">Изберете...</option>  
+                                                @foreach (var employee in this.Model.Employees)
+                                                {
+                                                    <option asp-for="@this.Model.Email" value="@employee.Email">@employee.Email</option>
+                                                }
+                                            </select>
+                                        </fieldset>
+                                        <span asp-validation-for="@this.Model.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +76,7 @@
                         </form>
                     </div>
                 </div>
-            </div>3
+            </div>
         </div>
     </div>
 </section>

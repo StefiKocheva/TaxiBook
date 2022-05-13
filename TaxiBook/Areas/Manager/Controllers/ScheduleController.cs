@@ -48,7 +48,7 @@
 
             await this.scheduleService.AddEmployeeAsync(
                 model.Email,
-                model.Role,
+                model.Name,
                 model.From,
                 model.Till);
 

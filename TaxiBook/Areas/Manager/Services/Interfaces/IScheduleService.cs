@@ -7,10 +7,12 @@
     public interface IScheduleService
     {
         Task<string> AddEmployeeAsync(
-            string email, 
-            string role,
             string from, 
-            string till);
+            string till,
+            string name, 
+            string email);
+
+        //IEnumerable<EmployeeDetailsViewModel> GetAllEmployeesForToday();
 
         void DeleteEmployeeAsync(string id, string userId);
 

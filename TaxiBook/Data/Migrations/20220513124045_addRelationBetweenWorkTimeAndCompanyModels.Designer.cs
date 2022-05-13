@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiBook.Data;
 
 namespace TaxiBook.Data.Migrations
 {
     [DbContext(typeof(TaxiBookDbContext))]
-    partial class TaxiBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220513124045_addRelationBetweenWorkTimeAndCompanyModels")]
+    partial class addRelationBetweenWorkTimeAndCompanyModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

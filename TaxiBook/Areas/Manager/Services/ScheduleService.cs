@@ -1,5 +1,6 @@
 ﻿namespace TaxiBook.Areas.Manager.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -23,21 +24,37 @@
             this.currentUserService = currentUserService;
         }
 
-        public async Task<string> AddEmployeeAsync(string email, string role, string from, string till)
+        public async Task<string> AddEmployeeAsync(
+            string from, 
+            string till, 
+            string name,
+            string email)
         {
-            var user = new ApplicationUser
+            var employee = this.db
+                .Users
+                .Where(u => u.Email == email)
+                .FirstOrDefault();
+
+            var company = this.currentUserService.GetUser().Company;
+
+            var workTime = new WorkTime
             {
-                Email = email,
-                // Role -> Manager, Dispatcher, TaxiDriver, Client
-                // From = from,
-                // Till = till,
+                Day = 14,
+                Month = 5,
+                Year = 2022,
+                From = from,
+                Till = till,
+                Employee = employee,
+                EmployeeId = employee.Id,
+                Company = company,
+                Companyid = company.Id,
             };
 
-            await db.Users.AddAsync(user);
+            await this.db.WorkTimes.AddAsync(workTime);
+             
+            await this.db.SaveChangesAsync();
 
-            await db.SaveChangesAsync();
-
-            return user.Id;
+            return workTime.Id;
         }
 
         public async void ApproveAbsenceAsync(string id)
@@ -74,6 +91,13 @@
 
             await this.db.SaveChangesAsync();
         }
+
+        //public IEnumerable<EmployeeDetailsViewModel> GetAllEmployeesForToday()
+        //{
+        //    this.db.WorkTimes
+        //        .Where(w => w.Company == this.currentUserService.GetUser().Company)
+        //        .Where
+        //}
 
         public IEnumerable<AbsenceDetailsViewModel> ShowAllRequestsForAbsences()
             => this.db
